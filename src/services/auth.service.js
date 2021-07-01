@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const API_URL = "http://anavaugm.com:3000/api/auth/";
+const API_URL = "http://52.149.214.161/api/v1/auth/";
 
 class AuthService {
   login(user) {
     return axios
-      .post(API_URL + "signin", {
-        username: user.username,
+      .post(API_URL + "login", {
+        email: user.email,
         password: user.password,
       })
       .then((response) => {
@@ -23,7 +23,7 @@ class AuthService {
   }
 
   register(user) {
-    return axios.post(API_URL + "signup", user);
+    return axios.post(API_URL + "register", user);
   }
 
   confirmEmail(id) {

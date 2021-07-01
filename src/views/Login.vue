@@ -11,12 +11,12 @@
       <img class="logo mt-4" src="@/assets/img/mage.png" />
       
       <div>
-        <label>Email atau Nama pengguna</label>
+        <label>Email</label>
         <input
           type="text"
-          name="username"
-          placeholder="Ketik diokee massini..."
-          v-model="user.username"
+          name="email"
+          placeholder="Masukkan Email Anda"
+          v-model="user.email"
         />
       </div>
       <div>
@@ -93,7 +93,7 @@
   </div>
 </template>
 <script>
-import User from "../models/user";
+// import User from "../models/user";
 import Swal from "sweetalert2";
 import firebase from "firebase";
 
@@ -101,7 +101,11 @@ export default {
   name: "Login",
   data() {
     return {
-      user: new User("", ""),
+      // user: new User("", ""),
+      user : {
+        email : "",
+        password : ""
+      },
       loading: false,
       message: "",
       url: window.location.href,
@@ -117,7 +121,7 @@ export default {
     handleLogin() {
       this.loading = true;
 
-      if (this.user.username && this.user.password) {
+      if (this.user.email && this.user.password) {
         this.$store.dispatch("auth/login", this.user).then(
           () => {
             Swal.fire({

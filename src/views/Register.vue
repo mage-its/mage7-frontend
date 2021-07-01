@@ -9,10 +9,10 @@
         <label>Username</label>
         <input
           type="text"
-          name="username"
+          name="name"
           placeholder="Ketik disini..."
-          v-model="user.username"
-          :class="[$v.user.username.$error ? 'red-border' : 'black-border']"
+          v-model="user.name"
+          :class="[$v.user.name.$error ? 'red-border' : 'black-border']"
         />
       </div>
       <div>
@@ -41,9 +41,9 @@
           type="password"
           name="passwordConfirmation"
           placeholder="Ketik disini..."
-          v-model="user.passwordConfirmation"
+          v-model="passwordConfirmation"
           :class="[
-            $v.user.passwordConfirmation.$error ? 'red-border' : 'black-border',
+            $v.passwordConfirmation.$error ? 'red-border' : 'black-border',
           ]"
         />
       </div>
@@ -89,6 +89,8 @@
 </template>
 <script>
 import Swal from "sweetalert2";
+import axios from "axios"
+
 import {
   required,
   minLength,
@@ -102,7 +104,12 @@ export default {
   name: "Register",
   data() {
     return {
-      user: {},
+      user: {
+        name : "",
+        email : "",
+        password : "",
+      },
+      passwordConfirmation: "",
       loading: false,
       message: "",
       provinces: [],
@@ -122,7 +129,7 @@ export default {
   },
   validations: {
     user: {
-      username: {
+      name: {
         required,
         alphaNum,
         minLength: minLength(8),
@@ -137,9 +144,9 @@ export default {
         alphaNum,
         minLength: minLength(8),
       },
-      passwordConfirmation: {
-        sameAsPassword: sameAs("password"),
-      },
+    },
+    passwordConfirmation: {
+      sameAsPassword: sameAs("password"),
     },
   },
   methods: {
@@ -166,32 +173,90 @@ export default {
       this.$store.dispatch("ui/changeWelcomeComponent", "login");
     },
     handleRegister() {
-      this.$v.$touch();
-      if (this.$v.$error) {
-        return;
-      }
+      // let data = {
+      //     'name': this.user.name,
+      //     'email': this.user.email,
+      //     'password': this.user.password,
+      // };
+      // axios
+      //     .post("http://52.149.214.161/api/v1/auth/register", data)
+      //     .then(() => {
+      //         Swal.fire({
+      //             icon: "success",
+      //             title: "Autentikasi berhasil",
+      //             text: "Registrasi Berhasil" ,
+      //             showConfirmButton: true,
+      //         }).then(() => {
+      //             this.$router.replace({
+      //             name: "RegisterIoTDev",
+      //             });
+      //         });
+      //     })
+      //     //eslint-disable-next-line no-console
+      //     .catch( err => console.log(err)); 
+      // this.$v.$touch();
+      // if (this.$v.$error) {
+      //   return;
+      // }
 
       this.loading = true;
-
-      this.$store.dispatch("auth/register", this.user).then(
-        () => {
-          Swal.fire({
-            title: "Berhasil melakukan pendaftaran",
-            icon: "success",
-            showConfirmButton: true,
-          }).then(() => {
-            this.moveToWelcome();
-          });
-        },
-        (err) => {
-          Swal.fire({
-            title: "Gagal melakukan pendaftaran",
-            text: err.response.data.message,
-            icon: "error",
-            showConfirmButton: true,
-          }).then(() => {});
+      if (this.user.password == this.passwordConfirmation) {
+        if (this.user.name && this.user.email && this.user.password) {
+          this.$store.dispatch("auth/register", this.user).then(
+            () => {
+              Swal.fire({
+                icon: "success",
+                title: "Register berhasil",
+                showConfirmButton: true,
+              }).then(() => {
+                this.$router.push("/dashboard");
+              });
+            },
+            (error) => {
+              this.message =
+                (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+                error.message ||
+                error.toString();
+              Swal.fire({
+                icon: "error",
+                title: "Register gagal",
+                text: this.message,
+                showConfirmButton: true,
+              }).then(() => {});
+            }
+          );
         }
-      );
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "konfirmasi sandi salah",
+          showConfirmButton: true,
+        }).then(() => {});
+      }
+
+      // if(this.user.name && this.user.email && this.user.password)
+      // this.$store.dispatch("auth/register", this.user).then(
+      //   () => {
+      //     Swal.fire({
+      //       title: "Berhasil melakukan pendaftaran",
+      //       icon: "success",
+      //       showConfirmButton: true,
+      //     }).then(() => {
+      //       // this.moveToWelcome();
+      //       this.$router.push("/dashboard");
+      //     });
+      //   },
+      //   (err) => {
+      //     Swal.fire({
+      //       title: "Gagal melakukan pendaftaran",
+      //       text: err.response.data.message,
+      //       icon: "error",
+      //       showConfirmButton: true,
+      //     }).then(() => {});
+      //   }
+      // );
     },
     getUrl() {
       return this.url.includes("register");

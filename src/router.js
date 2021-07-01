@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Dashboard from './Dashboard.vue';
+import Dashboard from './views/dashboard/Dashboard.vue';
 import PersonalBlog from './views/PersonalBlog.vue';
 import UserProfileLite from './views/UserProfileLite.vue';
 import AddNewPost from './views/AddNewPost.vue';
@@ -39,14 +39,16 @@ export default new Router({
         path: "/",
         name: "Home",
         component: Home,
-        children: [{
+        children: [
+            {
                 path: "",
                 name: "Main",
                 component: Main,
                 meta: {
                     title: 'Home',
                 }
-            }, {
+            }, 
+            {
                 path: "about",
                 name: "About",
                 component: About,
@@ -134,7 +136,15 @@ export default new Router({
                         }
                     },
                 ]
-            },
+            }, 
+            {
+                path: "dashboard",
+                name: "Dashboard",
+                component: Dashboard,
+                meta: {
+                    title: 'Dashboard',
+                }
+            }
         ]
     }, ]
 })
