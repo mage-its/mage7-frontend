@@ -1,7 +1,218 @@
 <template>
   <div class="wrapper">
     <nav id="sidebar" @click="checkSize">
-      <div class="sidebar-header">
+    <div class="sidebar-header">
+        <div class="profile">
+          <router-link class="text-white" :to="{ name: 'DashboardMain' }">
+            <b-row>
+              <b-col cols="2" lg="3">
+                <img
+                  class="img-profile"
+                  
+                />
+              </b-col>
+              <!--b-col cols="2" class="sidebar-text text-left" lg="8">
+                <p class="name">{{ user.username }}</p>
+                <p class="type" v-if="user.roles.includes('participant')">
+                  Peserta
+                </p>
+                <p class="type" v-else>Panitia</p>
+              </b-col!-->
+              
+              <b-col cols="2" class="sidebar-text text-left" lg="8">
+                <p class="name">username</p>
+                <p class="type" 
+                >
+                  Peserta
+                </p>
+                
+              </b-col>
+            </b-row>
+          </router-link>
+        </div>
+      </div>
+      <div class="sidebar-body">
+        <ul class="list-unstyled components text-white">
+          <li
+            @click="selectedItem = 0"
+            
+          >
+            <router-link class="text-white" :to="{ name: 'DashboardMain' }">
+              <b-row>
+                <b-col cols="1" lg="1">
+                  <div class="inline"><i class="fas fa-home"></i></div>
+                </b-col>
+                <b-col cols="10" class="sidebar-text" lg="10"> Beranda </b-col>
+              </b-row>
+            </router-link>
+          </li>
+          <li
+            @click="selectedItem = 1"
+            
+          >
+            <router-link class="text-white" :to="{ name: 'IndexArticle' }">
+              <b-row>
+                <b-col cols="1" lg="1">
+                  <div class="inline">
+                    <i class="far fa-newspaper"></i>
+                  </div>
+                </b-col>
+                <b-col cols="10" class="sidebar-text" lg="10"> Artikel </b-col>
+              </b-row>
+            </router-link>
+          </li>
+          <li
+            @click="selectedItem = 2"
+            
+          >
+            <router-link class="text-white" :to="{ name: 'MainAnnouncement' }">
+              <b-row>
+                <b-col lg="1">
+                  <div class="inline"><i class="fas fa-bullhorn"></i></div>
+                </b-col>
+                <b-col class="sidebar-text" lg="10"> Pengumuman </b-col>
+              </b-row>
+            </router-link>
+          </li>
+          <li
+            @click="selectedItem = 3"
+            
+          >
+            <router-link class="text-white" :to="{ name: 'MainSchedule' }">
+              <b-row>
+                <b-col cols="1" lg="1">
+                  <div class="inline"><i class="far fa-calendar-alt"></i></div>
+                </b-col>
+                <b-col cols="10" class="sidebar-text" lg="10"> Jadwal </b-col>
+              </b-row>
+            </router-link>
+          </li>
+          <li
+            @click="selectedItem = 4"
+            
+          >
+            <router-link class="text-white" :to="{ name: 'IndexTwibbon' }">
+              <b-row>
+                <b-col cols="1" lg="1">
+                  <div class="inline">
+                    <i class="far fa-image"></i>
+                  </div>
+                </b-col>
+                <b-col cols="10" class="sidebar-text" lg="10"> Twibbon </b-col>
+              </b-row>
+            </router-link>
+          </li>
+          <li
+            @click="selectedItem = 5"
+            
+          >
+            <router-link class="text-white" :to="{ name: 'MainDocument' }">
+              <b-row>
+                <b-col cols="1" lg="1">
+                  <div class="inline"><i class="far fa-copy"></i></div>
+                </b-col>
+                <b-col cols="1" class="sidebar-text" lg="10">
+                  Administrasi
+                </b-col>
+              </b-row>
+            </router-link>
+          </li>
+          <li
+            @click="selectedItem = 6"
+            
+          >
+            <router-link class="text-white" :to="{ name: 'MainPayment' }">
+              <b-row>
+                <b-col cols="1" lg="1">
+                  <div class="inline">
+                    <i class="fas fa-money-bill-wave"></i>
+                  </div>
+                </b-col>
+                <b-col cols="10" class="sidebar-text" lg="10">
+                  Pembayaran
+                </b-col>
+              </b-row>
+            </router-link>
+          </li>
+          <li
+            v-bind:class="[selectedItem == 7 ? 'active' : '']"
+            
+          >
+            <a class="text-white" @click="performToggle(7, 'OSM')">
+              <b-row>
+                <b-col cols="1" lg="1">
+                  <div class="inline"><i class="fas fa-trophy"></i></div>
+                </b-col>
+                <b-col cols="10" class="sidebar-text" lg="10">
+                  OSM
+                  <div class="d-inline">
+                    <i class="fas fa-chevron-down float-right arrow"></i>
+                  </div>
+                </b-col>
+              </b-row>
+            </a>
+            <ul
+              class="list-unstyled components text-white pl-2"
+              v-if="toggle == 7"
+            >
+              <li
+                @click="selectedSubItem = 1"
+                v-bind:class="[selectedSubItem == 1 ? 'active' : '']"
+              >
+                <router-link
+                  class="text-white"
+                  
+                >
+                  <b-row>
+                    <b-col lg="1">
+                      <div class="inline"><i class="fas fa-trophy"></i></div>
+                    </b-col>
+                    <b-col class="sidebar-text" lg="10"> Penyisihan </b-col>
+                  </b-row>
+                </router-link>
+              </li>
+              <li
+                @click="selectedSubItem = 2"
+                v-bind:class="[selectedSubItem == 2 ? 'active' : '']"
+                
+              >
+                <router-link
+                  class="text-white"
+                  
+                >
+                  <b-row>
+                    <b-col lg="1">
+                      <div class="inline"><i class="fas fa-trophy"></i></div>
+                    </b-col>
+                    <b-col class="sidebar-text" lg="10"> Semifinal </b-col>
+                  </b-row>
+                </router-link>
+              </li>
+              <li
+                @click="selectedSubItem = 3"
+                v-bind:class="[selectedSubItem == 3 ? 'active' : '']"
+                
+              >
+                <router-link
+                  class="text-white"
+                  :to="{
+                    name: 'MainStage',
+                    params: { idStage: events[0].stages[2]._id },
+                  }"
+                >
+                  <b-row>
+                    <b-col lg="1">
+                      <div class="inline"><i class="fas fa-trophy"></i></div>
+                    </b-col>
+                    <b-col class="sidebar-text" lg="10"> Final </b-col>
+                  </b-row>
+                </router-link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--div class="sidebar-header">
         <div class="profile">
           <router-link class="text-white" :to="{ name: 'DashboardMain' }">
             <b-row>
@@ -692,7 +903,7 @@
             </router-link>
           </li>
         </ul>
-      </div>
+      </div!-->
     </nav>
   </div>
 </template>
@@ -788,7 +999,7 @@ export default {
     });
   },
   created() {
-    this.getEvents();
+    //this.getEvents();
     if (this.user.roles.includes("participant")) {
       if (window.location.href.includes("article")) this.selectedItem = 1;
       else if (window.location.href.includes("announcement"))
@@ -798,24 +1009,6 @@ export default {
       else if (window.location.href.includes("document")) this.selectedItem = 5;
       else if (window.location.href.includes("payment")) this.selectedItem = 6;
     }
-
-    /* if (window.location.href.includes("stage")) {
-      if (this.event.name == "OSM") this.selectedItem = 7;
-      else if (this.event.name == "Ranking 1") this.selectedItem = 8;
-      else if (this.event.name == "Poster") this.selectedItem = 9;
-    } else if (window.location.href.includes("participant"))
-      this.selectedItem = 1;
-    else if (window.location.href.includes("payment")) this.selectedItem = 2;
-    else if (window.location.href.includes("schedule")) this.selectedItem = 3;
-    else this.selectedItem = 0;
-
-    if (this.user.roles.includes("participant")) {
-      if (window.location.href.includes("stage")) {
-        if (this.event.name == "OSM") this.selectedItem = 7;
-        else if (this.event.name == "Ranking 1") this.selectedItem = 8;
-        else if (this.event.name == "Poster") this.selectedItem = 9;
-      }
-    }*/
   },
 };
 </script>

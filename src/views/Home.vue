@@ -1,15 +1,9 @@
 <template>
   <div>
-    <div class="home" />
-    <div v-if="loading">
-      <transition name="fade">
-        <Loader />
-      </transition>
+    <div class="" v-if="dashboard">
+      <router-view/>
     </div>
-    <div v-else>
-    
-    <Login v-if="show == 'login'" />
-    <Register v-if="show == 'register'" />
+    <div class="home" v-else>
       <div class="container-router" v-if="show == 'welcome'">
         <transition name="fade" mode="out-in">
           <div class="page">
@@ -120,13 +114,13 @@
             </div>
           </div>
         </transition>
-      </div>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
-import Loader from "@/components/Loader";
+
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 import Login from "@/views/Login.vue";
@@ -135,7 +129,7 @@ import Register from "@/views/Register.vue";
 export default {
   name: "Home",
   components: {
-    Loader,
+    
     NavBar,
     Footer,
     Login,
@@ -143,7 +137,8 @@ export default {
   },
   data() {
     return {
-      loading: true,
+      dashboard: false,
+      loading: false,
     };
   },
   computed: {
@@ -153,20 +148,8 @@ export default {
   },
   created() {
     window.scrollTo(0, 0);
-  },
-  mounted() {
-    this.load();
-    console.log(this.show);
-  },
-  methods: {
-    load() {
-      let stateCheck = setInterval(() => {
-        if (document.readyState === "complete") {
-          this.loading = false;
-          clearInterval(stateCheck);
-        }
-      }, 1000);
-    },
+    if(window.location.href.search("dashboard"))
+      this.dashboard = true;
   },
 };
 </script>

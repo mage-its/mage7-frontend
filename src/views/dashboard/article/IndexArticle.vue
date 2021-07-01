@@ -7,7 +7,7 @@
       </h3>
     </div>
     <hr />
-    <div v-if="user.verification == 1">
+    
       <b-row>
         <b-col lg="12">
           <b-container class="article bg-white p-3">
@@ -139,17 +139,8 @@
           </b-container>
         </b-col>
       </b-row>
-    </div>
-    <div v-if="user.verification == 0">
-      <div class="bg-white p-3 text-center text-dark rounded-lg shadow">
-        <p>
-          <i style="font-size:30px" class="far fa-envelope"></i>
-          <br />
-          Anda Belum Melakukan Verifikasi Email, Harap Lakukan Verifikasi Email
-          Anda Terlebih Dahulu!
-        </p>
-      </div>
-    </div>
+      
+    
   </b-container>
 </template>
 <script>
