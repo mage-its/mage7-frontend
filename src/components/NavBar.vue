@@ -25,22 +25,14 @@
             </router-link>
           </li>
           <li>
-            <a
-              class="register"
-              @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
-              href="#"
-            >
+            <router-link :to="'/register'">
               Register
-            </a>
+            </router-link>
           </li>
           <li>
-            <a
-              class="login"
-              @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
-              href="#"
-            >
+            <router-link :to="'/login'">
               Login
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>

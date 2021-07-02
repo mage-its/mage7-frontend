@@ -13,15 +13,17 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/logo-anava.png" />
+                <img class="logo" src="@/assets/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
-                  <h2>Anava</h2>
-                  Ajang Pengenalan Aktivitas Statistika (ANAVA) merupakan
-                  program tahunan Himpunan Mahasiswa Statistika UGM, dengan
-                  tujuan memperkenalkan ilmu statistika dan prospeknya di dunia
-                  kerja.<br />
+                  <h2>App Development</h2>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur.<br />
                   <a href="../../osm" target="blank" class="btn btn-purple"
                     >Selengkapnya</a
                   >
@@ -34,15 +36,17 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/osm.png" />
+                <img class="logo" src="@/assets/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
-                  <h2>OSM</h2>
-                  Kompetisi ini dapat lebih mengasah kemampuannya di bidang
-                  matematika dan statistika, melatih analisis data dan
-                  mempresentasikannya, serta berkompetisi secara sehat dalam
-                  tingkat nasional.<br /><a
+                  <h2>Game Development</h2>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur.<br /><a
                     href="../../osm"
                     target="blank"
                     class="btn btn-purple"
@@ -57,14 +61,17 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/the-one.png" />
+                <img class="logo" src="@/assets/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
-                  <h2>The One</h2>
-                  The One bertujuan untuk mengasah pemahaman peserta terhadap
-                  materi SMA, strategi menjawab soal dalam waktu yang singkat,
-                  dan menumbuhkan karakter kompetitif dalam tingkat nasional.
+                  <h2>Iot Development</h2>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur.
                   <br />
                   <a href="../../rank1" target="blank" class="btn btn-purple"
                     >Selengkapnya</a
@@ -78,14 +85,17 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/started.png" />
+                <img class="logo" src="@/assets/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
-                  <h2>Started</h2>
-                  Lomba poster “STARTED” merupakan lomba yang bertujuan melatih
-                  kreativitas melalui kolaborasi antara ilmu
-                  matematika-statistika dan visualisasi (kemampuan desain).<br />
+                  <h2>Olimpiade</h2>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur.<br />
                   <a href="../../poster" target="blank" class="btn btn-purple"
                     >Selengkapnya</a
                   >
@@ -98,14 +108,17 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/sigma.png" />
+                <img class="logo" src="@/assets/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
-                  <h2>Sigma</h2>
-                  Sosialisasi Statistika “SIGMA” merupakan acara pengenalan
-                  Statistika dan cabang ilmunya yang utamanya ditujukan kepada
-                  siswa-siswi SMA/Sederajat.<br />
+                  <h2>Mage Academy</h2>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur.<br />
                   <a href="../../sigma" target="blank" class="btn btn-purple"
                     >Selengkapnya</a
                   >
@@ -118,7 +131,7 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/open-house.png" />
+                <img class="logo" src="@/assets/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
@@ -177,7 +190,8 @@ export default {
   outline: 0;
   width: 30%;
   padding: 8px;
-  background-color: #58427c;
+  background-color: #3f0d12;
+  background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
   color: #fff;
   cursor: pointer;
   margin-top: 40px;

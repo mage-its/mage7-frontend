@@ -7,25 +7,15 @@
       </h3>
     </div>
     <hr />
-    <router-view v-if="this.user.verification == 1" />
-    <div v-if="user.verification == 0">
-        <div class="bg-white p-3 text-center text-dark rounded-lg shadow">
-          <p>
-            <i style="font-size:30px" class="far fa-envelope"></i>
-            <br />
-            Anda Belum Melakukan Verifikasi Email, Harap Lakukan Verifikasi
-            Email Anda Terlebih Dahulu!
-          </p>
-        </div>
-    </div>
+    <router-view/>
   </b-container>
 </template>
 <script>
 export default {
   computed: {
-    user() {
+    /*user() {
       return JSON.parse(localStorage.getItem("user"));
-    },
+    },*/
   },
 };
 </script>

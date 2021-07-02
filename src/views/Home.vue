@@ -129,7 +129,6 @@ import Register from "@/views/Register.vue";
 export default {
   name: "Home",
   components: {
-    
     NavBar,
     Footer,
     Login,
@@ -148,7 +147,7 @@ export default {
   },
   created() {
     window.scrollTo(0, 0);
-    if(window.location.href.search("dashboard"))
+    if(window.location.href.search("dashboard")!=-1)
       this.dashboard = true;
   },
 };
