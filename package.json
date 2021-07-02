@@ -35,6 +35,7 @@
         "shards-vue": "^1.0.4",
         "sweetalert2": "^10.8.1",
         "three": "^0.129.0",
+        "vee-validate": "^3.4.10",
         "vue": "^2.6.11",
         "vue-aos": "^1.1.0",
         "vue-carousel": "^0.18.0",
