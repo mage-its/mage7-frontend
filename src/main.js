@@ -34,6 +34,7 @@ import Vuelidate from 'vuelidate'
 import CKEditor from 'ckeditor4-vue'
 import firebase from "firebase";
 import 'core-js'
+import {ValidationProvider} from 'vee-validate/dist/vee-validate.full.esm'
 
 
 Vue.use(BootstrapVue);
@@ -60,6 +61,7 @@ firebase.initializeApp(firebaseConfig);
 ShardsVue.install(Vue);
 
 Vue.component('default-layout', Default);
+Vue.component('ValidationProvider', ValidationProvider);
 
 Vue.config.productionTip = false;
 Vue.prototype.$eventHub = new Vue();

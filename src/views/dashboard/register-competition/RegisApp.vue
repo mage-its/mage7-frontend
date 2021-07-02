@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="m-4">
     <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(onSubmit)">
         <ValidationProvider name="Nama Tim" rules="required|alpha" v-slot="{ errors }">
@@ -18,7 +18,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nama Anggota 1" rules="required|alpha" v-slot="{ errors }">
+        <ValidationProvider name="Nama Anggota 1" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Anggota 1</label>
             <input type="text" class="form-control" v-model="formData.nama_anggota_1">
@@ -26,7 +26,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nama Anggota 2" rules="required|alpha" v-slot="{ errors }">
+        <ValidationProvider name="Nama Anggota 2" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Anggota 2</label>
             <input type="text" class="form-control" v-model="formData.nama_anggota_2">
@@ -34,7 +34,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nomor HP Ketua" rules="required" v-slot="{ errors }">
+        <ValidationProvider name="Nomor HP Ketua" rules="required|numeric" v-slot="{ errors }">
           <div class="form-group">
             <label>Nomor HP Ketua</label>
             <input type="tel" class="form-control" v-model="formData.nomor_hp">
@@ -44,7 +44,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nomor WhatsApp Ketua" rules="required" v-slot="{ errors }">
+        <ValidationProvider name="Nomor WhatsApp Ketua" rules="required|numeric" v-slot="{ errors }">
           <div class="form-group">
             <label>Nomor WhatsApp Ketua</label>
             <input type="tel" class="form-control" v-model="formData.nomor_wa">
@@ -94,7 +94,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Foto Identitas Ketua Tim" rules="required|image" v-slot="{ errors, validate }">
+        <ValidationProvider name="Foto Identitas Ketua Tim" rules="required|image|size:1000" v-slot="{ errors, validate }">
           <div class="form-group">
             <label>Foto Identitas Ketua Tim (KTP atau SIM atau yang lain) :</label>
             <input type="file" class="form-control" @change="{ validate(); onUpload(); }" id="identitasKetua">
@@ -118,13 +118,13 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Accept Terms" rules="required" v-slot="{ errors }">
+        <!-- <ValidationProvider name="Accept Terms" rules="required" v-slot="{ errors }">
           <div class="form-check">
             <input type="checkbox" class="form-check-input" v-model="formData.accept_terms"/>
             <label class="form-check-label">Accept Terms</label>
           </div>
           <span class="error-msg">{{ errors[0] }}</span>
-        </ValidationProvider>
+        </ValidationProvider> -->
         <input type="submit" class="btn btn-primary" tect="Submit"/>
       </form>
     </ValidationObserver>

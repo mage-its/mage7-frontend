@@ -9,6 +9,10 @@ import Errors from './views/Errors.vue';
 import ComponentsOverview from './views/ComponentsOverview.vue';
 import Tables from './views/Tables.vue';
 import BlogPosts from './views/BlogPosts.vue';
+import RegisApp from './views/dashboard/register-competition/RegisApp.vue';
+import RegisGame from './views/dashboard/register-competition/RegisGame.vue';
+import RegisIoT from './views/dashboard/register-competition/RegisIoT.vue';
+import RegisOlim from './views/dashboard/register-competition/RegisOlim.vue';
 
 import Home from "./views/Home.vue";
 import Main from "./views/Main.vue";
@@ -185,7 +189,28 @@ export default new Router({
                 meta: {
                     title: 'Dashboard',
                 },
-                children: [{
+                children: [
+                    {
+                        path: "regisapp",
+                        name: "RegisApp",
+                        component : RegisApp
+                    },
+                    {
+                        path: "regisgame",
+                        name: "RegisGame",
+                        component : RegisGame
+                    },
+                    {
+                        path: "regisiot",
+                        name: "RegisIoT",
+                        component : RegisIoT
+                    },
+                    {
+                        path: "regisolim",
+                        name: "RegisOlim",
+                        component : RegisOlim
+                    },
+                    {
                         path: "article",
                         name: "IndexArticle",
                         component: IndexArticle,
