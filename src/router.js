@@ -186,6 +186,10 @@ export default new Router({
                     title: 'Dashboard',
                 },
                 children: [{
+                        path: "",
+                        name: "DashboardMain",
+                        component: DashboardMain,
+                    }, , {
                         path: "article",
                         name: "IndexArticle",
                         component: IndexArticle,

@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container class="bg-white p-4">
-      <vue-tabs>
+      <!--vue-tabs>
         <v-tab title="Dokumen">
           <b-container class="bg-white p-4 mt-3">
             <h2 class="text-left ml-3">Kartu Pelajar</h2>
@@ -220,7 +220,7 @@
             </button>
           </b-container>
         </v-tab>
-      </vue-tabs>
+      </vue-tabs!-->
     </b-container>
   </div>
 </template>
@@ -440,7 +440,7 @@ export default {
     },
   },
   created() {
-    this.formParticipant.id = this.participant.id;
+    /*this.formParticipant.id = this.participant.id;
     this.formParticipant.firstname = this.participant.firstname;
     this.formParticipant.lastname = this.participant.lastname;
     this.formParticipant.birthDate = this.participant.participant.birth_date.substr(
@@ -460,7 +460,7 @@ export default {
     if (this.participant.participant.document.image == 0) {
       this.participant.participant.document.image == 0;
       this.changeImage = 1;
-    }
+    }*/
   },
 };
 </script>
