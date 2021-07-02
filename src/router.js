@@ -189,27 +189,11 @@ export default new Router({
                 meta: {
                     title: 'Dashboard',
                 },
-                children: [
-                    {
-                        path: "regisapp",
-                        name: "RegisApp",
-                        component : RegisApp
-                    },
-                    {
-                        path: "regisgame",
-                        name: "RegisGame",
-                        component : RegisGame
-                    },
-                    {
-                        path: "regisiot",
-                        name: "RegisIoT",
-                        component : RegisIoT
-                    },
-                    {
-                        path: "regisolim",
-                        name: "RegisOlim",
-                        component : RegisOlim
-                    },
+                children: [{
+                        path: "",
+                        name: "DashboardMain",
+                        component: DashboardMain,
+                    }, 
                     {
                         path: "article",
                         name: "IndexArticle",

@@ -1,6 +1,6 @@
 <template>
   <div style="background-color:#eee;min-height:100%; min-width:100%;">
-    <Header />
+    <!--Header /-->
     <Sidebar v-if="sidebar" />
     <div v-bind:class="['content', sidebar ? '' : 'content-margin']">
       <router-view />
@@ -40,17 +40,18 @@ export default {
 
 <style scoped>
 .content {
-  margin-top: 66px;
   width: calc(100%);
-  padding-top: 20px;
   margin-left: 280px;
+  padding-top: 20px;
   width: calc(100% - 280px);
   position: relative;
+  height: 100vh;
 }
 
 .content-margin {
   margin-left: 0px;
   width: 100vw;
+  height: 100vh;
 }
 
 @media only screen and (max-width: 767px) {

@@ -3,21 +3,19 @@
     <b-navbar-brand class="text-white" style="width: 350px;">
       <img
         class="logo"
-        src="@/assets/logo-white.png"
-        style="height:40px; width:70px;margin-left:-20px; margin-top:-10px;"
+        src="@/assets/img/mage-white.png"
+        style="height:30px; width:30px;margin-left:0px; margin-top:0px;"
       />
-
-        <h4 class="d-inline">Anava</h4>
     </b-navbar-brand>
 
     <b-container @click="performToggle()">
-      <i class="fas fa-bars text-light"></i>
+      <i class="fas fa-bars text-white"></i>
     </b-container>
     <b-collapse id="nav-text-collapse" is-nav> </b-collapse>
-    <a class="text-white" href="" @click="logout()">
+    <!--a class="text-white" href="" @click="logout()">
       <i class="fas fa-arrow-left mr-2"></i>
       Keluar
-    </a>
+    </a-->
   </b-navbar>
 </template>
 
@@ -66,7 +64,7 @@ export default {
 </script>
 <style scoped>
 .navbar {
-  background-color: #2c003e;
+  background-color: #111111;
   width: calc(100%);
   height: 70px;
   position: fixed;
