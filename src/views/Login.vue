@@ -123,14 +123,17 @@ export default {
 
       if (this.user.email && this.user.password) {
         this.$store.dispatch("auth/login", this.user).then(
-          () => {
+          (user) => {
             Swal.fire({
               icon: "success",
               title: "Login berhasil",
+              text: this.id,
               showConfirmButton: true,
             }).then(() => {
               this.$router.push("/dashboard");
-            });
+            })
+
+            localStorage.setItem('id', JSON.stringify(user.user.id));
           },
           (error) => {
             this.message =
@@ -146,7 +149,7 @@ export default {
               showConfirmButton: true,
             }).then(() => {});
           }
-        );
+        )
       }
     },
     getUrl() {
