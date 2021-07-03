@@ -1,18 +1,22 @@
 export default function header(isForm) {
   let user = JSON.parse(localStorage.getItem('user'));
   
-  if (user && user.accessToken) {
+  if (user && user.tokens.access.token) {
     if(isForm) {
+      console.log(user.tokens.access.token);
       return { 
         headers: {    
           'Content-Type': 'multipart/form-data',                      
-          'x-access-token': user.accessToken
+          'Authorization': 'Bearer ' + user.tokens.access.token
+          // 'x-access-token': user.tokens.access.token
         } 
       };
     } else {
       return { 
         headers: {
-          'x-access-token': user.accessToken
+          'Content-Type': 'multipart/form-data',                      
+          'Authorization': 'Bearer ' + user.tokens.access.token
+          // 'x-access-token': user.tokens.access.token
         } 
       };
     }

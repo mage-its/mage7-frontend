@@ -10,7 +10,8 @@ import { event } from './event.module'
 import { stage } from './stage.module'
 import { question } from './question.module'
 import { answerForm } from './answer-form.module'
-import { answer} from './answer.module'
+import { answer } from './answer.module'
+import { regisCompetition } from './regis-competition.module'
 
 Vue.use(Vuex)
 
@@ -31,6 +32,7 @@ export default new Vuex.Store({
     stage,
     question,
     answerForm,
-    answer
+    answer,
+    regisCompetition
   }
 })
