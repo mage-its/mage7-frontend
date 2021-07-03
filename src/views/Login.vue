@@ -215,6 +215,12 @@ export default {
         });
     }
   },
+  mounted() {
+    
+  },
+  updated() {
+    
+  }
 };
 </script>
 <style scoped>
