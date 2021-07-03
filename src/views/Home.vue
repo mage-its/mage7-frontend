@@ -1,5 +1,6 @@
 <template>
   <div>
+  
     <div class="" v-if="dashboard">
       <router-view/>
     </div>
@@ -144,6 +145,14 @@ export default {
     show() {
       return this.$store.state.ui.welcomeShow;
     },
+    halo() {
+      return window.location.href.search("dashboard");
+    }
+  },
+  updated(){
+    alert("oke3");
+    if(window.location.href.search("dashboard")!=-1)
+      this.dashboard = true;
   },
   created() {
     window.scrollTo(0, 0);

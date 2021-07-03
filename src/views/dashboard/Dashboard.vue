@@ -30,6 +30,16 @@ export default {
       this.$store.dispatch("event/getAllEvent");
     },
   },
+  mounted() {
+    window.onpopstate = function(event) {
+    this.$router.go(0);
+    window.location.replace("http://localhost:8081/login");
+    setTimeOut({
+
+    }, 3000)
+
+   };
+  },
   created() {
     this.getEvents();
     if (window.innerWidth < 800) 
