@@ -5,17 +5,17 @@ const API_URL = "http://52.149.214.161/api/v1/";
 
 class RegisCompetitionService {
   
-  registerOlim(user) {
-    return axios.post(API_URL + "olim/daftar-olim", user, header(true));
+  registerOlim(form) {
+    return axios.post(API_URL + "olim/daftar-olim", form.data, header(true));
   }
-  registerGame(user) {
-    return axios.post(API_URL + "gamedev/daftar-gamedev", user, header(true));
+  registerGame(form) {
+    return axios.post(API_URL + "gamedev/daftar-gamedev", form.data, header(true));
   }
-  registerApp(user) {
-    return axios.post(API_URL + "appdev/daftar-appdev", user, header(true));
+  registerApp(form) {
+    return axios.post(API_URL + "appdev/daftar-appdev", form.data, header(true));
   }
-  registerIot(user) {
-    return axios.post(API_URL + "iot/daftar-iot", user, header(true));
+  registerIot(form) {
+    return axios.post(API_URL + "iotdev/daftar-iotdev", form.data, header(true));
   }
 
 }

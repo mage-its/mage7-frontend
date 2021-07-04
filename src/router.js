@@ -207,6 +207,16 @@ export default new Router({
                         component: RegisApp,
                     },
                     {
+                        path: "regisgame",
+                        name: "RegisGame",
+                        component: RegisGame,
+                    },
+                    {
+                        path: "regisiot",
+                        name: "RegisIoT",
+                        component: RegisIoT,
+                    },
+                    {
                         path: "",
                         name: "DashboardMain",
                         component: DashboardMain,
