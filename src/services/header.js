@@ -5,18 +5,16 @@ export default function header(isForm) {
     if(isForm) {
       console.log(user.tokens.access.token);
       return { 
-        headers: {    
-          'Content-Type': 'multipart/form-data',                      
-          'Authorization': 'Bearer ' + user.tokens.access.token
-          // 'x-access-token': user.tokens.access.token
+        headers: {
+          'Content-Type': undefined,                  
+          'Authorization': 'Bearer ' + user.tokens.access.token  
         } 
       };
     } else {
       return { 
         headers: {
-          'Content-Type': 'multipart/form-data',                      
+          'Content-Type': undefined,                      
           'Authorization': 'Bearer ' + user.tokens.access.token
-          // 'x-access-token': user.tokens.access.token
         } 
       };
     }
