@@ -182,6 +182,7 @@ export default {
   },
   data() {
     return {
+      disabled: 0,
       previewImage1:null,
       previewImage2:null,
       previewImage3:null,
@@ -215,6 +216,13 @@ export default {
     };
   },
   methods: {
+    isMahasiswa() {
+      if(this.kategori == 'Siswa') {
+        this.disabled = 0
+      } else {
+        this.disabled = 1
+      }
+    },
     onUpload1(e) {
       this.identitasKetua = e.target.files[0];
       const reader = new FileReader();
@@ -293,7 +301,7 @@ export default {
       };
 
       this.$store.dispatch("regisCompetition/registerGame", formData).then(
-        (response) => {
+        () => {
           Swal.fire({
             icon: "success",
             title: "Register berhasil",
@@ -303,21 +311,12 @@ export default {
           });
         },
         (error) => {
-          console.log(error.response.data.message);
-          // this.message = error.response.data.message;
-          // console.log(this.message);
-          // this.message =
-          //   (error.response &&
-          //     error.response.data &&
-          //     error.response.data.message) ||
-          //   error.message ||
-          //   error.toString();
-          // Swal.fire({
-          //   icon: "error",
-          //   title: "Register gagal",
-          //   text: this.message,
-          //   showConfirmButton: true,
-          // }).then(() => {});
+          Swal.fire({
+            icon: "error",
+            title: "Register gagal",
+            text: error.response.data.message,
+            showConfirmButton: true,
+          }).then(() => {});
         }
       );
     },

@@ -1,4 +1,4 @@
-import RegisCompetition from "../services/regis-competition.service";
+import RegisCompetitionService from "../services/regis-competition.service";
 
 export const regisCompetition = {
   namespaced: true,
@@ -7,21 +7,8 @@ export const regisCompetition = {
     regisCompetition: {},
   },
   actions: {
-    registerOlim({ commit }, user) {
-      return RegisCompetition.registerOlim(user).then(
-        (response) => {
-          commit("registerSuccess",response);
-          return Promise.resolve(response);
-        },
-        (error) => {
-          console.log(error);
-          commit("registerFailure");
-          return Promise.reject(error);
-        }
-      );
-    },
-    registerGame({ commit }, user) {
-      return RegisCompetition.registerGame(user).then(
+    registerOlim({ commit }, form) {
+      return RegisCompetitionService.registerOlim(form).then(
         (response) => {
           commit("registerSuccess");
           return Promise.resolve(response.data);
@@ -33,8 +20,8 @@ export const regisCompetition = {
         }
       );
     },
-    registerApp({ commit }, user) {
-      return RegisCompetition.registerApp(user).then(
+    registerGame({ commit }, form) {
+      return RegisCompetitionService.registerGame(form).then(
         (response) => {
           commit("registerSuccess");
           return Promise.resolve(response.data);
@@ -46,8 +33,21 @@ export const regisCompetition = {
         }
       );
     },
-    registerIot({ commit }, user) {
-      return RegisCompetition.registerIot(user).then(
+    registerApp({ commit }, form) {
+      return RegisCompetitionService.registerApp(form).then(
+        (response) => {
+          commit("registerSuccess");
+          return Promise.resolve(response.data);
+        },
+        (error) => {
+          console.log(error.message);
+          commit("registerFailure");
+          return Promise.reject(error);
+        }
+      );
+    },
+    registerIot({ commit }, form) {
+      return RegisCompetitionService.registerIot(form).then(
         (response) => {
           commit("registerSuccess");
           return Promise.resolve(response.data);

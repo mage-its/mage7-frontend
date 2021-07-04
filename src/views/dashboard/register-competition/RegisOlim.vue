@@ -1,8 +1,8 @@
 <template>
   <div class="m-4">
-    <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
+    <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(onSubmit)"  enctype="multipart/form-data" >
-        <ValidationProvider name="Nama Tim" rules="required|alpha_space" v-slot="{ errors }">
+        <ValidationProvider name="Nama Tim" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Tim</label>
             <input id="namaTim" type="text" class="form-control" v-model="namaTim">
@@ -10,7 +10,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nama Ketua Tim" rules="required|alpha_space" v-slot="{ errors }">
+        <ValidationProvider name="Nama Ketua Tim" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Ketua Tim</label>
             <input id="namaKetua" type="text" class="form-control" v-model="namaKetua">
@@ -21,7 +21,7 @@
         <ValidationProvider name="Nama Anggota 1" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Anggota 1</label>
-            <input id="namaAnggota1" type="text" class="form-control" v-model="namaAnggota1">
+            <input id="namaAnggota1" type="text" class="form-control" v-model="namaAnggota1" @change="anggota1Available()" placeholder="Kosongkan jika tidak ada anggota 1">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
@@ -29,7 +29,7 @@
         <ValidationProvider name="Nama Anggota 2" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Anggota 2</label>
-            <input id="namaAnggota2" type="text" class="form-control" v-model="namaAnggota2">
+            <input id="namaAnggota2" type="text" class="form-control" v-model="namaAnggota2" @change="anggota2Available()" placeholder="Kosongkan jika tidak ada anggota 2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
@@ -52,7 +52,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="ID Line" rules="required|alpha_space" v-slot="{ errors }">
+        <ValidationProvider name="ID Line" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>ID Line</label>
             <input id="lineKetua" type="text" class="form-control" v-model="lineKetua">
@@ -60,7 +60,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Kota" rules="required|alpha_space" v-slot="{ errors }">
+        <ValidationProvider name="Kota" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Kota</label>
             <input id="asalKota" type="text" class="form-control" v-model="asalKota">
@@ -68,7 +68,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nama Sekolah / Instansi " rules="required|alpha_space" v-slot="{ errors }">
+        <ValidationProvider name="Nama Sekolah / Instansi " rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Sekolah / Instansi </label>
             <input id="asalInstansi" type="text" class="form-control" v-model="asalInstansi">
@@ -76,7 +76,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Alamat Sekolah / Instansi" rules="required|alpha_space" v-slot="{ errors }">
+        <ValidationProvider name="Alamat Sekolah / Instansi" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Alamat Sekolah / Instansi</label>
             <input id="alamatInstansi" type="text" class="form-control" v-model="alamatInstansi">
@@ -84,7 +84,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Asal Informasi Mage 7" rules="required|alpha_space" v-slot="{ errors }">
+        <ValidationProvider name="Asal Informasi Mage 7" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Darimana Anda Tahu Informasi Mengenai MAGE 7 :</label>
             <input id="asalInfo" type="text" class="form-control" v-model="asalInfo" placeholder="contoh : twitter, instagram dll">
@@ -105,7 +105,7 @@
           <div class="form-group">
             <label>Foto Identitas Anggota 1 (KTP atau SIM atau yang lain) :</label>
             <img v-if="previewImage2" :src="previewImage2" class="uploading-image" />
-            <input type="file" accept="image/*" class="form-control" @change="{ onUpload2($event) || validate($event) }" id="identitasAnggota1">
+            <input :disabled="disabledAnggota1 == 1" type="file" accept="image/*" class="form-control" @change="{ onUpload2($event) || validate($event) }" id="identitasAnggota1">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
@@ -114,20 +114,20 @@
           <div class="form-group">
             <label>Foto Identitas Anggota 2 (KTP atau SIM atau yang lain) :</label>
             <img v-if="previewImage3" :src="previewImage3" class="uploading-image" />
-            <input type="file" accept="image/*" class="form-control" @change="{ onUpload3($event) || validate($event) }" id="identitasAnggota2">
+            <input :disabled="disabledAnggota2 == 1" type="file" accept="image/*" class="form-control" @change="{ onUpload3($event) || validate($event) }" id="identitasAnggota2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Surat Keterangan Siswa" rules="image" v-slot="{ validate, errors }">
+        <ValidationProvider name="Surat Keterangan Siswa" rules="required|image" v-slot="{ validate, errors }">
           <div class="form-group">
-            <label>Surat Keterangan Siswa :</label>
+            <label>Foto Surat Keterangan Siswa :</label>
             <img v-if="previewImage4" :src="previewImage4" class="uploading-image" />
             <input type="file" accept="image/*" class="form-control" @change="{ onUpload4($event) || validate($event) }" id="suratKeteranganSiswa">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <input :disabled="!handleSubmit" @click="onSubmit()" type="submit" class="btn btn-primary" tect="Submit"/>
+        <input @click="onSubmit()" type="submit" class="btn btn-primary" tect="Submit"/>
       </form>
     </ValidationObserver>
   </div>
@@ -145,6 +145,8 @@ export default {
   },
   data() {
     return {
+      disabledAnggota1: 1,
+      disabledAnggota2: 1,
       previewImage1:null,
       previewImage2:null,
       previewImage3:null,
@@ -170,9 +172,22 @@ export default {
     };
   },
   methods: {
+    anggota1Available() {
+      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
+        this.disabledAnggota1 = 1
+      } else {
+        this.disabledAnggota1 = 0
+      }
+    },
+    anggota2Available() {
+      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
+        this.disabledAnggota1 = 1
+      } else {
+        this.disabledAnggota1 = 0
+      }
+    },
     onUpload1(e) {
       this.identitasKetua = e.target.files[0];
-      console.log(this.identitasKetua);
       const reader = new FileReader();
       reader.readAsDataURL(this.identitasKetua);
       reader.onload = e =>{
@@ -205,31 +220,38 @@ export default {
     },
     onSubmit() {
       this.id = localStorage.id;
-      console.log(this.namaTim);
 
       var document = new FormData();
       this.loading = true;
-      if(this.identitasAnggota1 != null) {
+      if(this.identitasAnggota1 == null || this.identitasAnggota1 == '') {
+        console.log('gak onok identitas anggota 1')
+      } else {
         document.append("identitasAnggota1", this.identitasAnggota1);
       }
-      if(this.identitasAnggota2 !=null) {
+
+      if(this.identitasAnggota2 == null || this.identitasAnggota2 == '') {
+        console.log('gak onok identitas anggota 2')
+      } else {
         document.append("identitasAnggota2", this.identitasAnggota2);
       }
-      if(this.namaAnggota1 !=null) {
+      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
+        console.log('gak onok anggota 1')
+      } else {
         document.append("namaAnggota1", this.namaAnggota1);
       }
-      if(this.namaAnggota2 !=null) {
-        document.append("namaAnggota2", this.namaAnggota2);
+
+      if(this.namaAnggota2 == null || this.namaAnggota2 == '') {
+        console.log('gak onok anggota 2')
       } else {
-        document.append("namaAnggota2", null);
+        document.append("namaAnggota2", this.namaAnggota2);
       }
       document.append("identitasKetua", this.identitasKetua);
       document.append("suratKeteranganSiswa", this.suratKeteranganSiswa);
       document.append("namaTim", this.namaTim);
       document.append("namaKetua", this.namaKetua);
-      document.append("waKetua", "085231885569");
+      document.append("waKetua", this.waKetua);
       document.append("lineKetua", this.lineKetua);
-      document.append("hpKetua", "085231885569");
+      document.append("hpKetua", this.hpKetua);
       document.append("asalKota", this.asalKota);
       document.append("asalInstansi", this.asalInstansi);
       document.append("asalInfo", this.asalInfo);
@@ -240,8 +262,7 @@ export default {
       };
 
       this.$store.dispatch("regisCompetition/registerOlim", formData).then(
-        (response) => {
-          console.log(response);
+        () => {
           Swal.fire({
             icon: "success",
             title: "Register berhasil",
@@ -252,18 +273,12 @@ export default {
         },
         (error) => {
           console.log(error.response.data.message);
-          // this.message =
-          //   (error.response &&
-          //     error.response.data &&
-          //     error.response.data.message) ||
-          //   error.message ||
-          //   error.toString();
-          // Swal.fire({
-          //   icon: "error",
-          //   title: "Register gagal",
-          //   text: this.message,
-          //   showConfirmButton: true,
-          // }).then(() => {});
+          Swal.fire({
+            icon: "error",
+            title: "Register gagal",
+            text: error.response.data.message,
+            showConfirmButton: true,
+          }).then(() => {});
         }
       );
     },

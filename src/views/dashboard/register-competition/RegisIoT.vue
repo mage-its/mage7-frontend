@@ -263,7 +263,7 @@ export default {
       };
 
       this.$store.dispatch("regisCompetition/registerIot", formData).then(
-        (response) => {
+        () => {
           Swal.fire({
             icon: "success",
             title: "Register berhasil",
@@ -273,21 +273,12 @@ export default {
           });
         },
         (error) => {
-          console.log(error.response.data.message);
-          // this.message = error.response.data.message;
-          // console.log(this.message);
-          // this.message =
-          //   (error.response &&
-          //     error.response.data &&
-          //     error.response.data.message) ||
-          //   error.message ||
-          //   error.toString();
-          // Swal.fire({
-          //   icon: "error",
-          //   title: "Register gagal",
-          //   text: this.message,
-          //   showConfirmButton: true,
-          // }).then(() => {});
+          Swal.fire({
+            icon: "error",
+            title: "Register gagal",
+            text: error.response.data.message,
+            showConfirmButton: true,
+          }).then(() => {});
         }
       );
     },
