@@ -11,10 +11,10 @@ export const regisCompetition = {
       return RegisCompetition.registerOlim(user).then(
         (response) => {
           commit("registerSuccess",response);
-          return Promise.resolve(response.data);
+          return Promise.resolve(response);
         },
         (error) => {
-          console.log(error.message);
+          console.log(error);
           commit("registerFailure");
           return Promise.reject(error);
         }
@@ -59,13 +59,5 @@ export const regisCompetition = {
         }
       );
     },
-  },
-  mutations: {
-    registerSuccess(state) {
-      state.status.loggedIn = false;
-    },
-    registerFailure(state) {
-      state.status.loggedIn = false;
-    }
   },
 };
