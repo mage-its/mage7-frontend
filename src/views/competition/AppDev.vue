@@ -1,6 +1,6 @@
 <template>
   <div class="osm-page">
-  
+
       <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
     <b-container
       id="description"
@@ -58,22 +58,25 @@ diakibatkan oleh pandemi COVID-19.
               Pendaftaran
             </h2>
             <h5 class="text-white">
-            
+              13 Juni 2021 - 21 Agustus 2021
             </h5>
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2>
             <h5 class="text-white">
-              Babak Penyisihan : <br />
-              
+              Pengumpulan Proposal : 13 Juni 2021 - 21 Agustus 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Semifinal : <br />
-              
+              Pengumuman Lolos Proposal : 29 Agustus 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Final : <br />
-              
+              Pembayaran Pendaftaran : 30 Agustus 2021 - 12 September 2021<br />
+            </h5>
+            <h5 class="text-white">
+              Pembuatan dan Pengumpulan Karya serta Video : 30 Agustus 2021 - 28 Oktober 2021<br />
+            </h5>
+            <h5 class="text-white">
+              Grand Final : 14 Oktober 2021<br />
             </h5>
           </b-container>
         </b-col>
@@ -109,9 +112,9 @@ diakibatkan oleh pandemi COVID-19.
         </b-col>
         <b-col lg="10" cols="9">
           <b-container class="description">
-            <h2 class="text text-white">
-              Rp 10.0000.0000
-            </h2>
+            <h1 class="text  text-white">
+              Rp 11.000.000
+            </h1>
           </b-container>
         </b-col>
       </b-row>
@@ -129,7 +132,7 @@ diakibatkan oleh pandemi COVID-19.
           <b-container class="description">
             <h2 class="text text-white">
               SMA/SMK sederajat : 90k<br/>
-              Mahasiswa : 100k<br/>
+              Mahasiswa : 110k<br/>
             </h2>
           </b-container>
         </b-col>
@@ -145,13 +148,12 @@ diakibatkan oleh pandemi COVID-19.
           <i class="icon fas fa-book fa-9x"></i>
         </b-col>
         <b-col lg="10" cols="9">
-          
           <b-container class="description  mt-4">
             <a target="blank" href="OSM/guidebook.pdf" class="btn d-inline">
               Unduh guidebook
             </a>
           </b-container>
-          
+
         </b-col>
       </b-row>
     </b-container>
@@ -165,11 +167,11 @@ diakibatkan oleh pandemi COVID-19.
 </template>
 <script>
 export default {
-  name: "OSM",
+  name: 'OSM',
   data() {
     return {
       loading: false,
-      message: "",
+      message: '',
       url: window.location.href,
     };
   },
@@ -180,7 +182,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes("osm");
+      return this.url.includes('osm');
     },
   },
   created() {

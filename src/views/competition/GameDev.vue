@@ -6,18 +6,16 @@
     >
       <b-row>
         <b-col lg="4" class="p-3 text-center">
-          <img class="logo" src="@/assets/img/app-merah.png" />
+          <img class="logo" src="@/assets/img/game-merah.png" />
         </b-col>
         <b-col lg="8">
         <div class="competition-title text-left">
-          App Dev
+          Game Dev
         </div>
         <div class="competition-description text-justify">
-        Lomba Application Development adalah lomba pengembangan aplikasi untuk
-menyelesaikan masalah di Indonesia dalam bentuk aplikasi mobile, web dan desktop. Pada
-MAGE 7 tahun ini akan berfokus kepada konsep “Solusi digital untuk permasalahan yang
-timbul akibat pandemi” yang direncanakan sebagai awal untuk membantu permasalahan yang
-diakibatkan oleh pandemi COVID-19.
+        Lomba Game Development adalah lomba pengembangan aplikasi permainan atau game dengan
+tujuan untuk mendorong kreasi serta inovasi mahasiswa maupun siswa SMA seerajat. Pada MAGE 7
+tahun ini akan berfokus kepada konsep Game Jam dengan keyword 'Forward'.
         </div>
         </b-col>
       </b-row>
@@ -56,22 +54,25 @@ diakibatkan oleh pandemi COVID-19.
               Pendaftaran
             </h2>
             <h5 class="text-white">
-            
+              13 Juni 2021 - 21 Agustus 2021
             </h5>
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2>
             <h5 class="text-white">
-              Babak Penyisihan : <br />
-              
+              Pengumpulan Proposal : 13 Juni 2021 - 21 Agustus 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Semifinal : <br />
-              
+              Pengumuman Lolos Proposal : 29 Agustus 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Final : <br />
-              
+              Pembayaran Pendaftaran : 30 Agustus 2021 - 12 September 2021<br />
+            </h5>
+            <h5 class="text-white">
+              Pembuatan dan Pengumpulan Karya serta Video : 30 Agustus 2021 - 28 Oktober 2021<br />
+            </h5>
+            <h5 class="text-white">
+              Grand Final : 14 Oktober 2021<br />
             </h5>
           </b-container>
         </b-col>
@@ -108,7 +109,7 @@ diakibatkan oleh pandemi COVID-19.
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text text-white">
-              Rp 10.0000.0000
+              Rp 11.000.000
             </h2>
           </b-container>
         </b-col>
@@ -127,7 +128,7 @@ diakibatkan oleh pandemi COVID-19.
           <b-container class="description">
             <h2 class="text text-white">
               SMA/SMK sederajat : 90k<br/>
-              Mahasiswa : 100k<br/>
+              Mahasiswa : 110k<br/>
             </h2>
           </b-container>
         </b-col>
@@ -143,13 +144,13 @@ diakibatkan oleh pandemi COVID-19.
           <i class="icon fas fa-book fa-9x"></i>
         </b-col>
         <b-col lg="10" cols="9">
-          
+
           <b-container class="description  mt-4">
             <a target="blank" href="OSM/guidebook.pdf" class="btn d-inline">
               Unduh guidebook
             </a>
           </b-container>
-          
+
         </b-col>
       </b-row>
     </b-container>
@@ -162,11 +163,11 @@ diakibatkan oleh pandemi COVID-19.
 </template>
 <script>
 export default {
-  name: "OSM",
+  name: 'OSM',
   data() {
     return {
       loading: false,
-      message: "",
+      message: '',
       url: window.location.href,
     };
   },
@@ -177,7 +178,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes("osm");
+      return this.url.includes('osm');
     },
   },
   created() {
