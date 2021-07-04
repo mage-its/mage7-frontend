@@ -7,7 +7,7 @@
       </h3>
     </div>
     <hr />
-    <router-view v-if="user.verification == 1" />
+    <router-view/>
   </b-container>
 </template>
 

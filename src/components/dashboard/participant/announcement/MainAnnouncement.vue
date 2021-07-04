@@ -1,6 +1,15 @@
 <template>
   <div>
-    <b-container
+    <div
+      class="container bg-white p-3 text-center text-dark rounded-lg mt-2 mb-2"
+    >
+      <p>
+        <i class="fas fa-exclamation-triangle fa-2x"></i>
+        <br />
+        Belum ada pengumuman
+      </p>
+    </div>
+    <!--b-container
       class="bg-white p-3 rounded shadow-sm"
       v-if="participant.verification == 1">
       <vue-tabs>
@@ -79,7 +88,7 @@
           </div>
         </v-tab>
       </vue-tabs>
-    </b-container>
+    </b-container-->
   </div>
 </template>
 <script>
@@ -96,30 +105,30 @@ export default {
     },
     participant() {
       return JSON.parse(localStorage.getItem("user"));
-    },
+    }
   },
   methods: {
     getGeneralAnnouncement() {
       this.$store.dispatch("announcement/getGeneralAnnouncement");
     },
     getAllAnnouncementByParticipant() {
-      this.$store.dispatch(
-        "announcement/getAllAnnouncementByParticipant",
-        this.participant.id
-      ).then(
-        (response) =>{
-          console.log(response)
-        }
-      );
+      this.$store
+        .dispatch(
+          "announcement/getAllAnnouncementByParticipant",
+          this.participant.id
+        )
+        .then(response => {
+          console.log(response);
+        });
     },
     getDateTime: function(type, date) {
       return datetime.getDateTime(type, date);
-    },
+    }
   },
   created() {
     this.getGeneralAnnouncement();
     this.getAllAnnouncementByParticipant();
-  },
+  }
 };
 </script>
 <style scoped>

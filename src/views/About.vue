@@ -1,6 +1,10 @@
 <template>
   <div class="page">
-    <div class="sub-page" id="about">
+    <Login v-if="show == 'login'" />
+    <Register v-if="show == 'register'" />
+    <div v-if="show == 'welcome'">
+      <NavBar />
+      <div class="sub-page" id="about">
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row>
             <b-col lg="5">
@@ -13,30 +17,41 @@
                 dirancang untuk pelajar SMA/sederajat, untuk menguji kemampuan
                 siswa/i Indonesia dalam menyelesaikan soal-soal terkait logika,
                 pemrograman, dan fisika.
-                
               </p>
             </b-col>
           </b-row>
         </div>
       </div>
+      <Footer />
+    </div>
   </div>
 </template>
 <script>
+import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
+import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
 export default {
-  name: "About", 
+  name: "About",
+  components: {
+    NavBar,
+    Footer,
+    Login,
+    Register
+  },
   metaInfo() {
-        return {
-            title: 'About',
-        };
-    },
+    return {
+      title: "About"
+    };
+  },
   computed: {
     show() {
       return this.$store.state.ui.welcomeShow;
-    },
+    }
   },
   created() {
     window.scrollTo(0, 0);
-  },
+  }
 };
 </script>
 <style scoped>

@@ -1,7 +1,8 @@
 <template>
     <div>
-        <AdminMainAnnouncement v-if="user.roles.includes('admin')"/>
-        <ParticipantMainAnnouncement v-if="user.roles.includes('participant')"/>
+        <!--AdminMainAnnouncement v-if="user.roles.includes('admin')"/>
+        <ParticipantMainAnnouncement v-if="user.roles.includes('participant')"-->
+        <ParticipantMainAnnouncement/>
     </div>
 </template>
 <script>

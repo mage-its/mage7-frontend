@@ -1,6 +1,12 @@
 <template>
   <div class="page">
+    <Login v-if="show == 'login'" />
+    <Register v-if="show == 'register'" />
+    <div v-if="show=='welcome'">
+      <NavBar />
     <div class="sub-page" id="home">
+    
+      <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
       <div class="content">
         <div class="tagline">Multimedia And Game Event</div>
 
@@ -12,252 +18,266 @@
       <div class="mage">
         <img src="@/assets/img/mage.png" />
       </div>
+      </div>
     </div>
     <div class="sub-page" id="about">
-        <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
-          <b-row>
-            <b-col lg="5">
-              <img class="mascot" src="@/assets/img/mage.png" />
+      <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+        <b-row>
+          <b-col lg="5">
+            <img class="mascot" src="@/assets/img/mage.png" />
+          </b-col>
+          <b-col lg="7">
+            <p class="text-white text-left title mb-3">What is MAGE?</p>
+            <p class="text-white text-justify description  mb-3">
+              MAGE dalah kompetisi yang bergerak dalam bidang komputer,
+              dirancang untuk pelajar SMA/sederajat, untuk menguji kemampuan
+              siswa/i Indonesia dalam menyelesaikan soal-soal terkait logika,
+              pemrograman, dan fisika.
+              <a href="#"><div class="more mt-4">More ></div></a>
+            </p>
+          </b-col>
+        </b-row>
+      </div>
+    </div>
+    <div class="sub-page" id="event">
+      <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+        <h1 class="text-white text-center">Competition</h1>
+        <div class="content">
+          <b-row class="full">
+            <b-col cols="6">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/app-hitam.png" />
+              </b-container>
             </b-col>
-            <b-col lg="7">
-              <p class="text-white text-left title mb-3">What is MAGE?</p>
-              <p class="text-white text-justify description  mb-3">
-                MAGE dalah kompetisi yang bergerak dalam bidang komputer,
-                dirancang untuk pelajar SMA/sederajat, untuk menguji kemampuan
-                siswa/i Indonesia dalam menyelesaikan soal-soal terkait logika,
-                pemrograman, dan fisika.
-                <a href="#"><div class="more mt-4">More ></div></a>
-              </p>
+            <b-col cols="6">
+              <h1 class="title">App Dev</h1>
+              <div class="description  mt-4 mb-5">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
+              >
+                Detail
+              </button>
+            </b-col>
+            <b-col lg="12"><div class="divider"></div></b-col>
+            <b-col lg="6" class="mt-5 mb-5">
+              <h1 class="title">Game Dev</h1>
+              <div class="description  mt-4">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="
+                  $store.dispatch('ui/changeWelcomeComponent', 'game-hitam')
+                "
+              >
+                Detail
+              </button>
+            </b-col>
+            <b-col lg="6" class="mt-5 mb-5">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/iot-hitam.png" />
+              </b-container>
+            </b-col>
+            <b-col lg="12"><div class="divider"></div></b-col>
+            <b-col lg="6" class="mt-5 mb-5">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/ma-hitam.png" />
+              </b-container>
+            </b-col>
+            <b-col lg="6" class="mt-5 mb-5">
+              <h1 class="title">Iot Dev</h1>
+              <div class="description  mt-4">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
+              >
+                Detail
+              </button>
+            </b-col>
+            <b-col lg="12"><div class="divider"></div></b-col>
+            <b-col lg="6" class="mt-5 mb-5">
+              <h1 class="title">Olimpiade</h1>
+              <div class="description  mt-4">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
+              >
+                Detail
+              </button>
+            </b-col>
+            <b-col lg="6" class="mt-5 mb-5">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/app-hitam.png" />
+              </b-container>
+            </b-col>
+          </b-row>
+
+          <b-col lg="12"><div class="divider"></div></b-col>
+          <b-row class="mobile">
+            <b-col cols="12">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/app-hitam.png" />
+              </b-container>
+            </b-col>
+            <b-col cols="12">
+              <h1 class="title">App Dev</h1>
+              <div class="description  mt-4">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
+              >
+                Detail
+              </button>
+            </b-col>
+            <b-col cols="12" class="mt-5 mb-5">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/iot-hitam.png" />
+              </b-container>
+            </b-col>
+            <b-col cols="12" class="mt-5 mb-5">
+              <h1 class="title">Game Dev</h1>
+              <div class="description  mt-4">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="
+                  $store.dispatch('ui/changeWelcomeComponent', 'game-hitam')
+                "
+              >
+                Detail
+              </button>
+            </b-col>
+
+            <b-col cols="12" class="mt-5 mb-5">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/ma-hitam.png" />
+              </b-container>
+            </b-col>
+            <b-col lg="12" class="mt-5 mb-5">
+              <h1 class="title">Iot Dev</h1>
+              <div class="description  mt-4">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
+              >
+                Detail
+              </button>
+            </b-col>
+            <b-col lg="6" class="mt-5 mb-5">
+              <b-container class="text-center">
+                <img class="logo" src="@/assets/img/app-hitam.png" />
+              </b-container>
+            </b-col>
+            <b-col cols="12" class="mt-5 mb-5">
+              <h1 class="title">Olimpiade</h1>
+              <div class="description  mt-4">
+                <p class="text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+              <button
+                class="btn p-3 mt-3"
+                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
+              >
+                Detail
+              </button>
             </b-col>
           </b-row>
         </div>
       </div>
-      <div class="sub-page" id="event">
-        <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
-          <h1 class="text-white">Competition</h1>
-          <div class="content">
-            <b-row class="full">
-              <b-col cols="6">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/app-hitam.png" />
-                </b-container>
-              </b-col>
-              <b-col cols="6">
-                <h1 class="title">App Dev</h1>
-                <div class="description  mt-4 mb-5">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
-                >
-                  Detail
-                </button>
-              </b-col>
-              <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5">
-                <h1 class="title">Game Dev</h1>
-                <div class="description  mt-4">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="
-                    $store.dispatch('ui/changeWelcomeComponent', 'game-hitam')
-                  "
-                >
-                  Detail
-                </button>
-              </b-col>
-              <b-col lg="6" class="mt-5 mb-5">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/iot-hitam.png" />
-                </b-container>
-              </b-col>
-              <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/ma-hitam.png" />
-                </b-container>
-              </b-col>
-              <b-col lg="6" class="mt-5 mb-5">
-                <h1 class="title">Iot Dev</h1>
-                <div class="description  mt-4">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
-                >
-                  Detail
-                </button>
-              </b-col>
-              <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5">
-                <h1 class="title">Olimpiade</h1>
-                <div class="description  mt-4">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
-                >
-                  Detail
-                </button>
-              </b-col>
-              <b-col lg="6" class="mt-5 mb-5">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/app-hitam.png" />
-                </b-container>
-              </b-col>
-            </b-row>
-            
-              <b-col lg="12"><div class="divider"></div></b-col>
-            <b-row class="mobile">
-              <b-col cols="12">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/app-hitam.png" />
-                </b-container>
-              </b-col>
-              <b-col cols="12">
-                <h1 class="title">App Dev</h1>
-                <div class="description  mt-4">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
-                >
-                  Detail
-                </button>
-              </b-col>
-              <b-col cols="12" class="mt-5 mb-5">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/iot-hitam.png" />
-                </b-container>
-              </b-col>
-              <b-col cols="12" class="mt-5 mb-5">
-                <h1 class="title">Game Dev</h1>
-                <div class="description  mt-4">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="
-                    $store.dispatch('ui/changeWelcomeComponent', 'game-hitam')
-                  "
-                >
-                  Detail
-                </button>
-              </b-col>
-
-              <b-col cols="12" class="mt-5 mb-5">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/ma-hitam.png" />
-                </b-container>
-              </b-col>
-              <b-col lg="12" class="mt-5 mb-5">
-                <h1 class="title">Iot Dev</h1>
-                <div class="description  mt-4">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
-                >
-                  Detail
-                </button>
-              </b-col>
-              <b-col lg="6" class="mt-5 mb-5">
-                <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/app-hitam.png" />
-                </b-container>
-              </b-col>
-              <b-col cols="12" class="mt-5 mb-5">
-                <h1 class="title">Olimpiade</h1>
-                <div class="description  mt-4">
-                  <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
-                </div>
-                <button
-                  class="btn p-3 mt-3"
-                  @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
-                >
-                  Detail
-                </button>
-              </b-col>
-            </b-row>
-          </div>
-        </div>
-      </div>
+    </div>
+    <Footer />
+    </div>
   </div>
 </template>
 <script>
+import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
+import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
+
 export default {
   name: "Main",
+  components: {
+    NavBar,
+    Footer,
+    Login,
+    Register
+  },
   computed: {
     show() {
       return this.$store.state.ui.welcomeShow;
-    },
+    }
   },
   created() {
     window.scrollTo(0, 0);
-  },
+  }
 };
 </script>
 <style scoped>
@@ -344,11 +364,12 @@ a:hover {
 }
 
 #home {
-  height: 700px;
+  height: 100vh;
   background-color: #000000;
   background-image: url("./../assets/img/bg.svg");
   background-size: cover;
   padding-bottom: 20px;
+  padding-top: 300px;
 }
 
 #home .content {
@@ -492,38 +513,6 @@ a:hover {
 #documentation img {
   height: 300px;
   size: 300px;
-}
-
-#partner {
-  background-color: rgb(220, 220, 220);
-  color: rgb(50, 50, 50);
-  padding: 40px 100px;
-}
-
-#partner hr {
-  max-width: 300px;
-  background-color: rgb(70, 70, 70);
-}
-
-#partner .content {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 3px;
-}
-
-#partner .content img {
-  height: 100px;
-  width: 250px;
-  padding: 5px;
-}
-
-#partner #image-small {
-  height: 100px;
-  width: 150px;
-}
-
-#partner h3 {
-  text-align: left;
 }
 
 b-button {

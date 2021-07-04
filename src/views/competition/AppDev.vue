@@ -1,33 +1,34 @@
 <template>
   <div class="osm-page">
-    <div class="logo">
-      <img class="mr-2" src="@/assets/started-white.png" />
-      <h1 class="text-white d-inline-block">STARTED</h1>
-      <h2 class="text-white">Show Us The Art of Statistics Trends and Data</h2>
-      <hr />
-    </div>
-    <a v-if="!getUrl()" @click="$store.dispatch('ui/changeWelcomeComponent', 'welcome')">
-      <img class="close" src="@/assets/close.png" />
-    </a>
+  
+      <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
     <b-container
       id="description"
-      class="bg-purple shawod-sm rounded text-white text-center mt-5"
+      class="bg-red shawod-sm rounded text-white text-center mt-5 text-justify p-5"
     >
-      Lomba Poster STARTED ANAVA #15 merupakan salah satu rangkaian ANAVA #15
-      berupa kegiatan lomba yang ditujukan untuk pelajar tingkat SMA/MA
-      sederajat. Lomba poster “STARTED” merupakan lomba baru yang bertujuan
-      melatih kreativitas melalui kolaborasi antara ilmu matematika-statistika
-      dan visualisasi (kemampuan desain). Lomba Poster diikuti secara tim
-      beranggotakan dua orang. 15 karya terbaik menurut juri akan diikutsertakan
-      dalam vote event melalui akun instagram ANAVA #15. Rangkaian lomba poster
-      ini terdiri dari dua babak atau dalam lomba ini disebut “pekan” antara
-      lain Pekan Kreativitas dan Pekan Final.
+      <b-row>
+        <b-col lg="4" class="p-3 text-center">
+          <img class="logo" src="@/assets/img/app-merah.png" />
+        </b-col>
+        <b-col lg="8">
+        <div class="competition-title text-left">
+          App Dev
+        </div>
+        <div class="competition-description text-justify">
+        Lomba Application Development adalah lomba pengembangan aplikasi untuk
+menyelesaikan masalah di Indonesia dalam bentuk aplikasi mobile, web dan desktop. Pada
+MAGE 7 tahun ini akan berfokus kepada konsep “Solusi digital untuk permasalahan yang
+timbul akibat pandemi” yang direncanakan sebagai awal untuk membantu permasalahan yang
+diakibatkan oleh pandemi COVID-19.
+        </div>
+        </b-col>
+      </b-row>
     </b-container>
     <b-container
       id="category"
-      class="bg-purple shawod-sm rounded text-white text-left"
+      class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Kategori</h1>
+      <h1 class="text-white">Kategori</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-users"></i>
@@ -35,18 +36,18 @@
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text  text-white">
-              Terbuka untuk pelajar SMA/MA Sederajat
+              Terbuka untuk pelajar SMA/MA Sederajat & Mahasiswa/i
             </h2>
-            <h5 class=" text-white">Team 2 Orang</h5>
+            <h5 class=" text-white">Kelompok</h5>
           </b-container>
         </b-col>
       </b-row>
     </b-container>
     <b-container
       id="schedule"
-      class="bg-purple shawod-sm rounded text-white text-left"
+      class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Agenda</h1>
+      <h1 class="text-white">Agenda</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon far fa-calendar-alt fa-9x"></i>
@@ -57,21 +58,22 @@
               Pendaftaran
             </h2>
             <h5 class="text-white">
-              Senin, 7 Desember 2020 s/d <br />
-              Sabtu, 2 Januari 2021
+            
             </h5>
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2>
             <h5 class="text-white">
-              Pekan Kreativitas : <br />
-              3 Januari 2021(08.00 WIB) s/d <br />
-              16 Januari 2021 (12.00 WIB)
+              Babak Penyisihan : <br />
+              
             </h5>
             <h5 class="text-white">
-              Pekan Final : <br />
-              26 Januari 2021(08.00 WIB) s/d <br />
-              29 Januari 2021 (12.00 WIB)
+              Babak Semifinal : <br />
+              
+            </h5>
+            <h5 class="text-white">
+              Babak Final : <br />
+              
             </h5>
           </b-container>
         </b-col>
@@ -79,9 +81,9 @@
     </b-container>
     <b-container
       id="contact"
-      class="bg-purple shawod-sm rounded text-white text-left"
+      class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Kontak</h1>
+      <h1 class="text-white">Kontak</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-phone-alt fa-9x"></i>
@@ -89,18 +91,18 @@
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text  text-white">
-              Tara Dwipa A. T.
+              Nama CP
             </h2>
-            <h5 class="text-white">085869502968</h5>
+            <h5 class="text-white">000000000</h5>
           </b-container>
         </b-col>
       </b-row>
     </b-container>
     <b-container
       id="prize"
-      class="bg-purple shawod-sm rounded text-white text-left"
+      class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Total hadiah</h1>
+      <h1 class="text-white">Total hadiah</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-gift fa-9x"></i>
@@ -108,7 +110,7 @@
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text text-white">
-              Rp 950.000
+              Rp 10.0000.0000
             </h2>
           </b-container>
         </b-col>
@@ -116,9 +118,9 @@
     </b-container>
     <b-container
       id="htm"
-      class="bg-purple shawod-sm rounded text-white text-left"
+      class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>HTM</h1>
+      <h1 class="text-white">HTM</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-money-bill-wave fa-9x"></i>
@@ -126,8 +128,8 @@
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text text-white">
-              Rp 35 K (Presale) <br />
-              RP 40 K (Sale)
+              SMA/SMK sederajat : 90k<br/>
+              Mahasiswa : 100k<br/>
             </h2>
           </b-container>
         </b-col>
@@ -135,32 +137,35 @@
     </b-container>
     <b-container
       id="guidebook"
-      class="bg-purple shawod-sm rounded text-white text-left"
+      class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Guidebook</h1>
+      <h1 class="text-white">Guidebook</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-book fa-9x"></i>
         </b-col>
         <b-col lg="10" cols="9">
-          <b-container class="description mt-4">
-            <a target="blank" href="STARTED/guidebook.pdf" class="btn">
+          
+          <b-container class="description  mt-4">
+            <a target="blank" href="OSM/guidebook.pdf" class="btn d-inline">
               Unduh guidebook
             </a>
           </b-container>
+          
         </b-col>
       </b-row>
     </b-container>
     <router-link :to="{ name: 'Register' }"
       ><button class="btn btn-register">
-        <h3>Daftar sekarang</h3>
+        <h3 class="text-white">Daftar sekarang</h3>
       </button></router-link
     >
+  </div>
   </div>
 </template>
 <script>
 export default {
-  name: "Poster",
+  name: "OSM",
   data() {
     return {
       loading: false,
@@ -175,7 +180,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes("poster");
+      return this.url.includes("osm");
     },
   },
   created() {
@@ -185,21 +190,18 @@ export default {
 </script>
 <style scoped>
 .osm-page {
-  background: linear-gradient(
-    to right top,
-    rgb(13, 33, 60),
-    rgb(52, 3, 62, 0.8)
-  );
+  background-image: linear-gradient(to right, #0e0e0e, #000000, #0e0e0e);
   min-height: 100%;
+  padding-top: 80px;
   padding-left: 200px;
   padding-right: 200px;
   padding-bottom: 40px;
+  color: #FFFFFF;
 }
 
-.osm-page .logo img {
-  height: 100px;
-  width: 50px;
-  margin-top: -60px;
+.osm-page .logo {
+  height: 200px;
+  width: 200px;
 }
 
 .osm-page .logo h1 {
@@ -224,8 +226,17 @@ export default {
   box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
 }
 
+.competition-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.competition-description {
+  font-size: 18px;
+}
+
 #description {
-  background: linear-gradient(to right top, rgb(10, 10, 10), #09203f);
+  background: linear-gradient(to right top, rgb(10, 10, 10), rgba(255, 70, 85, 1));
   min-height: 80px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -290,10 +301,10 @@ export default {
 }
 
 #guidebook .description {
-    margin-left: 60px;
-    padding: 10px;
-    padding-top: 30px;
-  }
+  padding: 20px;
+  margin-left: 130px;
+  padding-top: 20px;
+}
 
 #guidebook .btn {
   background: #fff;
@@ -307,11 +318,16 @@ export default {
   padding: 20px;
   border-radius: 10px;
   margin-top: 80px;
+  margin-bottom: 80px;
   width: 300px;
-  color: #fff;
-  background-color: #537895;
-  background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
-  box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
+  background: rgb(77, 30, 41);
+  background: linear-gradient(
+    90deg,
+    rgba(77, 30, 41, 1) 0%,
+    rgba(255, 70, 85, 1) 35%,
+    rgba(255, 124, 157, 1) 100%
+  );
+  color: #FFFFFF;
 }
 
 a {
@@ -450,7 +466,7 @@ p {
 
   #htm .description {
     margin-top: 5px;
-    margin-left: 70px;
+    margin-left: 80px;
   }
 
   #htm .description h2 {
@@ -482,6 +498,10 @@ p {
 
   #guidebook .description h5 {
     font-size: 1.1em;
+  }
+
+  #guidebook .btn {
+    font-size: 20px;
   }
 
   .btn-register {

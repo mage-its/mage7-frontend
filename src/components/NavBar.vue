@@ -10,29 +10,61 @@
       <div class="menu">
         <ul>
           <li>
-            <router-link :to="'/'">
+            <router-link class="text-center pl-4" :to="'/'">
               Home
             </router-link>
           </li>
           <li>
-            <router-link :to="'/about'">
+            <router-link class="text-center pl-4" :to="'/about'">
               About
             </router-link>
           </li>
           <li>
-            <router-link :to="'/competition/app'">
+            <router-link class="text-center pl-4" :to="'/competition/app'">
               Competition
             </router-link>
+            <b-container class="subnav">
+              <b-row>
+                <b-col lg="12"
+                  ><div class="item text-dark text-center">
+                    <router-link class="text-dark" :to="'/competition/app'">App Dev</router-link>
+                  </div></b-col
+                >
+                <b-col lg="12"
+                  ><div class="item text-dark text-center">
+                    <router-link class="text-dark" :to="'/competition/game'">Game Dev</router-link>
+                  </div></b-col
+                >
+                <b-col lg="12"
+                  ><div class="item text-dark text-center">
+                    <router-link class="text-dark" :to="'/competition/iot'">IoT Dev</router-link>
+                  </div></b-col
+                >
+                <b-col lg="12"
+                  ><div class="item text-dark text-center">
+                    <router-link class="text-dark" :to="'/competition/olim'">Olimpiade</router-link>
+                  </div></b-col
+                >
+              </b-row>
+            </b-container>
           </li>
           <li>
-            <router-link :to="'/register'">
+            <a
+              class="login"
+              @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
+              href="#"
+            >
               Register
-            </router-link>
+            </a>
           </li>
           <li>
-            <router-link :to="'/login'">
+            <a
+              class="login"
+              @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
+              href="#"
+            >
               Login
-            </router-link>
+            </a>
           </li>
         </ul>
       </div>
@@ -79,7 +111,7 @@ export default {
   data() {
     return {
       scrollPosition: null,
-      show: false,
+      show: false
     };
   },
 
@@ -94,9 +126,10 @@ export default {
 
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
-  },
+  }
 };
-</script><style scoped>
+</script>
+<style scoped>
 .logo {
   line-height: 60px;
   position: fixed;
@@ -124,7 +157,7 @@ nav {
 nav ul {
   line-height: 60px;
   list-style: none;
-  background:rgb(0, 0, 0,0 );
+  background: rgb(0, 0, 0, 0);
   overflow: hidden;
   color: #fff;
   padding: 0;
@@ -134,7 +167,7 @@ nav ul {
 }
 
 nav.black ul {
-  background:rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
 }
 
 nav ul li {
@@ -154,13 +187,30 @@ nav ul li a:hover {
   font-size: 16px;
 }
 
+.subnav {
+  position: absolute;
+  margin-right: 100px;
+}
+
+.subnav .item {
+  background: rgba(255, 255, 255, 0.7);
+  max-width: 120px;
+  border-radius: 3px;
+  margin-top: 5px;
+  color: #000000;
+}
+
+.subnav .item:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
 .menu-min {
-  color:white;
+  color: white;
   text-decoration: none;
-  background:rgb(0,0,0);
+  background: rgb(0, 0, 0);
   width: 100%;
   height: 100%;
-  position:fixed;
+  position: fixed;
   top: 80px;
   display: none;
   transition: 1s;
@@ -169,7 +219,7 @@ nav ul li a:hover {
 .menu-min ul {
   line-height: 60px;
   list-style: none;
-  background:rgb(0,0,0);
+  background: rgb(0, 0, 0);
   overflow: hidden;
   color: #fff;
   padding: 0;
@@ -180,7 +230,7 @@ nav ul li a:hover {
 }
 
 .menu-min.black ul {
-  background:rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
 }
 
 .menu-min ul li a {
@@ -191,7 +241,7 @@ nav ul li a:hover {
 
 .menu-icon {
   width: 100%;
-  background:rgb(0,0,0);
+  background: rgb(0, 0, 0);
   text-align: right;
   box-sizing: border-box;
   padding: 15px 24px;
@@ -209,11 +259,11 @@ nav ul li a:hover {
 
   nav ul {
     max-height: 0px;
-  background:rgb(0,0,0);
+    background: rgb(0, 0, 0);
   }
 
   nav.black ul {
-  background:rgb(0, 0, 0);
+    background: rgb(0, 0, 0);
   }
 
   .showing {

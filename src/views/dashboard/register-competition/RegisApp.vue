@@ -1,5 +1,5 @@
 <template>
-  <div class="m-4">
+  <div>
     <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(onSubmit)">
         <div class="form-group">
@@ -164,7 +164,7 @@
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <input @click="onSubmit()" type="submit" class="btn btn-primary" tect="Submit"/>
+        <input @click="onSubmit()" type="submit" class="btn btn-red" tect="Submit"/>
       </form>
     </ValidationObserver>
   </div>

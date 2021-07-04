@@ -1,226 +1,21 @@
 <template>
   <div>
-    <b-container class="bg-white p-4">
-      <!--vue-tabs>
-        <v-tab title="Dokumen">
-          <b-container class="bg-white p-4 mt-3">
-            <h2 class="text-left ml-3">Kartu Pelajar</h2>
-            <hr />
-            <div
-              v-if="
-                participant.participant.document.osis_card == 0 ||
-                  changeOsisCard == 1
-              "
-            >
-              <div id="dropFileForm">
-                <input
-                  type="file"
-                  id="fileOsis"
-                  ref="osis_card"
-                  @change="addFile('osis_card')"
-                />
-
-                <label for="fileOsis" id="fileLabel">
-                  <i class="fa fa-upload fa-5x"></i>
-                  <br />
-                  <span id="fileLabelText" v-html="fileName.osis_card" />
-                </label>
-
-                <button class="uploadButton" @click="uploadFile('osis_card')">
-                  <b-spinner v-if="loading1" label="Spinning"></b-spinner>
-                  <p v-if="!loading1" class="d-inline">Unggah</p>
-                </button>
-              </div>
-            </div>
-            <div v-else>
-              <b-card
-                :img-src="
-                  'http://anavaugm.com/osis_card_' + participant.id + '.jpg'
-                "
-                style="width: 500px;"
-                ><button class="btn-purple" @click="changeOsisCard = 1">
-                  Ganti
-                </button>
-              </b-card>
-            </div>
-            <h2 class="text-left ml-3 mt-5">Pas Foto</h2>
-            <hr />
-            <div
-              v-if="
-                participant.participant.document.image == 0 || changeImage == 1
-              "
-            >
-              <div id="dropFileForm">
-                <input
-                  type="file"
-                  ref="image"
-                  id="fileImage"
-                  @change="addFile('image')"
-                />
-
-                <label for="fileImage" id="fileLabel">
-                  <i class="fa fa-upload fa-5x"></i>
-                  <br />
-                  <span id="fileLabelText">
-                    {{ fileName.image }}
-                  </span>
-                  <br />
-                  <span id="uploadStatus"></span>
-                </label>
-
-                <button class="uploadButton" @click="uploadFile('image')">
-                  <b-spinner v-if="loading2" label="Spinning"></b-spinner>
-                  <p v-if="!loading2" class="d-inline">Unggah</p>
-                </button>
-              </div>
-            </div>
-            <div v-else>
-              <b-card
-                :img-src="
-                  'http://anavaugm.com/image_' + participant.id + '.jpg'
-                "
-                style="width: 500px;"
-              >
-                <button class="btn-purple" @click="changeImage = 1">
-                  Ganti
-                </button>
-              </b-card>
-            </div>
-          </b-container>
-        </v-tab>
-        <v-tab title="Identitas">
-          <b-container class="text-left p-3 border mt-3">
-            <div class="mt-3">
-              <label>Nama depan</label><br />
-              <input
-                type="text"
-                name="email"
-                placeholder="Ketik disini..."
-                v-model="formParticipant.firstname"
-                :class="[
-                  $v.formParticipant.firstname.$error
-                    ? 'red-border'
-                    : 'black-border',
-                ]"
-              />
-            </div>
-            <div class="mt-3">
-              <label>Nama belakang</label><br />
-              <input
-                type="text"
-                name="email"
-                placeholder="Ketik disini..."
-                v-model="formParticipant.lastname"
-                :class="[
-                  $v.formParticipant.lastname.$error
-                    ? 'red-border'
-                    : 'black-border',
-                ]"
-              />
-            </div>
-            <div class="mt-3">
-              <label>Tanggal lahir</label><br />
-              <b-form-input
-                type="date"
-                id="started_date"
-                v-model="formParticipant.birthDate"
-                :class="[
-                  $v.formParticipant.birthDate.$error
-                    ? 'red-border'
-                    : 'black-border',
-                ]"
-              ></b-form-input>
-            </div>
-            <div class="mt-3">
-              <label>Nomor HP</label><br />
-              <input
-                type="text"
-                name="school"
-                placeholder="Ketik disini..."
-                v-model="formParticipant.phoneNumber"
-                :class="[
-                  $v.formParticipant.phoneNumber.$error
-                    ? 'red-border'
-                    : 'black-border',
-                ]"
-              />
-            </div>
-            <div class="mt-3">
-              <label>Alamat</label><br />
-              <textarea
-                type="text"
-                name="school"
-                row="8"
-                class="w-100"
-                placeholder="Ketik disini..."
-                v-model="formParticipant.address"
-                :class="[
-                  $v.formParticipant.address.$error
-                    ? 'red-border'
-                    : 'black-border',
-                ]"
-              />
-            </div>
-            <div class="mt-3">
-              <label>Kelas</label><br />
-              <select class="custom-select" v-model="formParticipant.grade">
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </div>
-            <div class="mt-3">
-              <label>Nama Sekolah/Instansi</label><br />
-              <input
-                type="text"
-                name="school"
-                placeholder="Ketik disini..."
-                v-model="formParticipant.schoolName"
-                :class="[
-                  $v.formParticipant.schoolName.$error
-                    ? 'red-border'
-                    : 'black-border',
-                ]"
-              />
-            </div>
-            <div class="mt-3">
-              <label>Alamat Sekolah/Instansi</label><br />
-              <textarea
-                type="text"
-                row="8"
-                name="school"
-                class="w-100"
-                placeholder="Ketik disini..."
-                v-model="formParticipant.schoolAddress"
-                :class="[
-                  $v.formParticipant.schoolAddress.$error
-                    ? 'red-border'
-                    : 'black-border',
-                ]"
-              />
-            </div>
-            <div class="mt-3">
-              <label>Region</label><br />
-              <select class="custom-select" v-model="formParticipant.region">
-                <option value="1"
-                  >1 (Jawa Tengah, Daerah Istimewa Yogyakarta)</option
-                >
-                <option value="2">2 (Banten, Jakarta, Jawa Barat)</option>
-                <option value="3">3 (Jawa Timur, Bali, NTT, NTB)</option>
-                <option value="4">4 (Sumatra, Kalimantan)</option>
-                <option value="5">5 (Sulawesi, Maluku, Papua)</option>
-              </select>
-            </div>
-            <button
-              class="btn-purple rounded mt-3"
-              @click="updateParticipant()"
-            >
-              <b-spinner v-if="loading" label="Spinning"></b-spinner>
-              <p v-if="!loading" class="d-inline">Submit</p>
-            </button>
-          </b-container>
-        </v-tab>
-      </vue-tabs!-->
+    <b-container class="bg-white p-5">
+      <div class="form-group">
+          <label>Pilih Divisi</label>  
+          <b-form-radio-group
+            v-model="divition"
+            :options="divitionOptions"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </div>   
+      <RegisterApp v-if="divition == divitionOptions[0].item"/>
+      <RegisterGame v-if="divition == divitionOptions[1].item"/>
+      <RegisterIoT v-if="divition == divitionOptions[2].item"/>
+      <RegisterOlim v-if="divition == divitionOptions[3].item"/>
     </b-container>
   </div>
 </template>
@@ -232,71 +27,32 @@ import {
   alphaNum,
   numeric,
 } from "vuelidate/lib/validators";
+import RegisterApp from "@/views/dashboard/register-competition/RegisApp.vue";
+import RegisterGame from "@/views/dashboard/register-competition/RegisGame.vue";
+import RegisterIoT from "@/views/dashboard/register-competition/RegisIoT.vue";
+import RegisterOlim from "@/views/dashboard/register-competition/RegisOlim.vue";
 
 export default {
   name: "MainDocument",
+  components: {
+    RegisterApp,
+    RegisterGame,
+    RegisterIoT,
+    RegisterOlim,
+  },
   data() {
     return {
-      formParticipant: {
-        firstname: "",
-        lastname: "",
-        grade: 10,
-        birthDate: "",
-        address: "",
-        phoneNumber: "",
-        schoolName: "",
-        schoolAddress: "",
-        region: 1,
-      },
-      document: {
-        type: "",
-      },
-      changeImage: 0,
-      changeOsisCard: 0,
-      loading: false,
-      loading1: false,
-      loading2: false,
-      fileName: {
-        osis_card: "Unggah scan kartu pelajar (*.jpg)",
-        image: "Unggah pas foto (*.jpg)",
-      },
+      divition: 'App Dev',
+      divitionOptions: [
+        { item: 'App Dev', name: 'App Dev' },
+        { item: 'Game Dev', name: 'Game Dev' },
+        { item: 'IoT Dev', name: 'IoT Dev' },
+        { item: 'Olimpiade Dev', name: 'Olimpiade Dev' },
+      ],
     };
   },
   validations: {
-    formParticipant: {
-      firstname: {
-        required,
-        alphaNum,
-        minLength: minLength(2),
-      },
-      lastname: {
-        required,
-        alphaNum,
-        minLength: minLength(2),
-      },
-      birthDate: {
-        required,
-      },
-      address: {
-        required,
-        minLength: minLength(10),
-      },
-      phoneNumber: {
-        required,
-        numeric,
-        minLength: minLength(11),
-      },
-      schoolName: {
-        required,
-        alphaNum,
-        minLength: minLength(6),
-      },
-      schoolAddress: {
-        required,
-        alphaNum,
-        minLength: minLength(10),
-      },
-    },
+    
   },
   computed: {
     participant() {
@@ -440,27 +196,7 @@ export default {
     },
   },
   created() {
-    /*this.formParticipant.id = this.participant.id;
-    this.formParticipant.firstname = this.participant.firstname;
-    this.formParticipant.lastname = this.participant.lastname;
-    this.formParticipant.birthDate = this.participant.participant.birth_date.substr(
-      0,
-      10
-    );
-    this.formParticipant.phoneNumber = this.participant.participant.phone_number;
-    this.formParticipant.grade = this.participant.participant.grade;
-    this.formParticipant.address = this.participant.participant.address;
-    this.formParticipant.schoolName = this.participant.participant.school.name;
-    this.formParticipant.schoolAddress = this.participant.participant.school.address;
 
-    if (this.participant.participant.document.osis_card == 0) {
-      this.participant.participant.document.osis_card == 0;
-      this.changeOsisCard = 1;
-    }
-    if (this.participant.participant.document.image == 0) {
-      this.participant.participant.document.image == 0;
-      this.changeImage = 1;
-    }*/
   },
 };
 </script>
@@ -552,5 +288,11 @@ input {
 img {
   width: 500px;
   height: 300px;
+}
+
+.btn-red{
+  color: white;
+  background-color: #3f0d12;
+  background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
 }
 </style>

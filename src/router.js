@@ -24,10 +24,10 @@ import ChangePassword from "./views/ChangePassword.vue";
 import ConfirmationEmail from "./views/ConfirmationEmail.vue";
 
 import IndexCompetition from "./views/competition/Index.vue";
-import OSM from "./views/competition/OSM.vue";
-import Poster from "./views/competition/Poster.vue";
-import Rank1 from "./views/competition/Rank1.vue";
-import Sigma from "./views/competition/Sigma.vue";
+import AppDev from "./views/competition/AppDev.vue";
+import GameDev from "./views/competition/GameDev.vue";
+import IoTDev from "./views/competition/IoTDev.vue";
+import Olimpiade from "./views/competition/Olimpiade.vue";
 
 import DashboardMain from "./views/dashboard/main/DashboardMain.vue";
 
@@ -151,7 +151,7 @@ export default new Router({
                 children: [{
                         path: "app",
                         name: "App",
-                        component: OSM,
+                        component: AppDev,
                         meta: {
                             title: 'App',
                         }
@@ -159,7 +159,7 @@ export default new Router({
                     {
                         path: "game",
                         name: "Game",
-                        component: Poster,
+                        component: GameDev,
                         meta: {
                             title: 'Game',
                         }
@@ -167,15 +167,15 @@ export default new Router({
                     {
                         path: "iot",
                         name: "IoT",
-                        component: Rank1,
+                        component: IoTDev,
                         meta: {
                             title: 'IoT',
                         }
                     },
                     {
                         path: "olim",
-                        name: "Olimpiad",
-                        component: Sigma,
+                        name: "Olimpiade",
+                        component: Olimpiade,
                         meta: {
                             title: 'Olimpiade',
                         }

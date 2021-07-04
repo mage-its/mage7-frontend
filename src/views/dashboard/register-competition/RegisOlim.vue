@@ -1,5 +1,5 @@
 <template>
-  <div class="m-4">
+  <div>
     <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(onSubmit)">
         <ValidationProvider name="Nama Tim" rules="required|alpha_space" v-slot="{ errors }">
@@ -127,7 +127,7 @@
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <input @click="onSubmit()" type="submit" class="btn btn-primary" tect="Submit"/>
+        <input @click="onSubmit()" type="submit" class="btn btn-red" tect="Submit"/>
       </form>
     </ValidationObserver>
   </div>

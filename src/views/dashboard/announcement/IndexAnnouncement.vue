@@ -1,19 +1,8 @@
 <template>
   <div>
-    <AdminIndexAnnouncement v-if="user.roles.includes('admin')" />
-    <ParticipantIndexAnnouncement v-if="user.roles.includes('participant')" />
-    <div v-if="user.roles.includes('participant')">
-      <b-col lg="12" v-if="user.verification == 0">
-        <div class="container bg-white p-3 text-center rounded-lg shadow">
-          <p>
-            <i style="font-size:30px" class="far fa-envelope"></i>
-            <br />
-            Anda Belum Melakukan Verifikasi Email, Harap Lakukan Verifikasi
-            Email Anda Terlebih Dahulu!
-          </p>
-        </div>
-      </b-col>
-    </div>
+    <!--AdminIndexAnnouncement v-if="user.roles.includes('admin')" />
+    <ParticipantIndexAnnouncement v-if="user.roles.includes('participant')" /-->
+    <ParticipantIndexAnnouncement/>
   </div>
 </template>
 <script>

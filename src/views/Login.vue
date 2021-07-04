@@ -50,7 +50,7 @@
         >
         <a v-if="getUrl()" href="/register">Daftar</a>
       </p>
-      <b-container class="ph-3 mb-3">
+      <!--b-container class="ph-3 mb-3">
         <p class="text-center mt-4">Atau login menggunakan</p>
         <b-row class="mt-4">
           <b-col cols="4">
@@ -69,7 +69,7 @@
           </a>
           </b-col>
         </b-row>
-      </b-container>
+      </b-container-->
     </div>
     <vue-particles
       color="#dedede"
@@ -156,7 +156,6 @@ export default {
       return this.url.includes("login");
     },
     signInWithGoogle() {
-      // Using a popup.
       var provider = new firebase.auth.GoogleAuthProvider();
       provider.addScope("profile");
       provider.addScope("email");
@@ -171,6 +170,7 @@ export default {
               title: "Selamat datang "+user.displayName,
               showConfirmButton: true,
             }).then(() => {
+              this.$store.dispatch('ui/changeWelcomeComponent', 'welcome')
               this.$router.push("/dashboard");
             });
           
@@ -248,7 +248,7 @@ export default {
 
 .login-container {
   width: 420px;
-  height: 540px;
+  height: 480px;
   position: absolute;
   margin-left: calc(50% - 210px);
   margin-top: calc(50% - 600px);

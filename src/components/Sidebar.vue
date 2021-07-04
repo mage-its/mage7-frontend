@@ -3,7 +3,7 @@
     <nav id="sidebar" @click="checkSize">
       <div class="sidebar-header">
         <div class="sidebar-logo">
-          <img src="@/assets/img/mage-white.png" />
+          <img src="@/assets/img/mage-title-white.png" />
         </div>
       </div>
       <div class="sidebar-body">
@@ -235,8 +235,8 @@ export default {
 }
 
 .sidebar-logo img {
-  height: 40px;
-  width: 40px;
+  height: 55px;
+  width: 200px;
 }
 
 #sidebar {
@@ -348,9 +348,6 @@ ul a:hover {
 }
 
 @media only screen and (max-width: 767px) {
-  .wrapper {
-    margin-top: 70px;
-  }
   #sidebar {
     max-width: 100vw;
     width: 100vw;
