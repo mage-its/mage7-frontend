@@ -164,7 +164,7 @@
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <input @click="onSubmit()" type="submit" class="btn btn-red" tect="Submit"/>
+        <input type="submit" class="btn btn-red" tect="Submit"/>
       </form>
     </ValidationObserver>
   </div>
@@ -193,7 +193,7 @@ export default {
         { item: 'Siswa', name: 'Siswa' },
         { item: 'Mahasiswa', name: 'Mahasiswa' },
       ],
-      user: {
+      
         kategori: '',
         namaTim: '',
         namaKetua: '',
@@ -214,7 +214,6 @@ export default {
         suratKeteranganSiswa: null,
         alamatInstansi: '',
         id: ''
-      },
     };
   },
   methods: {
@@ -233,10 +232,10 @@ export default {
       }
     },
     anggota2Available() {
-      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
-        this.disabledAnggota1 = 1
+      if(this.namaAnggota2 == null || this.namaAnggota2 == '') {
+        this.disabledAnggota2 = 1
       } else {
-        this.disabledAnggota1 = 0
+        this.disabledAnggota2 = 0
       }
     },
     onUpload1(e) {
@@ -335,6 +334,9 @@ export default {
       var formData = {
         data: document,
       };
+
+      console.log(document)
+      console.log("asalInfo: "+this.asalInfo)
 
       this.$store.dispatch("regisCompetition/registerApp", formData).then(
         () => {
