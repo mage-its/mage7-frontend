@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sub-page" id="partner">
+    <!-- <div class="sub-page" id="partner">
       <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
         <h1 class="text-center">Partnership</h1>
         <hr />
@@ -95,7 +95,7 @@
           </b-row>
         </div>
       </div>
-    </div>
+    </div> -->
     <footer class="footer-section">
       <div class="container">
         <div class="row">

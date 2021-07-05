@@ -53,12 +53,14 @@
               <h1 class="title">App Dev</h1>
               <div class="description  mt-4 mb-5">
                 <p class="text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
+                  Application Competition merupakan cabang kompetisi dari
+                  MAGE 7, yaitu pembuatan aplikasi mobile yang berskala nasional
+                  sebagai media bagi peserta baik pelajar maupun mahasiswa untuk
+                  mengeksplorasi kreativitas dan inovasi dalam bidang IT.
+                  Application Competition ini sebagai bentuk kesadaran bahwa
+                  dengan adanya berbagai macam teknologi yang tersedia,
+                  masyarakat dapat dengan mudah mengeksplorasi teknologi,
+                  khususnya di bidang teknologi dan informasi untuk terciptanyabangsa yang lebih maju di kemudian hari. 
                 </p>
               </div>
               <button
@@ -73,12 +75,18 @@
               <h1 class="title">Game Dev</h1>
               <div class="description  mt-4">
                 <p class="text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
+                  Game Competition merupakan cabang kompetisi dari MAGE
+                  7 yang diadakan oleh Teknik Komputer ITS. Game Competition
+                  diadakan dengan tujuan mendorong kreasi serta inovasi mahasiswa
+                  maupun siswa SMA sederajat untuk membuat sebuah aplikasi
+                  permainan atau game. Game Competition pada MAGE 7 kali ini
+                  mengusung konsep Game Jam dengan keyword ‘Forward’. Game
+                  yang akan dibuat akan menggunakan keyword sebagai tema dan
+                  kesesuaian dengan tema akan menjadi salah satu minor factor
+                  penilaian. Platform dari game sendiri hanya dibatasi pada PC dan
+                  mobile. Dengan adanya kompetisi ini, diharapkan para partisipan
+                  dapat menemukan terobosan baru di bidang teknologi dan informasi
+                  yang diringkas melalui game menarik.
                 </p>
               </div>
               <button
@@ -92,25 +100,29 @@
             </b-col>
             <b-col lg="6" class="mt-5 mb-5">
               <b-container class="text-center">
-                <img class="logo" src="@/assets/img/iot-hitam.png" />
+                <img class="logo" src="@/assets/img/game-hitam.png" />
               </b-container>
             </b-col>
             <b-col lg="12"><div class="divider"></div></b-col>
             <b-col lg="6" class="mt-5 mb-5">
               <b-container class="text-center">
-                <img class="logo" src="@/assets/img/ma-hitam.png" />
+                <img class="logo" src="@/assets/img/iot-hitam.png" />
               </b-container>
             </b-col>
             <b-col lg="6" class="mt-5 mb-5">
               <h1 class="title">Iot Dev</h1>
               <div class="description  mt-4">
                 <p class="text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
+                  Internet of Things Competition merupakan kompetisi dari
+                  MAGE 7, yaitu pembuatan alat yang memanfaatkan koneksi nirkabel
+                  untuk alat kendali yang dapat terhubung atau berkomunikasi
+                  dengan alat - alat yang dikendalikan. Kompetisi yang berskala
+                  nasional ini berfungsi sebagai sarana bagi peserta untuk
+                  mengembangkan kreativitas dan mewujudkan serta menerapkan
+                  ide - ide hebat ke dalam bentuk alat maupun aplikasi (jika
+                  diperlukan). Dengan begitu, partisipan telah ikut dalam peran
+                  penting memajukan sektor teknologi di Indonesia. Pada kompetisi
+                  ini kategori pesertanya meliputi umum.
                 </p>
               </div>
               <button
@@ -125,12 +137,14 @@
               <h1 class="title">Olimpiade</h1>
               <div class="description  mt-4">
                 <p class="text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur.
+                  Kompetisi yang dirancang untuk pelajar SMA/sederajat ini berupa
+                  olimpiade dengan berfokus pada 3 mata pelajaran yaitu fisika,
+                  pemrograman dan logika. Dengan tujuan untuk mengukur seberapa
+                  kompetensi para pelajar SMA/sederajat se-Indonesia dalam
+                  menyelesaikan permasalahan terkait. Olimpiade ini akan dilaksanakan
+                  secara berkelompok dengan anggota kelompok maksimal 3 orang. Terdiridari 3 babak, yaitu penyisihan, semifinal dan final. Penyisihan dari
+                  olimpiade akan dilaksanakan secara online dalam bentuk interaktif
+                  melalui website MAGE 7.
                 </p>
               </div>
               <button
@@ -142,7 +156,7 @@
             </b-col>
             <b-col lg="6" class="mt-5 mb-5">
               <b-container class="text-center">
-                <img class="logo" src="@/assets/img/app-hitam.png" />
+                <img class="logo" src="@/assets/img/proxy-hitam.png" />
               </b-container>
             </b-col>
           </b-row>
@@ -390,7 +404,7 @@ a:hover {
   text-transform: uppercase;
   font-weight: 700;
   color: #ffffff;
-  align: left;
+  /* align: left; */
 }
 
 #home .content .tagline {

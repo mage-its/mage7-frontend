@@ -20,10 +20,10 @@
             </router-link>
           </li>
           <li>
-            <router-link class="text-center pl-4" :to="'/competition/app'">
+            <router-link class="text-center pl-4 competition" :to="'/competition/app'">
               Competition
             </router-link>
-            <b-container class="subnav">
+            <b-container class="subnav dropdown" >
               <b-row>
                 <b-col lg="12"
                   ><div class="item text-dark text-center">
@@ -130,6 +130,13 @@ export default {
 };
 </script>
 <style scoped>
+.dropdown {
+  display: none;
+}
+
+.competition:hover + .dropdown {
+  display: block;
+}
 .logo {
   line-height: 60px;
   position: fixed;

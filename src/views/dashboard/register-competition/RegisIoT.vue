@@ -1,424 +1,349 @@
 <template>
   <div>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form
-        @submit.prevent="handleSubmit(onSubmit)"
-        enctype="multipart/form-data"
-      >
-        <ValidationProvider
-          name="Nama Tim"
-          rules="required|alpha_space"
-          v-slot="{ errors }"
-        >
+      <form @submit.prevent="handleSubmit(onSubmit)"  enctype="multipart/form-data" >      
+        <ValidationProvider name="Nama Tim" rules="required" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nama Tim</label>
-            <input
-              id="namaTim"
-              type="text"
-              class="form-control"
-              v-model="namaTim"
-            />
+            <label>Nama Tim *</label>
+            <input id="namaTim" type="text" class="form-control" v-model="namaTim">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Nama Ketua Tim"
-          rules="required|alpha_space"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Nama Ketua Tim" rules="required" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nama Ketua Tim</label>
-            <input
-              id="namaKetua"
-              type="text"
-              class="form-control"
-              v-model="namaKetua"
-            />
+            <label>Nama Ketua Tim *</label>
+            <input id="namaKetua" type="text" class="form-control" v-model="namaKetua">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
         <ValidationProvider name="Nama Anggota 1" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nama Anggota 1</label>
-            <input
-              id="namaAnggota1"
-              type="text"
-              class="form-control"
-              v-model="namaAnggota1"
-            />
+            <label>Nama Anggota 1 **</label>
+            <input id="namaAnggota1" type="text" class="form-control" v-model="namaAnggota1" v-on:input="anggota1Available()" placeholder="Kosongkan jika tidak ada anggota 1">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
         <ValidationProvider name="Nama Anggota 2" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nama Anggota 2</label>
-            <input
-              id="namaAnggota2"
-              type="text"
-              class="form-control"
-              v-model="namaAnggota2"
-            />
+            <label>Nama Anggota 2 **</label>
+            <input id="namaAnggota2" type="text" class="form-control" v-model="namaAnggota2" v-on:input="anggota2Available()" placeholder="Kosongkan jika tidak ada anggota 2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Nomor HP Ketua"
-          rules="required|numeric"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Nomor HP Ketua" rules="required|numeric" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nomor HP Ketua</label>
-            <input
-              id="hpKetua"
-              type="text"
-              class="form-control"
-              v-model="hpKetua"
-              placeholder="contoh : 081234567890"
-            />
-            <br />
+            <label>Nomor HP Ketua *</label>
+            <input id="hpKetua" type="text" class="form-control" v-model="hpKetua" placeholder="contoh : 081234567890">
+            <br>
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Nomor WhatsApp Ketua"
-          rules="required|numeric"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Nomor WhatsApp Ketua" rules="required|numeric" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nomor WhatsApp Ketua</label>
-            <input
-              id="waKetua"
-              type="text"
-              class="form-control"
-              v-model="waKetua"
-              placeholder="contoh : 081234567890"
-            />
-            <br />
+            <label>Nomor WhatsApp Ketua *</label>
+            <input id="waKetua" type="text" class="form-control" v-model="waKetua" placeholder="contoh : 081234567890">
+            <br>
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="ID Line"
-          rules="required|alpha_space"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="ID Line" v-slot="{ errors }">
           <div class="form-group">
-            <label>ID Line</label>
-            <input
-              id="lineKetua"
-              type="text"
-              class="form-control"
-              v-model="lineKetua"
-            />
+            <label>ID Line *</label>
+            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
         <ValidationProvider name="Nama Pembimbing" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nama Pembimbing (Optional)</label>
-            <input type="text" class="form-control" v-model="namaPembimbing" />
+            <label>Nama Pembimbing **</label>
+            <input type="text" class="form-control" v-model="namaPembimbing" placeholder="Kosongkan jika tidak ada">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Nomor HP Pembimbing"
-          rules="numeric"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Nomor HP Pembimbing" rules="numeric" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nomor HP Pembimbing (Optional)</label>
-            <input
-              type="tel"
-              class="form-control"
-              v-model="hpPembimbing"
-              placeholder="contoh : 081234567890"
-            />
-            <br />
+            <label>Nomor HP Pembimbing **</label>
+            <input type="tel" class="form-control" v-model="hpPembimbing" placeholder="contoh : 081234567890">
+            <br>
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Nomor WhatsApp Pembimbing"
-          rules="numeric"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Nomor WhatsApp Pembimbing" rules="numeric" v-slot="{ errors }">
           <div class="form-group">
-            <label>Nomor WhatsApp Pembimbing (Optional)</label>
-            <input
-              type="tel"
-              class="form-control"
-              v-model="waPembimbing"
-              placeholder="contoh : 081234567890"
-            />
-            <br />
+            <label>Nomor WhatsApp Pembimbing **</label>
+            <input type="tel" class="form-control" v-model="waPembimbing" placeholder="contoh : 081234567890">
+            <br>
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Kota"
-          rules="required|alpha_space"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Kota" rules="required" v-slot="{ errors }">
           <div class="form-group">
-            <label>Kota</label>
-            <input
-              id="asalKota"
-              type="text"
-              class="form-control"
-              v-model="asalKota"
-            />
+            <label>Kota *</label>
+            <input id="asalKota" type="text" class="form-control" v-model="asalKota">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Nama Sekolah / Instansi "
-          rules="required|alpha_space"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Nama Sekolah / Instansi Ketua "  v-slot="{ errors }">
           <div class="form-group">
-            <label>Nama Sekolah / Instansi </label>
-            <input
-              id="asalInstansi"
-              type="text"
-              class="form-control"
-              v-model="asalInstansi"
-            />
+            <label>Nama Sekolah / Instansi Ketua **</label>
+            <input id="asalInstansiKetua" type="text" class="form-control" v-model="asalInstansiKetua">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Alamat Sekolah / Instansi"
-          rules="required|alpha_space"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Alamat Sekolah / Instansi Ketua"  v-slot="{ errors }">
           <div class="form-group">
-            <label>Alamat Sekolah / Instansi</label>
-            <input
-              id="alamatInstansi"
-              type="text"
-              class="form-control"
-              v-model="alamatInstansi"
-            />
+            <label>Alamat Sekolah / Instansi Ketua **</label>
+            <input id="alamatInstansiKetua" type="text" class="form-control" v-model="alamatInstansiKetua">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Asal Informasi Mage 7"
-          rules="required|alpha_space"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="Nama Sekolah / Instansi Anggota 1 "  v-slot="{ errors }">
           <div class="form-group">
-            <label>Darimana Anda Tahu Informasi Mengenai MAGE 7 :</label>
-            <input
-              id="asalInfo"
-              type="text"
-              class="form-control"
-              v-model="asalInfo"
-              placeholder="contoh : twitter, instagram dll"
-            />
+            <label>Nama Sekolah / Instansi Anggota 1 **</label>
+            <input id="asalInstansiAnggota1" type="text" class="form-control" v-model="asalInstansiAnggota1">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Foto Identitas Ketua Tim"
-          rules="required|image|size:1000"
-          v-slot="{ validate, errors }"
-        >
+        <ValidationProvider name="Alamat Sekolah / Instansi Anggota 1"  v-slot="{ errors }">
           <div class="form-group">
-            <label
-              >Foto Identitas Ketua Tim (KTP atau SIM atau yang lain) :</label
-            >
-            <img
-              v-if="previewImage1"
-              :src="previewImage1"
-              class="uploading-image"
-            />
-            <input
-              type="file"
-              accept="image/*"
-              class="form-control"
-              @change="
-                {
-                  onUpload1($event) || validate($event);
-                }
-              "
-              id="identitasKetua"
-            />
+            <label>Alamat Sekolah / Instansi Anggota 1**</label>
+            <input id="alamatInstansiAnggota1" type="text" class="form-control" v-model="alamatInstansiAnggota1">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Foto Identitas Anggota 1"
-          rules="image"
-          v-slot="{ validate, errors }"
-        >
+        <ValidationProvider name="Nama Sekolah / Instansi Anggota 2 "  v-slot="{ errors }">
           <div class="form-group">
-            <label
-              >Foto Identitas Anggota 1 (KTP atau SIM atau yang lain) :</label
-            >
-            <img
-              v-if="previewImage2"
-              :src="previewImage2"
-              class="uploading-image"
-            />
-            <input
-              type="file"
-              accept="image/*"
-              class="form-control"
-              @change="
-                {
-                  onUpload2($event) || validate($event);
-                }
-              "
-              id="identitasAnggota1"
-            />
+            <label>Nama Nama Sekolah / Instansi Anggota 2  **</label>
+            <input id="asalInstansi" type="text" class="form-control" v-model="asalInstansiAnggota2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Foto Identitas Anggota 2"
-          rules="image"
-          v-slot="{ validate, errors }"
-        >
+        <ValidationProvider name="Alamat Nama Sekolah / Instansi Anggota 2 "  v-slot="{ errors }">
           <div class="form-group">
-            <label
-              >Foto Identitas Anggota 2 (KTP atau SIM atau yang lain) :</label
-            >
-            <img
-              v-if="previewImage3"
-              :src="previewImage3"
-              class="uploading-image"
-            />
-            <input
-              type="file"
-              accept="image/*"
-              class="form-control"
-              @change="
-                {
-                  onUpload3($event) || validate($event);
-                }
-              "
-              id="identitasAnggota2"
-            />
+            <label>Alamat Nama Sekolah / Instansi Anggota 2  **</label>
+            <input id="alamatInstansi" type="text" class="form-control" v-model="alamatInstansiAnggota2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider
-          name="Surat Keterangan Siswa"
-          rules="required|image"
-          v-slot="{ validate, errors }"
-        >
+        <ValidationProvider name="Asal Informasi Mage 7" rules="required" v-slot="{ errors }">
           <div class="form-group">
-            <label>Surat Keterangan Siswa :</label>
-            <img
-              v-if="previewImage4"
-              :src="previewImage4"
-              class="uploading-image"
-            />
-            <input
-              type="file"
-              accept="image/*"
-              class="form-control"
-              @change="
-                {
-                  onUpload4($event) || validate($event);
-                }
-              "
-              id="suratKeteranganSiswa"
-            />
+            <label>Darimana Anda Tahu Informasi Mengenai MAGE 7 *</label>
+            <input id="asalInfo" type="text" class="form-control" v-model="asalInfo" placeholder="contoh : twitter, instagram dll">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <input type="submit" class="btn btn-red" tect="Submit" />
+
+        <ValidationProvider name="Foto Identitas Ketua Tim" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }">
+          <div class="form-group">
+            <label>Foto Identitas Ketua Tim (KTP atau SIM atau yang lain) *</label>
+            <img v-if="previewImage1" :src="previewImage1" class="uploading-image" />
+            <input type="file" accept="image/*" class="form-control" @change="{ onUpload1($event) || validate($event) }" id="identitasKetua">
+            <span class="error-msg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <ValidationProvider name="Foto Identitas Anggota 1" rules="ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="identitasAnggota1">
+          <div class="form-group">
+            <label>Foto Identitas Anggota 1 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 1) *</label>
+            <img v-if="previewImage2" :src="previewImage2" class="uploading-image" />
+            <input type="file" accept="image/*" class="form-control" @change="{ onUpload2($event) || validate($event) }" id="identitasAnggota1">
+            <span class="error-msg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <ValidationProvider name="Foto Identitas Anggota 2" rules="ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="identitasAnggota2">
+          <div class="form-group">
+            <label>Foto Identitas Anggota 2 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 2) *</label>
+            <img v-if="previewImage3" :src="previewImage3" class="uploading-image" />
+            <input type="file" accept="image/*" class="form-control" @change="{ onUpload3($event) || validate($event) }" id="identitasAnggota2">
+            <span class="error-msg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <ValidationProvider name="Bukti Upload Twibbon" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiUploadTwibbon">
+          <div class="form-group">
+            <label>Bukti Upload Twibbon *</label>
+            <img v-if="previewImageTwibbon" :src="previewImageTwibbon" class="uploading-image" />
+            <input type="file" accept="image/*,application/pdf" class="form-control" @change="{ onUploadTwibbon($event) || validate($event) }">
+            <span class="error-msg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+        <ValidationProvider name="Bukti Follow Mage" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiFollowMage">
+          <div class="form-group">
+            <label>Bukti Follow Mage *</label>
+            <img v-if="previewImageFollowMage" :src="previewImageFollowMage" class="uploading-image" />
+            <input type="file" accept="image/*,application/pdf" class="form-control" @change="{ onUploadFollowMage($event) || validate($event) }">
+            <span class="error-msg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+        <ValidationProvider name="Bukti Repost Story" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiRepostStory">
+          <div class="form-group">
+            <label>Bukti Repost Story *</label>
+            <img v-if="previewImageRepostStory" :src="previewImageRepostStory" class="uploading-image" />
+            <input type="file" accept="image/*,application/pdf" class="form-control" @change="{ onUploadRepostStory($event) || validate($event) }">
+            <span class="error-msg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <div>
+          <p class="mt-4">Keterangan :</p>
+          <p>- Tanda (*) Wajib Di Isi </p>
+          <p>- Tanda (**) Opsional</p>
+        </div>
+        <input type="submit" class="btn btn-red" tect="Submit"/>
       </form>
     </ValidationObserver>
   </div>
 </template>
 
 <script>
-import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
-import { ValidationObserver } from "vee-validate";
+import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
+import { ValidationObserver } from 'vee-validate';
 import Swal from "sweetalert2";
 
 export default {
   components: {
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   data() {
     return {
-      previewImage1: null,
-      previewImage2: null,
-      previewImage3: null,
-      previewImage4: null,
-      namaTim: "",
-      namaKetua: "",
-      waKetua: "",
-      lineKetua: "",
-      hpKetua: "",
-      namaAnggota1: "",
-      namaAnggota2: "",
-      namaPembimbing: "",
-      hpPembimbing: "",
-      waPembimbing: "",
-      asalKota: "",
-      asalInstansi: "",
-      asalInfo: "",
+      previewImage1:null,
+      previewImage2:null,
+      previewImage3:null,
+      previewImage4:null,
+      previewImageTwibbon:null,
+      previewImageFollowMage:null,
+      previewImageRepostStory:null,
+      // options: [
+      //   { item: 'Siswa', name: 'Siswa' },
+      //   { item: 'Mahasiswa', name: 'Mahasiswa' },
+      // ],
+      // kategori: '',
+      namaTim: '',
+      namaKetua: '',
+      waKetua: '',
+      lineKetua: '',
+      hpKetua: '',
+      namaAnggota1: '',
+      namaAnggota2: '',
+      namaPembimbing: '',
+      hpPembimbing: '',
+      waPembimbing: '',
+      asalKota: '',
+      asalInstansiKetua: '',
+      asalInstansiAnggota1: '',
+      asalInstansiAnggota2: '',
+      asalInfo: '',
       identitasKetua: null,
       identitasAnggota1: null,
       identitasAnggota2: null,
-      alamatInstansi: "",
-      id: ""
+      alamatInstansiKetua: '',
+      alamatInstansiAnggota1: '',
+      alamatInstansiAnggota2: '',
+      buktiUploadTwibbon: null,
+      buktiFollowMage: null,
+      buktiRepostStory: null,
+      id: ''
     };
   },
+  mounted() {
+    document.getElementById("identitasAnggota1").style.display = "none"
+    document.getElementById("identitasAnggota2").style.display = "none"
+  },
   methods: {
+    // isMahasiswa() {
+    //   if (this.kategori == "Siswa") {
+    //     document.getElementById("suratKeteranganSiswa").style.display = "block"
+    //   } else {
+    //     document.getElementById("suratKeteranganSiswa").style.display = "none"
+    //   }
+    // },
+    anggota1Available() {
+      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
+        document.getElementById("identitasAnggota1").style.display = "none"
+      } else {
+        document.getElementById("identitasAnggota1").style.display = "block"
+      }
+    },
+    anggota2Available() {
+      if(this.namaAnggota2 == null || this.namaAnggota2 == '') {
+        document.getElementById("identitasAnggota2").style.display = "none"
+      } else {
+        document.getElementById("identitasAnggota2").style.display = "block"
+      }
+    },
     onUpload1(e) {
       this.identitasKetua = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.identitasKetua);
-      reader.onload = e => {
-        this.previewImage1 = e.target.result;
+      reader.onload = e =>{
+          this.previewImage1 = e.target.result;
       };
     },
     onUpload2(e) {
       this.identitasAnggota1 = e.target.files[0];
-      const reader1 = new FileReader();
-      reader1.readAsDataURL(this.identitasAnggota1);
-      reader1.onload = e => {
-        this.previewImage2 = e.target.result;
+      const reader = new FileReader();
+      reader.readAsDataURL(this.identitasAnggota1);
+      reader.onload = e =>{
+          this.previewImage2 = e.target.result;
       };
     },
     onUpload3(e) {
       this.identitasAnggota2 = e.target.files[0];
-      const reader2 = new FileReader();
-      reader2.readAsDataURL(this.identitasAnggota2);
-      reader2.onload = e => {
-        this.previewImage3 = e.target.result;
+      const reader = new FileReader();
+      reader.readAsDataURL(this.identitasAnggota2);
+      reader.onload = e =>{
+          this.previewImage3 = e.target.result;
       };
     },
     onUpload4(e) {
       this.suratKeteranganSiswa = e.target.files[0];
-      const reader2 = new FileReader();
-      reader2.readAsDataURL(this.suratKeteranganSiswa);
-      reader2.onload = e => {
-        this.previewImage4 = e.target.result;
+      const reader = new FileReader();
+      reader.readAsDataURL(this.suratKeteranganSiswa);
+      reader.onload = e =>{
+          this.previewImage4 = e.target.result;
+      };
+    },
+    onUploadTwibbon(e) {
+      this.buktiUploadTwibbon = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(this.buktiUploadTwibbon);
+      reader.onload = e =>{
+          this.previewImageTwibbon = e.target.result;
+      };
+    },
+    onUploadFollowMage(e) {
+      this.buktiFollowMage = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(this.buktiFollowMage);
+      reader.onload = e =>{
+          this.previewImageFollowMage = e.target.result;
+      };
+    },
+    onUploadRepostStory(e) {
+      this.buktiRepostStory = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(this.buktiRepostStory);
+      reader.onload = e =>{
+          this.previewImageRepostStory = e.target.result;
       };
     },
     onSubmit() {
@@ -426,27 +351,71 @@ export default {
 
       var document = new FormData();
       this.loading = true;
-      if (this.identitasAnggota1 != null) {
+      if(this.identitasAnggota1 == null || this.identitasAnggota1 == '') {
+        console.log('gak onok identitas anggota 1')
+      } else {
         document.append("identitasAnggota1", this.identitasAnggota1);
       }
-      if (this.identitasAnggota2 != null) {
+
+      if(this.identitasAnggota2 == null || this.identitasAnggota2 == '') {
+        console.log('gak onok identitas anggota 1')
+      } else {
         document.append("identitasAnggota2", this.identitasAnggota2);
       }
-      if (this.namaAnggota1 != null) {
+      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
+        console.log('gak onok anggota 1')
+      } else {
         document.append("namaAnggota1", this.namaAnggota1);
       }
-      if (this.namaAnggota2 != null) {
+
+      if(this.namaAnggota2 == null || this.namaAnggota2 == '') {
+        console.log('gak onok anggota 2')
+      } else {
         document.append("namaAnggota2", this.namaAnggota2);
       }
-      if (this.namaPembimbing != null) {
+
+      if(this.namaPembimbing == null || this.namaPembimbing == '') {
+        console.log('gak onok anggota 2')
+      } else {
         document.append("namaPembimbing", this.namaPembimbing);
       }
-      if (this.hpPembimbing != null) {
-        document.append("hpPembimbing", this.hpPembimbing);
-      }
-      if (this.waPembimbing != null) {
+      
+      if(this.waPembimbing == null || this.waPembimbing == '') {
+        console.log('gak onok anggota 2')
+      } else {
         document.append("waPembimbing", this.waPembimbing);
       }
+
+      if(this.hpPembimbing == null || this.hpPembimbing == '') {
+        console.log('gak onok anggota 2')
+      } else {
+        document.append("hpPembimbing", this.hpPembimbing);
+      }
+
+      if(this.asalInstansiKetua != null || this.asalInstansiKetua != '') {
+        document.append("asalInstansiKetua", this.asalInstansiKetua);
+      }
+      if(this.asalInstansiAnggota1 != null || this.asalInstansiAnggota1 != '') {
+        document.append("asalInstansiAnggota1", this.asalInstansiAnggota1);
+      }
+      if(this.asalInstansiAnggota2 != null || this.asalInstansiAnggota2 != '') {
+        document.append("asalInstansiAnggota2", this.asalInstansiAnggota2);
+      }
+
+      if(this.alamatInstansiKetua != null || this.alamatInstansiKetua != '') {
+        document.append("alamatInstansiKetua", this.alamatInstansiKetua);
+      }
+      if(this.alamatInstansiAnggota1 != null || this.alamatInstansiAnggota1 != '') {
+        document.append("alamatInstansiAnggota1", this.alamatInstansiAnggota1);
+      }
+      if(this.alamatInstansiAnggota2 != null || this.alamatInstansiAnggota2 != '') {
+        document.append("alamatInstansiAnggota2", this.alamatInstansiKetua);
+      }
+      
+      // if(this.kategori == 'Siswa') {
+      //   document.append("suratKeteranganSiswa", this.suratKeteranganSiswa);
+      // }
+      // document.append("kategori", this.kategori);
       document.append("identitasKetua", this.identitasKetua);
       document.append("namaTim", this.namaTim);
       document.append("namaKetua", this.namaKetua);
@@ -454,12 +423,13 @@ export default {
       document.append("lineKetua", this.lineKetua);
       document.append("hpKetua", this.hpKetua);
       document.append("asalKota", this.asalKota);
-      document.append("asalInstansi", this.asalInstansi);
       document.append("asalInfo", this.asalInfo);
-      document.append("alamatInstansi", this.alamatInstansi);
+      document.append("buktiUploadTwibbon", this.buktiUploadTwibbon);
+      document.append("buktiFollowMage", this.buktiFollowMage);
+      document.append("buktiRepostStory", this.buktiRepostStory);
 
       var formData = {
-        data: document
+        data: document,
       };
 
       this.$store.dispatch("regisCompetition/registerIot", formData).then(
@@ -467,22 +437,38 @@ export default {
           Swal.fire({
             icon: "success",
             title: "Register berhasil",
-            showConfirmButton: true
+            showConfirmButton: true,
           }).then(() => {
             this.$router.push("/dashboard");
           });
         },
-        error => {
-          Swal.fire({
-            icon: "error",
-            title: "Register gagal",
-            text: error.response.data.message,
-            showConfirmButton: true
-          }).then(() => {});
+        (error) => {
+          if(error.response.data.code == 401) {
+            this.refreshToken();
+          }else {
+            Swal.fire({
+              icon: "error",
+              title: "Register gagal",
+              text: error.response.data.message,
+              showConfirmButton: true,
+            }).then(() => {});
+          }
         }
       );
+    },
+    refreshToken() {
+      let user = JSON.parse(localStorage.getItem('user'));
+      axios.post('http://52.149.214.161/api/v1/auth/refresh-tokens', {
+        refreshToken : user.tokens.refresh.token  
+      }).then((response) => 
+      {
+        user.tokens = response.data;
+        localStorage.setItem("user", JSON.stringify(user))
+      }).then(() => {
+        this.onSubmit();
+      });
     }
-  }
+  },
 };
 </script>
 
@@ -491,7 +477,11 @@ export default {
   color: red;
 }
 
-.uploading-image {
-  display: flex;
+.uploading-image{
+  display:flex;
+}
+p {
+  margin-top: -20px;
+  font-size: 13px;
 }
 </style>

@@ -1,8 +1,11 @@
 <template>
-  <div class="login-page">
+  <div class="center">
+    <h1>Email Anda Telah Terverifikasi</h1>
+    <a href="/">Klik Untuk login kembali</a>
+  </div>
+  <!-- <div class="login-page">
     <div class="logo">
-      <img src="@/assets/logo-white.png" />
-      <h1 class="text-white d-inline-block">ANAVA</h1>
+      <h1 class="text-white d-inline-block">MAGE 7</h1>
     </div>
     <div class="login-container shadow">
       <h1>Selamat</h1>
@@ -39,25 +42,29 @@
       class="particles"
     >
     </vue-particles>
-  </div>
+  </div> -->
 </template>
 <script>
+import axios from 'axios'
 export default {
   name: "ConfirmEmail",
-  
   methods: {
     confirmEmail() {
-      this.$store.dispatch("auth/confirmEmail", this.$route.params.id);
+      axios.post('http://52.149.214.161/api/v1/auth/verify-email?token=' + this.$route.query.token);
     },
   },
   created() {
-    this.confirmEmail()
-    console.log(this.$route.params.id)
+    this.confirmEmail();
   },
 };
 </script>
 <style scoped>
-.login-page {
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+/* .login-page {
   background-image: linear-gradient(
       to right top,
       rgb(13, 33, 60),
@@ -164,5 +171,5 @@ p {
   font-size: 12px;
   margin: 0;
   padding: 0;
-}
+} */
 </style>
