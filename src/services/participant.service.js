@@ -1,7 +1,7 @@
 import axios from "axios";
 import header from "./header";
 
-const API_URL = "http://52.149.214.161/api/v1/users/";
+const API_URL = "http://anavaugm.com:3000/api/participant/";
 
 class ParticipantService {
   getAllParticipant() {
@@ -15,9 +15,6 @@ class ParticipantService {
   }
   uploadParticipant(participant) {
     return axios.put(API_URL + participant.id + '/upload', participant.document, header(true));
-  }
-  getProfile() {
-    return axios.get(API_URL + 'profile', header(true));
   }
 }
 

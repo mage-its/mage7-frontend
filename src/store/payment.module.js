@@ -46,26 +46,24 @@ export const payment = {
     createPayment({ commit },payment) {
       return PaymentService.createPayment(payment).then(
         (response) => {
-          commit("createPaymentSuccess");
-          return Promise.resolve(response.data);
+          commit("createPayment", response.data.data);
+          return Promise.resolve(response.data.data);
         },
         (error) => {
-          console.log(error.message);
-          commit("createPaymentFailure");
           return Promise.reject(error);
         }
       );
     },
   },
-  // mutations: {
-  //   setPayments(state, payments) {
-  //     state.payments = payments;
-  //   },
-  //   setPayment(state, payment) {
-  //     state.payment = payment;
-  //   },
-  //   createPayment() {
+  mutations: {
+    setPayments(state, payments) {
+      state.payments = payments;
+    },
+    setPayment(state, payment) {
+      state.payment = payment;
+    },
+    createPayment() {
 
-  //   }
-  // },
+    }
+  },
 };

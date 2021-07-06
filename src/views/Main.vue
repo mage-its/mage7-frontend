@@ -10,6 +10,20 @@
             <div class="tagline">Multimedia And Game Event</div>
 
             <div class="title">MAGE 7</div>
+
+            <div class="more"><a href="#">More</a></div>
+          </div>
+
+          <div class="mage">
+            <img src="@/assets/img/mage.png" />
+          </div>
+        </div>
+      </div>
+      <div class="sub-page" id="about">
+        <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+          <b-row>
+            <b-col lg="5">
+              <img class="mascot" src="@/assets/img/mage.png" />
             </b-col>
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is MAGE?</p>

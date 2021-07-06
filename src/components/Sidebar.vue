@@ -19,14 +19,14 @@
             </router-link>
           </li>
           <li @click="selectedItem = 1">
-            <router-link class="text-white" :to="{ name: 'UploadProposal' }">
+            <router-link class="text-white" :to="{ name: 'IndexArticle' }">
               <b-row>
                 <b-col cols="1" lg="1">
                   <div class="inline">
                     <i class="far fa-newspaper"></i>
                   </div>
                 </b-col>
-                <b-col cols="10" class="sidebar-text" lg="10"> Upload Proposal </b-col>
+                <b-col cols="10" class="sidebar-text" lg="10"> Artikel </b-col>
               </b-row>
             </router-link>
           </li>
@@ -77,7 +77,7 @@
             </router-link>
           </li>
           <li @click="selectedItem = 6">
-            <router-link class="text-white" :to="{ name: 'CreatePayment' }">
+            <router-link class="text-white" :to="{ name: 'MainPayment' }">
               <b-row>
                 <b-col cols="1" lg="1">
                   <div class="inline">
@@ -277,8 +277,8 @@ a:focus {
   text-align: left;
 }
 
-/* #sidebar .sidebar-header {
-} */
+#sidebar .sidebar-header {
+}
 
 #sidebar .sidebar-header .brand {
   padding: 12px;

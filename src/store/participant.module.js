@@ -30,18 +30,6 @@ export const participant = {
         }
       );
     },
-    getProfile() {
-      return ParticipantService.getProfile().then(
-        (response) => {
-          commit("getProfile", response);
-          return Promise.resolve(response);
-        },
-        (error) => {
-          console.log(error.message);
-          return Promise.reject(error);
-        }
-      );
-    },
     updateParticipant({ commit }, participant) {
       return ParticipantService.updateParticipant(participant).then(
         (response) => {

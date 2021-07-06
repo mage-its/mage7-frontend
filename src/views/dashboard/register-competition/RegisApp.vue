@@ -1,7 +1,7 @@
 <template>
   <div>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(onSubmit)" enctype="multipart/form-data" >
+      <form @submit.prevent="handleSubmit(onSubmit)"  enctype="multipart/form-data" >
         <div class="form-group">
           <label>Pilih Kategori</label>  
           <b-form-radio-group
@@ -66,7 +66,7 @@
         <ValidationProvider name="ID Line" v-slot="{ errors }">
           <div class="form-group">
             <label>ID Line *</label>
-            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua" placeholder="Tulis (-) Jika Tidak Ada">
+            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>

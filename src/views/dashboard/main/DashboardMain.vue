@@ -85,13 +85,14 @@
   </b-container>
 </template>
 <script>
-import Swal from "sweetalert2";
 export default {
   name: "DashboardMain",
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    },
   }
 };
-
-
 </script>
 <style scoped>
 .header {

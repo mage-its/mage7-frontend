@@ -35,10 +35,9 @@ import IndexArticle from "./views/dashboard/article/IndexArticle.vue";
 
 import IndexTwibbon from "./views/dashboard/twibbon/IndexTwibbon.vue";
 
-// import IndexPayment from "./views/dashboard/payment/IndexPayment.vue";
-// import MainPayment from "./views/dashboard/payment/MainPayment.vue";
+import IndexPayment from "./views/dashboard/payment/IndexPayment.vue";
+import MainPayment from "./views/dashboard/payment/MainPayment.vue";
 import CreatePayment from "./views/dashboard/payment/CreatePayment.vue";
-// import CreatePayment from "./views/dashboard/CreatePayment.vue";
 
 import IndexAnnouncement from "./views/dashboard/announcement/IndexAnnouncement.vue";
 import MainAnnouncement from "./views/dashboard/announcement/MainAnnouncement.vue";
@@ -71,8 +70,6 @@ import CreateQuestionStage from "./views/dashboard/stage/question/CreateQuestion
 import EditQuestionStage from "./views/dashboard/stage/question/EditQuestionStage.vue";
 import ListResultStage from "./views/dashboard/stage/result/ListResultStage.vue";
 import DetailResultStage from "./views/dashboard/stage/result/DetailResultStage.vue";
-
-import UploadProposal from "./views/dashboard/upload-proposal/UploadProposal.vue";
 
 Vue.use(Router);
 
@@ -244,31 +241,21 @@ var router = new Router({
                         component: IndexTwibbon,
                     },
                     {
-                        path: "createpayment",
-                        name: "CreatePayment",
-                        component: CreatePayment
+                        path: "payment",
+                        name: "IndexPayment",
+                        component: IndexPayment,
+                        children: [{
+                                path: "",
+                                name: "MainPayment",
+                                component: MainPayment,
+                            },
+                            {
+                                path: "add",
+                                name: "CreatePayment",
+                                component: CreatePayment,
+                            },
+                        ],
                     },
-                    {
-                        path: "uploadproposal",
-                        name: "UploadProposal",
-                        component: UploadProposal
-                    },
-                    // {
-                    //     path: "payment",
-                    //     name: "IndexPayment",
-                    //     component: IndexPayment,
-                    //     children: [{
-                    //             path: "",
-                    //             name: "MainPayment",
-                    //             component: MainPayment,
-                    //         },
-                    //         {
-                    //             path: "add",
-                    //             name: "CreatePayment",
-                    //             component: CreatePayment,
-                    //         },
-                    //     ],
-                    // },
                     {
                         path: "announcement",
                         name: "IndexAnnouncement",

@@ -55,7 +55,7 @@
         <ValidationProvider name="ID Line" v-slot="{ errors }">
           <div class="form-group">
             <label>ID Line *</label>
-            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua" placeholder="Tulis (-) Jika Tidak Ada">
+            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
@@ -168,7 +168,6 @@
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver } from 'vee-validate';
 import Swal from "sweetalert2";
-import axios from "axios";
 
 export default {
   components: {
@@ -318,6 +317,7 @@ export default {
       // if(this.kategori == 'Siswa') {
       //   document.append("suratKeteranganSiswa", this.suratKeteranganSiswa);
       // }
+      document.append("kategori", this.kategori);
       document.append("identitasKetua", this.identitasKetua);
       document.append("namaTim", this.namaTim);
       document.append("namaKetua", this.namaKetua);
@@ -335,8 +335,8 @@ export default {
       var formData = {
         data: document,
       };
-      console.log(formData);
-      this.$store.dispatch("regisCompetition/registerOlim", formData).then(
+
+      this.$store.dispatch("regisCompetition/registerApp", formData).then(
         () => {
           Swal.fire({
             icon: "success",
