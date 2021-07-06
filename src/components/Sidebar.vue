@@ -91,7 +91,7 @@
             </router-link>
           </li>
           <li @click="selectedItem = 7">
-            <router-link class="text-white" :to="{ name: 'MainPayment' }">
+            <a href="#" class="text-white" @click="signOut()">
               <b-row>
                 <b-col cols="1" lg="1">
                   <div class="inline">
@@ -102,7 +102,7 @@
                   Keluar
                 </b-col>
               </b-row>
-            </router-link>
+            </a>
           </li>
         </ul>
       </div>
@@ -138,6 +138,10 @@ export default {
     }
   },
   methods: {
+    signOut() {
+      localStorage.removeItem('user');
+      this.$router.push({name:"Home"});
+    },
     performToggle(item, eventName) {
       var index = 0;
       var eventIndex = 0;

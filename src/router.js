@@ -76,7 +76,7 @@ import UploadProposal from "./views/dashboard/upload-proposal/UploadProposal.vue
 
 Vue.use(Router);
 
-export default new Router({
+var router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     linkActiveClass: 'active',
@@ -88,8 +88,7 @@ export default new Router({
         path: "/",
         name: "Home",
         component: Home,
-        children: [
-            {
+        children: [{
                 path: "confirmationemail",
                 name: "ConfirmationEmail",
                 component: ConfirmationEmail,
@@ -397,3 +396,18 @@ export default new Router({
         ]
     }, ]
 })
+
+
+router.beforeEach((to, from, next) => {
+    const publicPages = ["/", "/about", "/login", "/register", "/welcome", "/competition/app", "/competition/game", "/competition/iot", "/competition/olim"];
+    const authRequired = !publicPages.includes(to.path);
+    const loggedIn = localStorage.getItem("user");
+
+    if (authRequired && !loggedIn) {
+        next('/');
+    } else {
+        next();
+    }
+});
+
+export default router;
