@@ -19,11 +19,11 @@
               About
             </router-link>
           </li>
-          <li>
-            <router-link class="text-center pl-4 competition" :to="'/competition/app'">
-              Competition
-            </router-link>
-            <b-container class="subnav dropdown" >
+          <li class="competition-subnav-trigger" @click="toggleSubNavCompetition">
+            <a href="#">
+              Competition <span style="font-size: 12px; margin-left: 20px;">&#9660;</span>
+            </a>
+            <b-container class="subnav" v-if="subnav_competition">
               <b-row>
                 <b-col lg="12"
                   ><div class="item text-dark text-center">
@@ -70,33 +70,61 @@
       </div>
     </nav>
     <div class="menu-min" v-if="show" style="z-index: 9999999999">
-      <ul @click="toggle()">
+      <ul >
         <li>
-          <a href="#home" v-smooth-scroll="{ duration: 1000 }">
+          <a href="home" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
             Home
           </a>
         </li>
         <li>
-          <a href="#about" v-smooth-scroll="{ duration: 1000 }">
+          <a href="about" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
             About us
           </a>
         </li>
         <li>
-          <a href="#event" v-smooth-scroll="{ duration: 1000 }">
-            Event
+          <a href="#" v-smooth-scroll="{ duration: 1000 }" @click="toggleSubNavCompetitionMin">
+            Competition<span style="font-size: 12px; margin-left: 20px;">&#9660;</span>
           </a>
         </li>
         <li>
+          <a href="/competition/app" @click="toggle()"v-if="subnav_competition_min">
+            App Dev
+          </a>
+        </li>
+        <li>
+          <a href="/competition/game"@click="toggle()" v-if="subnav_competition_min">
+            Game Dev
+          </a>
+        </li>
+        <li>
+          <a href="/competition/iot" @click="toggle()"v-if="subnav_competition_min">
+            IoT Dev
+          </a>
+        </li>
+        
+        <li>
+          <a href="/competition/olim" @click="toggle()"v-if="subnav_competition_min">
+            Olimpiade
+          </a>
+        </li>
+        <li>
+          <a href="about" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
+            About us
+          </a>
+        </li>
+        <li @click="toggle()">
           <a
             class="register"
+            
             @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
           >
             Register
           </a>
         </li>
-        <li>
+        <li @click="toggle()">
           <a
             class="login"
+            
             @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
           >
             Login
@@ -111,7 +139,9 @@ export default {
   data() {
     return {
       scrollPosition: null,
-      show: false
+      show: false,
+      subnav_competition: false,
+      subnav_competition_min: false,
     };
   },
 
@@ -121,6 +151,12 @@ export default {
     },
     toggle() {
       this.show = !this.show;
+    },
+    toggleSubNavCompetition() {
+      this.subnav_competition= !this.subnav_competition;
+    },
+    toggleSubNavCompetitionMin() {
+      this.subnav_competition_min= !this.subnav_competition_min;
     }
   },
 
@@ -130,13 +166,6 @@ export default {
 };
 </script>
 <style scoped>
-.dropdown {
-  display: none;
-}
-
-.competition:hover + .dropdown {
-  display: block;
-}
 .logo {
   line-height: 60px;
   position: fixed;

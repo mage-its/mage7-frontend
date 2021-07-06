@@ -19,7 +19,22 @@
         </div>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row v-if="user.isEmailVerified">
+      <b-col lg="12">
+        <div
+          class=" bg-white p-3 mb-3 text-center rounded-lg shadow border-green"
+        >
+          <b-row>
+            <b-col lg="12">
+              <b><i class="far fa-envelope fa-2x"></i></b
+            ></b-col>
+
+            <b-col lg="12" class="mt-2"><p>Email anda telah terverifikasi</p></b-col>
+          </b-row>
+        </div>
+      </b-col>
+    </b-row>
+    <b-row v-else>
       <b-col lg="12">
         <div
           class=" bg-white p-3 mb-3 text-center rounded-lg shadow border-red"
@@ -34,7 +49,7 @@
         </div>
       </b-col>
     </b-row>
-    <router-link :to="{ name: 'MainDocument' }">
+    <router-link :to="{ name: 'MainDocument' }" v-if="user.registeredComp == ''">
       <b-row>
         <b-col lg="12">
           <div
@@ -51,11 +66,32 @@
         </b-col>
       </b-row>
     </router-link>
+    <router-link :to="{ name: 'MainDocument' }" v-else>
+      <b-row>
+        <b-col lg="12">
+          <div
+            class="bg-white p-3 mb-3 text-center rounded-lg shadow border-green"
+          >
+            <b-row>
+              <b-col lg="12">
+                <b><i class="fas fa-trophy fa-2x"></i></b
+              ></b-col>
+              <b-col lg="12" class="mt-2"><p>Anda telah terdaftar di divisi <p v-if="user.registeredComp=='iotdev'">IoT Dev</p><p v-if="user.registeredComp=='appdev'">App Dev</p><p v-if="user.registeredComp=='gamedev'">Game Dev</p><p v-if="user.registeredComp=='olim'">Olimpiade</p></b-col>
+            </b-row>
+          </div>
+        </b-col>
+      </b-row>
+    </router-link>
   </b-container>
 </template>
 <script>
 export default {
-  name: "DashboardMain"
+  name: "DashboardMain",
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    },
+  }
 };
 </script>
 <style scoped>
