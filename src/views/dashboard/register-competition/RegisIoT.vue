@@ -55,7 +55,7 @@
         <ValidationProvider name="ID Line" v-slot="{ errors }">
           <div class="form-group">
             <label>ID Line *</label>
-            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua">
+            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua" placeholder="Tulis (-) Jika Tidak Ada">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
@@ -110,7 +110,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nama Sekolah / Instansi Anggota 1 "  v-slot="{ errors }">
+        <ValidationProvider name="Nama Sekolah / Instansi Anggota 1 "  v-slot="{ errors }" id="instansiAnggota1">
           <div class="form-group">
             <label>Nama Sekolah / Instansi Anggota 1 **</label>
             <input id="asalInstansiAnggota1" type="text" class="form-control" v-model="asalInstansiAnggota1">
@@ -118,7 +118,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Alamat Sekolah / Instansi Anggota 1"  v-slot="{ errors }">
+        <ValidationProvider name="Alamat Sekolah / Instansi Anggota 1"  v-slot="{ errors }" id="alamatInstansiAnggota1">
           <div class="form-group">
             <label>Alamat Sekolah / Instansi Anggota 1**</label>
             <input id="alamatInstansiAnggota1" type="text" class="form-control" v-model="alamatInstansiAnggota1">
@@ -126,17 +126,17 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Nama Sekolah / Instansi Anggota 2 "  v-slot="{ errors }">
+        <ValidationProvider name="Nama Sekolah / Instansi Anggota 2 "  v-slot="{ errors }" id="instansiAnggota2">
           <div class="form-group">
-            <label>Nama Nama Sekolah / Instansi Anggota 2  **</label>
+            <label>Nama Sekolah / Instansi Anggota 2  **</label>
             <input id="asalInstansi" type="text" class="form-control" v-model="asalInstansiAnggota2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Alamat Nama Sekolah / Instansi Anggota 2 "  v-slot="{ errors }">
+        <ValidationProvider name="Alamat Sekolah / Instansi Anggota 2 "  v-slot="{ errors }" id="alamatInstansiAnggota2">
           <div class="form-group">
-            <label>Alamat Nama Sekolah / Instansi Anggota 2  **</label>
+            <label>Alamat Sekolah / Instansi Anggota 2  **</label>
             <input id="alamatInstansi" type="text" class="form-control" v-model="alamatInstansiAnggota2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
@@ -217,6 +217,7 @@
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver } from 'vee-validate';
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   components: {
@@ -266,7 +267,11 @@ export default {
   },
   mounted() {
     document.getElementById("identitasAnggota1").style.display = "none"
+    document.getElementById("instansiAnggota1").style.display = "none"
+    document.getElementById("alamatInstansiAnggota1").style.display = "none"
     document.getElementById("identitasAnggota2").style.display = "none"
+    document.getElementById("instansiAnggota2").style.display = "none"
+    document.getElementById("alamatInstansiAnggota2").style.display = "none"
   },
   methods: {
     // isMahasiswa() {
@@ -279,15 +284,23 @@ export default {
     anggota1Available() {
       if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
         document.getElementById("identitasAnggota1").style.display = "none"
+        document.getElementById("instansiAnggota1").style.display = "none"
+        document.getElementById("alamatInstansiAnggota1").style.display = "none"
       } else {
         document.getElementById("identitasAnggota1").style.display = "block"
+        document.getElementById("instansiAnggota1").style.display = "block"
+        document.getElementById("alamatInstansiAnggota1").style.display = "block"
       }
     },
     anggota2Available() {
       if(this.namaAnggota2 == null || this.namaAnggota2 == '') {
         document.getElementById("identitasAnggota2").style.display = "none"
+        document.getElementById("instansiAnggota2").style.display = "none"
+        document.getElementById("alamatInstansiAnggota2").style.display = "none"
       } else {
         document.getElementById("identitasAnggota2").style.display = "block"
+        document.getElementById("instansiAnggota2").style.display = "block"
+        document.getElementById("alamatInstansiAnggota2").style.display = "block"
       }
     },
     onUpload1(e) {
