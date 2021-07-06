@@ -67,7 +67,7 @@
         <ValidationProvider name="ID Line" v-slot="{ errors }">
           <div class="form-group">
             <label>ID Line *</label>
-            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua">
+            <input id="lineKetua" type="text" class="form-control" v-model="lineKetua" placeholder="Tulis (-) Jika Tidak Ada">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
@@ -206,6 +206,7 @@
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver } from 'vee-validate';
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   components: {

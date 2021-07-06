@@ -54,9 +54,39 @@
   </b-container>
 </template>
 <script>
+import Swal from "sweetalert2";
 export default {
-  name: "DashboardMain"
+  name: "DashboardMain",
+  data() {
+    return {
+      user: ''
+    }
+  },
+  mounted() {
+    this.getProfile();
+  },
+  methods: {
+    getProfile() {
+      this.$store.dispatch("participant/getProfile").then(
+        (response) => {
+          this.user = response;
+          console.log(this.user);
+        },
+        (error) => {
+          console.log(error);
+          // Swal.fire({
+          // icon: "error",
+          // title: "Upload Bukti Pembayaran gagal",
+          // text: error.response.data.message,
+          // showConfirmButton: true,
+          // }).then(() => {});
+        }
+      );
+    }
+  }
 };
+
+
 </script>
 <style scoped>
 .header {

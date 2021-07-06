@@ -12,7 +12,7 @@
 
         <div class="title">MAGE 7</div>
 
-        <div class="more"><a href="#">More</a></div>
+        <!-- <div class="more"><a href="#">More</a></div> -->
       </div>
 
       <div class="mage">
@@ -33,7 +33,7 @@
               dirancang untuk pelajar SMA/sederajat, untuk menguji kemampuan
               siswa/i Indonesia dalam menyelesaikan soal-soal terkait logika,
               pemrograman, dan fisika.
-              <a href="#"><div class="more mt-4">More ></div></a>
+              <!-- <a href="#"><div class="more mt-4">More ></div></a> -->
             </p>
           </b-col>
         </b-row>
@@ -63,12 +63,13 @@
                   khususnya di bidang teknologi dan informasi untuk terciptanyabangsa yang lebih maju di kemudian hari. 
                 </p>
               </div>
-              <button
-                class="btn p-3 mt-3"
-                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
-              >
-                Detail
-              </button>
+              <a href="Guidebook_Application_Development_Competition.pdf" download>
+                <button
+                  class="btn p-3 mt-3"
+                >
+                  Lihat Guide Book
+                </button>
+              </a>
             </b-col>
             <b-col lg="12"><div class="divider"></div></b-col>
             <b-col lg="6" class="mt-5 mb-5">
@@ -89,14 +90,13 @@
                   yang diringkas melalui game menarik.
                 </p>
               </div>
+              <a href="GuideBook_Game_Development1.pdf" download>
               <button
                 class="btn p-3 mt-3"
-                @click="
-                  $store.dispatch('ui/changeWelcomeComponent', 'game-hitam')
-                "
               >
-                Detail
+                Lihat Guide Book
               </button>
+              </a>
             </b-col>
             <b-col lg="6" class="mt-5 mb-5">
               <b-container class="text-center">
@@ -125,12 +125,13 @@
                   ini kategori pesertanya meliputi umum.
                 </p>
               </div>
+              <a href="Guidebook_IoT_dev_peserta_beda.pdf" download>
               <button
                 class="btn p-3 mt-3"
-                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
               >
-                Detail
+                Lihat Guide Book
               </button>
+              </a>
             </b-col>
             <b-col lg="12"><div class="divider"></div></b-col>
             <b-col lg="6" class="mt-5 mb-5">
@@ -147,12 +148,13 @@
                   melalui website MAGE 7.
                 </p>
               </div>
+              <a href="GUIDEBOOK_PROXY.pdf" download>
               <button
                 class="btn p-3 mt-3"
-                @click="$store.dispatch('ui/changeWelcomeComponent', 'osm')"
               >
-                Detail
+                Lihat Guide Book
               </button>
+              </a>
             </b-col>
             <b-col lg="6" class="mt-5 mb-5">
               <b-container class="text-center">

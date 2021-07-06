@@ -12,6 +12,7 @@ import { question } from './question.module'
 import { answerForm } from './answer-form.module'
 import { answer } from './answer.module'
 import { regisCompetition } from './regis-competition.module'
+import { uploadProposal } from './upload-proposal.module'
 
 Vue.use(Vuex)
 
@@ -33,6 +34,7 @@ export default new Vuex.Store({
     question,
     answerForm,
     answer,
-    regisCompetition
+    regisCompetition,
+    uploadProposal
   }
 })
