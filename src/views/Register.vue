@@ -181,9 +181,11 @@ export default {
               Swal.fire({
                 icon: 'success',
                 title: 'Register berhasil',
+				text: 'Silakan Cek Email Anda Untuk Melakukan Verifikasi Akun',
                 showConfirmButton: true,
               }).then(() => {
                 this.$router.push('/dashboard');
+				location.reload();
               });
             },
             (error) => {

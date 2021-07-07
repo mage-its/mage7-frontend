@@ -729,6 +729,10 @@ b-button {
     padding-right: 50px;
   }
   #about .mascot {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
     height: 200px;
     width: 200px;
   }

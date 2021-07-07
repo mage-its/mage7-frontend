@@ -1,57 +1,55 @@
 <template>
-  <div class="center">
-    <h1>Email Anda Telah Terverifikasi</h1>
-    <a href="/">Klik Untuk login kembali</a>
-  </div>
-  <!-- <div class="login-page">
-    <div class="logo">
-      <h1 class="text-white d-inline-block">MAGE 7</h1>
-    </div>
-    <div class="login-container shadow">
-      <h1>Selamat</h1>
-      <h2><i class="fas fa-check-circle text-success fa-4x"></i></h2>
-      <div class="mt-4">
-        Email dari akun anda telah terkonfirmasi
-      </div>
-      <router-link :to="{name:'DashboardMain'}">
+  <div>
+    <div class="background"></div>
+    <div class="center" v-if="verified">
+      <h1 class="text-white">Email Anda Telah Terverifikasi</h1>
+      <br />
       <input
+        @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
         type="submit"
-        name="login"
-        class="mt-4"
-        value="Beranda"
-        @click="handleLogin()"
+        name="Login"
+        class="btn btn-white"
+        value="Login Kembali"
       />
-      </router-link>
     </div>
-    <vue-particles
-      color="#dedede"
-      :particleOpacity="0.7"
-      :particlesNumber="80"
-      shapeType="circle"
-      :particleSize="4"
-      linesColor="#dedede"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.4"
-      :linesDistance="150"
-      :moveSpeed="3"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-      class="particles"
-    >
-    </vue-particles>
-  </div> -->
+    <div class="center" v-else>
+      <h1 class="text-white">Terjadi Kesalahan Saat Verifikasi</h1>
+      <br />
+      <input
+        @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
+        type="submit"
+        name="Login"
+        class="btn btn-white"
+        value="Login Kembali"
+      />
+    </div>
+  </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-  name: 'ConfirmEmail',
+  name: "ConfirmEmail",
+  data() {
+    return {
+      verified: true,
+    };
+  },
   methods: {
     confirmEmail() {
-      axios.post(`${this.endpointAPI}api/v1/auth/verify-email?token=${this.$route.query.token}`);
+      axios
+        .post(
+          `${this.endpointAPI}api/v1/auth/verify-email?token=${this.$route.query.token}`
+        )
+        .then((response) => {
+          if (response.status == 204) {
+            this.verified = true;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.verified = false;
+        });
     },
   },
   created() {
@@ -60,117 +58,22 @@ export default {
 };
 </script>
 <style scoped>
-.center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-}
-/* .login-page {
-  background-image: linear-gradient(
-      to right top,
-      rgb(13, 33, 60),
-      rgb(52, 3, 62, 0.8)
-    ),
-    url("");
-  margin-bottom: 20px;
-  min-height: 100%;
-}
-
-.login-page .logo {
-  margin-left: -40px;
-}
-
-.login-page .logo img {
-  height: 100px;
-  width: 170px;
-  margin-top: -20px;
-}
-
-.login-page .logo h1 {
-  display: block;
-  margin-top: 60px;
-}
-
-.login-page .close {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  height: 30px;
-  width: 30px;
-  opacity: 1;
-}
-
-.login-container {
-  width: 400px;
-  height: 400px;
-  margin-top: 40px;
-  margin-left: calc(50% - 200px);
-  margin-bottom: 20px;
-  background: #fff;
+.background {
+  background-image: url("./../assets/img/bg1.svg");
+  background-size: cover;
+  width: 100%;
+  height: 600px;
+  margin-top: -200px;
   box-sizing: border-box;
-  padding: 40px 20px;
   position: absolute;
 }
-
-.login-container img {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left: calc(50% - 50px);
-  border-radius: 50%;
-  top: -50px;
-}
-
-.login-container h1 {
+.center {
+  width: 500px;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 200px;
   text-align: center;
-  margin-bottom: 20px;
+  color: white;
+  position: relative;
 }
-
-.login-container label {
-  display: block;
-  text-align: left;
-}
-
-.login-container div {
-  margin-bottom: 20px;
-}
-
-.login-container input[type="text"],
-input[type="password"] {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #000;
-  background: transparent;
-  color: #000;
-  height: 40px;
-}
-
-.login-container input[type="submit"] {
-  width: 100%;
-  border: none;
-  outline: none;
-  height: 40px;
-  background-color: #150485;
-  color: #fff;
-}
-.login-container input[type="submit"]:hover {
-  cursor: pointer;
-  box-shadow: 1px 1px 10px #696969;
-}
-
-a {
-  display: inline;
-  text-decoration: none;
-  font-size: 12px;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  color: #000;
-  font-size: 12px;
-  margin: 0;
-  padding: 0;
-} */
 </style>
