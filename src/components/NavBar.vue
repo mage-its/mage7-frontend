@@ -5,7 +5,9 @@
         <i class="fa fa-bars fa-2x"></i>
       </div>
       <div class="logo">
-        <img src="@/assets/img/mage-white.png" alt="" />
+        <router-link class="text-center pl-1" :to="'/'">
+          <img src="@/assets/img/mage-white.png" alt="" />
+        </router-link>
       </div>
       <div class="menu">
         <ul>
@@ -87,23 +89,23 @@
           </a>
         </li>
         <li>
-          <a href="/competition/app" @click="toggle()"v-if="subnav_competition_min">
+          <a href="/competition/app" @click="toggle()" v-if="subnav_competition_min">
             App Dev
           </a>
         </li>
         <li>
-          <a href="/competition/game"@click="toggle()" v-if="subnav_competition_min">
+          <a href="/competition/game" @click="toggle()" v-if="subnav_competition_min">
             Game Dev
           </a>
         </li>
         <li>
-          <a href="/competition/iot" @click="toggle()"v-if="subnav_competition_min">
+          <a href="/competition/iot" @click="toggle()" v-if="subnav_competition_min">
             IoT Dev
           </a>
         </li>
         
         <li>
-          <a href="/competition/olim" @click="toggle()"v-if="subnav_competition_min">
+          <a href="/competition/olim" @click="toggle()" v-if="subnav_competition_min">
             Olimpiade
           </a>
         </li>

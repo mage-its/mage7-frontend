@@ -1,4 +1,4 @@
-import RegisCompetitionService from "../services/regis-competition.service";
+import RegisCompetitionService from '../services/regis-competition.service';
 
 export const regisCompetition = {
   namespaced: true,
@@ -10,12 +10,12 @@ export const regisCompetition = {
     registerOlim({ commit }, form) {
       return RegisCompetitionService.registerOlim(form).then(
         (response) => {
-          commit("registerSuccess");
+          commit('registerSuccess');
           return Promise.resolve(response.data);
         },
         (error) => {
           console.log(error.message);
-          commit("registerFailure");
+          commit('registerFailure');
           return Promise.reject(error);
         }
       );
@@ -23,12 +23,12 @@ export const regisCompetition = {
     registerGame({ commit }, form) {
       return RegisCompetitionService.registerGame(form).then(
         (response) => {
-          commit("registerSuccess");
+          commit('registerSuccess');
           return Promise.resolve(response.data);
         },
         (error) => {
           console.log(error.message);
-          commit("registerFailure");
+          commit('registerFailure');
           return Promise.reject(error);
         }
       );
@@ -36,12 +36,12 @@ export const regisCompetition = {
     registerApp({ commit }, form) {
       return RegisCompetitionService.registerApp(form).then(
         (response) => {
-          commit("registerSuccess");
+          commit('registerSuccess');
           return Promise.resolve(response.data);
         },
         (error) => {
           console.log(error.message);
-          commit("registerFailure");
+          commit('registerFailure');
           return Promise.reject(error);
         }
       );
@@ -49,12 +49,12 @@ export const regisCompetition = {
     registerIot({ commit }, form) {
       return RegisCompetitionService.registerIot(form).then(
         (response) => {
-          commit("registerSuccess");
+          commit('registerSuccess');
           return Promise.resolve(response.data);
         },
         (error) => {
           console.log(error.message);
-          commit("registerFailure");
+          commit('registerFailure');
           return Promise.reject(error);
         }
       );

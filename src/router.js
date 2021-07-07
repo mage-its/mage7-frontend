@@ -73,6 +73,7 @@ import ListResultStage from "./views/dashboard/stage/result/ListResultStage.vue"
 import DetailResultStage from "./views/dashboard/stage/result/DetailResultStage.vue";
 
 import UploadProposal from "./views/dashboard/upload-proposal/UploadProposal.vue";
+import NotFound from "./views/NotFound.vue";
 
 Vue.use(Router);
 
@@ -84,7 +85,13 @@ var router = new Router({
     scrollBehavior() {
         return { x: 0, y: 0 };
     },
-    routes: [{
+    routes: [
+        {
+            path: '*',
+            name: 'Not Found',
+            component: NotFound
+        },
+        {
         path: "/",
         name: "Home",
         component: Home,

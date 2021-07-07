@@ -1,9 +1,9 @@
-import UIService from "../services/ui.service";
+import UIService from '../services/ui.service';
 
 export const ui = {
   namespaced: true,
   state: {
-    welcomeShow: "welcome",
+    welcomeShow: 'welcome',
     sidebarShow: true,
     provinces: [],
     cities: [],
@@ -19,17 +19,17 @@ export const ui = {
   },
   actions: {
     changeSidebarComponent({ commit }) {
-      commit("changeSidebarComponent");
+      commit('changeSidebarComponent');
       return;
     },
     changeWelcomeComponent({ commit }, component) {
-      commit("changeWelcomeComponent", component);
+      commit('changeWelcomeComponent', component);
       return;
     },
     getProvinces({ commit }) {
       return UIService.getProvinces().then(
         (provinces) => {
-          commit("setProvinces", provinces);
+          commit('setProvinces', provinces);
           return Promise.resolve(provinces);
         },
         (error) => {
@@ -40,7 +40,7 @@ export const ui = {
     getCities({ commit, getters }, provinceName) {
       return UIService.getCities(provinceName, getters.getProvinces).then(
         (cities) => {
-          commit("setCities", cities);
+          commit('setCities', cities);
           return Promise.resolve(cities);
         },
         (error) => {
@@ -51,7 +51,7 @@ export const ui = {
     getSubdistricts({ commit, getters }, cityName) {
       return UIService.getSubdistricts(cityName, getters.getCities).then(
         (subdistricts) => {
-          commit("setSubdistricts", subdistricts);
+          commit('setSubdistricts', subdistricts);
           return Promise.resolve(subdistricts);
         },
         (error) => {

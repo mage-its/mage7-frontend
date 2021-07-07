@@ -3,7 +3,7 @@
     <h3>Upload Proposal</h3>
     <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(onSubmit)" enctype="multipart/form-data" > 
-        <ValidationProvider name="Upload Proposal" rules="required|ext:pdf" v-slot="{ validate, errors }">
+        <ValidationProvider name="Upload Proposal" rules="required|ext:pdf|size:5000" v-slot="{ validate, errors }">
           <div class="form-group">
             <label>Klik dibawah untuk memilih file (Format File Harus Pdf)</label>
             <input type="file" accept="application/pdf" class="form-control" @change="{ onUpload($event) || validate($event) }" id="identitasKetua">
@@ -83,7 +83,7 @@ export default {
         },
         refreshToken() {
             let user = JSON.parse(localStorage.getItem('user'));
-            axios.post('http://52.149.214.161/api/v1/auth/refresh-tokens', {
+            axios.post(this.endpointAPI+'api/v1/auth/refresh-tokens', {
                 refreshToken : user.tokens.refresh.token  
             }).then((response) => 
             {

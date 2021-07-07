@@ -60,6 +60,16 @@ firebase.initializeApp(firebaseConfig);
 
 ShardsVue.install(Vue);
 
+Vue.mixin({
+    data: function() {
+        return {
+            get endpointAPI() {
+                return "http://52.149.214.161/";
+            },
+        }
+    }
+});
+
 Vue.component('default-layout', Default);
 Vue.component('ValidationProvider', ValidationProvider);
 

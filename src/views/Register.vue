@@ -1,10 +1,9 @@
 <template>
   <div class="register-page">
-    <a v-if="!getUrl()" @click="moveToWelcome()">
-      <img class="close" src="@/assets/close.png" />
-    </a>
+    <div class="background-register"> 
+    </div>
     <div class="register-container shadow"> 
-    <img class="logo mt-4" src="@/assets/img/mage.png" />
+      <img class="logo mt-4" src="@/assets/img/mage.png" />
       <div>
         <label>Username</label>
         <input
@@ -66,7 +65,10 @@
         <a v-if="getUrl()" href="/login">Login</a>
       </p>
     </div>
-    <vue-particles
+    <a v-if="!getUrl()" @click="moveToWelcome()">
+      <img class="close" src="@/assets/close.png" />
+    </a>
+    <!-- <vue-particles
       color="#dedede"
       :particleOpacity="0.7"
       :particlesNumber="80"
@@ -84,12 +86,11 @@
       clickMode="push"
       class="particles"
     >
-    </vue-particles>
+    </vue-particles> -->
   </div>
 </template>
 <script>
 import Swal from "sweetalert2";
-import axios from "axios"
 
 import {
   required,
@@ -173,32 +174,6 @@ export default {
       this.$store.dispatch("ui/changeWelcomeComponent", "login");
     },
     handleRegister() {
-      // let data = {
-      //     'name': this.user.name,
-      //     'email': this.user.email,
-      //     'password': this.user.password,
-      // };
-      // axios
-      //     .post("http://52.149.214.161/api/v1/auth/register", data)
-      //     .then(() => {
-      //         Swal.fire({
-      //             icon: "success",
-      //             title: "Autentikasi berhasil",
-      //             text: "Registrasi Berhasil" ,
-      //             showConfirmButton: true,
-      //         }).then(() => {
-      //             this.$router.replace({
-      //             name: "RegisterIoTDev",
-      //             });
-      //         });
-      //     })
-      //     //eslint-disable-next-line no-console
-      //     .catch( err => console.log(err)); 
-      // this.$v.$touch();
-      // if (this.$v.$error) {
-      //   return;
-      // }
-
       this.loading = true;
       if (this.user.password == this.passwordConfirmation) {
         if (this.user.name && this.user.email && this.user.password) {
@@ -235,28 +210,6 @@ export default {
           showConfirmButton: true,
         }).then(() => {});
       }
-
-      // if(this.user.name && this.user.email && this.user.password)
-      // this.$store.dispatch("auth/register", this.user).then(
-      //   () => {
-      //     Swal.fire({
-      //       title: "Berhasil melakukan pendaftaran",
-      //       icon: "success",
-      //       showConfirmButton: true,
-      //     }).then(() => {
-      //       // this.moveToWelcome();
-      //       this.$router.push("/dashboard");
-      //     });
-      //   },
-      //   (err) => {
-      //     Swal.fire({
-      //       title: "Gagal melakukan pendaftaran",
-      //       text: err.response.data.message,
-      //       icon: "error",
-      //       showConfirmButton: true,
-      //     }).then(() => {});
-      //   }
-      // );
     },
     getUrl() {
       return this.url.includes("register");
@@ -269,6 +222,15 @@ export default {
 };
 </script>
 <style scoped>
+.background-register {
+  background-image: url("./../assets/img/bg1.svg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  margin-top: -20px;
+  box-sizing: border-box;
+  position: absolute;
+}
 .register-page {
   background: rgb(0, 0, 0);
   margin-bottom: 20px;
@@ -398,6 +360,7 @@ p {
   .register-container {
     max-width: 360px;
     margin-left: calc(50% - 180px);
+    margin-top: 80px;
   }
   .register-page {
     height: calc(100% + 100px);

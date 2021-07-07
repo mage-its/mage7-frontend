@@ -42,7 +42,7 @@
               </b-row>
             </router-link>
           </li>
-          <li @click="selectedItem = 3">
+          <!-- <li @click="selectedItem = 3">
             <router-link class="text-white" :to="{ name: 'MainSchedule' }">
               <b-row>
                 <b-col cols="1" lg="1">
@@ -51,8 +51,8 @@
                 <b-col cols="10" class="sidebar-text" lg="10"> Jadwal </b-col>
               </b-row>
             </router-link>
-          </li>
-          <li @click="selectedItem = 4">
+          </li> -->
+          <!-- <li @click="selectedItem = 4">
             <router-link class="text-white" :to="{ name: 'IndexTwibbon' }">
               <b-row>
                 <b-col cols="1" lg="1">
@@ -63,7 +63,7 @@
                 <b-col cols="10" class="sidebar-text" lg="10"> Twibbon </b-col>
               </b-row>
             </router-link>
-          </li>
+          </li> -->
           <li @click="selectedItem = 5">
             <router-link class="text-white" :to="{ name: 'MainDocument' }">
               <b-row>
@@ -111,6 +111,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   name: "Sidebar",
   data() {
@@ -139,8 +140,20 @@ export default {
   },
   methods: {
     signOut() {
-      localStorage.removeItem('user');
-      this.$router.push({name:"Home"});
+      Swal.fire({
+        icon: "warning",
+        title: "Anda Yakin LogOut ?",
+        showDenyButton: true,
+        confirmButtonText: `Yes`,
+        denyButtonText: `No`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('user');
+          this.$router.push({name:"Home"}); 
+          location.reload();   
+        } 
+      })
+      
     },
     performToggle(item, eventName) {
       var index = 0;

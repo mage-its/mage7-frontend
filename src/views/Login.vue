@@ -1,15 +1,9 @@
 <template>
   <div class="login-page">
-    <a
-      v-if="!getUrl()"
-      @click="$store.dispatch('ui/changeWelcomeComponent', 'welcome')"
-      href="#"
-    >
-      <img class="close" src="@/assets/close.png" />
-    </a>
+    <div class="background-login"> 
+    </div>
     <div class="login-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
-      
       <div>
         <label>Email</label>
         <input
@@ -71,7 +65,14 @@
         </b-row>
       </b-container-->
     </div>
-    <vue-particles
+    <a
+      v-if="!getUrl()"
+      @click="$store.dispatch('ui/changeWelcomeComponent', 'welcome')"
+      href="#"
+    >
+      <img class="close" src="@/assets/close.png" />
+    </a>
+    <!-- <vue-particles
       color="#dedede"
       :particleOpacity="0.7"
       :particlesNumber="80"
@@ -89,7 +90,7 @@
       clickMode="push"
       class="particles"
     >
-    </vue-particles>
+    </vue-particles> -->
   </div>
 </template>
 <script>
@@ -101,7 +102,6 @@ export default {
   name: "Login",
   data() {
     return {
-      // user: new User("", ""),
       user : {
         email : "",
         password : ""
@@ -131,9 +131,10 @@ export default {
               showConfirmButton: true,
             }).then(() => {
               this.$router.push("/dashboard");
+              location.reload();
             })
 
-            localStorage.setItem('id', JSON.stringify(user.user.id));
+            // localStorage.setItem('id', JSON.stringify(user.user.id));
           },
           (error) => {
             this.message =
@@ -224,6 +225,15 @@ export default {
 };
 </script>
 <style scoped>
+.background-login {
+  background-image: url("./../assets/img/bg1.svg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+}
+
 .login-page {
   background: rgb(0, 0, 0);
   min-height: 100%;
@@ -330,6 +340,7 @@ p {
   .login-container {
     max-width: 360px;
     margin-left: calc(50% - 180px);
+    margin-top: 100px;
   }
   .login-page {
     height: calc(100% + 100px);

@@ -92,7 +92,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Foto Identitas Ketua Tim" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }">
+        <ValidationProvider name="Foto Identitas Ketua Tim" rules="required|ext:jpeg,jpg,png,pdf|size:1000" v-slot="{ validate, errors }">
           <div class="form-group">
             <label>Foto Identitas Ketua Tim (KTP atau SIM atau yang lain) *</label>
             <img v-if="previewImage1" :src="previewImage1" class="uploading-image" />
@@ -101,7 +101,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Foto Identitas Anggota 1" rules="ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="identitasAnggota1">
+        <ValidationProvider name="Foto Identitas Anggota 1" rules="ext:jpeg,jpg,png,pdf|size:1000" v-slot="{ validate, errors }" id="identitasAnggota1">
           <div class="form-group">
             <label>Foto Identitas Anggota 1 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 1) *</label>
             <img v-if="previewImage2" :src="previewImage2" class="uploading-image" />
@@ -110,7 +110,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Foto Identitas Anggota 2" rules="ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="identitasAnggota2">
+        <ValidationProvider name="Foto Identitas Anggota 2" rules="ext:jpeg,jpg,png,pdf|size:1000" v-slot="{ validate, errors }" id="identitasAnggota2">
           <div class="form-group">
             <label>Foto Identitas Anggota 2 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 2) *</label>
             <img v-if="previewImage3" :src="previewImage3" class="uploading-image" />
@@ -128,7 +128,7 @@
           </div>
         </ValidationProvider> -->
 
-        <ValidationProvider name="Bukti Upload Twibbon" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiUploadTwibbon">
+        <ValidationProvider name="Bukti Upload Twibbon" rules="required|ext:jpeg,jpg,png,pdf|size:1000" v-slot="{ validate, errors }" id="buktiUploadTwibbon">
           <div class="form-group">
             <label>Bukti Upload Twibbon *</label>
             <img v-if="previewImageTwibbon" :src="previewImageTwibbon" class="uploading-image" />
@@ -136,7 +136,7 @@
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <ValidationProvider name="Bukti Follow Mage" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiFollowMage">
+        <ValidationProvider name="Bukti Follow Mage" rules="required|ext:jpeg,jpg,png,pdf|size:1000" v-slot="{ validate, errors }" id="buktiFollowMage">
           <div class="form-group">
             <label>Bukti Follow Mage *</label>
             <img v-if="previewImageFollowMage" :src="previewImageFollowMage" class="uploading-image" />
@@ -144,7 +144,7 @@
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <ValidationProvider name="Bukti Repost Story" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiRepostStory">
+        <ValidationProvider name="Bukti Repost Story" rules="required|ext:jpeg,jpg,png,pdf|size:1000" v-slot="{ validate, errors }" id="buktiRepostStory">
           <div class="form-group">
             <label>Bukti Repost Story *</label>
             <img v-if="previewImageRepostStory" :src="previewImageRepostStory" class="uploading-image" />
@@ -288,7 +288,7 @@ export default {
       };
     },
     onSubmit() {
-      this.id = localStorage.id;
+      // this.id = localStorage.id;
 
       var document = new FormData();
       this.loading = true;
@@ -362,7 +362,7 @@ export default {
     },
     refreshToken() {
       let user = JSON.parse(localStorage.getItem('user'));
-      axios.post('http://52.149.214.161/api/v1/auth/refresh-tokens', {
+      axios.post(this.endpointAPI+'api/v1/auth/refresh-tokens', {
         refreshToken : user.tokens.refresh.token  
       }).then((response) => 
       {

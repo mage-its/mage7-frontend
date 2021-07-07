@@ -117,28 +117,28 @@
                 <li>
                   <a
                     target="blank"
-                    href="https://www.instagram.com/mage_its/?hl=id"
+                    href="https://www.instagram.com/mage_its/"
                   >
                     <i class="fab fa-instagram"></i>
                     Instagram
                   </a>
                 </li>
                 <li>
-                  <a target="blank" href="https://www.facebook.com/mageits/">
-                    <i class="fab fa-facebook-f"></i>
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a target="blank" href="anava.mipa.ugm@gmail.com">
+                  <a target="blank" href="mailto:mage7.ce.its@gmail.com">
                     <i class="far fa-envelope"></i>
                     Email
                   </a>
                 </li>
                 <li>
-                  <a target="blank" href="https://wa.me/6287777006263">
-                    <i class="fab fa-whatsapp"></i>
-                    Whatsapp<br />
+                  <a target="blank" href="https://page.line.me/?accountId=rio5948f&openerPlatform=webview&openerKey=webview%3AunifiedSearch">
+                    <i class="fab fa-line"></i>
+                    Line
+                  </a>
+                </li>
+                <li>
+                  <a target="blank" href="https://www.youtube.com/channel/UCO1SuldERZu0jgBBDzzOkoQ">
+                    <i class="fab fa-youtube"></i>
+                    YouTube
                   </a>
                 </li>
               </ul>

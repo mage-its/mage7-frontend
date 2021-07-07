@@ -1,4 +1,4 @@
-import AnnouncementService from "../services/announcement.service";
+import AnnouncementService from '../services/announcement.service';
 
 export const announcement = {
   namespaced: true,
@@ -15,7 +15,7 @@ export const announcement = {
     getAllAnnouncement({ commit }) {
       return AnnouncementService.getAllAnnouncement().then(
         (response) => {
-          commit("setAnnouncements", response.data.data);
+          commit('setAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -26,7 +26,7 @@ export const announcement = {
     getGeneralAnnouncement({ commit }) {
       return AnnouncementService.getGeneralAnnouncement().then(
         (response) => {
-          commit("setAnnouncements", response.data.data);
+          commit('setAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -37,7 +37,7 @@ export const announcement = {
     getAllAnnouncementByStage({ commit }, stageId) {
       return AnnouncementService.getAllAnnouncementByStage(stageId).then(
         (response) => {
-          commit("setStageAnnouncements", response.data.data);
+          commit('setStageAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -48,7 +48,7 @@ export const announcement = {
     getAllAnnouncementByParticipant({ commit }, participantId) {
       return AnnouncementService.getAllAnnouncementByParticipant(participantId).then(
         (response) => {
-          commit("setParticipantAnnouncements", response.data.data);
+          commit('setParticipantAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -59,7 +59,7 @@ export const announcement = {
     getAnnouncement({ commit }, id) {
       return AnnouncementService.getAnnouncement(id).then(
         (response) => {
-          commit("setAnnouncement", response.data.data);
+          commit('setAnnouncement', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -70,7 +70,7 @@ export const announcement = {
     createAnnouncement({ commit },announcement) {
       return AnnouncementService.createAnnouncement(announcement).then(
         (response) => {
-          commit("createAnnouncement", response.data.data);
+          commit('createAnnouncement', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {

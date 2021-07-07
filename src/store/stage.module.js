@@ -1,4 +1,4 @@
-import StageService from "../services/stage.service";
+import StageService from '../services/stage.service';
 
 export const stage = {
   namespaced: true,
@@ -11,7 +11,7 @@ export const stage = {
     getAllStage({ commit }) {
       return StageService.getAllStage().then(
         (response) => {
-          commit("setStages", response.data.data);
+          commit('setStages', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -22,7 +22,7 @@ export const stage = {
     getStage({ commit }, id) {
       return StageService.getStage(id).then(
         (response) => {
-          commit("setStage", response.data.data);
+          commit('setStage', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -33,7 +33,7 @@ export const stage = {
     addParticipantToStage({ commit }, stage) {
       return StageService.addParticipantToStage(stage).then(
         (response) => {
-          commit("setStage", response.data.data);
+          commit('setStage', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -45,18 +45,18 @@ export const stage = {
   mutations: {
     setStages(state, stages) {
       state.stages = stages;
-      localStorage.setItem("stages" + stages._id, JSON.stringify(state.stages));
+      localStorage.setItem('stages' + stages._id, JSON.stringify(state.stages));
     },
     setStage(state, stage) {
       state.stage = stage;
-      var user = JSON.parse(localStorage.getItem("user"));
-      if (user.roles.includes("participant")) {
+      var user = JSON.parse(localStorage.getItem('user'));
+      if (user.roles.includes('participant')) {
         stage.participants = null;
         stage.answerForms = null;
         stage.participants = null;
         stage.questions = null;
       }
-      localStorage.setItem("stage" + stage._id, JSON.stringify(state.stage));
+      localStorage.setItem('stage' + stage._id, JSON.stringify(state.stage));
     },
   },
 };

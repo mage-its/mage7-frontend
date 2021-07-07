@@ -12,7 +12,7 @@
             <div v-if="show == 'welcome'">
               <NavBar />
               <router-view />
-              <div class="sub-page" id="partner">
+              <!-- <div class="sub-page" id="partner">
                 <div
                   data-aos="fade-in"
                   data-aos-duration="1000"
@@ -111,7 +111,7 @@
                     </b-row>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <Footer />
             </div>
           </div>

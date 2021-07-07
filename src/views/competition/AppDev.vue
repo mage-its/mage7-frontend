@@ -1,25 +1,20 @@
 <template>
   <div class="osm-page">
-  
-      <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+    <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
     <b-container
       id="description"
       class="bg-red shawod-sm rounded text-white text-center mt-5 text-justify p-5"
     >
       <b-row>
         <b-col lg="4" class="p-3 text-center">
-          <img class="logo" src="@/assets/img/app-merah.png" />
+          <img class="logo" src="@/assets/img/app-merah.svg" />
         </b-col>
         <b-col lg="8">
         <div class="competition-title text-left">
           App Dev
         </div>
         <div class="competition-description text-justify">
-        Lomba Application Development adalah lomba pengembangan aplikasi untuk
-menyelesaikan masalah di Indonesia dalam bentuk aplikasi mobile, web dan desktop. Pada
-MAGE 7 tahun ini akan berfokus kepada konsep “Solusi digital untuk permasalahan yang
-timbul akibat pandemi” yang direncanakan sebagai awal untuk membantu permasalahan yang
-diakibatkan oleh pandemi COVID-19.
+        Application Competition merupakan cabang kompetisi dari MAGE 7, yaitu pembuatan aplikasi mobile yang berskala nasional sebagai media bagi peserta baik pelajar maupun mahasiswa untuk mengeksplorasi kreativitas dan inovasi dalam bidang IT. Application Competition ini sebagai bentuk kesadaran bahwa dengan adanya berbagai macam teknologi yang tersedia, masyarakat dapat dengan mudah mengeksplorasi teknologi, khususnya di bidang teknologi dan informasi untuk terciptanyabangsa yang lebih maju di kemudian hari.
         </div>
         </b-col>
       </b-row>
@@ -36,9 +31,9 @@ diakibatkan oleh pandemi COVID-19.
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text  text-white">
-              Terbuka untuk pelajar SMA/MA Sederajat & Mahasiswa/i
+              Terbuka untuk siswa/i SMA/SMK/sederajat & Mahasiswa/i aktif program D3/D4/S1
             </h2>
-            <h5 class=" text-white">Kelompok</h5>
+            <h5 class=" text-white">Kelompok (1 sampai 3 orang)</h5>
           </b-container>
         </b-col>
       </b-row>
@@ -54,7 +49,7 @@ diakibatkan oleh pandemi COVID-19.
         </b-col>
         <b-col lg="10" cols="9">
           <b-container class="description">
-            <h2 class="text  text-white">
+            <!-- <h2 class="text  text-white">
               Pendaftaran
             </h2>
             <h5 class="text-white">
@@ -62,18 +57,30 @@ diakibatkan oleh pandemi COVID-19.
             </h5>
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
-            </h2>
+            </h2> -->
             <h5 class="text-white">
-              Babak Penyisihan : <br />
-              
+              Pendaftaran + Durasi Upload Proposal : 5 Juli – 28 Agustus 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Semifinal : <br />
-              
+              Pengumuman Lolos Seleksi Proposal : 5 September 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Final : <br />
-              
+              Durasi Pembayaran untuk Melanjutkan Lomba : 6 September – 19 September 2021<br />              
+            </h5>
+            <h5 class="text-white">
+              Batas Pengumpulan Aplikasi & Video : 28 Oktober 2021<br />              
+            </h5>
+            <h5 class="text-white">
+              Pengumuman Lolos Tahap Final : 6 November 2021<br />              
+            </h5>
+            <h5 class="text-white">
+              Technical Meeting Final : 8 November 2021<br />              
+            </h5>
+            <h5 class="text-white">
+              Exhibition : 13 November 2021<br />              
+            </h5>
+            <h5 class="text-white">
+              Penjurian Final : 14 November 2021<br />              
             </h5>
           </b-container>
         </b-col>
@@ -91,14 +98,14 @@ diakibatkan oleh pandemi COVID-19.
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text  text-white">
-              Nama CP
+              Andika (App Development)
             </h2>
-            <h5 class="text-white">000000000</h5>
+            <h5 class="text-white">0856 0818 1418</h5>
           </b-container>
         </b-col>
       </b-row>
     </b-container>
-    <b-container
+    <!-- <b-container
       id="prize"
       class="bg-red shawod-sm rounded text-white text-left"
     >
@@ -134,7 +141,7 @@ diakibatkan oleh pandemi COVID-19.
           </b-container>
         </b-col>
       </b-row>
-    </b-container>
+    </b-container> -->
     <b-container
       id="guidebook"
       class="bg-red shawod-sm rounded text-white text-left"
@@ -147,7 +154,7 @@ diakibatkan oleh pandemi COVID-19.
         <b-col lg="10" cols="9">
           
           <b-container class="description  mt-4">
-            <a target="blank" href="OSM/guidebook.pdf" class="btn d-inline">
+            <a target="blank" href="/pdf/Guidebook_Application_Development_Competition.pdf" class="btn d-inline">
               Unduh guidebook
             </a>
           </b-container>
@@ -155,11 +162,12 @@ diakibatkan oleh pandemi COVID-19.
         </b-col>
       </b-row>
     </b-container>
-    <router-link :to="{ name: 'Register' }"
-      ><button class="btn btn-register">
+    <!-- <router-link :to="{ name: 'Register' }"
+      > -->
+      <button @click="$store.dispatch('ui/changeWelcomeComponent', 'register')" class="btn btn-register">
         <h3 class="text-white">Daftar sekarang</h3>
-      </button></router-link
-    >
+      </button>
+    <!-- </router-link> -->
   </div>
   </div>
 </template>

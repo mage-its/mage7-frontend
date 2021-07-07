@@ -1,6 +1,6 @@
-import AuthService from "../services/auth.service";
+import AuthService from '../services/auth.service';
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem('user'));
 let token;
 const initialState = user ? { status: { loggedIn: true }, user, email: {}, token } : { status: { loggedIn: false }, user: null, email: {}, token };
 
@@ -11,28 +11,28 @@ export const auth = {
         login({ commit }, user) {
             return AuthService.login(user).then(
                 (user) => {
-                    commit("loginSuccess", user);
+                    commit('loginSuccess', user);
                     return Promise.resolve(user);
                 },
                 (error) => {
-                    commit("loginFailure");
+                    commit('loginFailure');
                     return Promise.reject(error);
                 }
             );
         },
         logout({ commit }) {
             AuthService.logout();
-            commit("logout");
+            commit('logout');
         },
         register({ commit }, user) {
             return AuthService.register(user).then(
                 (response) => {
-                    commit("registerSuccess");
+                    commit('registerSuccess');
                     return Promise.resolve(response.data);
                 },
                 (error) => {
                     console.log(error.message);
-                    commit("registerFailure");
+                    commit('registerFailure');
                     return Promise.reject(error);
                 }
             );
@@ -40,11 +40,11 @@ export const auth = {
         confirmEmail({ commit }, id) {
             return AuthService.confirmEmail(id).then(
                 (response) => {
-                    commit("confirmEmailSuccess", response.data.data);
+                    commit('confirmEmailSuccess', response.data.data);
                     return Promise.resolve(response.data);
                 },
                 (error) => {
-                    commit("confirmEmailFailure");
+                    commit('confirmEmailFailure');
                     return Promise.reject(error);
                 }
             );
@@ -52,11 +52,11 @@ export const auth = {
         findByEmail({ commit }, email) {
             return AuthService.findByEmail(email).then(
                 (response) => {
-                    commit("findByEmailSuccess");
+                    commit('findByEmailSuccess');
                     return Promise.resolve(response.data);
                 },
                 (error) => {
-                    commit("findByEmailFailure");
+                    commit('findByEmailFailure');
                     return Promise.reject(error);
                 }
             );
@@ -64,11 +64,11 @@ export const auth = {
         requestChangePassword({ commit }, email) {
             return AuthService.requestChangePassword(email).then(
                 (response) => {
-                    commit("requestChangePasswordSuccess");
+                    commit('requestChangePasswordSuccess');
                     return Promise.resolve(response.data);
                 },
                 (error) => {
-                    commit("requestChangePasswordFailure");
+                    commit('requestChangePasswordFailure');
                     return Promise.reject(error);
                 }
             );
@@ -76,11 +76,11 @@ export const auth = {
         changePassword({ commit }, user) {
             return AuthService.changePassword(user).then(
                 (response) => {
-                    commit("changePasswordSuccess");
+                    commit('changePasswordSuccess');
                     return Promise.resolve(response.data);
                 },
                 (error) => {
-                    commit("changePasswordFailure");
+                    commit('changePasswordFailure');
                     return Promise.reject(error);
                 }
             );
@@ -117,7 +117,7 @@ export const auth = {
             oldUser.participant = newUser.participant;
             state.user = oldUser;
             console.log(oldUser);
-            localStorage.setItem("user", JSON.stringify(oldUser));
+            localStorage.setItem('user', JSON.stringify(oldUser));
         },
         confirmEmailFailure() {},
         findByEmailSuccess(state) {

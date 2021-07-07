@@ -1,4 +1,4 @@
-import ParticipantService from "./../services/participant.service";
+import ParticipantService from './../services/participant.service';
 
 export const participant = {
   namespaced: true,
@@ -11,7 +11,7 @@ export const participant = {
     getAllParticipant({ commit }) {
       return ParticipantService.getAllParticipant().then(
         (response) => {
-          commit("setParticipants", response.data.data);
+          commit('setParticipants', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -22,7 +22,7 @@ export const participant = {
     getParticipant({ commit }, id) {
       return ParticipantService.getParticipant(id).then(
         (response) => {
-          commit("setParticipant", response.data.data);
+          commit('setParticipant', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -33,7 +33,7 @@ export const participant = {
     getProfile() {
       return ParticipantService.getProfile().then(
         (response) => {
-          commit("getProfile", response);
+          commit('getProfile', response);
           return Promise.resolve(response);
         },
         (error) => {
@@ -45,7 +45,7 @@ export const participant = {
     updateParticipant({ commit }, participant) {
       return ParticipantService.updateParticipant(participant).then(
         (response) => {
-          commit("setParticipant", response.data.data);
+          commit('setParticipant', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -56,7 +56,7 @@ export const participant = {
     uploadParticipant({ commit }, participant) {
       return ParticipantService.uploadParticipant(participant).then(
         (response) => {
-          commit("setParticipant", response.data.data);
+          commit('setParticipant', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -70,10 +70,10 @@ export const participant = {
       state.participants = participants;
     },
     setParticipant(state, user) {
-      var currentUser = JSON.parse(localStorage.getItem("user"));
+      var currentUser = JSON.parse(localStorage.getItem('user'));
         
-      if (currentUser.roles.includes("participant")) {
-        var oldUser = JSON.parse(localStorage.getItem("user"));
+      if (currentUser.roles.includes('participant')) {
+        var oldUser = JSON.parse(localStorage.getItem('user'));
         const newUser = user;
         console.log(newUser);
         oldUser.firstname = newUser.firstname;
@@ -83,7 +83,7 @@ export const participant = {
         oldUser.participant = newUser.participant;
         state.user = oldUser;
         console.log(oldUser);
-        localStorage.setItem("user", JSON.stringify(oldUser));
+        localStorage.setItem('user', JSON.stringify(oldUser));
       } else {
         state.participant = user
       }

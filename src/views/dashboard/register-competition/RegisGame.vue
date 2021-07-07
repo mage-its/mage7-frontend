@@ -334,7 +334,7 @@ export default {
       };
     },
     onSubmit() {
-      this.id = localStorage.id;
+      // this.id = localStorage.id;
 
       var document = new FormData();
       this.loading = true;
@@ -427,7 +427,7 @@ export default {
     },
     refreshToken() {
       let user = JSON.parse(localStorage.getItem('user'));
-      axios.post('http://52.149.214.161/api/v1/auth/refresh-tokens', {
+      axios.post(this.endpointAPI+'api/v1/auth/refresh-tokens', {
         refreshToken : user.tokens.refresh.token  
       }).then((response) => 
       {

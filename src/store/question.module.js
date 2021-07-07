@@ -1,4 +1,4 @@
-import QuestionService from "../services/question.service";
+import QuestionService from '../services/question.service';
 
 
 export const question = {
@@ -14,7 +14,7 @@ export const question = {
     getAllQuestion({ commit }) {
       return QuestionService.getAllQuestion().then(
         (response) => {
-          commit("setQuestions", response.data.data);
+          commit('setQuestions', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -25,7 +25,7 @@ export const question = {
     getAllQuestionByStage({ commit }, idStage) {
       return QuestionService.getAllQuestionByStage(idStage).then(
         (response) => {
-          commit("setQuestions", response.data.data);
+          commit('setQuestions', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -36,7 +36,7 @@ export const question = {
     getQuestion({ commit }, id) {
       return QuestionService.getQuestion(id).then(
         (response) => {
-          commit("setQuestion", response.data.data);
+          commit('setQuestion', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -47,7 +47,7 @@ export const question = {
     createQuestion({ commit }, question) {
       return QuestionService.createQuestion(question).then(
         (response) => {
-          commit("createQuestion", response.data.data);
+          commit('createQuestion', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -58,7 +58,7 @@ export const question = {
     updateQuestion({ commit }, question) {
       return QuestionService.updateQuestion(question).then(
         (response) => {
-          commit("updateQuestion", response.data.data);
+          commit('updateQuestion', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {

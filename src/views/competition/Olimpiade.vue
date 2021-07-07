@@ -6,18 +6,14 @@
     >
       <b-row>
         <b-col lg="4" class="p-3 text-center">
-          <img class="logo" src="@/assets/img/app-merah.png" />
+          <img class="logo" src="@/assets/img/proxy-merah.svg" />
         </b-col>
         <b-col lg="8">
         <div class="competition-title text-left">
-          App Dev
+          Olimpiade
         </div>
         <div class="competition-description text-justify">
-        Lomba Application Development adalah lomba pengembangan aplikasi untuk
-menyelesaikan masalah di Indonesia dalam bentuk aplikasi mobile, web dan desktop. Pada
-MAGE 7 tahun ini akan berfokus kepada konsep “Solusi digital untuk permasalahan yang
-timbul akibat pandemi” yang direncanakan sebagai awal untuk membantu permasalahan yang
-diakibatkan oleh pandemi COVID-19.
+        Kompetisi yang dirancang untuk pelajar SMA/sederajat ini berupa olimpiade dengan berfokus pada 3 mata pelajaran yaitu fisika, pemrograman dan logika. Dengan tujuan untuk mengukur seberapa kompetensi para pelajar SMA/sederajat se-Indonesia dalam menyelesaikan permasalahan terkait. Olimpiade ini akan dilaksanakan secara berkelompok dengan anggota kelompok maksimal 3 orang. Terdiri dari 3 babak, yaitu penyisihan, semifinal dan final. Penyisihan dari olimpiade akan dilaksanakan secara online dalam bentuk interaktif melalui website MAGE 7.
         </div>
         </b-col>
       </b-row>
@@ -26,7 +22,7 @@ diakibatkan oleh pandemi COVID-19.
       id="category"
       class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Kategori</h1>
+      <h1 class="text-white">Kategori</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-users"></i>
@@ -34,9 +30,9 @@ diakibatkan oleh pandemi COVID-19.
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text  text-white">
-              Terbuka untuk pelajar SMA/MA Sederajat & Mahasiswa/i
+              Terbuka untuk siswa/i SMA/MA/SMK atau sederajat.
             </h2>
-            <h5 class=" text-white">Kelompok</h5>
+            <h5 class=" text-white">Kelompok maksimal 3 orang</h5>
           </b-container>
         </b-col>
       </b-row>
@@ -45,14 +41,14 @@ diakibatkan oleh pandemi COVID-19.
       id="schedule"
       class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Agenda</h1>
+      <h1 class="text-white">Agenda</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon far fa-calendar-alt fa-9x"></i>
         </b-col>
         <b-col lg="10" cols="9">
           <b-container class="description">
-            <h2 class="text  text-white">
+            <!-- <h2 class="text  text-white">
               Pendaftaran
             </h2>
             <h5 class="text-white">
@@ -60,18 +56,15 @@ diakibatkan oleh pandemi COVID-19.
             </h5>
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
-            </h2>
+            </h2> -->
             <h5 class="text-white">
-              Babak Penyisihan : <br />
-              
+              Penyisihan (Online) : Minggu, 7 November 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Semifinal : <br />
-              
+              Semifinal (Online) : Sabtu, 13 November 2021<br />
             </h5>
             <h5 class="text-white">
-              Babak Final : <br />
-              
+              Final (Online) : Minggu, 14 November 2021<br />
             </h5>
           </b-container>
         </b-col>
@@ -81,7 +74,7 @@ diakibatkan oleh pandemi COVID-19.
       id="contact"
       class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Kontak</h1>
+      <h1 class="text-white">Kontak</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-phone-alt fa-9x"></i>
@@ -89,14 +82,14 @@ diakibatkan oleh pandemi COVID-19.
         <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text  text-white">
-              Nama CP
+              Adi Syahrul
             </h2>
-            <h5 class="text-white">000000000</h5>
+            <h5 class="text-white">0852 3261 2668</h5>
           </b-container>
         </b-col>
       </b-row>
     </b-container>
-    <b-container
+    <!-- <b-container
       id="prize"
       class="bg-red shawod-sm rounded text-white text-left"
     >
@@ -132,12 +125,12 @@ diakibatkan oleh pandemi COVID-19.
           </b-container>
         </b-col>
       </b-row>
-    </b-container>
+    </b-container> -->
     <b-container
       id="guidebook"
       class="bg-red shawod-sm rounded text-white text-left"
     >
-      <h1>Guidebook</h1>
+      <h1 class="text-white">Guidebook</h1>
       <b-row>
         <b-col lg="1" cols="1">
           <i class="icon fas fa-book fa-9x"></i>
@@ -145,7 +138,7 @@ diakibatkan oleh pandemi COVID-19.
         <b-col lg="10" cols="9">
           
           <b-container class="description  mt-4">
-            <a target="blank" href="OSM/guidebook.pdf" class="btn d-inline">
+            <a target="blank" href="/GUIDEBOOK_PROXY.pdf" class="btn d-inline">
               Unduh guidebook
             </a>
           </b-container>
@@ -153,11 +146,12 @@ diakibatkan oleh pandemi COVID-19.
         </b-col>
       </b-row>
     </b-container>
-    <router-link :to="{ name: 'Register' }"
-      ><button class="btn btn-register">
-        <h3>Daftar sekarang</h3>
-      </button></router-link
-    >
+    <!-- <router-link :to="{ name: 'Register' }"
+      > -->
+      <button @click="$store.dispatch('ui/changeWelcomeComponent', 'register')" class="btn btn-register">
+        <h3 class="text-white">Daftar sekarang</h3>
+      </button>
+    <!-- </router-link> -->
   </div>
 </template>
 <script>

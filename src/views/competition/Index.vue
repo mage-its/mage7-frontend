@@ -5,7 +5,7 @@
     <div v-if="show == 'welcome'">
       <NavBar />
         <router-view />
-      <Footer />
+      <!-- <Footer /> -->
     </div>
   </div>
 </template>

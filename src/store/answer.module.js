@@ -1,4 +1,4 @@
-import AnswerService from "../services/answer.service";
+import AnswerService from '../services/answer.service';
 
 export const answer = {
   namespaced: true,
@@ -10,7 +10,7 @@ export const answer = {
     uploadAnswer({ commit }, answer) {
       return AnswerService.uploadAnswer(answer).then(
         (response) => {
-          commit("uploadAnswer", response.data.data);
+          commit('uploadAnswer', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {

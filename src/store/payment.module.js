@@ -1,4 +1,4 @@
-import PaymentService from "../services/payment.service";
+import PaymentService from '../services/payment.service';
 
 export const payment = {
   namespaced: true,
@@ -13,7 +13,7 @@ export const payment = {
     getAllPayment({ commit }) {
       return PaymentService.getAllPayment().then(
         (response) => {
-          commit("setPayments", response.data.data);
+          commit('setPayments', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -24,7 +24,7 @@ export const payment = {
     getAllPaymentByParticipant({ commit }, participantId) {
       return PaymentService.getAllPaymentByParticipant(participantId).then(
         (response) => {
-          commit("setPayments", response.data.data);
+          commit('setPayments', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -35,7 +35,7 @@ export const payment = {
     getPayment({ commit }, id) {
       return PaymentService.getPayment(id).then(
         (response) => {
-          commit("setPayment", response.data.data);
+          commit('setPayment', response.data.data);
           return Promise.resolve(response.data.data);
         },
         (error) => {
@@ -46,12 +46,12 @@ export const payment = {
     createPayment({ commit },payment) {
       return PaymentService.createPayment(payment).then(
         (response) => {
-          commit("createPaymentSuccess");
+          commit('createPaymentSuccess');
           return Promise.resolve(response.data);
         },
         (error) => {
           console.log(error.message);
-          commit("createPaymentFailure");
+          commit('createPaymentFailure');
           return Promise.reject(error);
         }
       );
