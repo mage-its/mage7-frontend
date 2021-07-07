@@ -51,7 +51,7 @@ export default {
   name: 'ConfirmEmail',
   methods: {
     confirmEmail() {
-      axios.post(`http://52.149.214.161/api/v1/auth/verify-email?token=${this.$route.query.token}`);
+      axios.post(`${this.endpointAPI}api/v1/auth/verify-email?token=${this.$route.query.token}`);
     },
   },
   created() {
