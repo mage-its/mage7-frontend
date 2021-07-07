@@ -27,12 +27,14 @@
             </b-col>
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is MAGE?</p>
-              <p class="text-white text-justify description  mb-3">
+              <p class="text-white text-justify description mb-3">
                 MAGE dalah kompetisi yang bergerak dalam bidang komputer,
                 dirancang untuk pelajar SMA/sederajat, untuk menguji kemampuan
                 siswa/i Indonesia dalam menyelesaikan soal-soal terkait logika,
                 pemrograman, dan fisika.
-                <a href="#event"><div class="more mt-4">Our Competition ></div></a>
+                <a href="#event"
+                  ><div class="more mt-4">Our Competition ></div></a
+                >
               </p>
             </b-col>
           </b-row>
@@ -50,7 +52,7 @@
               </b-col>
               <b-col cols="6">
                 <h1 class="title">App Dev</h1>
-                <div class="description  mt-4 mb-5">
+                <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Application Competition merupakan cabang kompetisi dari MAGE
                     7, yaitu pembuatan aplikasi mobile yang berskala nasional
@@ -64,17 +66,13 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/app'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
               <b-col lg="6" class="mt-5 mb-5">
                 <h1 class="title">Game Dev</h1>
-                <div class="description  mt-4">
+                <div class="description mt-4">
                   <p class="text-justify">
                     Game Competition merupakan cabang kompetisi dari MAGE 7 yang
                     diadakan oleh Teknik Komputer ITS. Game Competition diadakan
@@ -91,11 +89,7 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/game'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
               <b-col lg="6" class="mt-5 mb-5">
@@ -111,7 +105,7 @@
               </b-col>
               <b-col lg="6" class="mt-5 mb-5">
                 <h1 class="title">Iot Dev</h1>
-                <div class="description  mt-4">
+                <div class="description mt-4">
                   <p class="text-justify">
                     Internet of Things Competition merupakan kompetisi dari MAGE
                     7, yaitu pembuatan alat yang memanfaatkan koneksi nirkabel
@@ -127,17 +121,13 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/iot'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
               <b-col lg="6" class="mt-5 mb-5">
                 <h1 class="title">Olimpiade</h1>
-                <div class="description  mt-4">
+                <div class="description mt-4">
                   <p class="text-justify">
                     Kompetisi yang dirancang untuk pelajar SMA/sederajat ini
                     berupa olimpiade dengan berfokus pada 3 mata pelajaran yaitu
@@ -152,11 +142,7 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/olim'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
               <b-col lg="6" class="mt-5 mb-5">
@@ -175,7 +161,7 @@
               </b-col>
               <b-col cols="12">
                 <h1 class="title">App Dev</h1>
-                <div class="description  mt-4">
+                <div class="description mt-4">
                   <p class="text-justify">
                     Application Competition merupakan cabang kompetisi dari MAGE
                     7, yaitu pembuatan aplikasi mobile yang berskala nasional
@@ -189,11 +175,7 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/app'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
@@ -203,7 +185,7 @@
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
                 <h1 class="title">Game Dev</h1>
-                <div class="description  mt-4">
+                <div class="description mt-4">
                   <p class="text-justify">
                     Game Competition merupakan cabang kompetisi dari MAGE 7 yang
                     diadakan oleh Teknik Komputer ITS. Game Competition diadakan
@@ -220,11 +202,7 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/game'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
 
@@ -235,7 +213,7 @@
               </b-col>
               <b-col lg="12" class="mt-5 mb-5">
                 <h1 class="title">Iot Dev</h1>
-                <div class="description  mt-4">
+                <div class="description mt-4">
                   <p class="text-justify">
                     Internet of Things Competition merupakan kompetisi dari MAGE
                     7, yaitu pembuatan alat yang memanfaatkan koneksi nirkabel
@@ -251,11 +229,7 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/iot'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
               <b-col lg="6" class="mt-5 mb-5">
@@ -265,7 +239,7 @@
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
                 <h1 class="title">Olimpiade</h1>
-                <div class="description  mt-4">
+                <div class="description mt-4">
                   <p class="text-justify">
                     Kompetisi yang dirancang untuk pelajar SMA/sederajat ini
                     berupa olimpiade dengan berfokus pada 3 mata pelajaran yaitu
@@ -280,11 +254,7 @@
                   </p>
                 </div>
                 <router-link :to="'/competition/olim'">
-                  <button
-                    class="btn p-3 mt-3"
-                  >
-                    Detail
-                  </button>
+                  <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
             </b-row>
@@ -297,7 +267,7 @@
 </template>
 <script>
 import NavBar from '@/components/NavBar.vue';
-import Footer from '@/components/Footer.vue';
+// import Footer from '@/components/Footer.vue';
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
 
@@ -305,7 +275,7 @@ export default {
   name: 'Main',
   components: {
     NavBar,
-    Footer,
+    // Footer,
     Login,
     Register,
   },
@@ -729,10 +699,10 @@ b-button {
     padding-right: 50px;
   }
   #about .mascot {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
     height: 200px;
     width: 200px;
   }

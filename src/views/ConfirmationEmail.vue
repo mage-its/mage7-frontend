@@ -26,10 +26,10 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  name: "ConfirmEmail",
+  name: 'ConfirmEmail',
   data() {
     return {
       verified: true,
@@ -38,16 +38,14 @@ export default {
   methods: {
     confirmEmail() {
       axios
-        .post(
-          `${this.endpointAPI}api/v1/auth/verify-email?token=${this.$route.query.token}`
-        )
+        .post(`${this.endpointAPI}api/v1/auth/verify-email?token=${this.$route.query.token}`)
         .then((response) => {
-          if (response.status == 204) {
+          if (response.status === 204) {
             this.verified = true;
           }
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+        //   console.log(error);
           this.verified = false;
         });
     },
