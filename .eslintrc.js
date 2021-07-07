@@ -14,7 +14,9 @@ module.exports = {
     'no-new': 0, // Intrusive when using Chart.js instances.
     'no-underscore-dangle': 0, // Chart.js uses underscore dangles (_) internally.
     'import/no-unresolved': 0, // False positives regarding imports that use aliases.
-    'linebreak-style': ["error", "windows"]
+    'linebreak-style': ["error", "windows"],
+	'indent': 'off',
+    "no-tabs": 0,
   },
   overrides: [
     {
