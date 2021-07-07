@@ -6,11 +6,11 @@
     </div>
 </template>
 <script>
-import AdminMainAnnouncement from './../../../components/dashboard/admin/announcement/MainAnnouncement.vue'
-import ParticipantMainAnnouncement from './../../../components/dashboard/participant/announcement/MainAnnouncement.vue'
+import AdminMainAnnouncement from './../../../components/dashboard/admin/announcement/MainAnnouncement.vue';
+import ParticipantMainAnnouncement from './../../../components/dashboard/participant/announcement/MainAnnouncement.vue';
 
 export default {
-    name : 'MainAnnouncement',
+    name: 'MainAnnouncement',
     components: {
         AdminMainAnnouncement,
         ParticipantMainAnnouncement,
@@ -18,9 +18,9 @@ export default {
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
 <style scoped>
 .btn{

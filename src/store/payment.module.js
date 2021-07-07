@@ -4,10 +4,10 @@ export const payment = {
   namespaced: true,
   state: {
     payments: [],
-    payment: {}
+    payment: {},
   },
   getters: {
-    
+
   },
   actions: {
     getAllPayment({ commit }) {
@@ -16,9 +16,7 @@ export const payment = {
           commit('setPayments', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAllPaymentByParticipant({ commit }, participantId) {
@@ -27,9 +25,7 @@ export const payment = {
           commit('setPayments', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getPayment({ commit }, id) {
@@ -38,12 +34,10 @@ export const payment = {
           commit('setPayment', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
-    createPayment({ commit },payment) {
+    createPayment({ commit }, payment) {
       return PaymentService.createPayment(payment).then(
         (response) => {
           commit('createPaymentSuccess');
@@ -52,7 +46,7 @@ export const payment = {
         (error) => {
           commit('createPaymentFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
   },

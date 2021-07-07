@@ -4,24 +4,24 @@
     </div>
 </template>
 <script>
-import AdminIndexEvent from './../../../components/dashboard/admin/event/IndexEvent.vue'
+import AdminIndexEvent from './../../../components/dashboard/admin/event/IndexEvent.vue';
 
 export default {
-    name: "IndexEvent",
+    name: 'IndexEvent',
     components: {
-        AdminIndexEvent
+        AdminIndexEvent,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style scoped> 
+<style scoped>
 .header{
     min-height: 90px;
     min-width: 100%;
-    padding: 30px; 
+    padding: 30px;
 }
 </style>

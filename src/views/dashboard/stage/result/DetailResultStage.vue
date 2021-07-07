@@ -6,10 +6,10 @@
   </div>
 </template>
 <script>
-import AdminDetailResultStage from "./../../../../components/dashboard/admin/stage/result/DetailResultStage.vue";
+import AdminDetailResultStage from './../../../../components/dashboard/admin/stage/result/DetailResultStage.vue';
 
 export default {
-  name: "DetailResultStage",
+  name: 'DetailResultStage',
   components: {
     AdminDetailResultStage,
   },

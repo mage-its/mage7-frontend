@@ -11,10 +11,10 @@
 </template>
 <script>
 
-import Loader from "@/components/Loader";
+import Loader from '@/components/Loader';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Loader,
   },
@@ -28,13 +28,13 @@ export default {
   },
   methods: {
     load() {
-      let stateCheck = setInterval(() => {
-        if (document.readyState === "complete") {
+      const stateCheck = setInterval(() => {
+        if (document.readyState === 'complete') {
           this.loading = false;
           clearInterval(stateCheck);
         }
       }, 1000);
     },
   },
-}
+};
 </script>

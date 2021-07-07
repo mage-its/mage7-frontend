@@ -9,7 +9,7 @@
                         <i style="font-size:30px" class="fas fa-home"></i>
                         <br>
                         <b>SELAMAT DATANG PANITIA ANAVA 15!</b>
-                        Ini adalah Dashboard anda <br> berbagai jenis informasi terkait lomba dapat dilihat disini 
+                        Ini adalah Dashboard anda <br> berbagai jenis informasi terkait lomba dapat dilihat disini
                     </p>
                 </div>
             </b-col>
@@ -28,7 +28,7 @@
 <script>
 export default {
     name: 'DashboardMain',
-}
+};
 </script>
 <style scoped>
 .btn{

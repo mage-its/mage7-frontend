@@ -201,10 +201,10 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../services/datetime";
+import * as datetime from './../../../../services/datetime';
 
 export default {
-  name: "ParticipantMainPayment",
+  name: 'ParticipantMainPayment',
   data() {
     return {
       payment: {
@@ -214,19 +214,17 @@ export default {
       },
       newEvent: true,
       options: [
-        { text: "Radio 1", value: "radio1" },
-        { text: "Radio 3", value: "radio2" },
-        { text: "Radio 3 (disabled)", value: "radio3", disabled: true },
-        { text: "Radio 4", value: "radio4" },
+        { text: 'Radio 1', value: 'radio1' },
+        { text: 'Radio 3', value: 'radio2' },
+        { text: 'Radio 3 (disabled)', value: 'radio3', disabled: true },
+        { text: 'Radio 4', value: 'radio4' },
       ],
       step: 0,
     };
   },
   computed: {
     events() {
-      return this.$store.state.event.events.filter(function(event){
-        return event.name != 'Started' && event.name != 'OSM';
-      });
+      return this.$store.state.event.events.filter(event => event.name != 'Started' && event.name != 'OSM');
     },
     payments() {
       return this.$store.state.payment.payments;
@@ -237,27 +235,25 @@ export default {
   },
   methods: {
     getTime(_datetime) {
-      var today = new Date();
-      var datetime = new Date(_datetime);
+      const today = new Date();
+      let datetime = new Date(_datetime);
 
-      datetime = new Date(
-        datetime.getTime() + (today.getTimezoneOffset() + 780) * 60 * 1000
-      );
+      datetime = new Date(datetime.getTime() + (today.getTimezoneOffset() + 780) * 60 * 1000);
 
       return datetime;
     },
     getEvents() {
-      this.$store.dispatch("event/getAllEvent");
+      this.$store.dispatch('event/getAllEvent');
     },
     getAllPaymentByParticipant() {
       this.$store
-        .dispatch("payment/getAllPaymentByParticipant", this.user.id)
+        .dispatch('payment/getAllPaymentByParticipant', this.user.id)
         .then((response) => {
           console.log(response.data.data);
         });
     },
     joinEvent() {
-      this.$store.dispatch("event/joinEvent", this.payment);
+      this.$store.dispatch('event/joinEvent', this.payment);
     },
     selectEvent(id, index) {
       (this.payment.event = id),
@@ -273,16 +269,16 @@ export default {
       if (this.newEvent) this.joinEvent();
     },
     checkJoinEvent() {
-      /*var joinEvent = false;
+      /* var joinEvent = false;
 
       if (this.user.participant.events.length > 0)
         this.user.participant.events.forEach((event) => {
           if (payment.event.name == name) joinEvent = true;
         });
 
-      return joinEvent;*/
+      return joinEvent; */
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
     backToSelectEvent() {

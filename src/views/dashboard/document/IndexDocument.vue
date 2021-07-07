@@ -13,9 +13,9 @@
 <script>
 export default {
   computed: {
-    /*user() {
+    /* user() {
       return JSON.parse(localStorage.getItem("user"));
-    },*/
+    }, */
   },
 };
 </script>

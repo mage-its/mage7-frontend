@@ -48,26 +48,26 @@
   </div>
 </template>
 <script>
-import User from "../models/user";
-//import Swal from "sweetalert2";
+import User from '../models/user';
+// import Swal from "sweetalert2";
 
 export default {
-  name: "Login",
+  name: 'Login',
   data() {
     return {
-      user: new User("", ""),
+      user: new User('', ''),
       loading: false,
-      message: "",
+      message: '',
     };
   },
   methods: {
     changePassword() {
       this.$store.dispatch('auth/changePassword', this.user);
-    }
+    },
   },
   created() {
     this.user.id = this.$route.params.id;
-  }
+  },
 };
 </script>
 <style scoped>

@@ -27,31 +27,32 @@
   </div>
 </template>
 <script>
-import NavBar from "@/components/NavBar.vue";
-import Footer from "@/components/Footer.vue";
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
+import NavBar from '@/components/NavBar.vue';
+import Footer from '@/components/Footer.vue';
+import Login from '@/views/Login.vue';
+import Register from '@/views/Register.vue';
+
 export default {
-  name: "About",
+  name: 'About',
   components: {
     NavBar,
     Footer,
     Login,
-    Register
+    Register,
   },
   metaInfo() {
     return {
-      title: "About"
+      title: 'About',
     };
   },
   computed: {
     show() {
       return this.$store.state.ui.welcomeShow;
-    }
+    },
   },
   created() {
     window.scrollTo(0, 0);
-  }
+  },
 };
 </script>
 <style scoped>

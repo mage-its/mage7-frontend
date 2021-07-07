@@ -9,7 +9,7 @@
                         <i style="font-size:30px" class="fas fa-home"></i>
                         <br>
                         <b>SELAMAT DATANG PESERTA ANAVA 14!</b>
-                        Ini adalah Dashboard anda <br> berbagai jenis informasi terkait lomba dapat dilihat disini 
+                        Ini adalah Dashboard anda <br> berbagai jenis informasi terkait lomba dapat dilihat disini
                     </p>
                 </div>
             </b-col>
@@ -31,9 +31,9 @@ export default {
     computed: {
         show() {
             return this.$store.state.auth.user;
-        }
+        },
     },
-}
+};
 </script>
 <style scoped>
 .btn{

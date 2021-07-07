@@ -14,7 +14,7 @@
       <b-col md="9" class="text-left p-3">
         <h4 class="text-bold">{{ announcement.title }}</h4>
         <p v-if="announcement"></p>
-        
+
         <p class="text-secondary">{{ getDateTime("datetime", announcement.created_at) }}</p>
       </b-col>
       <b-col md="3" class="p-3">
@@ -28,10 +28,10 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../services/datetime";
+import * as datetime from './../../../../services/datetime';
 
 export default {
-  name: "MainAnnouncement",
+  name: 'MainAnnouncement',
   computed: {
     announcements() {
       return this.$store.state.announcement.announcements;
@@ -39,9 +39,9 @@ export default {
   },
   methods: {
     getAnnouncements() {
-      this.$store.dispatch("announcement/getAllAnnouncement");
+      this.$store.dispatch('announcement/getAllAnnouncement');
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
   },

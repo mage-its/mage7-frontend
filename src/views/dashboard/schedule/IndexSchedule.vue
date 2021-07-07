@@ -7,14 +7,14 @@
       </h3>
     </div>
     <hr />
-  
+
       <router-view/>
   </b-container>
 </template>
 <script>
 export default {
   computed: {
-    
+
   },
 };
 </script>

@@ -3,17 +3,17 @@
     <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(onSubmit)"  enctype="multipart/form-data" >
         <div class="form-group">
-          <label>Pilih Kategori</label>  
+          <label>Pilih Kategori</label>
           <b-form-radio-group
             v-model="kategori"
             :options="options"
             class="mb-3"
             value-field="item"
             text-field="name"
-             
+
             required
           ></b-form-radio-group>
-        </div>        
+        </div>
         <ValidationProvider name="Nama Tim" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Tim *</label>
@@ -205,8 +205,8 @@
 <script>
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver } from 'vee-validate';
-import Swal from "sweetalert2";
-import axios from "axios";
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 export default {
   components: {
@@ -215,13 +215,13 @@ export default {
   },
   data() {
     return {
-      previewImage1:null,
-      previewImage2:null,
-      previewImage3:null,
-      previewImage4:null,
-      previewImageTwibbon:null,
-      previewImageFollowMage:null,
-      previewImageRepostStory:null,
+      previewImage1: null,
+      previewImage2: null,
+      previewImage3: null,
+      previewImage4: null,
+      previewImageTwibbon: null,
+      previewImageFollowMage: null,
+      previewImageRepostStory: null,
       options: [
         { item: 'Siswa', name: 'Siswa' },
         { item: 'Mahasiswa', name: 'Mahasiswa' },
@@ -248,12 +248,12 @@ export default {
       buktiUploadTwibbon: null,
       buktiFollowMage: null,
       buktiRepostStory: null,
-      id: ''
+      id: '',
     };
   },
   mounted() {
-    document.getElementById("identitasAnggota1").style.display = "none"
-    document.getElementById("identitasAnggota2").style.display = "none"
+    document.getElementById('identitasAnggota1').style.display = 'none';
+    document.getElementById('identitasAnggota2').style.display = 'none';
   },
   methods: {
     // isMahasiswa() {
@@ -264,24 +264,24 @@ export default {
     //   }
     // },
     anggota1Available() {
-      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
-        document.getElementById("identitasAnggota1").style.display = "none"
+      if (this.namaAnggota1 == null || this.namaAnggota1 == '') {
+        document.getElementById('identitasAnggota1').style.display = 'none';
       } else {
-        document.getElementById("identitasAnggota1").style.display = "block"
+        document.getElementById('identitasAnggota1').style.display = 'block';
       }
     },
     anggota2Available() {
-      if(this.namaAnggota2 == null || this.namaAnggota2 == '') {
-        document.getElementById("identitasAnggota2").style.display = "none"
+      if (this.namaAnggota2 == null || this.namaAnggota2 == '') {
+        document.getElementById('identitasAnggota2').style.display = 'none';
       } else {
-        document.getElementById("identitasAnggota2").style.display = "block"
+        document.getElementById('identitasAnggota2').style.display = 'block';
       }
     },
     onUpload1(e) {
       this.identitasKetua = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.identitasKetua);
-      reader.onload = e =>{
+      reader.onload = (e) => {
           this.previewImage1 = e.target.result;
       };
     },
@@ -289,7 +289,7 @@ export default {
       this.identitasAnggota1 = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.identitasAnggota1);
-      reader.onload = e =>{
+      reader.onload = (e) => {
           this.previewImage2 = e.target.result;
       };
     },
@@ -297,7 +297,7 @@ export default {
       this.identitasAnggota2 = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.identitasAnggota2);
-      reader.onload = e =>{
+      reader.onload = (e) => {
           this.previewImage3 = e.target.result;
       };
     },
@@ -305,7 +305,7 @@ export default {
       this.suratKeteranganSiswa = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.suratKeteranganSiswa);
-      reader.onload = e =>{
+      reader.onload = (e) => {
           this.previewImage4 = e.target.result;
       };
     },
@@ -313,7 +313,7 @@ export default {
       this.buktiUploadTwibbon = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.buktiUploadTwibbon);
-      reader.onload = e =>{
+      reader.onload = (e) => {
           this.previewImageTwibbon = e.target.result;
       };
     },
@@ -321,7 +321,7 @@ export default {
       this.buktiFollowMage = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.buktiFollowMage);
-      reader.onload = e =>{
+      reader.onload = (e) => {
           this.previewImageFollowMage = e.target.result;
       };
     },
@@ -329,114 +329,113 @@ export default {
       this.buktiRepostStory = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.buktiRepostStory);
-      reader.onload = e =>{
+      reader.onload = (e) => {
           this.previewImageRepostStory = e.target.result;
       };
     },
     onSubmit() {
       // this.id = localStorage.id;
 
-      var document = new FormData();
+      const document = new FormData();
       this.loading = true;
-      if(this.identitasAnggota1 == null || this.identitasAnggota1 == '') {
-        console.log('gak onok identitas anggota 1')
+      if (this.identitasAnggota1 == null || this.identitasAnggota1 == '') {
+        console.log('gak onok identitas anggota 1');
       } else {
-        document.append("identitasAnggota1", this.identitasAnggota1);
+        document.append('identitasAnggota1', this.identitasAnggota1);
       }
 
-      if(this.identitasAnggota2 == null || this.identitasAnggota2 == '') {
-        console.log('gak onok identitas anggota 1')
+      if (this.identitasAnggota2 == null || this.identitasAnggota2 == '') {
+        console.log('gak onok identitas anggota 1');
       } else {
-        document.append("identitasAnggota2", this.identitasAnggota2);
+        document.append('identitasAnggota2', this.identitasAnggota2);
       }
-      if(this.namaAnggota1 == null || this.namaAnggota1 == '') {
-        console.log('gak onok anggota 1')
+      if (this.namaAnggota1 == null || this.namaAnggota1 == '') {
+        console.log('gak onok anggota 1');
       } else {
-        document.append("namaAnggota1", this.namaAnggota1);
-      }
-
-      if(this.namaAnggota2 == null || this.namaAnggota2 == '') {
-        console.log('gak onok anggota 2')
-      } else {
-        document.append("namaAnggota2", this.namaAnggota2);
+        document.append('namaAnggota1', this.namaAnggota1);
       }
 
-      if(this.namaPembimbing == null || this.namaPembimbing == '') {
-        console.log('gak onok anggota 2')
+      if (this.namaAnggota2 == null || this.namaAnggota2 == '') {
+        console.log('gak onok anggota 2');
       } else {
-        document.append("namaPembimbing", this.namaPembimbing);
-      }
-      
-      if(this.waPembimbing == null || this.waPembimbing == '') {
-        console.log('gak onok anggota 2')
-      } else {
-        document.append("waPembimbing", this.waPembimbing);
+        document.append('namaAnggota2', this.namaAnggota2);
       }
 
-      if(this.hpPembimbing == null || this.hpPembimbing == '') {
-        console.log('gak onok anggota 2')
+      if (this.namaPembimbing == null || this.namaPembimbing == '') {
+        console.log('gak onok anggota 2');
       } else {
-        document.append("hpPembimbing", this.hpPembimbing);
+        document.append('namaPembimbing', this.namaPembimbing);
       }
-      
+
+      if (this.waPembimbing == null || this.waPembimbing == '') {
+        console.log('gak onok anggota 2');
+      } else {
+        document.append('waPembimbing', this.waPembimbing);
+      }
+
+      if (this.hpPembimbing == null || this.hpPembimbing == '') {
+        console.log('gak onok anggota 2');
+      } else {
+        document.append('hpPembimbing', this.hpPembimbing);
+      }
+
       // if(this.kategori == 'Siswa') {
       //   document.append("suratKeteranganSiswa", this.suratKeteranganSiswa);
       // }
-      document.append("kategori", this.kategori);
-      document.append("identitasKetua", this.identitasKetua);
-      document.append("namaTim", this.namaTim);
-      document.append("namaKetua", this.namaKetua);
-      document.append("waKetua", this.waKetua);
-      document.append("lineKetua", this.lineKetua);
-      document.append("hpKetua", this.hpKetua);
-      document.append("asalKota", this.asalKota);
-      document.append("asalInstansi", this.asalInstansi);
-      document.append("asalInfo", this.asalInfo);
-      document.append("alamatInstansi", this.alamatInstansi);
-      document.append("buktiUploadTwibbon", this.buktiUploadTwibbon);
-      document.append("buktiFollowMage", this.buktiFollowMage);
-      document.append("buktiRepostStory", this.buktiRepostStory);
+      document.append('kategori', this.kategori);
+      document.append('identitasKetua', this.identitasKetua);
+      document.append('namaTim', this.namaTim);
+      document.append('namaKetua', this.namaKetua);
+      document.append('waKetua', this.waKetua);
+      document.append('lineKetua', this.lineKetua);
+      document.append('hpKetua', this.hpKetua);
+      document.append('asalKota', this.asalKota);
+      document.append('asalInstansi', this.asalInstansi);
+      document.append('asalInfo', this.asalInfo);
+      document.append('alamatInstansi', this.alamatInstansi);
+      document.append('buktiUploadTwibbon', this.buktiUploadTwibbon);
+      document.append('buktiFollowMage', this.buktiFollowMage);
+      document.append('buktiRepostStory', this.buktiRepostStory);
 
-      var formData = {
+      const formData = {
         data: document,
       };
 
-      this.$store.dispatch("regisCompetition/registerGame", formData).then(
+      this.$store.dispatch('regisCompetition/registerGame', formData).then(
         () => {
           Swal.fire({
-            icon: "success",
-            title: "Register berhasil",
+            icon: 'success',
+            title: 'Register berhasil',
             showConfirmButton: true,
           }).then(() => {
-            this.$router.push("/dashboard");
+            this.$router.push('/dashboard');
           });
         },
         (error) => {
-          if(error.response.data.code == 401) {
+          if (error.response.data.code == 401) {
             this.refreshToken();
-          }else {
+          } else {
             Swal.fire({
-              icon: "error",
-              title: "Register gagal",
+              icon: 'error',
+              title: 'Register gagal',
               text: error.response.data.message,
               showConfirmButton: true,
             }).then(() => {});
           }
-        }
+        },
       );
     },
     refreshToken() {
-      let user = JSON.parse(localStorage.getItem('user'));
-      axios.post(this.endpointAPI+'api/v1/auth/refresh-tokens', {
-        refreshToken : user.tokens.refresh.token  
-      }).then((response) => 
-      {
+      const user = JSON.parse(localStorage.getItem('user'));
+      axios.post(`${this.endpointAPI}api/v1/auth/refresh-tokens`, {
+        refreshToken: user.tokens.refresh.token,
+      }).then((response) => {
         user.tokens = response.data;
-        localStorage.setItem("user", JSON.stringify(user))
+        localStorage.setItem('user', JSON.stringify(user));
       }).then(() => {
         this.onSubmit();
       });
-    }
+    },
   },
 };
 </script>

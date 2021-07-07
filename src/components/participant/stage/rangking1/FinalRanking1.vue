@@ -70,7 +70,7 @@
 </template>
 <script>
 export default {
-  name: "PenyisihanOSM",
+  name: 'PenyisihanOSM',
   data() {
     return {
       data: [],

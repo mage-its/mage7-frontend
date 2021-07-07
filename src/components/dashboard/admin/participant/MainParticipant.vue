@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-row class="bg-white p-3 mb-2 shadow-sm rounded text-bold" no-gutters> 
+        <b-row class="bg-white p-3 mb-2 shadow-sm rounded text-bold" no-gutters>
             <b-col  class="text-left" md="3">
                 <p>Peserta</p>
             </b-col>
@@ -14,7 +14,7 @@
                 <p>Pas Foto</p>
             </b-col>
         </b-row>
-        <b-row class="bg-white p-2 mb-2 shadow-sm rounded" no-gutters v-for="participant in participants" :key="participant._id"> 
+        <b-row class="bg-white p-2 mb-2 shadow-sm rounded" no-gutters v-for="participant in participants" :key="participant._id">
             <b-col md="1">
                 <img class="profile" v-bind:src="'../../'+participant.image"/>
             </b-col>
@@ -41,7 +41,7 @@
                 <router-link class="btn btn-primary" :to="participant._id">
                     <i class="fas fa-search"></i>
                     Detail
-                </router-link> 
+                </router-link>
             </b-col>
         </b-row>
     </div>
@@ -56,13 +56,13 @@ export default {
     },
     methods: {
         getParticipants() {
-            this.$store.dispatch('participant/getAllParticipant')
-        }
+            this.$store.dispatch('participant/getAllParticipant');
+        },
     },
     created() {
         this.getParticipants();
-    }
-}
+    },
+};
 </script>
 <style scoped>
 p {

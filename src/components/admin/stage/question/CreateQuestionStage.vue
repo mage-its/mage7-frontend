@@ -149,17 +149,17 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2"
+import Swal from 'sweetalert2';
 
 export default {
-  name: "CreateQuestionStage",
+  name: 'CreateQuestionStage',
   data() {
     return {
       question: {
-        stage: "",
-        content: "",
+        stage: '',
+        content: '',
         options: [],
-        key: "",
+        key: '',
       },
     };
   },
@@ -168,7 +168,7 @@ export default {
       return this.$store.state.question.questions;
     },
     stage() {
-      return JSON.parse(localStorage.getItem('stage'+this.$route.params.idStage));
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
     event() {
       return JSON.parse(localStorage.getItem('event'));
@@ -176,16 +176,14 @@ export default {
   },
   methods: {
     save(index) {
-      if (index == 0)
-        this.question.content = document.getElementById(index.toString()).value;
-      else {
+      if (index == 0) { this.question.content = document.getElementById(index.toString()).value; } else {
         this.question.options[index - 1].content = document.getElementById(index.toString()).value;
       }
     },
     createQuestion() {
-      var options = [];
-      var index = 0;
-      var letters = ["A", "B", "C", "D", "E"];
+      const options = [];
+      let index = 0;
+      const letters = ['A', 'B', 'C', 'D', 'E'];
       this.question.options.forEach((option) => {
         options.push({
           letter: letters[index],
@@ -195,14 +193,14 @@ export default {
       });
       this.question.options = options;
       this.$store
-        .dispatch("question/createQuestion", this.question)
+        .dispatch('question/createQuestion', this.question)
         .then(() => {
           Swal.fire({
-            icon: "success",
-            title: "Soal berhasil ditambahkan",
+            icon: 'success',
+            title: 'Soal berhasil ditambahkan',
             showConfirmButton: true,
           }).then(() => {
-            this.$router.push("/dashboard/stage/"+this.stage._id+"/question/");
+            this.$router.push(`/dashboard/stage/${this.stage._id}/question/`);
           });
         });
     },

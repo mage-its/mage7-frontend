@@ -61,7 +61,7 @@
           img-src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/theme/img-1-1000x600.jpg"
           style="width: 500px;"
         >
-        
+
         <div v-if="participant.participant.document.osis_card.status == 1">
           <b-button
             class="btn btn-primary"
@@ -158,10 +158,10 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../services/datetime";
+import * as datetime from './../../../../services/datetime';
 
 export default {
-  name: "MainSchedule",
+  name: 'MainSchedule',
   computed: {
     participant() {
       return this.$store.state.participant.participant;
@@ -169,9 +169,9 @@ export default {
   },
   methods: {
     getParticipant() {
-      this.$store.dispatch("participant/getParticipant", this.$route.params.id);
+      this.$store.dispatch('participant/getParticipant', this.$route.params.id);
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
   },

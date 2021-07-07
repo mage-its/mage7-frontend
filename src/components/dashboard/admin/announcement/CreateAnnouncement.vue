@@ -113,17 +113,17 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../services/datetime";
-import Swal from "sweetalert2";
+import * as datetime from './../../../../services/datetime';
+import Swal from 'sweetalert2';
 
 export default {
-  name: "CreateAnnouncement",
+  name: 'CreateAnnouncement',
   data() {
     return {
       announcement: {
-        eventId: "",
-        participantId: "",
-        adminId: "",
+        eventId: '',
+        participantId: '',
+        adminId: '',
       },
       step: 0,
     };
@@ -142,25 +142,25 @@ export default {
   methods: {
     createAnnouncement() {
       this.$store
-        .dispatch("announcement/createAnnouncement", this.announcement)
+        .dispatch('announcement/createAnnouncement', this.announcement)
         .then(
           () => {
             Swal.fire({
-              icon: "success",
-              title: "Pengumuman berhasil dibuat",
+              icon: 'success',
+              title: 'Pengumuman berhasil dibuat',
               showConfirmButton: true,
             }).then(() => {
-              this.$router.push("/dashboard/announcement/");
+              this.$router.push('/dashboard/announcement/');
             });
           },
-          () => {}
+          () => {},
         );
     },
     getParticipants() {
-      this.$store.dispatch("participant/getAllParticipant");
+      this.$store.dispatch('participant/getAllParticipant');
     },
     getEvents() {
-      this.$store.dispatch("event/getAllEvent");
+      this.$store.dispatch('event/getAllEvent');
     },
     chooseParticipant(participantId) {
       this.announcement.participantId = participantId;
@@ -175,7 +175,7 @@ export default {
       if (type == 1) this.step = 2;
       else this.step = 1;
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
   },

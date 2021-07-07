@@ -4,19 +4,19 @@
     </div>
 </template>
 <script>
-import AdminMainAnnouncement from './../../../components/dashboard/admin/announcement/MainAnnouncement.vue'
+import AdminMainAnnouncement from './../../../components/dashboard/admin/announcement/MainAnnouncement.vue';
 
 export default {
-    name : 'MainAnnouncement',
+    name: 'MainAnnouncement',
     components: {
         AdminMainAnnouncement,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
 <style scoped>
 .btn{

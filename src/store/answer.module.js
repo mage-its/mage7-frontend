@@ -13,9 +13,7 @@ export const answer = {
           commit('uploadAnswer', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },

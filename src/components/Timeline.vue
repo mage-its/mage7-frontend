@@ -11,7 +11,7 @@
                     <img src="@/assets/alarm.png"/>
                 </div>
                 <div class="col-10 col-md-5 order-1 order-md-3 py-3 timeline-date">
-                
+
                 </div>
             </div>
         </div>
@@ -19,72 +19,70 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
     data() {
       return {
-        timeline: []
-      }
+        timeline: [],
+      };
   },
-  methods : {
+  methods: {
     getDay(date) {
         date.setHours(date.getHours() - 7);
 
-        var tahun = date.getFullYear();
-        var month = date.getMonth();
-        var day = date.getDate();
+        const tahun = date.getFullYear();
+        let month = date.getMonth();
+        let day = date.getDate();
 
-        switch(month) {
-            case 0: month = "Januari"; break;
-            case 1: month = "Februari"; break;
-            case 2: month = "Maret"; break;
-            case 3: month = "April"; break;
-            case 4: month = "Mei"; break;
-            case 5: month = "Juni"; break;
-            case 6: month = "Juli"; break;
-            case 7: month = "Agustus"; break;
-            case 8: month = "September"; break;
-            case 9: month = "Oktober"; break;
-            case 10: month = "November"; break;
-            case 11: month = "Desember"; break;
+        switch (month) {
+            case 0: month = 'Januari'; break;
+            case 1: month = 'Februari'; break;
+            case 2: month = 'Maret'; break;
+            case 3: month = 'April'; break;
+            case 4: month = 'Mei'; break;
+            case 5: month = 'Juni'; break;
+            case 6: month = 'Juli'; break;
+            case 7: month = 'Agustus'; break;
+            case 8: month = 'September'; break;
+            case 9: month = 'Oktober'; break;
+            case 10: month = 'November'; break;
+            case 11: month = 'Desember'; break;
         }
 
-        day = date + " " + month + " " + tahun;
-    
+        day = `${date} ${month} ${tahun}`;
+
         return day;
     },
     getTime(date) {
         date.setHours(date.getHours() - 7);
 
-        var hour = date.getHours();
-        var minute = date.getMinutes();
+        let hour = date.getHours();
+        let minute = date.getMinutes();
 
-        if(hour<10)
-            hour = "0"+hour;
+        if (hour < 10) { hour = `0${hour}`; }
 
-        if(minute<10)
-            minute = "0"+minute;
+        if (minute < 10) { minute = `0${minute}`; }
 
-        var time = hour + ":" + minute;
-    
+        const time = `${hour}:${minute}`;
+
         return time;
-    }
+    },
     },
     mounted() {
     axios
         .get('http://anavaugm.com:3000/api/v1/session/all')
-        .then(res => {
-            res.data.data.forEach((event)=>{
+        .then((res) => {
+            res.data.data.forEach((event) => {
                 this.timeline.push({
-                    name: 'Sesi ' + event.number,
-                    time: this.getTime(new Date(event.start)) + " - " + this.getTime(new Date(event.end)),
-                })
-            })
+                    name: `Sesi ${event.number}`,
+                    time: `${this.getTime(new Date(event.start))} - ${this.getTime(new Date(event.end))}`,
+                });
+            });
         })
-        .catch(error => console.log(error))
-    }
-}
+        .catch(error => console.log(error));
+    },
+};
 </script>
 
 <style scoped>
@@ -102,7 +100,7 @@ export default {
 }
 .timeline h3, .timeline p {
     padding: 5px 15px;
-} 
+}
 .timeline h3{
     font-weight: lighter;
     background: rgb(50,50, 50);
@@ -135,7 +133,7 @@ export default {
 .timeline-nodes:nth-child(odd) .timeline-date {
     text-align: center;
 }
- 
+
 .timeline-nodes:nth-child(even) .timeline-date {
     text-align: center;
 }

@@ -114,11 +114,11 @@
 </template>
 <script>
 export default {
-  name: "Poster",
+  name: 'Poster',
   data() {
     return {
       loading: false,
-      message: "",
+      message: '',
       url: window.location.href,
     };
   },
@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes("openhouse");
+      return this.url.includes('openhouse');
     },
   },
   created() {

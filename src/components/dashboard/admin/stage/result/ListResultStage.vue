@@ -97,7 +97,7 @@
 </template>
 <script>
 export default {
-  name: "ListParticipantStage",
+  name: 'ListParticipantStage',
   data() {
     return {
       outline: {
@@ -110,15 +110,15 @@ export default {
   },
   computed: {
     answerForms() {
-      var list = this.$store.state.answerForm.answerForms;
-      var index = 0;
+      const list = this.$store.state.answerForm.answerForms;
+      let index = 0;
       list.forEach(() => {
-        if (this.event.name == "OSM" && this.stage.name == "preliminary") {
+        if (this.event.name == 'OSM' && this.stage.name == 'preliminary') {
           list[index].wrong = 60 - list[index].correct - list[index].empty;
           list[index].score = 4 * list[index].correct - list[index].wrong;
         } else if (
-          this.event.name == "The One" &&
-          this.stage.name == "preliminary"
+          this.event.name == 'The One' &&
+          this.stage.name == 'preliminary'
         ) {
           list[index].wrong = 49 - list[index].correct - list[index].empty;
         }
@@ -136,8 +136,8 @@ export default {
       return list;
     },
     participants() {
-      var index = 0;
-      var list = [];
+      let index = 0;
+      const list = [];
       this.answerForms.forEach(() => {
         list.push({
           name:
@@ -154,23 +154,21 @@ export default {
       return list;
     },
     stage() {
-      return JSON.parse(
-        localStorage.getItem("stage" + this.$route.params.idStage)
-      );
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
     event() {
-      return JSON.parse(localStorage.getItem("event"));
+      return JSON.parse(localStorage.getItem('event'));
     },
   },
   methods: {
     getAnswerForm() {
       this.$store.dispatch(
-        "answerForm/getAnswerFormByStage",
-        this.$route.params.idStage
+        'answerForm/getAnswerFormByStage',
+        this.$route.params.idStage,
       );
     },
     getPaymentStatus(participant) {
-      var paymentStatus = 0;
+      let paymentStatus = 0;
       participant.participant.events.forEach((event) => {
         event.stages.forEach((stage) => {
           if (stage.id == this.stage._id && event.number) paymentStatus = true;

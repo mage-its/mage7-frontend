@@ -401,23 +401,24 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../../services/datetime";
-import Swal from "sweetalert2";
+import * as datetime from './../../../../../services/datetime';
+import Swal from 'sweetalert2';
+
 export default {
-  name: "PenyisihanOSM",
+  name: 'PenyisihanOSM',
   data() {
     return {
       started_at: new Date(2021, 0, 17, 15, 0, 0),
       finished_at: new Date(2021, 0, 17, 24, 45, 0),
-      //started_at: new Date(2021, 0, 15, 29, 0, 0),
-      //finished_at: new Date(2021, 0, 15, 34, 0, 0),
+      // started_at: new Date(2021, 0, 15, 29, 0, 0),
+      // finished_at: new Date(2021, 0, 15, 34, 0, 0),
       step: 0,
       data: [],
       answerForm: null,
       currentNumber: 0,
       stageInformationOfParticipant: {},
       itemsTab1: [],
-      itemsTab2: [{ "Nomor pendaftaran": 0, "Terdaftar pada": 0 }],
+      itemsTab2: [{ 'Nomor pendaftaran': 0, 'Terdaftar pada': 0 }],
       displayHours: 0,
       displayMinutes: 0,
       displaySeconds: 0,
@@ -430,23 +431,23 @@ export default {
       timer: null,
       announcement: {},
       formParticipant: {
-        firstname: "",
-        lastname: "",
+        firstname: '',
+        lastname: '',
         grade: 10,
-        birthDate: "",
-        address: "",
-        phoneNumber: "",
-        schoolName: "",
-        schoolAddress: "",
+        birthDate: '',
+        address: '',
+        phoneNumber: '',
+        schoolName: '',
+        schoolAddress: '',
         region: 1,
       },
       document: {
-        type: "",
+        type: '',
       },
       changeEventDocument: 0,
       loading: false,
       fileName: {
-        event_document: "Unggah pakta integritas (*.pdf)",
+        event_document: 'Unggah pakta integritas (*.pdf)',
       },
     };
   },
@@ -455,29 +456,25 @@ export default {
       return this.$store.state.question.questions;
     },
     stage() {
-      return JSON.parse(
-        localStorage.getItem("stage" + this.$route.params.idStage)
-      );
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
     events() {
       return this.$store.state.event.events;
     },
     event() {
-      return JSON.parse(localStorage.getItem("event"));
+      return JSON.parse(localStorage.getItem('event'));
     },
     answerFormByParticipantAndStage() {
-      return JSON.parse(
-        localStorage.getItem("answerForm2" + this.$route.params.idStage)
-      );
+      return JSON.parse(localStorage.getItem(`answerForm2${this.$route.params.idStage}`));
     },
     participant() {
-      return JSON.parse(localStorage.getItem("user"));
+      return JSON.parse(localStorage.getItem('user'));
     },
     stageAnnouncements() {
       return this.$store.state.announcement.participantAnnouncements;
     },
     time() {
-      var today = new Date();
+      const today = new Date();
       today.setHours(today.getHours() + 7);
 
       return (
@@ -501,54 +498,54 @@ export default {
         this.month - 1,
         this.date,
         this.hour,
-        this.minute
+        this.minute,
       );
     },
   },
   methods: {
     getEventName(stageId) {
-      var name = "";
+      let name = '';
       this.events.forEach((event) => {
         event.stages.forEach((stage) => {
           if (stageId == stage._id) {
             switch (event.name) {
-              case "OSM":
+              case 'OSM':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Penyisihan";
+                  case 'preliminary':
+                    name = `${event.name} Penyisihan`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Semifinal";
+                  case 'semifinal':
+                    name = `${event.name} Semifinal`;
                     break;
-                  case "final":
-                    name = event.name + " Final";
+                  case 'final':
+                    name = `${event.name} Final`;
                     break;
                 }
                 break;
-              case "The One":
+              case 'The One':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Babak Gugur";
+                  case 'preliminary':
+                    name = `${event.name} Babak Gugur`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Babak Championship";
+                  case 'semifinal':
+                    name = `${event.name} Babak Championship`;
                     break;
                 }
                 break;
-              case "Started":
+              case 'Started':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Pekan Kreativitas";
+                  case 'preliminary':
+                    name = `${event.name} Pekan Kreativitas`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Final";
+                  case 'semifinal':
+                    name = `${event.name} Final`;
                     break;
                 }
                 break;
-              case "Sigma":
+              case 'Sigma':
                 name = event.name;
                 break;
-              case "Open House":
+              case 'Open House':
                 name = event.name;
                 break;
             }
@@ -563,46 +560,46 @@ export default {
     },
     addFile() {
       this.fileName.event_document = this.$refs.event_document.files[0].name.toString();
-      var fileExtension = /[.]/.exec(this.fileName.event_document)
+      const fileExtension = /[.]/.exec(this.fileName.event_document)
         ? /[^.]+$/.exec(this.fileName.event_document)
         : undefined;
-      if (fileExtension != "pdf") {
+      if (fileExtension != 'pdf') {
         Swal.fire({
-          title: "Format file tidak sesuai",
-          icon: "error",
+          title: 'Format file tidak sesuai',
+          icon: 'error',
           showConfirmButton: true,
         }).then();
-        this.fileName.event_document = "Unggah pakta integritas (*.pdf)";
+        this.fileName.event_document = 'Unggah pakta integritas (*.pdf)';
       }
     },
     uploadFile() {
-      var document = new FormData();
+      const document = new FormData();
       this.loading = true;
-      document.append("file", this.$refs.event_document.files[0]);
-      document.append("participantId", this.participant.id);
-      var formParticipant = {
+      document.append('file', this.$refs.event_document.files[0]);
+      document.append('participantId', this.participant.id);
+      const formParticipant = {
         id: this.event._id,
-        document: document,
+        document,
         participantId: this.participant.id,
       };
-      this.$store.dispatch("event/uploadEvent", formParticipant).then(
+      this.$store.dispatch('event/uploadEvent', formParticipant).then(
         (response) => {
           Swal.fire({
-            title: "Berhasil mengunggah dokumen",
-            icon: "success",
+            title: 'Berhasil mengunggah dokumen',
+            icon: 'success',
             showConfirmButton: true,
           }).then();
           this.loading = false;
           const participant = response.data.data;
-          var user = JSON.parse(localStorage.getItem("user"));
+          const user = JSON.parse(localStorage.getItem('user'));
           user.participant = participant.participant;
-          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem('user', JSON.stringify(user));
         },
-        () => {}
+        () => {},
       );
     },
     nextStep() {
-      var today = new Date();
+      const today = new Date();
       if (this.started_at.getTimezoneOffset() == -420) {
         today.setHours(today.getHours() + 7);
       }
@@ -613,8 +610,8 @@ export default {
         today.setHours(today.getHours() + 9);
       }
 
-      var isTime =
-        today > new Date(this.stageInformationOfParticipant.started_at) 
+      const isTime =
+        today > new Date(this.stageInformationOfParticipant.started_at);
       if (isTime) {
         if (this.stageInformationOfParticipant.document == 1) {
           this.step = 1;
@@ -623,15 +620,15 @@ export default {
           }
         } else {
           Swal.fire({
-            title: "Pakta integritas belum diunggah",
-            icon: "error",
+            title: 'Pakta integritas belum diunggah',
+            icon: 'error',
             showConfirmButton: true,
           });
         }
       } else {
         Swal.fire({
-          title: "Bukan waktu pengerjaan",
-          icon: "error",
+          title: 'Bukan waktu pengerjaan',
+          icon: 'error',
           showConfirmButton: true,
         });
       }
@@ -640,20 +637,19 @@ export default {
       this.currentNumber = number;
     },
     next() {
-      if (this.currentNumber < this.answerForm.questions.length - 1)
-        this.currentNumber++;
+      if (this.currentNumber < this.answerForm.questions.length - 1) { this.currentNumber++; }
     },
     back() {
       if (this.currentNumber > 0) this.currentNumber--;
     },
     setDoubtful() {
-      var _answerForm = this.answerForm;
+      const _answerForm = this.answerForm;
       if (_answerForm.doubtful[this.currentNumber] != true) {
         _answerForm.doubtful[this.currentNumber] = true;
       } else {
         _answerForm.answers[this.currentNumber] = false;
       }
-      var number = this.currentNumber;
+      const number = this.currentNumber;
       this.currentNumber = -1;
       this.currentNumber = number;
       this.saveAnswerForm(_answerForm);
@@ -661,55 +657,55 @@ export default {
     getAllAnnouncementByStage() {
       this.$store
         .dispatch(
-          "announcement/getAllAnnouncementByStage",
-          this.$route.params.idStage
+          'announcement/getAllAnnouncementByStage',
+          this.$route.params.idStage,
         )
         .then((response) => {
           console.log(response);
         });
     },
     selectAnswer(letter) {
-      var _answerForm = this.answerForm;
+      const _answerForm = this.answerForm;
       _answerForm.answers[this.currentNumber] = letter;
       this.saveAnswerForm(_answerForm);
     },
     reset() {
       new Swal({
         title:
-          "Anda akan log out dan jika anda telah mengerjakan sebelumnya maka data tersebut akan ikut terhapus, anda yakin?",
+          'Anda akan log out dan jika anda telah mengerjakan sebelumnya maka data tersebut akan ikut terhapus, anda yakin?',
         showDenyButton: true,
         buttons: true,
       }).then((result) => {
         if (result.isConfirmed) {
           if (
-            localStorage.getItem("answerForm2" + this.$route.params.idStage) !=
+            localStorage.getItem(`answerForm2${this.$route.params.idStage}`) !=
             null
           ) {
-            localStorage.removeItem("answerForm2" + this.$route.params.idStage);
+            localStorage.removeItem(`answerForm2${this.$route.params.idStage}`);
           }
 
-          var answerForm = {
+          const answerForm = {
             idParticipant: this.participant.id,
             idStage: this.$route.params.idStage,
           };
 
           this.$store
-            .dispatch("answerForm/deleteAnswerForm", answerForm)
+            .dispatch('answerForm/deleteAnswerForm', answerForm)
             .then(() => {
               localStorage.clear();
-              this.$router.go("http://adminsimulasi.anavaugm.com");
+              this.$router.go('http://adminsimulasi.anavaugm.com');
             });
         }
       });
     },
     getAnswerFormByParticipantAndStage() {
       if (this.answerFormByParticipantAndStage == null) {
-        var answerForm = {};
+        const answerForm = {};
         answerForm.stageId = this.$route.params.idStage;
         answerForm.participantId = this.participant.id;
         this.$store.dispatch(
-          "answerForm/getAnswerFormByParticipantAndStage",
-          answerForm
+          'answerForm/getAnswerFormByParticipantAndStage',
+          answerForm,
         );
       } else {
         this.answerForm = this.answerFormByParticipantAndStage;
@@ -717,54 +713,46 @@ export default {
     },
     saveAnswerForm(_answerForm) {
       localStorage.setItem(
-        "answerForm2" + this.$route.params.idStage,
-        JSON.stringify(_answerForm)
+        `answerForm2${this.$route.params.idStage}`,
+        JSON.stringify(_answerForm),
       );
     },
     createAnswerForm() {
-      var user = this.participant;
+      const user = this.participant;
       localStorage.clear();
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
       if (this.stageInformationOfParticipant.document == 1) {
-        var _answerForm = {};
+        const _answerForm = {};
         _answerForm.stageId = this.$route.params.idStage;
         _answerForm.participantId = this.participant.id;
         this.$store
-          .dispatch("answerForm/createAnswerForm", _answerForm)
+          .dispatch('answerForm/createAnswerForm', _answerForm)
           .then((answerForm) => {
-            var _answerForm = JSON.parse(JSON.stringify(answerForm));
+            const _answerForm = JSON.parse(JSON.stringify(answerForm));
             if (!_answerForm.session) {
-              var today = new Date();
-              var started_at = new Date(this.stage.started_at);
-              var finished_at = new Date(this.stage.finished_at);
-              started_at = new Date(
-                started_at.getTime() + today.getTimezoneOffset() * 60 * 1000
-              );
-              finished_at = new Date(
-                finished_at.getTime() + today.getTimezoneOffset() * 60 * 1000
-              );
-              started_at.setHours(
-                started_at.getHours() +
-                  parseInt(this.stageInformationOfParticipant.session)
-              );
-              finished_at.setHours(
-                finished_at.getHours() +
-                  parseInt(this.stageInformationOfParticipant.session)
-              );
+              const today = new Date();
+              let started_at = new Date(this.stage.started_at);
+              let finished_at = new Date(this.stage.finished_at);
+              started_at = new Date(started_at.getTime() + today.getTimezoneOffset() * 60 * 1000);
+              finished_at = new Date(finished_at.getTime() + today.getTimezoneOffset() * 60 * 1000);
+              started_at.setHours(started_at.getHours() +
+                  parseInt(this.stageInformationOfParticipant.session));
+              finished_at.setHours(finished_at.getHours() +
+                  parseInt(this.stageInformationOfParticipant.session));
 
               _answerForm.started_at = started_at.toISOString();
               _answerForm.finished_at = finished_at.toISOString();
               _answerForm.session = this.stageInformationOfParticipant.session;
-              const format = _answerForm.finished_at.split("-");
+              const format = _answerForm.finished_at.split('-');
               this.year = parseInt(format[0]);
               this.month = parseInt(format[1]);
-              const time = format[2].split("T");
+              const time = format[2].split('T');
               this.date = parseInt(time[0]);
-              const clock = time[1].split(":");
+              const clock = time[1].split(':');
               this.hour = parseInt(clock[0]);
               this.minute = parseInt(clock[1]);
               this.showRemaining();
-              var doubtful = [];
+              const doubtful = [];
               _answerForm.answers = [];
               _answerForm.questions.forEach(() => {
                 doubtful.push(null);
@@ -772,16 +760,16 @@ export default {
               });
               _answerForm.doubtful = doubtful;
               localStorage.setItem(
-                "answerForm2" + this.$route.params.idStage,
-                JSON.stringify(_answerForm)
+                `answerForm2${this.$route.params.idStage}`,
+                JSON.stringify(_answerForm),
               );
               this.answerForm = _answerForm;
             }
           });
       } else {
         Swal.fire({
-          icon: "error",
-          title: "Pakta integritas belum diunggah",
+          icon: 'error',
+          title: 'Pakta integritas belum diunggah',
           text: this.message,
           showConfirmButton: true,
         }).then(() => {});
@@ -789,15 +777,15 @@ export default {
     },
     submitAnswerForm() {
       new Swal({
-        title: "Apakah anda yakin untuk menyelesaikan saat ini?",
+        title: 'Apakah anda yakin untuk menyelesaikan saat ini?',
         showDenyButton: true,
         buttons: true,
       }).then((result) => {
         if (result.isConfirmed) {
-          this.answerForm.eventName = "OSM";
-          this.answerForm.stageName = "preliminary";
+          this.answerForm.eventName = 'OSM';
+          this.answerForm.stageName = 'preliminary';
           this.$store
-            .dispatch("answerForm/submitAnswerForm", this.answerForm)
+            .dispatch('answerForm/submitAnswerForm', this.answerForm)
             .then((response) => {
               this.answerForm = response;
               this.saveAnswerForm(response);
@@ -808,18 +796,18 @@ export default {
     },
     getAllQuestionByStage() {
       this.$store.dispatch(
-        "question/getAllQuestionByStage",
-        this.$route.params.idStage
+        'question/getAllQuestionByStage',
+        this.$route.params.idStage,
       );
     },
     updateQuestion() {
-      this.$store.dispatch("question/updateQuestion", this.question);
+      this.$store.dispatch('question/updateQuestion', this.question);
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
     getStage() {
-      this.$store.dispatch("stage/getStage", this.$route.params.idStage);
+      this.$store.dispatch('stage/getStage', this.$route.params.idStage);
     },
     getStageInformationOfParticipant() {
       this.participant.participant.events.forEach((event) => {
@@ -828,12 +816,12 @@ export default {
             this.stageInformationOfParticipant = stage;
             this.stageInformationOfParticipant.number = event.number;
             this.stageInformationOfParticipant.document = event.document;
-            var started_at = new Date(this.stage.started_at);
-            var finished_at = new Date(this.stage.finished_at);
+            let started_at = new Date(this.stage.started_at);
+            let finished_at = new Date(this.stage.finished_at);
 
             this.started_at = new Date(2021, 0, 18, 26, 15, 0);
             this.finished_at = new Date(2021, 0, 18, 28, 0, 0);
-            
+
             started_at = this.started_at;
             finished_at = this.finished_at;
 
@@ -847,27 +835,26 @@ export default {
     },
     showRemaining() {
       const timer = setInterval(() => {
-        var now = new Date();
-        var today = new Date();
+        const now = new Date();
+        const today = new Date();
 
         today.setHours(today.getHours() + 7);
 
-        var finished_at = new Date(
-          this.stageInformationOfParticipant.finished_at
-        );
+        let finished_at = new Date(this.stageInformationOfParticipant.finished_at);
 
-        //Sesuai WIB
+        // Sesuai WIB
         finished_at = new Date(2021, 0, 18, 21, 0, 0);
-        
-        if (this.answerForm != null)
-          if (this.answerForm.correct != 0 && this.answerForm.wrong != 0) {
+
+        if (this.answerForm != null) {
+ if (this.answerForm.correct != 0 && this.answerForm.wrong != 0) {
             if (this.step == 1) this.step = 0;
           }
+}
         if (now > finished_at) {
-          this.answerForm.eventName = "OSM";
-          this.answerForm.stageName = "preliminary";
+          this.answerForm.eventName = 'OSM';
+          this.answerForm.stageName = 'preliminary';
           this.$store
-            .dispatch("answerForm/submitAnswerForm", this.answerForm)
+            .dispatch('answerForm/submitAnswerForm', this.answerForm)
             .then((response) => {
               this.answerForm = response;
               this.saveAnswerForm(response);
@@ -876,19 +863,16 @@ export default {
           clearInterval(timer);
           this.show = false;
           if (this.step == 1) this.step = 0;
-          return;
         } else {
           const distance = finished_at.getTime() - now.getTime();
           const days = Math.floor(distance / this._days);
           const hours = Math.floor((distance % this._days) / this._hours);
           const minutes = Math.floor((distance % this._hours) / this._minutes);
-          const seconds = Math.floor(
-            (distance % this._minutes) / this._seconds
-          );
-          this.displaySeconds = seconds < 10 ? "0" + seconds : seconds;
-          this.displayMinutes = minutes < 10 ? "0" + minutes : minutes;
-          this.displayHours = hours < 10 ? "0" + hours : hours;
-          this.displayDays = days < 10 ? "0" + days : days;
+          const seconds = Math.floor((distance % this._minutes) / this._seconds);
+          this.displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+          this.displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+          this.displayHours = hours < 10 ? `0${hours}` : hours;
+          this.displayDays = days < 10 ? `0${days}` : days;
         }
       }, 1000);
     },
@@ -900,21 +884,20 @@ export default {
     if (this.answerForm != null) {
       if (this.stageInformationOfParticipant.id == this.$route.params.idStage) {
         if (this.step == 1) {
-          if (this.answerFormByParticipantAndStage.score != null)
-            clearInterval(this.timer);
+          if (this.answerFormByParticipantAndStage.score != null) { clearInterval(this.timer); }
           this.step = 1;
-          const format = this.answerForm.finished_at.split("-");
+          const format = this.answerForm.finished_at.split('-');
           this.year = parseInt(format[0]);
           this.month = parseInt(format[1]);
-          const time = format[2].split("T");
+          const time = format[2].split('T');
           this.date = parseInt(time[0]);
-          const clock = time[1].split(":");
+          const clock = time[1].split(':');
           this.hour = parseInt(clock[0]);
           this.minute = parseInt(clock[1]);
           this.showRemaining();
         }
       } else {
-        /*this.answerForm.stageId = this.$route.params.idStage;
+        /* this.answerForm.stageId = this.$route.params.idStage;
         this.answerForm.participantId = this.participant.id;
         this.getStage();
         this.showRemaining();
@@ -947,12 +930,12 @@ export default {
     this.getAllAnnouncementByStage();
     this.items = [
       {
-        "Mulai pengerjaan": this.getDateTime("datetime", this.stage.started_at),
-        "Selesai pengerjaan": this.getDateTime(
-          "datetime",
-          this.stage.finished_at
+        'Mulai pengerjaan': this.getDateTime('datetime', this.stage.started_at),
+        'Selesai pengerjaan': this.getDateTime(
+          'datetime',
+          this.stage.finished_at,
         ),
-        "Pengumuman lolos": this.getDateTime("datetime", this.stage.started_at),
+        'Pengumuman lolos': this.getDateTime('datetime', this.stage.started_at),
       },
     ];
     this.getStageInformationOfParticipant();

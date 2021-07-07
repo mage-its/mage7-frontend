@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "IndexAnnouncement",
+  name: 'IndexAnnouncement',
   computed: {
     user() {
       return this.$store.state.auth.user;

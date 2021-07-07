@@ -112,7 +112,7 @@
 </template>
 <script>
 export default {
-  name: "MainSchedule",
+  name: 'MainSchedule',
   data() {
     return {
       outline: {
@@ -121,8 +121,8 @@ export default {
         identity: 0,
         osis_card: 0,
         image: 0,
-      }
-    }
+      },
+    };
   },
   computed: {
     participants() {
@@ -131,21 +131,15 @@ export default {
   },
   methods: {
     getParticipants() {
-      this.$store.dispatch("participant/getAllParticipant").then(
-        ()=>{
-          this.participants.forEach((participant)=>{
+      this.$store.dispatch('participant/getAllParticipant').then(() => {
+          this.participants.forEach((participant) => {
             this.outline.participants++;
-            if(participant.verification == 1)
-              this.outline.email_verification++;
-            if(participant.firstname.length > 0)
-              this.outline.identity++;
-            if(participant.participant.document.osis_card == 1)
-              this.outline.osis_card++;
-            if(participant.participant.document.image == 1)
-              this.outline.image++;
-          })
-        }
-      );
+            if (participant.verification == 1) { this.outline.email_verification++; }
+            if (participant.firstname.length > 0) { this.outline.identity++; }
+            if (participant.participant.document.osis_card == 1) { this.outline.osis_card++; }
+            if (participant.participant.document.image == 1) { this.outline.image++; }
+          });
+        });
     },
   },
   created() {

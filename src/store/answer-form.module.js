@@ -14,9 +14,7 @@ export const answerForm = {
           commit('setAnswerForms', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAllAnswerFormByStage({ commit }, idStage) {
@@ -25,9 +23,7 @@ export const answerForm = {
           commit('setAnswerForms', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAnswerForm({ commit }, id) {
@@ -36,9 +32,7 @@ export const answerForm = {
           commit('setAnswerForm', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAnswerFormByStage({ commit }, answerForm) {
@@ -47,22 +41,16 @@ export const answerForm = {
           commit('setAnswerForms', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAnswerFormByParticipantAndStage({ commit }, answerForm) {
-      return AnswerFormService.getAnswerFormByParticipantAndStage(
-        answerForm
-      ).then(
+      return AnswerFormService.getAnswerFormByParticipantAndStage(answerForm).then(
         (response) => {
           if (response.data.data != undefined) commit('setAnswerForm', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     createAnswerForm({ commit }, answerForm) {
@@ -71,9 +59,7 @@ export const answerForm = {
           commit('createAnswerForm', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     submitAnswerForm({ commit }, answerForm) {
@@ -82,9 +68,7 @@ export const answerForm = {
           commit('submitAnswerForm', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     updateAnswerForm({ commit }, answerForm) {
@@ -93,9 +77,7 @@ export const answerForm = {
           commit('updateAnswerForm', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     setAnswerFormScore({ commit }, answerForm) {
@@ -104,9 +86,7 @@ export const answerForm = {
           commit('updateAnswerForm', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     deleteAnswerForm({ commit }, answerForm) {
@@ -115,9 +95,7 @@ export const answerForm = {
           commit('updateAnswerForm', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },
@@ -128,7 +106,7 @@ export const answerForm = {
     setAnswerForm(state, answerForm) {
       state.answerForm = answerForm;
 
-      localStorage.setItem('answerForm2'+answerForm.stage, JSON.stringify(answerForm));
+      localStorage.setItem(`answerForm2${answerForm.stage}`, JSON.stringify(answerForm));
     },
     createAnswerForm() {},
     submitAnswerForm() {},

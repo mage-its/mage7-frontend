@@ -107,7 +107,7 @@
                   style="height:55px; width:210px;"
                 />
               </div>
-              
+
             </div>
           </div>
           <div class="col-lg-4 text-left">
@@ -176,7 +176,7 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: 'Footer',
 };
 </script>
 <style scoped>

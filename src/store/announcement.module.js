@@ -6,10 +6,10 @@ export const announcement = {
     announcements: [],
     participantAnnouncements: [],
     stageAnnouncements: [],
-    announcement: {}
+    announcement: {},
   },
   getters: {
-    
+
   },
   actions: {
     getAllAnnouncement({ commit }) {
@@ -18,9 +18,7 @@ export const announcement = {
           commit('setAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getGeneralAnnouncement({ commit }) {
@@ -29,9 +27,7 @@ export const announcement = {
           commit('setAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAllAnnouncementByStage({ commit }, stageId) {
@@ -40,9 +36,7 @@ export const announcement = {
           commit('setStageAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAllAnnouncementByParticipant({ commit }, participantId) {
@@ -51,9 +45,7 @@ export const announcement = {
           commit('setParticipantAnnouncements', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAnnouncement({ commit }, id) {
@@ -62,20 +54,16 @@ export const announcement = {
           commit('setAnnouncement', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
-    createAnnouncement({ commit },announcement) {
+    createAnnouncement({ commit }, announcement) {
       return AnnouncementService.createAnnouncement(announcement).then(
         (response) => {
           commit('createAnnouncement', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },
@@ -94,7 +82,6 @@ export const announcement = {
     },
     createAnnouncement() {
 
-    }
+    },
   },
 };
-  

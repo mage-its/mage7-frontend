@@ -103,7 +103,7 @@
             IoT Dev
           </a>
         </li>
-        
+
         <li>
           <a href="/competition/olim" @click="toggle()" v-if="subnav_competition_min">
             Olimpiade
@@ -117,7 +117,7 @@
         <li @click="toggle()">
           <a
             class="register"
-            
+
             @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
           >
             Register
@@ -126,7 +126,7 @@
         <li @click="toggle()">
           <a
             class="login"
-            
+
             @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
           >
             Login
@@ -155,16 +155,16 @@ export default {
       this.show = !this.show;
     },
     toggleSubNavCompetition() {
-      this.subnav_competition= !this.subnav_competition;
+      this.subnav_competition = !this.subnav_competition;
     },
     toggleSubNavCompetitionMin() {
-      this.subnav_competition_min= !this.subnav_competition_min;
-    }
+      this.subnav_competition_min = !this.subnav_competition_min;
+    },
   },
 
   mounted() {
-    window.addEventListener("scroll", this.updateScroll);
-  }
+    window.addEventListener('scroll', this.updateScroll);
+  },
 };
 </script>
 <style scoped>

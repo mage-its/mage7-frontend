@@ -99,7 +99,7 @@ const router = new Router({
 				component: ConfirmationEmail,
 				meta: {
 					title: 'ConfirmationEmail',
-				}
+				},
 			},
 			{
 				path: '',
@@ -107,7 +107,7 @@ const router = new Router({
 				component: Main,
 				meta: {
 					title: 'Home',
-				}
+				},
 			},
 			{
 				path: 'about',
@@ -115,7 +115,7 @@ const router = new Router({
 				component: About,
 				meta: {
 					title: 'About',
-				}
+				},
 			},
 			{
 				path: 'login',
@@ -123,7 +123,7 @@ const router = new Router({
 				component: Login,
 				meta: {
 					title: 'About',
-				}
+				},
 			},
 			{
 				path: 'register',
@@ -131,7 +131,7 @@ const router = new Router({
 				component: Register,
 				meta: {
 					title: 'About',
-				}
+				},
 			},
 			{
 				path: 'forgot-password',
@@ -139,7 +139,7 @@ const router = new Router({
 				component: ForgotPassword,
 				meta: {
 					title: 'About',
-				}
+				},
 			},
 			{
 				path: 'change-password/:id',
@@ -147,7 +147,7 @@ const router = new Router({
 				component: ChangePassword,
 				meta: {
 					title: 'About',
-				}
+				},
 			},
 			{
 				path: 'confirm-email/:id',
@@ -155,7 +155,7 @@ const router = new Router({
 				component: ConfirmationEmail,
 				meta: {
 					title: 'About',
-				}
+				},
 			},
 			{
 				path: 'competition',
@@ -170,7 +170,7 @@ const router = new Router({
 					component: AppDev,
 					meta: {
 						title: 'App',
-					}
+					},
 				},
 				{
 					path: 'game',
@@ -178,7 +178,7 @@ const router = new Router({
 					component: GameDev,
 					meta: {
 						title: 'Game',
-					}
+					},
 				},
 				{
 					path: 'iot',
@@ -186,7 +186,7 @@ const router = new Router({
 					component: IoTDev,
 					meta: {
 						title: 'IoT',
-					}
+					},
 				},
 				{
 					path: 'olim',
@@ -194,9 +194,9 @@ const router = new Router({
 					component: Olimpiade,
 					meta: {
 						title: 'Olimpiade',
-					}
+					},
 				},
-				]
+				],
 			},
 			{
 				path: 'dashboard',
@@ -237,17 +237,6 @@ const router = new Router({
 					name: 'DashboardMain',
 					component: DashboardMain,
 				},
-				// {
-
-				// 	path: 'article',
-				// 	name: 'IndexArticle',
-				// 	component: IndexArticle,
-				// },
-				// {
-				// 	path: 'twibbon',
-				// 	name: 'IndexTwibbon',
-				// 	component: IndexTwibbon,
-				// },
 				{
 					path: 'createpayment',
 					name: 'CreatePayment',
@@ -258,22 +247,6 @@ const router = new Router({
 					name: 'UploadProposal',
 					component: UploadProposal,
 				},
-				// {
-				//     path: 'payment',
-				//     name: 'IndexPayment',
-				//     component: IndexPayment,
-				//     children: [{
-				//             path: '',
-				//             name: 'MainPayment',
-				//             component: MainPayment,
-				//         },
-				//         {
-				//             path: 'add',
-				//             name: 'CreatePayment',
-				//             component: CreatePayment,
-				//         },
-				//     ],
-				// },
 				{
 					path: 'announcement',
 					name: 'IndexAnnouncement',
@@ -342,8 +315,8 @@ const router = new Router({
 							path: '',
 							name: 'SettingEvent',
 							component: SettingEvent,
-						},],
-					},],
+						}],
+					}],
 				},
 				{
 					path: 'stage/:idStage',
@@ -396,11 +369,11 @@ const router = new Router({
 					},
 					],
 				},
-				]
-			}
-			]
-		},]
-})
+				],
+			},
+			],
+		}],
+});
 
 
 router.beforeEach((to, from, next) => {

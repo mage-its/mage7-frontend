@@ -7,16 +7,16 @@
 import AdminCreateQuestionStage from './../../../../components/dashboard/admin/stage/question/CreateQuestionStage.vue';
 
 export default {
-    name : 'CreateQuestionStage',
+    name: 'CreateQuestionStage',
     components: {
         AdminCreateQuestionStage,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
+        },
     },
-}
+};
 </script>
 <style scoped>
 .btn{

@@ -7,18 +7,18 @@
 <script>
 
 export default {
-    name: "IndexBabakChampionRangking1",
+    name: 'IndexBabakChampionRangking1',
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style scoped> 
+<style scoped>
 .header{
     min-height: 90px;
     min-width: 100%;
-    padding: 30px; 
+    padding: 30px;
 }
 </style>

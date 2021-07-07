@@ -21,7 +21,7 @@
     >
       <h1>Kategori</h1>
       <b-row>
-        <b-col lg="1" cols="1"> 
+        <b-col lg="1" cols="1">
           <i class="icon fas fa-users"></i>
         </b-col>
         <b-col lg="10" cols="9">
@@ -86,7 +86,7 @@
         <b-col lg="1" cols="1">
           <i class="icon fas fa-gift fa-9x"></i>
         </b-col>
-        <b-col lg="10" cols="9"> 
+        <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text text-white">
               Rp 1.300.000
@@ -104,7 +104,7 @@
         <b-col lg="1" cols="1">
           <i class="icon fas fa-money-bill-wave fa-9x"></i>
         </b-col>
-        <b-col lg="10" cols="9"> 
+        <b-col lg="10" cols="9">
           <b-container class="description">
             <h2 class="text text-white">
               Rp 45.000
@@ -140,11 +140,11 @@
 </template>
 <script>
 export default {
-  name: "Rank1",
+  name: 'Rank1',
   data() {
     return {
       loading: false,
-      message: "",
+      message: '',
       url: window.location.href,
     };
   },
@@ -155,7 +155,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes("rank1");
+      return this.url.includes('rank1');
     },
   },
   created() {

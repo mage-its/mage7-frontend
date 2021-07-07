@@ -1,6 +1,6 @@
 <template>
   <div class="login-page">
-    <div class="background-login"> 
+    <div class="background-login">
     </div>
     <div class="login-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
@@ -95,19 +95,19 @@
 </template>
 <script>
 // import User from "../models/user";
-import Swal from "sweetalert2";
-import firebase from "firebase";
+import Swal from 'sweetalert2';
+import firebase from 'firebase';
 
 export default {
-  name: "Login",
+  name: 'Login',
   data() {
     return {
-      user : {
-        email : "",
-        password : ""
+      user: {
+        email: '',
+        password: '',
       },
       loading: false,
-      message: "",
+      message: '',
       url: window.location.href,
     };
   },
@@ -122,17 +122,17 @@ export default {
       this.loading = true;
 
       if (this.user.email && this.user.password) {
-        this.$store.dispatch("auth/login", this.user).then(
+        this.$store.dispatch('auth/login', this.user).then(
           (user) => {
             Swal.fire({
-              icon: "success",
-              title: "Login berhasil",
+              icon: 'success',
+              title: 'Login berhasil',
               text: this.id,
               showConfirmButton: true,
             }).then(() => {
-              this.$router.push("/dashboard");
+              this.$router.push('/dashboard');
               location.reload();
-            })
+            });
 
             // localStorage.setItem('id', JSON.stringify(user.user.id));
           },
@@ -144,84 +144,81 @@ export default {
               error.message ||
               error.toString();
             Swal.fire({
-              icon: "error",
-              title: "Login gagal",
+              icon: 'error',
+              title: 'Login gagal',
               text: this.message,
               showConfirmButton: true,
             }).then(() => {});
-          }
-        )
+          },
+        );
       }
     },
     getUrl() {
-      return this.url.includes("login");
+      return this.url.includes('login');
     },
     signInWithGoogle() {
-      var provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope("profile");
-      provider.addScope("email");
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then(function(result) {
-          var user = result.user;
+        .then(function (result) {
+          const { user } = result;
 
           Swal.fire({
-              icon: "success",
-              title: "Selamat datang "+user.displayName,
+              icon: 'success',
+              title: `Selamat datang ${user.displayName}`,
               showConfirmButton: true,
             }).then(() => {
-              this.$store.dispatch('ui/changeWelcomeComponent', 'welcome')
-              this.$router.push("/dashboard");
+              this.$store.dispatch('ui/changeWelcomeComponent', 'welcome');
+              this.$router.push('/dashboard');
             });
-          
         });
     },
     signInWithFacebook() {
-      var provider = new firebase.auth.FacebookAuthProvider();
-      provider.addScope("profile");
-      provider.addScope("email");
+      const provider = new firebase.auth.FacebookAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then(function(result) {
-          var user = result.user;
+        .then(function (result) {
+          const { user } = result;
 
           Swal.fire({
-              icon: "success",
-              title: "Selamat datang "+user.displayName,
+              icon: 'success',
+              title: `Selamat datang ${user.displayName}`,
               showConfirmButton: true,
             }).then(() => {
-              this.$router.push("/dashboard");
+              this.$router.push('/dashboard');
             });
-          
         });
     },
     signInWithTwitter() {
-      var provider = new firebase.auth.TwitterAuthProvider();
+      const provider = new firebase.auth.TwitterAuthProvider();
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then(function(result) {
-          var user = result.user;
+        .then(function (result) {
+          const { user } = result;
 
           Swal.fire({
-              icon: "success",
-              title: "Selamat datang "+user.displayName,
+              icon: 'success',
+              title: `Selamat datang ${user.displayName}`,
               showConfirmButton: true,
             }).then(() => {
-              this.$router.push("/dashboard");
+              this.$router.push('/dashboard');
             });
-          
         });
-    }
+    },
   },
   mounted() {
-    
+
   },
   updated() {
-    
-  }
+
+  },
 };
 </script>
 <style scoped>

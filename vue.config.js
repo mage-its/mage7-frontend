@@ -1,10 +1,10 @@
 module.exports = {
-    chainWebpack: config => {
+    chainWebpack: (config) => {
         config
             .plugin('html')
-            .tap(args => {
-                args[0].title = "MAGE 7";
+            .tap((args) => {
+                args[0].title = 'MAGE 7';
                 return args;
-            })
-    }
-}
+            });
+    },
+};

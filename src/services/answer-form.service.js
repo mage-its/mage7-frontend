@@ -1,15 +1,14 @@
-import axios from "axios";
-import header from "./header";
+import axios from 'axios';
+import header from './header';
 
-const API_URL = "http://anavaugm.com:3000/api/answer-form/";
-//const API_URL = "http://anavaugm.com:3000/api/answer-form/";
+const API_URL = 'https://mage-its.com/api/answer-form/';
 
 class AnswerFormService {
   getAllAnswerForm() {
-    return axios.get(API_URL + "all", header());
+    return axios.get(`${API_URL}all`, header());
   }
   getAllAnswerFormByStage(idStage) {
-    return axios.get(API_URL + "stage/" + idStage, header(true));
+    return axios.get(`${API_URL}stage/${idStage}`, header(true));
   }
   getAnswerForm(id) {
     return axios.get(API_URL + id, header());
@@ -20,8 +19,8 @@ class AnswerFormService {
       answerForm.participantId = answerForm.participant;
     }
     return axios.get(
-      API_URL + answerForm.participantId + "/" + answerForm.stageId,
-      header()
+      `${API_URL + answerForm.participantId}/${answerForm.stageId}`,
+      header(),
     );
   }
   createAnswerForm(answerForm) {
@@ -34,13 +33,13 @@ class AnswerFormService {
     return axios.put(API_URL + answerForm._id, answerForm, header());
   }
   setAnswerFormScore(answerForm) {
-    return axios.put(API_URL + answerForm._id + "/score", answerForm, header());
+    return axios.put(`${API_URL + answerForm._id}/score`, answerForm, header());
   }
   deleteAnswerForm(answerForm) {
     return axios.delete(
-      API_URL + answerForm.idStage + "/" + answerForm.idParticipant,
+      `${API_URL + answerForm.idStage}/${answerForm.idParticipant}`,
       answerForm,
-      header()
+      header(),
     );
   }
 }

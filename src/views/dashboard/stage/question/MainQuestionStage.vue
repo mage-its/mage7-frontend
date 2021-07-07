@@ -18,23 +18,23 @@
         v-if="stage.name == 'final'" />
       </div>
 
-      
+
     </div>
   </div>
 </template>
 <script>
-import AdminListQuestionStage from "./../../../../components/dashboard/admin/stage/question/ListQuestionStage.vue";
+import AdminListQuestionStage from './../../../../components/dashboard/admin/stage/question/ListQuestionStage.vue';
 
-import UploadAnswerFile from "./../../../../components/dashboard/participant/stage/UploadFileAnswer.vue";
-import ParticipantPenyisihanOSM from "./../../../../components/dashboard/participant/stage/osm/PenyisihanOSM.vue";
-import ParticipantSemifinalOSM from "./../../../../components/dashboard/participant/stage/osm/SemifinalOSM.vue";
-import ParticipantFinalOSM from "./../../../../components/dashboard/participant/stage/osm/FinalOSM.vue";
+import UploadAnswerFile from './../../../../components/dashboard/participant/stage/UploadFileAnswer.vue';
+import ParticipantPenyisihanOSM from './../../../../components/dashboard/participant/stage/osm/PenyisihanOSM.vue';
+import ParticipantSemifinalOSM from './../../../../components/dashboard/participant/stage/osm/SemifinalOSM.vue';
+import ParticipantFinalOSM from './../../../../components/dashboard/participant/stage/osm/FinalOSM.vue';
 
-import ParticipantPekanFinalPoster from "./../../../../components/dashboard/participant/stage/poster/IndexPoster.vue";
-import ParticipantPekanKreativitasPoster from "./../../../../components/dashboard/participant/stage/poster/IndexPoster.vue";
+import ParticipantPekanFinalPoster from './../../../../components/dashboard/participant/stage/poster/IndexPoster.vue';
+import ParticipantPekanKreativitasPoster from './../../../../components/dashboard/participant/stage/poster/IndexPoster.vue';
 
 export default {
-  name: "ListQuestionStage",
+  name: 'ListQuestionStage',
   components: {
     AdminListQuestionStage,
     UploadAnswerFile,

@@ -5,24 +5,24 @@
     </div>
 </template>
 <script>
-import ParticipantPaketBabakChampionRangking1 from './../../../../components/dashboard/participant/stage/rangking1/PaketBabakChampionRangking1.vue'
+import ParticipantPaketBabakChampionRangking1 from './../../../../components/dashboard/participant/stage/rangking1/PaketBabakChampionRangking1.vue';
 
 export default {
-    name: "PaketBabakChampionRangking1",
+    name: 'PaketBabakChampionRangking1',
     components: {
-        ParticipantPaketBabakChampionRangking1
+        ParticipantPaketBabakChampionRangking1,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style scoped> 
+<style scoped>
 .header{
     min-height: 90px;
     min-width: 100%;
-    padding: 30px; 
+    padding: 30px;
 }
 </style>

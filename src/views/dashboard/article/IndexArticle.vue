@@ -7,7 +7,7 @@
       </h3>
     </div>
     <hr />
-    
+
       <b-row>
         <b-col lg="12">
           <b-container class="article bg-white p-3">
@@ -152,15 +152,15 @@
           </b-container>
         </b-col>
       </b-row>
-      
-    
+
+
   </b-container>
 </template>
 <script>
 export default {
   computed: {
     user() {
-      return JSON.parse(localStorage.getItem("user"));
+      return JSON.parse(localStorage.getItem('user'));
     },
   },
 };

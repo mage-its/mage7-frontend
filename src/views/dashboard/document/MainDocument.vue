@@ -2,7 +2,7 @@
   <div>
     <b-container class="bg-white p-5">
       <div class="form-group">
-          <label>Pilih Divisi</label>  
+          <label>Pilih Divisi</label>
           <b-form-radio-group
             v-model="divition"
             :options="divitionOptions"
@@ -11,7 +11,7 @@
             text-field="name"
             disabled-field="notEnabled"
           ></b-form-radio-group>
-        </div>   
+        </div>
       <RegisterApp v-if="divition == divitionOptions[0].item"/>
       <RegisterGame v-if="divition == divitionOptions[1].item"/>
       <RegisterIoT v-if="divition == divitionOptions[2].item"/>
@@ -20,20 +20,20 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 import {
   required,
   minLength,
   alphaNum,
   numeric,
-} from "vuelidate/lib/validators";
-import RegisterApp from "@/views/dashboard/register-competition/RegisApp.vue";
-import RegisterGame from "@/views/dashboard/register-competition/RegisGame.vue";
-import RegisterIoT from "@/views/dashboard/register-competition/RegisIoT.vue";
-import RegisterOlim from "@/views/dashboard/register-competition/RegisOlim.vue";
+} from 'vuelidate/lib/validators';
+import RegisterApp from '@/views/dashboard/register-competition/RegisApp.vue';
+import RegisterGame from '@/views/dashboard/register-competition/RegisGame.vue';
+import RegisterIoT from '@/views/dashboard/register-competition/RegisIoT.vue';
+import RegisterOlim from '@/views/dashboard/register-competition/RegisOlim.vue';
 
 export default {
-  name: "MainDocument",
+  name: 'MainDocument',
   components: {
     RegisterApp,
     RegisterGame,
@@ -52,30 +52,30 @@ export default {
     };
   },
   validations: {
-    
+
   },
   computed: {
     participant() {
-      return JSON.parse(localStorage.getItem("user"));
+      return JSON.parse(localStorage.getItem('user'));
     },
   },
   methods: {
     addFile(type) {
       this.document.type = type;
-      var fileExtension = "";
-      if (type == "osis_card") {
+      let fileExtension = '';
+      if (type == 'osis_card') {
         this.fileName.osis_card = this.$refs.osis_card.files[0].name.toString();
 
         fileExtension = /[.]/.exec(this.fileName.osis_card)
           ? /[^.]+$/.exec(this.fileName.osis_card)
           : undefined;
-        if (fileExtension != "jpg") {
+        if (fileExtension != 'jpg') {
           Swal.fire({
-            title: "Format file tidak sesuai",
-            icon: "error",
+            title: 'Format file tidak sesuai',
+            icon: 'error',
             showConfirmButton: true,
           }).then();
-          this.fileName.osis_card = "Unggah scan kartu pelajar (*.jpg)";
+          this.fileName.osis_card = 'Unggah scan kartu pelajar (*.jpg)';
         }
       } else {
         this.fileName.image = this.$refs.image.files[0].name.toString();
@@ -84,52 +84,52 @@ export default {
         fileExtension = /[.]/.exec(this.fileName.image)
           ? /[^.]+$/.exec(this.fileName.image)
           : undefined;
-        if (fileExtension != "jpg") {
+        if (fileExtension != 'jpg') {
           Swal.fire({
-            title: "Format file tidak sesuai",
-            icon: "error",
+            title: 'Format file tidak sesuai',
+            icon: 'error',
             showConfirmButton: true,
           }).then();
-          this.fileName.image = "Unggah pas foto (*.jpg)";
+          this.fileName.image = 'Unggah pas foto (*.jpg)';
         }
       }
     },
     uploadFile(type) {
-      var document = new FormData();
+      const document = new FormData();
 
-      document.append("type", type);
-      if (type == "osis_card") {
+      document.append('type', type);
+      if (type == 'osis_card') {
         this.loading1 = true;
-        document.append("file", this.$refs.osis_card.files[0]);
+        document.append('file', this.$refs.osis_card.files[0]);
       } else {
         this.loading2 = true;
-        document.append("file", this.$refs.image.files[0]);
+        document.append('file', this.$refs.image.files[0]);
       }
 
-      var formParticipant = {
-        document: document,
+      const formParticipant = {
+        document,
         id: this.participant.id,
       };
 
       console.log(formParticipant);
 
       this.$store
-        .dispatch("participant/uploadParticipant", formParticipant)
+        .dispatch('participant/uploadParticipant', formParticipant)
         .then(
           (response) => {
             Swal.fire({
-              title: "Berhasil mengunggah dokumen",
-              icon: "success",
+              title: 'Berhasil mengunggah dokumen',
+              icon: 'success',
               showConfirmButton: true,
             }).then();
             if (this.loading1) this.loading1 = false;
             if (this.loading2) this.loading2 = false;
             const participant = response.data.data;
-            var user = JSON.parse(localStorage.getItem("user"));
+            const user = JSON.parse(localStorage.getItem('user'));
             user.participant = participant.participant;
             user.firstname = participant.firstname;
             user.lastname = participant.lastname;
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem('user', JSON.stringify(user));
             this.formParticipant.id = this.participant.id;
             this.formParticipant.firstname = this.participant.firstname;
             this.formParticipant.lastname = this.participant.lastname;
@@ -144,7 +144,7 @@ export default {
             this.formParticipant.lastname = this.participant.lastname;
             this.formParticipant.birthDate = this.participant.participant.birth_date.substr(
               0,
-              10
+              10,
             );
             this.formParticipant.phoneNumber = this.participant.participant.phone_number;
             this.formParticipant.grade = this.participant.participant.grade;
@@ -157,23 +157,23 @@ export default {
               this.participant.participant.document.image == 0;
             }
           },
-          () => {}
+          () => {},
         );
     },
     updateParticipant() {
       this.$v.$touch();
       this.loading = true;
       this.$store
-        .dispatch("participant/updateParticipant", this.formParticipant)
+        .dispatch('participant/updateParticipant', this.formParticipant)
         .then(
           (response) => {
             this.loading = false;
             const participant = response;
-            var user = JSON.parse(localStorage.getItem("user"));
+            const user = JSON.parse(localStorage.getItem('user'));
             user.participant = participant.participant;
             user.firstname = participant.firstname;
             user.lastname = participant.lastname;
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem('user', JSON.stringify(user));
             this.formParticipant.id = this.participant.id;
             this.formParticipant.firstname = this.participant.firstname;
             this.formParticipant.lastname = this.participant.lastname;
@@ -184,14 +184,14 @@ export default {
             this.formParticipant.schoolAddress = this.participant.participant.school.address;
 
             Swal.fire({
-              title: "Berhasil memperbarui identitas",
-              icon: "success",
+              title: 'Berhasil memperbarui identitas',
+              icon: 'success',
               showConfirmButton: true,
             }).then();
           },
           (err) => {
             console.log(err);
-          }
+          },
         );
     },
   },

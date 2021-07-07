@@ -16,7 +16,7 @@ export const regisCompetition = {
         (error) => {
           commit('registerFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
     registerGame({ commit }, form) {
@@ -28,7 +28,7 @@ export const regisCompetition = {
         (error) => {
           commit('registerFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
     registerApp({ commit }, form) {
@@ -40,7 +40,7 @@ export const regisCompetition = {
         (error) => {
           commit('registerFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
     registerIot({ commit }, form) {
@@ -52,7 +52,7 @@ export const regisCompetition = {
         (error) => {
           commit('registerFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
   },

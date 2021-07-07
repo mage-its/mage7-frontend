@@ -61,6 +61,6 @@
 </template>
 <script>
 export default {
-    name: 'MainSchedule'
-}
+    name: 'MainSchedule',
+};
 </script>

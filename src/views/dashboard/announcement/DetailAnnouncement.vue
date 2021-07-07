@@ -17,10 +17,10 @@
   </b-container>
 </template>
 <script>
-import * as datetime from "./../../../services/datetime";
+import * as datetime from './../../../services/datetime';
 
 export default {
-  name: "MainAnnouncement",
+  name: 'MainAnnouncement',
   computed: {
     announcement() {
       return this.$store.state.announcement.announcement;
@@ -32,55 +32,55 @@ export default {
   methods: {
     getAnnouncement() {
       this.$store.dispatch(
-        "announcement/getAnnouncement",
-        this.$route.params.id
+        'announcement/getAnnouncement',
+        this.$route.params.id,
       );
     },
     getEventName(stageId) {
-      var name = "";
-      console.log("stage participant" + stageId);
+      let name = '';
+      console.log(`stage participant${stageId}`);
       this.events.forEach((event) => {
         event.stages.forEach((stage) => {
           if (stageId == stage._id) {
             switch (event.name) {
-              case "OSM":
+              case 'OSM':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Penyisihan";
+                  case 'preliminary':
+                    name = `${event.name} Penyisihan`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Semifinal";
+                  case 'semifinal':
+                    name = `${event.name} Semifinal`;
                     break;
-                  case "final":
-                    name = event.name + " Final";
+                  case 'final':
+                    name = `${event.name} Final`;
                     break;
                 }
                 break;
-              case "The One":
+              case 'The One':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Babak Gugur";
+                  case 'preliminary':
+                    name = `${event.name} Babak Gugur`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Babak Championship";
+                  case 'semifinal':
+                    name = `${event.name} Babak Championship`;
                     break;
                 }
                 break;
-              case "Started":
+              case 'Started':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Pekan Kreativitas";
+                  case 'preliminary':
+                    name = `${event.name} Pekan Kreativitas`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Final";
+                  case 'semifinal':
+                    name = `${event.name} Final`;
                     break;
                 }
                 break;
-              case "Sigma":
-                name = event.name
+              case 'Sigma':
+                name = event.name;
                 break;
-              case "Open House":
-                name = event.name
+              case 'Open House':
+                name = event.name;
                 break;
             }
           }
@@ -88,7 +88,7 @@ export default {
       });
       return name;
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
   },

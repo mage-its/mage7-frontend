@@ -25,26 +25,26 @@
 </template>
 <script>
 export default {
-  name: "IndexStage",
+  name: 'IndexStage',
   computed: {
     stage() {
-      return JSON.parse(localStorage.getItem('stage'+this.$route.params.idStage));
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
   },
   methods: {
     getStage() {
-      this.$store.dispatch("stage/getStage", this.$route.params.idStage);
+      this.$store.dispatch('stage/getStage', this.$route.params.idStage);
     },
     getStageName(name) {
       switch (name) {
-        case "preliminary":
-          name = "Penyisihan";
+        case 'preliminary':
+          name = 'Penyisihan';
           break;
-        case "semifinal":
-          name = "Semifinal";
+        case 'semifinal':
+          name = 'Semifinal';
           break;
-        case "final":
-          name = "Final";
+        case 'final':
+          name = 'Final';
           break;
       }
       return name;

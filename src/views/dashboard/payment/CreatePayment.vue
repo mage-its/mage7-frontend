@@ -13,7 +13,7 @@
     </div>
     <hr>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(onSubmit)" enctype="multipart/form-data" > 
+      <form @submit.prevent="handleSubmit(onSubmit)" enctype="multipart/form-data" >
         <ValidationProvider name="Nama Pengirim Transfer" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Pengirim Transfer</label>
@@ -38,8 +38,8 @@
 <script>
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
 import { ValidationObserver } from 'vee-validate';
-import Swal from "sweetalert2";
-import axios from "axios";
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 export default {
     components: {
@@ -53,73 +53,72 @@ export default {
             profilUserPrice: '',
             profilUsernoPeserta: '',
             profilUsernamaTim: '',
-        }
+        };
     },
     mounted() {
         this.getUser();
     },
     methods: {
         getUser() {
-            let user = JSON.parse(localStorage.getItem('user'));
-            axios.get(this.endpointAPI+"api/v1/users/profile", {
+            const user = JSON.parse(localStorage.getItem('user'));
+            axios.get(`${this.endpointAPI}api/v1/users/profile`, {
                 headers: {
-                    'Content-Type': undefined,                  
-                    'Authorization': 'Bearer ' + user.tokens.access.token  
-                } 
+                    'Content-Type': undefined,
+                    Authorization: `Bearer ${user.tokens.access.token}`,
+                },
             }).then((response) => {
                 this.profilUserPrice = response.data.compe.price;
                 this.profilUsernoPeserta = response.data.compe.noPeserta;
                 this.profilUsernamaTim = response.data.compe.namaTim;
-            })   
+            });
         },
         onUpload(e) {
             this.buktiBayar = e.target.files[0];
         },
         onSubmit() {
-            var document = new FormData();
-            document.append("namaBayar", this.namaBayar);
-            document.append("buktiBayar", this.buktiBayar);
-            var formData = {
+            const document = new FormData();
+            document.append('namaBayar', this.namaBayar);
+            document.append('buktiBayar', this.buktiBayar);
+            const formData = {
                 data: document,
             };
-            this.$store.dispatch("payment/createPayment", formData).then(
+            this.$store.dispatch('payment/createPayment', formData).then(
                 () => {
                     Swal.fire({
-                        icon: "success",
-                        title: "Upload Bukti Pembayaran berhasil",
+                        icon: 'success',
+                        title: 'Upload Bukti Pembayaran berhasil',
                         showConfirmButton: true,
                     }).then(() => {
-                        this.$router.push("/dashboard");
+                        this.$router.push('/dashboard');
                     });
                 },
                 (error) => {
-                    if(error.response.data.code == 401) {
+                    if (error.response.data.code == 401) {
                         this.refreshToken();
                     } else {
                         Swal.fire({
-                        icon: "error",
-                        title: "Upload Bukti Pembayaran gagal",
+                        icon: 'error',
+                        title: 'Upload Bukti Pembayaran gagal',
                         text: error.response.data.message,
                         showConfirmButton: true,
                         }).then(() => {});
                     }
-                }
+                },
             );
         },
         refreshToken() {
-            let user = JSON.parse(localStorage.getItem('user'));
-            axios.post(this.endpointAPI+'api/v1/auth/refresh-tokens', {
-                refreshToken : user.tokens.refresh.token  
-            }).then((response) => 
-            {
+            const user = JSON.parse(localStorage.getItem('user'));
+            axios.post(`${this.endpointAPI}api/v1/auth/refresh-tokens`, {
+                refreshToken: user.tokens.refresh.token,
+            }).then((response) => {
                 user.tokens = response.data;
-                localStorage.setItem("user", JSON.stringify(user))
+                localStorage.setItem('user', JSON.stringify(user));
             }).then(() => {
                 this.onSubmit();
             });
-        }
-    }
-}
+        },
+    },
+};
 </script>
 <style scoped>
     .center {

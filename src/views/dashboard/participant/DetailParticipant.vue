@@ -198,10 +198,10 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../services/datetime";
+import * as datetime from './../../../services/datetime';
 
 export default {
-  name: "MainSchedule",
+  name: 'MainSchedule',
   computed: {
     participant() {
       return this.$store.state.participant.participant;
@@ -209,51 +209,51 @@ export default {
   },
   methods: {
     getParticipant() {
-      this.$store.dispatch("participant/getParticipant", this.$route.params.id);
+      this.$store.dispatch('participant/getParticipant', this.$route.params.id);
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
     getStageName(name, eventName) {
       switch (eventName) {
-        case "OSM":
+        case 'OSM':
           switch (name) {
-            case "preliminary":
-              name = "Penyisihan";
+            case 'preliminary':
+              name = 'Penyisihan';
               break;
-            case "semifinal":
-              name = "Semifinal";
+            case 'semifinal':
+              name = 'Semifinal';
               break;
-            case "final":
-              name = "Final";
+            case 'final':
+              name = 'Final';
               break;
           }
           break;
-        case "The One":
+        case 'The One':
           switch (name) {
-            case "preliminary":
-              name = "Babak Gugur";
+            case 'preliminary':
+              name = 'Babak Gugur';
               break;
-            case "semifinal":
-              name = "Babak Championship";
+            case 'semifinal':
+              name = 'Babak Championship';
               break;
           }
           break;
-        case "Started":
+        case 'Started':
           switch (name) {
-            case "preliminary":
-              name = "Pekan Kreativitas";
+            case 'preliminary':
+              name = 'Pekan Kreativitas';
               break;
-            case "semifinal":
-              name = "Final";
+            case 'semifinal':
+              name = 'Final';
               break;
           }
           break;
-        case "Sigma":
-          name = "";
+        case 'Sigma':
+          name = '';
           break;
-        case "Open House":
-          name = "";
+        case 'Open House':
+          name = '';
           break;
       }
       return name;

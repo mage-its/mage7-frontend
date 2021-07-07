@@ -8,7 +8,7 @@
                 header-text-variant="white"
                 align="left"
             >
-                <b-card-text> 
+                <b-card-text>
                     <b-form action="">
                         <p>Upload File Dibawah Ini</p>
                         <b-form-file type="text" id="namaLengkap" aria-describedby="namaHelp"></b-form-file>
@@ -23,7 +23,7 @@
 <script>
 export default {
     name: 'CreatePayment',
-}
+};
 </script>
 <style scoped>
 

@@ -196,10 +196,10 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../../services/datetime";
+import * as datetime from './../../../../../services/datetime';
 
 export default {
-  name: "PenyisihanTheOne",
+  name: 'PenyisihanTheOne',
   data() {
     return {
       step: 0,
@@ -207,7 +207,7 @@ export default {
       answerForm: {},
       stageInformationOfParticipant: {},
       itemsTab1: [],
-      itemsTab2: [{ "Nomor pendaftaran": 0, "Terdaftar pada": 0 }],
+      itemsTab2: [{ 'Nomor pendaftaran': 0, 'Terdaftar pada': 0 }],
     };
   },
   computed: {
@@ -218,7 +218,7 @@ export default {
       return this.$store.state.stage.stage;
     },
     participant() {
-      return JSON.parse(localStorage.getItem("user"));
+      return JSON.parse(localStorage.getItem('user'));
     },
   },
   methods: {
@@ -226,28 +226,28 @@ export default {
       this.step = 1;
     },
     createAnswerForm() {
-      let answerForm = new FormData();
+      const answerForm = new FormData();
 
-      answerForm.append("participantId", this.answerForm.participantId);
-      answerForm.append("stageId", this.answerForm.stageId);
-      answerForm.append("file", this.$refs.file.files[0]);
+      answerForm.append('participantId', this.answerForm.participantId);
+      answerForm.append('stageId', this.answerForm.stageId);
+      answerForm.append('file', this.$refs.file.files[0]);
 
-      this.$store.dispatch("answerForm/createAnswerForm", answerForm);
+      this.$store.dispatch('answerForm/createAnswerForm', answerForm);
     },
     getQuestion() {
       this.$store.dispatch(
-        "question/getAllQuestionByStage",
-        this.$route.params.idStage
+        'question/getAllQuestionByStage',
+        this.$route.params.idStage,
       );
     },
     updateQuestion() {
-      this.$store.dispatch("question/updateQuestion", this.question);
+      this.$store.dispatch('question/updateQuestion', this.question);
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
     getStage() {
-      this.$store.dispatch("stage/getStage", this.$route.params.idStage);
+      this.$store.dispatch('stage/getStage', this.$route.params.idStage);
     },
     getStageInformationOfParticipant() {
       this.participant.participant.events.forEach((event) => {
@@ -270,12 +270,12 @@ export default {
     this.answerForm.participantId = this.participant.id;
     this.items = [
       {
-        "Mulai pengerjaan": this.getDateTime("datetime", this.stage.started_at),
-        "Selesai pengerjaan": this.getDateTime(
-          "datetime",
-          this.stage.finished_at
+        'Mulai pengerjaan': this.getDateTime('datetime', this.stage.started_at),
+        'Selesai pengerjaan': this.getDateTime(
+          'datetime',
+          this.stage.finished_at,
         ),
-        "Pengumuman lolos": this.getDateTime("datetime", this.stage.started_at),
+        'Pengumuman lolos': this.getDateTime('datetime', this.stage.started_at),
       },
     ];
     this.getStageInformationOfParticipant();

@@ -20,7 +20,7 @@
       rangkaian ANAVA #15 berupa kegiatan olimpiade yang ditujukan untuk pelajar
       tingkat SMA/MA sederajat. Peserta dapat lebih mengasah kemampuannya di
       bidang matematika dan statistika, melatih analisis data dan
-      mempresentasikannya, serta berkompetisi secara sehat. Untuk OSM tahun ini 
+      mempresentasikannya, serta berkompetisi secara sehat. Untuk OSM tahun ini
       menggunakan website dengan sistem CBT (Computer Based Test) sehingga dapat memudahkan peserta dan tentunya
       melatih peserta agar lebih adaptif dalam perkembangan teknologi saat ini.
       Rangkaian OSM ini terdiri dari tiga babak, antara lain babak penyisihan,
@@ -148,7 +148,7 @@
           <i class="icon fas fa-book fa-9x"></i>
         </b-col>
         <b-col lg="10" cols="9">
-          
+
           <b-container class="description  mt-4">
             <a target="blank" href="OSM/guidebook.pdf" class="btn d-inline">
               Unduh guidebook
@@ -171,11 +171,11 @@
 </template>
 <script>
 export default {
-  name: "OSM",
+  name: 'OSM',
   data() {
     return {
       loading: false,
-      message: "",
+      message: '',
       url: window.location.href,
     };
   },
@@ -186,7 +186,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes("osm");
+      return this.url.includes('osm');
     },
   },
   created() {

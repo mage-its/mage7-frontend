@@ -123,13 +123,13 @@
 
 <script>
 
-import NavBar from "@/components/NavBar.vue";
-import Footer from "@/components/Footer.vue";
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
+import NavBar from '@/components/NavBar.vue';
+import Footer from '@/components/Footer.vue';
+import Login from '@/views/Login.vue';
+import Register from '@/views/Register.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     NavBar,
     Footer,
@@ -147,17 +147,15 @@ export default {
       return this.$store.state.ui.welcomeShow;
     },
     halo() {
-      return window.location.href.search("dashboard");
-    }
+      return window.location.href.search('dashboard');
+    },
   },
-  updated(){
-    if(window.location.href.search("dashboard")!=-1)
-      this.dashboard = true;
+  updated() {
+    if (window.location.href.search('dashboard') != -1) { this.dashboard = true; }
   },
   created() {
     window.scrollTo(0, 0);
-    if(window.location.href.search("dashboard")!=-1)
-      this.dashboard = true;
+    if (window.location.href.search('dashboard') != -1) { this.dashboard = true; }
   },
 };
 </script>

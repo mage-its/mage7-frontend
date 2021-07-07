@@ -2,7 +2,11 @@ import AuthService from '../services/auth.service';
 
 const user = JSON.parse(localStorage.getItem('user'));
 let token;
-const initialState = user ? { status: { loggedIn: true }, user, email: {}, token } : { status: { loggedIn: false }, user: null, email: {}, token };
+const initialState = user ? {
+ status: { loggedIn: true }, user, email: {}, token,
+} : {
+ status: { loggedIn: false }, user: null, email: {}, token,
+};
 
 export const auth = {
     namespaced: true,
@@ -17,7 +21,7 @@ export const auth = {
                 (error) => {
                     commit('loginFailure');
                     return Promise.reject(error);
-                }
+                },
             );
         },
         logout({ commit }) {
@@ -33,7 +37,7 @@ export const auth = {
                 (error) => {
                     commit('registerFailure');
                     return Promise.reject(error);
-                }
+                },
             );
         },
         confirmEmail({ commit }, id) {
@@ -45,7 +49,7 @@ export const auth = {
                 (error) => {
                     commit('confirmEmailFailure');
                     return Promise.reject(error);
-                }
+                },
             );
         },
         findByEmail({ commit }, email) {
@@ -57,7 +61,7 @@ export const auth = {
                 (error) => {
                     commit('findByEmailFailure');
                     return Promise.reject(error);
-                }
+                },
             );
         },
         requestChangePassword({ commit }, email) {
@@ -69,7 +73,7 @@ export const auth = {
                 (error) => {
                     commit('requestChangePasswordFailure');
                     return Promise.reject(error);
-                }
+                },
             );
         },
         changePassword({ commit }, user) {
@@ -81,7 +85,7 @@ export const auth = {
                 (error) => {
                     commit('changePasswordFailure');
                     return Promise.reject(error);
-                }
+                },
             );
         },
     },
@@ -106,7 +110,7 @@ export const auth = {
             state.status.loggedIn = false;
         },
         confirmEmailSuccess(state, user) {
-            var oldUser = JSON.parse(localStorage.getItem('user'));
+            const oldUser = JSON.parse(localStorage.getItem('user'));
             const newUser = user;
             oldUser.firstname = newUser.firstname;
             oldUser.lastname = newUser.lastname;

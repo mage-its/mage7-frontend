@@ -5,11 +5,11 @@
     </div>
 </template>
 <script>
-import AdminIndexPayment from './../../../components/dashboard/admin/payment/IndexPayment.vue'
-import ParticipantIndexPayment from './../../../components/dashboard/participant/payment/IndexPayment.vue'
+import AdminIndexPayment from './../../../components/dashboard/admin/payment/IndexPayment.vue';
+import ParticipantIndexPayment from './../../../components/dashboard/participant/payment/IndexPayment.vue';
 
 export default {
-    name: "IndexPayment",
+    name: 'IndexPayment',
     components: {
         AdminIndexPayment,
         ParticipantIndexPayment,
@@ -17,14 +17,14 @@ export default {
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style scoped> 
+<style scoped>
 .header{
     min-height: 90px;
     min-width: 100%;
-    padding: 30px; 
+    padding: 30px;
 }
 </style>

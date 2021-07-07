@@ -7,16 +7,16 @@
 import AdminAddParticipantStage from './../../../../components/dashboard/admin/stage/participant/AddParticipantStage.vue';
 
 export default {
-    name : 'AddParticipantStage',
+    name: 'AddParticipantStage',
     components: {
         AdminAddParticipantStage,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
+        },
     },
-}
+};
 </script>
 <style scoped>
 .btn{

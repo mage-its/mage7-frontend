@@ -9,7 +9,7 @@
                 header-text-variant="white"
                 align="left"
             >
-                <b-card-text> 
+                <b-card-text>
                     <b-form action="">
                         <p>Upload File Dibawah Ini</p>
                         <b-form-file rows="3" type="text" id="namaLengkap" aria-describedby="namaHelp"></b-form-file>
@@ -24,5 +24,5 @@
 <script>
 export default {
     name: 'UploadAnswerFile',
-}
+};
 </script>

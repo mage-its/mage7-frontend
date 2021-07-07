@@ -320,17 +320,17 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2";
-import * as datetime from "./../../../../../services/datetime";
+import Swal from 'sweetalert2';
+import * as datetime from './../../../../../services/datetime';
 
 export default {
-  name: "BabakChampionTheOne",
+  name: 'BabakChampionTheOne',
   data() {
     return {
       started_at: new Date(2021, 0, 24, 19, 0, 0),
       finished_at: new Date(2021, 0, 24, 19, 50, 0),
-      //started_at: new Date(2021, 0, 1, 14, 0, 0),
-      //finished_at: new Date(2021, 0, 23, 31, 0, 0),
+      // started_at: new Date(2021, 0, 1, 14, 0, 0),
+      // finished_at: new Date(2021, 0, 23, 31, 0, 0),
       step: 0,
       data: [],
       detail: false,
@@ -338,7 +338,7 @@ export default {
       stageInformationOfParticipant: {},
       selectedQuestion: null,
       itemsTab1: [],
-      itemsTab2: [{ "Nomor pendaftaran": 0, "Terdaftar pada": 0 }],
+      itemsTab2: [{ 'Nomor pendaftaran': 0, 'Terdaftar pada': 0 }],
       displayHours: 0,
       displayMinutes: 0,
       displaySeconds: 0,
@@ -352,39 +352,35 @@ export default {
       changeStartedJawaban: null,
       announcement: {},
       fileName: {
-        started_jawaban: "Unggah file jawaban (*.jpg)",
-        event_document: "Unggah surat orisinalitas (*.jpg)",
+        started_jawaban: 'Unggah file jawaban (*.jpg)',
+        event_document: 'Unggah surat orisinalitas (*.jpg)',
       },
     };
   },
   computed: {
     answerFormByParticipantAndStage() {
-      return JSON.parse(
-        localStorage.getItem("answerForm2" + this.$route.params.idStage)
-      );
+      return JSON.parse(localStorage.getItem(`answerForm2${this.$route.params.idStage}`));
     },
     totalQuestion() {
       return this.$store.state.question.questions;
     },
     stage() {
-      return JSON.parse(
-        localStorage.getItem("stage" + this.$route.params.idStage)
-      );
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
     events() {
       return this.$store.state.event.events;
     },
     event() {
-      return JSON.parse(localStorage.getItem("event"));
+      return JSON.parse(localStorage.getItem('event'));
     },
     participant() {
-      return JSON.parse(localStorage.getItem("user"));
+      return JSON.parse(localStorage.getItem('user'));
     },
     stageAnnouncements() {
       return this.$store.state.announcement.participantAnnouncements;
     },
     time() {
-      var today = new Date();
+      const today = new Date();
 
       return today > this.started_at && today < this.finished_at;
     },
@@ -402,24 +398,24 @@ export default {
   methods: {
     reset() {
       if (
-        localStorage.getItem("answerForm2" + this.$route.params.idStage) != null
+        localStorage.getItem(`answerForm2${this.$route.params.idStage}`) != null
       ) {
-        localStorage.removeItem("answerForm2" + this.$route.params.idStage);
+        localStorage.removeItem(`answerForm2${this.$route.params.idStage}`);
       }
 
-      var answerForm = {
+      const answerForm = {
         idParticipant: this.participant.id,
         idStage: this.$route.params.idStage,
       };
 
       this.$store
-        .dispatch("answerForm/deleteAnswerForm", answerForm)
+        .dispatch('answerForm/deleteAnswerForm', answerForm)
         .then(() => {
           localStorage.clear();
-          this.$router.go("/");
+          this.$router.go('/');
         });
 
-      localStorage.removeItem("selectedQuestion");
+      localStorage.removeItem('selectedQuestion');
     },
     selectQuestion(index) {
       if (this.answerForm.money >= this.answerForm.questions[index].price) {
@@ -427,10 +423,10 @@ export default {
           this.answerForm.questions[index].selected = true;
           this.answerForm.money -= this.answerForm.questions[index].price;
 
-          var selectedQuestion = this.answerForm.questions[index];
+          const selectedQuestion = this.answerForm.questions[index];
           localStorage.setItem(
-            "selectedQuestion",
-            JSON.stringify(selectedQuestion)
+            'selectedQuestion',
+            JSON.stringify(selectedQuestion),
           );
           this.selectedQuestion = selectedQuestion;
 
@@ -438,146 +434,144 @@ export default {
           this.detail = true;
         } else {
           Swal.fire({
-            title: "Soal telah dibuka",
-            icon: "warning",
+            title: 'Soal telah dibuka',
+            icon: 'warning',
             showConfirmButton: true,
           });
         }
       } else {
         Swal.fire({
-          title: "Sisa bekal yang anda miliki tidak mencukupi",
-          icon: "error",
+          title: 'Sisa bekal yang anda miliki tidak mencukupi',
+          icon: 'error',
           showConfirmButton: true,
         });
       }
     },
     addFile(type) {
-      var fileExtension = "";
-      if (type == "started_jawaban") {
+      let fileExtension = '';
+      if (type == 'started_jawaban') {
         this.fileName.started_jawaban = this.$refs.started_jawaban.files[0].name.toString();
         fileExtension = /[.]/.exec(this.fileName.started_jawaban)
           ? /[^.]+$/.exec(this.fileName.started_jawaban)
           : undefined;
         alert(fileExtension);
-        if (fileExtension == "jpg" || fileExtension == "jpeg") {
+        if (fileExtension == 'jpg' || fileExtension == 'jpeg') {
           this.fileName.started_jawaban = this.$refs.started_jawaban.files[0].name.toString();
         } else {
           Swal.fire({
-            title: "Format file tidak sesuai",
-            icon: "error",
+            title: 'Format file tidak sesuai',
+            icon: 'error',
             showConfirmButton: true,
           }).then();
-          this.fileName.started_jawaban = "Unggah file jawaban (*.jpg)";
+          this.fileName.started_jawaban = 'Unggah file jawaban (*.jpg)';
         }
-      } else {
-        if (fileExtension != "jpg" || fileExtension != "jpeg") {
+      } else if (fileExtension != 'jpg' || fileExtension != 'jpeg') {
           Swal.fire({
-            title: "Format file tidak sesuai",
-            icon: "error",
+            title: 'Format file tidak sesuai',
+            icon: 'error',
             showConfirmButton: true,
           }).then();
-          this.fileName.started_jawaban = "Unggah file jawaban (*.jpg)";
+          this.fileName.started_jawaban = 'Unggah file jawaban (*.jpg)';
         }
-      }
     },
     uploadAnswer(number) {
       this.loading = true;
 
-      var document = new FormData();
+      const document = new FormData();
 
       this.loading = true;
 
-      document.append("eventName", "The One");
-      document.append("stageName", "semifinal");
-      document.append("file", this.$refs.started_jawaban.files[0]);
+      document.append('eventName', 'The One');
+      document.append('stageName', 'semifinal');
+      document.append('file', this.$refs.started_jawaban.files[0]);
 
-      var formAnswer = {
+      const formAnswer = {
         id: this.answerForm.answers[number - 1]._id,
         data: document,
       };
 
-      this.$store.dispatch("answer/uploadAnswer", formAnswer).then(
+      this.$store.dispatch('answer/uploadAnswer', formAnswer).then(
         (answer) => {
           Swal.fire({
-            icon: "success",
-            title: "File berhasil diunggah",
+            icon: 'success',
+            title: 'File berhasil diunggah',
             showConfirmButton: true,
           }).then(() => {});
           this.loading = false;
           this.uploaded = true;
           this.answerForm.answers[this.selectedQuestion.number - 1] = answer;
           localStorage.setItem(
-            "answerForm2" + this.$route.params.idStage,
-            JSON.stringify(this.answerForm)
+            `answerForm2${this.$route.params.idStage}`,
+            JSON.stringify(this.answerForm),
           );
         },
         () => {
-          alert("error");
-        }
+          alert('error');
+        },
       );
     },
     selectAnswer(letter) {
       if (this.selectedQuestion != null) {
-        var _answerForm = this.answerForm;
+        const _answerForm = this.answerForm;
         _answerForm.answers[this.selectedQuestion._number - 1] = letter;
 
         this.saveAnswerForm(_answerForm);
       }
     },
     setAnswer() {
-      localStorage.removeItem("selectedQuestion");
+      localStorage.removeItem('selectedQuestion');
       this.detail = false;
-      this.fileName.started_jawaban = "Unggah file jawaban (*.jpg)";
+      this.fileName.started_jawaban = 'Unggah file jawaban (*.jpg)';
     },
     saveAnswerForm(_answerForm) {
       localStorage.setItem(
-        "answerForm2" + this.$route.params.idStage,
-        JSON.stringify(_answerForm)
+        `answerForm2${this.$route.params.idStage}`,
+        JSON.stringify(_answerForm),
       );
     },
     getEventName(stageId) {
-      var name = "";
+      let name = '';
       this.events.forEach((event) => {
         event.stages.forEach((stage) => {
           if (stageId == stage._id) {
             switch (event.name) {
-              case "OSM":
+              case 'OSM':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Penyisihan";
+                  case 'preliminary':
+                    name = `${event.name} Penyisihan`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Semifinal";
+                  case 'semifinal':
+                    name = `${event.name} Semifinal`;
                     break;
-                  case "final":
-                    name = event.name + " Final";
+                  case 'final':
+                    name = `${event.name} Final`;
                     break;
                 }
                 break;
-              case "The One":
+              case 'The One':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Babak Gugur";
+                  case 'preliminary':
+                    name = `${event.name} Babak Gugur`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Babak Championship";
+                  case 'semifinal':
+                    name = `${event.name} Babak Championship`;
                     break;
                 }
                 break;
-              case "Started":
+              case 'Started':
                 switch (stage.name) {
-                  case "preliminary":
-                    name = event.name + " Pekan Kreativitas";
+                  case 'preliminary':
+                    name = `${event.name} Pekan Kreativitas`;
                     break;
-                  case "semifinal":
-                    name = event.name + " Final";
+                  case 'semifinal':
+                    name = `${event.name} Final`;
                     break;
                 }
                 break;
-              case "Sigma":
+              case 'Sigma':
                 name = event.name;
                 break;
-              case "Open House":
+              case 'Open House':
                 name = event.name;
                 break;
             }
@@ -599,55 +593,47 @@ export default {
     getAllAnnouncementByStage() {
       this.$store
         .dispatch(
-          "announcement/getAllAnnouncementByStage",
-          this.$route.params.idStage
+          'announcement/getAllAnnouncementByStage',
+          this.$route.params.idStage,
         )
         .then((response) => {
           console.log(response);
         });
     },
     createAnswerForm() {
-      var _answerForm = {};
+      const _answerForm = {};
 
       _answerForm.stageId = this.$route.params.idStage;
       _answerForm.participantId = this.participant.id;
 
       this.$store
-        .dispatch("answerForm/createAnswerForm", _answerForm)
+        .dispatch('answerForm/createAnswerForm', _answerForm)
         .then((answerForm) => {
-          var _answerForm = JSON.parse(JSON.stringify(answerForm));
+          const _answerForm = JSON.parse(JSON.stringify(answerForm));
           if (!_answerForm.session) {
-            var today = new Date();
-            var started_at = new Date(this.stage.started_at);
-            var finished_at = new Date(this.stage.finished_at);
-            started_at = new Date(
-              started_at.getTime() + today.getTimezoneOffset() * 60 * 1000
-            );
-            finished_at = new Date(
-              finished_at.getTime() + today.getTimezoneOffset() * 60 * 1000
-            );
-            started_at.setHours(
-              started_at.getHours() +
-                parseInt(this.stageInformationOfParticipant.session)
-            );
-            finished_at.setHours(
-              finished_at.getHours() +
-                parseInt(this.stageInformationOfParticipant.session)
-            );
+            const today = new Date();
+            let started_at = new Date(this.stage.started_at);
+            let finished_at = new Date(this.stage.finished_at);
+            started_at = new Date(started_at.getTime() + today.getTimezoneOffset() * 60 * 1000);
+            finished_at = new Date(finished_at.getTime() + today.getTimezoneOffset() * 60 * 1000);
+            started_at.setHours(started_at.getHours() +
+                parseInt(this.stageInformationOfParticipant.session));
+            finished_at.setHours(finished_at.getHours() +
+                parseInt(this.stageInformationOfParticipant.session));
             _answerForm.started_at = started_at.toISOString();
             _answerForm.finished_at = finished_at.toISOString();
             _answerForm.session = this.stageInformationOfParticipant.session;
-            const format = _answerForm.finished_at.split("-");
+            const format = _answerForm.finished_at.split('-');
             this.year = parseInt(format[0]);
             this.month = parseInt(format[1]);
-            const time = format[2].split("T");
+            const time = format[2].split('T');
             this.date = parseInt(time[0]);
-            const clock = time[1].split(":");
+            const clock = time[1].split(':');
             this.hour = parseInt(clock[0]);
             this.minute = parseInt(clock[1]);
             this.showRemaining();
 
-            var index = 0;
+            let index = 0;
             _answerForm.questions.forEach(() => {
               _answerForm.questions[index]._number = index + 1;
               _answerForm.questions[index].selected = false;
@@ -655,27 +641,27 @@ export default {
               index++;
             });
             localStorage.setItem(
-              "answerForm2" + this.$route.params.idStage,
-              JSON.stringify(_answerForm)
+              `answerForm2${this.$route.params.idStage}`,
+              JSON.stringify(_answerForm),
             );
             this.answerForm = _answerForm;
             this.step = 1;
 
-            localStorage.removeItem("selectedQuestion");
+            localStorage.removeItem('selectedQuestion');
           }
         });
     },
     submitAnswerForm() {
       new Swal({
-        title: "Apakah anda yakin untuk menyelesaikan saat ini?",
+        title: 'Apakah anda yakin untuk menyelesaikan saat ini?',
         showDenyButton: true,
         buttons: true,
       }).then((result) => {
         if (result.isConfirmed) {
-          this.answerForm.eventName = "The One";
-          this.answerForm.stageName = "semifinal";
+          this.answerForm.eventName = 'The One';
+          this.answerForm.stageName = 'semifinal';
           this.$store
-            .dispatch("answerForm/submitAnswerForm", this.answerForm)
+            .dispatch('answerForm/submitAnswerForm', this.answerForm)
             .then((response) => {
               this.answerForm = response;
               this.saveAnswerForm(response);
@@ -686,24 +672,24 @@ export default {
     },
     getAllQuestionByStage() {
       this.$store.dispatch(
-        "question/getAllQuestionByStage",
-        this.$route.params.idStage
+        'question/getAllQuestionByStage',
+        this.$route.params.idStage,
       );
     },
     updateQuestion() {
-      this.$store.dispatch("question/updateQuestion", this.question);
+      this.$store.dispatch('question/updateQuestion', this.question);
     },
-    getDateTime: function (type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
     getStage() {
-      this.$store.dispatch("stage/getStage", this.$route.params.idStage);
+      this.$store.dispatch('stage/getStage', this.$route.params.idStage);
     },
     getAnswerFormByParticipantAndStage() {
       if (this.answerFormByParticipantAndStage == null) {
         this.$store.dispatch(
-          "answerForm/getAnswerFormByParticipantAndStage",
-          this.answerForm
+          'answerForm/getAnswerFormByParticipantAndStage',
+          this.answerForm,
         );
       }
     },
@@ -723,7 +709,7 @@ export default {
     },
     showRemaining() {
       var timer = setInterval(() => {
-        var now = new Date();
+        const now = new Date();
         now.setHours(now.getHours() + 7);
 
         const distance = this.finished_at.getTime() - now.getTime();
@@ -740,10 +726,10 @@ export default {
         }
 
         if (distance < 0) {
-          this.answerForm.eventName = "The One";
-          this.answerForm.stageName = "semifinal";
+          this.answerForm.eventName = 'The One';
+          this.answerForm.stageName = 'semifinal';
           this.$store
-            .dispatch("answerForm/submitAnswerForm", this.answerForm)
+            .dispatch('answerForm/submitAnswerForm', this.answerForm)
             .then((response) => {
               this.step = 0;
               this.answerForm = response;
@@ -756,10 +742,10 @@ export default {
         const minutes = Math.floor((distance % this._hours) / this._minutes);
         const seconds = Math.floor((distance % this._minutes) / this._seconds);
 
-        this.displaySeconds = seconds < 10 ? "0" + seconds : seconds;
-        this.displayMinutes = minutes < 10 ? "0" + minutes : minutes;
-        this.displayHours = hours < 10 ? "0" + hours : hours;
-        this.displayDays = days < 10 ? "0" + days : days;
+        this.displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+        this.displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+        this.displayHours = hours < 10 ? `0${hours}` : hours;
+        this.displayDays = days < 10 ? `0${days}` : days;
       }, 1000);
     },
     getAnswerForm() {
@@ -769,29 +755,27 @@ export default {
           this.answerForm.stageId == this.$route.params.idStage
         ) {
           if (this.answerFormByParticipantAndStage != null) {
-            if (this.answerFormByParticipantAndStage.score != null)
-              clearInterval(this.timer);
+            if (this.answerFormByParticipantAndStage.score != null) { clearInterval(this.timer); }
           }
 
-          if (this.answerFormByParticipantAndStage != null)
-            this.answerForm = JSON.parse(
-              localStorage.getItem("answerForm2" + this.$route.params.idStage)
-            );
+          if (this.answerFormByParticipantAndStage != null) {
+ this.answerForm = JSON.parse(localStorage.getItem(`answerForm2${this.$route.params.idStage}`));
+}
 
           if (this.answerForm != null && this.answerForm.finished_at != null) {
-            const format = this.answerForm.finished_at.split("-");
+            const format = this.answerForm.finished_at.split('-');
             this.year = parseInt(format[0]);
             this.month = parseInt(format[1]);
-            const time = format[2].split("T");
+            const time = format[2].split('T');
             this.date = parseInt(time[0]);
-            const clock = time[1].split(":");
+            const clock = time[1].split(':');
             this.hour = parseInt(clock[0]);
             this.minute = parseInt(clock[1]);
 
             this.showRemaining();
           }
         } else {
-          /*this.answerForm.stageId = this.$route.params.idStage;
+          /* this.answerForm.stageId = this.$route.params.idStage;
           this.answerForm.participantId = this.participant.id;
 
           this.getStage();
@@ -814,7 +798,7 @@ export default {
               ),
             },
           ];
-          this.getStageInformationOfParticipant();*/
+          this.getStageInformationOfParticipant(); */
         }
       }, 200);
     },
@@ -831,22 +815,21 @@ export default {
 
     this.items = [
       {
-        "Mulai pengerjaan": this.getDateTime("datetime", this.stage.started_at),
-        "Selesai pengerjaan": this.getDateTime("datetime", this.finished_at),
-        "Pengumuman lolos": this.getDateTime("datetime", this.stage.started_at),
+        'Mulai pengerjaan': this.getDateTime('datetime', this.stage.started_at),
+        'Selesai pengerjaan': this.getDateTime('datetime', this.finished_at),
+        'Pengumuman lolos': this.getDateTime('datetime', this.stage.started_at),
       },
     ];
     this.getStageInformationOfParticipant();
 
-    /*localStorage.setItem(
+    /* localStorage.setItem(
       "answerForm2" + this.$route.params.idStage,
       JSON.stringify(answerForm)
-    );*/
+    ); */
 
-    if (localStorage.getItem("selectedQuestion") != null)
-      this.selectedQuestion = JSON.parse(
-        localStorage.getItem("selectedQuestion")
-      );
+    if (localStorage.getItem('selectedQuestion') != null) {
+ this.selectedQuestion = JSON.parse(localStorage.getItem('selectedQuestion'));
+}
 
     if (this.selectedQuestion != null) {
       this.detail = true;

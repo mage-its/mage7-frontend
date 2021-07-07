@@ -5,11 +5,11 @@
   </div>
 </template>
 <script>
-import AdminIndexStage from "./../../../components/dashboard/admin/stage/IndexStage.vue";
-import ParticipantIndexStage from "./../../../components/dashboard/participant/stage/IndexStage.vue";
+import AdminIndexStage from './../../../components/dashboard/admin/stage/IndexStage.vue';
+import ParticipantIndexStage from './../../../components/dashboard/participant/stage/IndexStage.vue';
 
 export default {
-  name: "IndexStage",
+  name: 'IndexStage',
   components: {
     AdminIndexStage,
     ParticipantIndexStage,
@@ -19,11 +19,11 @@ export default {
       return this.$store.state.auth.user;
     },
     event() {
-      return JSON.parse(localStorage.getItem("event"));
+      return JSON.parse(localStorage.getItem('event'));
     },
   },
   updated() {
-  }
+  },
 };
 </script>
 <style scoped>

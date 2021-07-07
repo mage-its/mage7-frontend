@@ -83,10 +83,10 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../services/datetime";
+import * as datetime from './../../../../services/datetime';
 
 export default {
-  name: "MainAnnouncement",
+  name: 'MainAnnouncement',
   computed: {
     announcements() {
       return this.$store.state.announcement.announcements;
@@ -95,24 +95,22 @@ export default {
       return this.$store.state.announcement.participantAnnouncements;
     },
     participant() {
-      return JSON.parse(localStorage.getItem("user"));
+      return JSON.parse(localStorage.getItem('user'));
     },
   },
   methods: {
     getGeneralAnnouncement() {
-      this.$store.dispatch("announcement/getGeneralAnnouncement");
+      this.$store.dispatch('announcement/getGeneralAnnouncement');
     },
     getAllAnnouncementByParticipant() {
       this.$store.dispatch(
-        "announcement/getAllAnnouncementByParticipant",
-        this.participant.id
-      ).then(
-        (response) =>{
-          console.log(response)
-        }
-      );
+        'announcement/getAllAnnouncementByParticipant',
+        this.participant.id,
+      ).then((response) => {
+          console.log(response);
+        });
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
   },

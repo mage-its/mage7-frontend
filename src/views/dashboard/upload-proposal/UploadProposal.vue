@@ -35,10 +35,10 @@
   </div>
 </template>
 <script>
-import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
-import { ValidationObserver } from "vee-validate";
-import Swal from "sweetalert2";
-import axios from "axios";
+import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
+import { ValidationObserver } from 'vee-validate';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 export default {
   components: {
@@ -48,21 +48,21 @@ export default {
   data() {
     return {
       proposal: null,
-      competition: "",
-      service: "",
+      competition: '',
+      service: '',
     };
   },
   created() {
-    let user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem('user'));
     this.competition = user.user.registeredComp;
-    if (this.competition === "gamedev") {
-      this.service = "uploadProposal/uploadProposalGameDev";
+    if (this.competition === 'gamedev') {
+      this.service = 'uploadProposal/uploadProposalGameDev';
     }
-    if (this.competition === "iotdev") {
-      this.service = "uploadProposal/uploadProposalIotDev";
+    if (this.competition === 'iotdev') {
+      this.service = 'uploadProposal/uploadProposalIotDev';
     }
-    if (this.competition === "appdev") {
-      this.service = "uploadProposal/uploadProposalAppDev";
+    if (this.competition === 'appdev') {
+      this.service = 'uploadProposal/uploadProposalAppDev';
     }
   },
   methods: {
@@ -71,18 +71,18 @@ export default {
     },
     onSubmit() {
       const document = new FormData();
-      document.append("proposal", this.proposal);
+      document.append('proposal', this.proposal);
       const formData = {
         data: document,
       };
       this.$store.dispatch(this.service, formData).then(
         () => {
           Swal.fire({
-            icon: "success",
-            title: "Upload Proposal berhasil",
+            icon: 'success',
+            title: 'Upload Proposal berhasil',
             showConfirmButton: true,
           }).then(() => {
-            this.$router.push("/dashboard");
+            this.$router.push('/dashboard');
           });
         },
         (error) => {
@@ -90,24 +90,24 @@ export default {
             this.refreshToken();
           } else {
             Swal.fire({
-              icon: "error",
-              title: "Upload Proposal gagal",
+              icon: 'error',
+              title: 'Upload Proposal gagal',
               text: error.response.data.message,
               showConfirmButton: true,
             }).then(() => {});
           }
-        }
+        },
       );
     },
     refreshToken() {
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(localStorage.getItem('user'));
       axios
-        .post(this.endpointAPI + "api/v1/auth/refresh-tokens", {
+        .post(`${this.endpointAPI}api/v1/auth/refresh-tokens`, {
           refreshToken: user.tokens.refresh.token,
         })
         .then((response) => {
           user.tokens = response.data;
-          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem('user', JSON.stringify(user));
         })
         .then(() => {
           this.onSubmit();

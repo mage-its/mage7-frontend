@@ -52,18 +52,18 @@
               Pendaftaran
             </h2>
             <h5 class="text-white">
-            
+
             </h5>
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
             <h5 class="text-white">
               Pendaftaran + Durasi Upload Proposal : 5 Juli – 28 Agustus<br />
-              
+
             </h5>
             <h5 class="text-white">
               Pengumuman Lolos Seleksi Proposal : 5 September<br />
-              
+
             </h5>
             <h5 class="text-white">
               Durasi Pembayaran untuk Melanjutkan Lomba : 6 September – 19 September<br />
@@ -153,13 +153,13 @@
           <i class="icon fas fa-book fa-9x"></i>
         </b-col>
         <b-col lg="10" cols="9">
-          
+
           <b-container class="description  mt-4">
             <a target="blank" href="/Guidebook_IoT_dev_peserta_beda.pdf" class="btn d-inline">
               Unduh guidebook
             </a>
           </b-container>
-          
+
         </b-col>
       </b-row>
     </b-container>
@@ -173,11 +173,11 @@
 </template>
 <script>
 export default {
-  name: "OSM",
+  name: 'OSM',
   data() {
     return {
       loading: false,
-      message: "",
+      message: '',
       url: window.location.href,
     };
   },
@@ -188,7 +188,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes("osm");
+      return this.url.includes('osm');
     },
   },
   created() {

@@ -4,26 +4,26 @@
     </div>
 </template>
 <script>
-import AdminIndexParticipant from './../../../components/dashboard/admin/participant/IndexParticipant'
+import AdminIndexParticipant from './../../../components/dashboard/admin/participant/IndexParticipant';
 
 export default {
-    name: "IndexParticipant",
+    name: 'IndexParticipant',
     components: {
-        AdminIndexParticipant
+        AdminIndexParticipant,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
+        },
     },
     created() {
-    }
-}
+    },
+};
 </script>
-<style scoped> 
+<style scoped>
 .header{
     min-height: 90px;
     min-width: 100%;
-    padding: 30px; 
+    padding: 30px;
 }
 </style>

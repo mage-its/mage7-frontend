@@ -4,19 +4,19 @@
     </div>
 </template>
 <script>
-import AdminCreatePayment from './../../../components/dashboard/admin/payment/CreatePayment.vue'
+import AdminCreatePayment from './../../../components/dashboard/admin/payment/CreatePayment.vue';
 
 export default {
-    name : 'MainPayment',
+    name: 'MainPayment',
     components: {
-        AdminCreatePayment
+        AdminCreatePayment,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
 <style scoped>
 .btn{

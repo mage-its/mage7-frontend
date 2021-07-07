@@ -1,20 +1,20 @@
 import axios from 'axios';
 import header from './header';
 
-const API_URL = 'http://anavaugm.com:3000/api/announcement/';
+const API_URL = 'https://mage-its.com/api/announcement/';
 
 class AnnouncementService {
   getAllAnnouncement() {
-    return axios.get(API_URL + 'all', header());
+    return axios.get(`${API_URL}all`, header());
   }
   getGeneralAnnouncement() {
-    return axios.get(API_URL + 'all/general', header());
+    return axios.get(`${API_URL}all/general`, header());
   }
   getAllAnnouncementByStage(stageId) {
-    return axios.get(API_URL + 'stage/' + stageId, header());
+    return axios.get(`${API_URL}stage/${stageId}`, header());
   }
   getAllAnnouncementByParticipant(participantId) {
-    return axios.get(API_URL + 'participant/' + participantId, header());
+    return axios.get(`${API_URL}participant/${participantId}`, header());
   }
   getAnnouncement(id) {
     return axios.get(API_URL + id, header());

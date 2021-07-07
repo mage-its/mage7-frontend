@@ -5,10 +5,10 @@ export const question = {
   namespaced: true,
   state: {
     questions: [],
-    question: {}
+    question: {},
   },
   getters: {
-    
+
   },
   actions: {
     getAllQuestion({ commit }) {
@@ -17,9 +17,7 @@ export const question = {
           commit('setQuestions', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getAllQuestionByStage({ commit }, idStage) {
@@ -28,9 +26,7 @@ export const question = {
           commit('setQuestions', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getQuestion({ commit }, id) {
@@ -39,9 +35,7 @@ export const question = {
           commit('setQuestion', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     createQuestion({ commit }, question) {
@@ -50,9 +44,7 @@ export const question = {
           commit('createQuestion', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     updateQuestion({ commit }, question) {
@@ -61,9 +53,7 @@ export const question = {
           commit('updateQuestion', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },
@@ -75,10 +65,10 @@ export const question = {
       state.question = question;
     },
     createQuestion() {
-      
+
     },
     updateQuestion() {
-      
+
     },
   },
 };

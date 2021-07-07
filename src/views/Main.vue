@@ -63,7 +63,7 @@
                     terciptanya bangsa yang lebih maju di kemudian hari.
                   </p>
                 </div>
-                <router-link :to="'/competition/app'"> 
+                <router-link :to="'/competition/app'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -90,7 +90,7 @@
                     teknologi dan informasi yang diringkas melalui game menarik.
                   </p>
                 </div>
-                <router-link :to="'/competition/game'"> 
+                <router-link :to="'/competition/game'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -126,7 +126,7 @@
                     umum.
                   </p>
                 </div>
-                <router-link :to="'/competition/iot'"> 
+                <router-link :to="'/competition/iot'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -151,7 +151,7 @@
                     website MAGE 7.
                   </p>
                 </div>
-                <router-link :to="'/competition/olim'"> 
+                <router-link :to="'/competition/olim'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -188,7 +188,7 @@
                     terciptanya bangsa yang lebih maju di kemudian hari.
                   </p>
                 </div>
-                <router-link :to="'/competition/app'"> 
+                <router-link :to="'/competition/app'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -219,7 +219,7 @@
                     teknologi dan informasi yang diringkas melalui game menarik.
                   </p>
                 </div>
-                <router-link :to="'/competition/game'"> 
+                <router-link :to="'/competition/game'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -250,7 +250,7 @@
                     umum.
                   </p>
                 </div>
-                <router-link :to="'/competition/iot'"> 
+                <router-link :to="'/competition/iot'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -279,7 +279,7 @@
                     website MAGE 7.
                   </p>
                 </div>
-                <router-link :to="'/competition/olim'"> 
+                <router-link :to="'/competition/olim'">
                   <button
                     class="btn p-3 mt-3"
                   >
@@ -296,27 +296,27 @@
   </div>
 </template>
 <script>
-import NavBar from "@/components/NavBar.vue";
-import Footer from "@/components/Footer.vue";
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
+import NavBar from '@/components/NavBar.vue';
+import Footer from '@/components/Footer.vue';
+import Login from '@/views/Login.vue';
+import Register from '@/views/Register.vue';
 
 export default {
-  name: "Main",
+  name: 'Main',
   components: {
     NavBar,
     Footer,
     Login,
-    Register
+    Register,
   },
   computed: {
     show() {
       return this.$store.state.ui.welcomeShow;
-    }
+    },
   },
   created() {
     window.scrollTo(0, 0);
-  }
+  },
 };
 </script>
 <style scoped>

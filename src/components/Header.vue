@@ -21,11 +21,11 @@
 
 <script>
 export default {
-  name: "Header",
+  name: 'Header',
   data() {
     return {
-      textBold: "text-bold",
-      location: "",
+      textBold: 'text-bold',
+      location: '',
     };
   },
   computed: {
@@ -35,21 +35,15 @@ export default {
   },
   methods: {
     performToggle() {
-      this.$store.dispatch("ui/changeSidebarComponent");
+      this.$store.dispatch('ui/changeSidebarComponent');
     },
     setLocation() {
-      if (window.location.href.includes("session")) this.location = "Sesi";
-      else if (window.location.href.includes("participant"))
-        this.location = "Peserta";
-      else if (window.location.href.includes("candidate"))
-        this.location = "Kandidat";
-      else if (window.location.href.includes("setting"))
-        this.location = "Pengaturan";
-      else this.location = "Beranda";
+      if (window.location.href.includes('session')) this.location = 'Sesi';
+      else if (window.location.href.includes('participant')) { this.location = 'Peserta'; } else if (window.location.href.includes('candidate')) { this.location = 'Kandidat'; } else if (window.location.href.includes('setting')) { this.location = 'Pengaturan'; } else this.location = 'Beranda';
     },
     logout() {
-      this.$store.commit("setAuthentication", false);
-      this.$router.push("/");
+      this.$store.commit('setAuthentication', false);
+      this.$router.push('/');
     },
   },
   watch: {

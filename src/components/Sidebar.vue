@@ -112,16 +112,17 @@
 
 <script>
 import Swal from 'sweetalert2';
+
 export default {
-  name: "Sidebar",
+  name: 'Sidebar',
   data() {
     return {
-      textBold: "text-bold",
+      textBold: 'text-bold',
       windowWidth: window.innerWidth,
       selectedItem: 0,
       selectedSubItem: 0,
       toggle: 0,
-      scrollY: 0
+      scrollY: 0,
     };
   },
   computed: {
@@ -132,42 +133,41 @@ export default {
       return this.$store.state.event.events;
     },
     event() {
-      return JSON.parse(localStorage.getItem("event"));
+      return JSON.parse(localStorage.getItem('event'));
     },
     getToggle() {
       return this.toggle;
-    }
+    },
   },
   methods: {
     signOut() {
       Swal.fire({
-        icon: "warning",
-        title: "Anda Yakin LogOut ?",
+        icon: 'warning',
+        title: 'Anda Yakin LogOut ?',
         showDenyButton: true,
-        confirmButtonText: `Yes`,
-        denyButtonText: `No`,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.removeItem('user');
-          this.$router.push({name:"Home"}); 
-          location.reload();   
-        } 
-      })
-      
+          this.$router.push({ name: 'Home' });
+          location.reload();
+        }
+      });
     },
     performToggle(item, eventName) {
-      var index = 0;
-      var eventIndex = 0;
-      this.events.forEach(event => {
+      let index = 0;
+      let eventIndex = 0;
+      this.events.forEach((event) => {
         if (event.name == eventName) eventIndex = index;
         index++;
       });
-      var event = {
+      const event = {
         roles: this.user.roles,
-        item: eventIndex
+        item: eventIndex,
       };
 
-      this.$store.dispatch("event/selectEvent", event);
+      this.$store.dispatch('event/selectEvent', event);
 
       if (this.selectedItem == item && this.toggle != 0) {
         this.toggle = 0;
@@ -178,29 +178,31 @@ export default {
       }
     },
     getEvents() {
-      this.$store.dispatch("event/getAllEvent");
+      this.$store.dispatch('event/getAllEvent');
     },
     checkJoinStage(eventName, stageName) {
-      var joinStage = false;
+      let joinStage = false;
 
-      if (this.user.participant.events.length > 0)
-        this.user.participant.events.forEach(event => {
+      if (this.user.participant.events.length > 0) {
+ this.user.participant.events.forEach((event) => {
           if (event.name == eventName) {
-            event.stages.forEach(stage => {
+            event.stages.forEach((stage) => {
               if (stage.name == stageName) joinStage = true;
             });
           }
         });
+}
 
       return joinStage;
     },
     checkJoinEvent(name) {
-      var joinEvent = false;
+      let joinEvent = false;
 
-      if (this.user.participant.events.length > 0)
-        this.user.participant.events.forEach(event => {
+      if (this.user.participant.events.length > 0) {
+ this.user.participant.events.forEach((event) => {
           if (event.name == name) joinEvent = true;
         });
+}
 
       return joinEvent;
     },
@@ -208,27 +210,24 @@ export default {
       this.windowWidth = window.innerWidth;
     },
     checkSize() {
-      if (this.windowWidth < 800)
-        this.$store.dispatch("ui/changeSidebarComponent");
-    }
+      if (this.windowWidth < 800) { this.$store.dispatch('ui/changeSidebarComponent'); }
+    },
   },
   mounted() {
     this.$nextTick(() => {
-      window.addEventListener("resize", this.onResize);
+      window.addEventListener('resize', this.onResize);
     });
   },
   created() {
-    //this.getEvents();
-    if (this.user.roles.includes("participant")) {
-      if (window.location.href.includes("article")) this.selectedItem = 1;
-      else if (window.location.href.includes("announcement"))
-        this.selectedItem = 2;
-      else if (window.location.href.includes("schedule")) this.selectedItem = 3;
-      else if (window.location.href.includes("twibbon")) this.selectedItem = 4;
-      else if (window.location.href.includes("document")) this.selectedItem = 5;
-      else if (window.location.href.includes("payment")) this.selectedItem = 6;
+    // this.getEvents();
+    if (this.user.roles.includes('participant')) {
+      if (window.location.href.includes('article')) this.selectedItem = 1;
+      else if (window.location.href.includes('announcement')) { this.selectedItem = 2; } else if (window.location.href.includes('schedule')) this.selectedItem = 3;
+      else if (window.location.href.includes('twibbon')) this.selectedItem = 4;
+      else if (window.location.href.includes('document')) this.selectedItem = 5;
+      else if (window.location.href.includes('payment')) this.selectedItem = 6;
     }
-  }
+  },
 };
 </script>
 
@@ -244,7 +243,7 @@ export default {
   align-items: stretch;
   position: fixed;
   background: white
-  
+
 }
 
 .sidebar-logo {

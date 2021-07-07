@@ -1,8 +1,8 @@
 <template>
   <div class="register-page">
-    <div class="background-register"> 
+    <div class="background-register">
     </div>
-    <div class="register-container shadow"> 
+    <div class="register-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
       <div>
         <label>Username</label>
@@ -90,7 +90,7 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 import {
   required,
@@ -99,20 +99,20 @@ import {
   email,
   sameAs,
   alphaNum,
-} from "vuelidate/lib/validators";
+} from 'vuelidate/lib/validators';
 
 export default {
-  name: "Register",
+  name: 'Register',
   data() {
     return {
       user: {
-        name : "",
-        email : "",
-        password : "",
+        name: '',
+        email: '',
+        password: '',
       },
-      passwordConfirmation: "",
+      passwordConfirmation: '',
       loading: false,
-      message: "",
+      message: '',
       provinces: [],
       cities: [],
       subdistricts: [],
@@ -120,11 +120,10 @@ export default {
     };
   },
   watcher: {
-    user: function() {
+    user() {
       this.$v.$touch();
       if (this.$v.$error) {
         console.log(this.$v);
-        return;
       }
     },
   },
@@ -147,44 +146,44 @@ export default {
       },
     },
     passwordConfirmation: {
-      sameAsPassword: sameAs("password"),
+      sameAsPassword: sameAs('password'),
     },
   },
   methods: {
     getProvinces() {
-      this.$store.dispatch("ui/getProvinces").then((data) => {
+      this.$store.dispatch('ui/getProvinces').then((data) => {
         console.log(data);
         this.provinces = data;
       });
     },
     getCities(provincename) {
-      this.$store.dispatch("ui/getCities", provincename).then((data) => {
+      this.$store.dispatch('ui/getCities', provincename).then((data) => {
         this.cities = data;
       });
     },
     getSubdistricts(cityname) {
-      this.$store.dispatch("ui/getSubdistricts", cityname).then((data) => {
+      this.$store.dispatch('ui/getSubdistricts', cityname).then((data) => {
         this.subdistricts = data;
       });
     },
     moveToWelcome() {
-      this.$store.dispatch("ui/changeWelcomeComponent", "welcome");
+      this.$store.dispatch('ui/changeWelcomeComponent', 'welcome');
     },
     moveToLogin() {
-      this.$store.dispatch("ui/changeWelcomeComponent", "login");
+      this.$store.dispatch('ui/changeWelcomeComponent', 'login');
     },
     handleRegister() {
       this.loading = true;
       if (this.user.password == this.passwordConfirmation) {
         if (this.user.name && this.user.email && this.user.password) {
-          this.$store.dispatch("auth/register", this.user).then(
+          this.$store.dispatch('auth/register', this.user).then(
             () => {
               Swal.fire({
-                icon: "success",
-                title: "Register berhasil",
+                icon: 'success',
+                title: 'Register berhasil',
                 showConfirmButton: true,
               }).then(() => {
-                this.$router.push("/dashboard");
+                this.$router.push('/dashboard');
               });
             },
             (error) => {
@@ -195,24 +194,24 @@ export default {
                 error.message ||
                 error.toString();
               Swal.fire({
-                icon: "error",
-                title: "Register gagal",
+                icon: 'error',
+                title: 'Register gagal',
                 text: this.message,
                 showConfirmButton: true,
               }).then(() => {});
-            }
+            },
           );
         }
       } else {
         Swal.fire({
-          icon: "error",
-          title: "konfirmasi sandi salah",
+          icon: 'error',
+          title: 'konfirmasi sandi salah',
           showConfirmButton: true,
         }).then(() => {});
       }
     },
     getUrl() {
-      return this.url.includes("register");
+      return this.url.includes('register');
     },
   },
   created() {

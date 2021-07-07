@@ -5,24 +5,24 @@
     </div>
 </template>
 <script>
-import ParticipantPekanFinalPoster from './../../../../components/dashboard/participant/stage/poster/IndexPoster.vue'
+import ParticipantPekanFinalPoster from './../../../../components/dashboard/participant/stage/poster/IndexPoster.vue';
 
 export default {
-    name: "PekanFinalPoster",
+    name: 'PekanFinalPoster',
     components: {
-        ParticipantPekanFinalPoster
+        ParticipantPekanFinalPoster,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
-<style scoped> 
+<style scoped>
 .header{
     min-height: 90px;
     min-width: 100%;
-    padding: 30px; 
+    padding: 30px;
 }
 </style>

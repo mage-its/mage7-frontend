@@ -173,17 +173,17 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 export default {
-  name: "EditQuestionStage",
-  
+  name: 'EditQuestionStage',
+
   computed: {
     question() {
       return this.$store.state.question.question;
     },
     stage() {
-      return JSON.parse(localStorage.getItem('stage'+this.$route.params.idStage));
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
     event() {
       return JSON.parse(localStorage.getItem('event'));
@@ -191,31 +191,27 @@ export default {
   },
   methods: {
     save(index) {
-      if (index == 0)
-        this.question.content = document.getElementById(index.toString()).value;
-      else {
+      if (index == 0) { this.question.content = document.getElementById(index.toString()).value; } else {
         this.question.options[index - 1].content = document.getElementById(index.toString()).value;
       }
     },
     getQuestion() {
       this.$store.dispatch(
-        "question/getQuestion",
-        this.$route.params.idQuestion
+        'question/getQuestion',
+        this.$route.params.idQuestion,
       );
     },
 
     updateQuestion() {
       this.$store
-        .dispatch("question/updateQuestion", this.question)
+        .dispatch('question/updateQuestion', this.question)
         .then(() => {
           Swal.fire({
-            icon: "success",
-            title: "Soal berhasil diperbarui",
+            icon: 'success',
+            title: 'Soal berhasil diperbarui',
             showConfirmButton: true,
           }).then(() => {
-            this.$router.push(
-              "/dashboard/stage/" + this.stage._id + "/question/"
-            );
+            this.$router.push(`/dashboard/stage/${this.stage._id}/question/`);
           });
         });
     },

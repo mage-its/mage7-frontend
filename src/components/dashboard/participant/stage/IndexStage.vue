@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: "IndexStage",
+  name: 'IndexStage',
   data() {
     return {
       event: {},
@@ -27,48 +27,48 @@ export default {
   },
   methods: {
     getStage() {
-      this.$store.dispatch("stage/getStage", this.$route.params.idStage);
+      this.$store.dispatch('stage/getStage', this.$route.params.idStage);
     },
     getStageName(name) {
       switch (this.event.name) {
-        case "OSM":
+        case 'OSM':
           switch (name) {
-            case "preliminary":
-              name = "Penyisihan";
+            case 'preliminary':
+              name = 'Penyisihan';
               break;
-            case "semifinal":
-              name = "Semifinal";
+            case 'semifinal':
+              name = 'Semifinal';
               break;
-            case "final":
-              name = "Final";
+            case 'final':
+              name = 'Final';
               break;
           }
           break;
-        case "The One":
+        case 'The One':
           switch (name) {
-            case "preliminary":
-              name = "Babak Gugur";
+            case 'preliminary':
+              name = 'Babak Gugur';
               break;
-            case "semifinal":
-              name = "Babak Championship";
+            case 'semifinal':
+              name = 'Babak Championship';
               break;
           }
           break;
-        case "Started":
+        case 'Started':
           switch (name) {
-            case "preliminary":
-              name = "Pekan Kreativitas";
+            case 'preliminary':
+              name = 'Pekan Kreativitas';
               break;
-            case "semifinal":
-              name = "Final";
+            case 'semifinal':
+              name = 'Final';
               break;
           }
           break;
-        case "Sigma":
-          name = "";
+        case 'Sigma':
+          name = '';
           break;
-        case "Open House":
-          name = "";
+        case 'Open House':
+          name = '';
           break;
       }
       return name;
@@ -80,7 +80,7 @@ export default {
     const that = this;
 
     setInterval(() => {
-      that.event = JSON.parse(localStorage.getItem("event"));
+      that.event = JSON.parse(localStorage.getItem('event'));
     }, 100);
   },
 };

@@ -82,7 +82,7 @@
                             </b-row>
                         </b-card-text>
                     </b-card>
-                </b-card-group> 
+                </b-card-group>
                 <b-button class="mt-3 mb-5" block variant="danger">Hentikan Ujian</b-button>
             </b-col>
         </b-row>
@@ -94,17 +94,17 @@ export default {
     name: 'BabakGugur',
     data() {
         return {
-            data : []
-        }
+            data: [],
+        };
     },
     methods: {
         JumlahSoal() {
-            for(let i=0; i<60; i++) {
-                this.data[i] = i+1;
+            for (let i = 0; i < 60; i++) {
+                this.data[i] = i + 1;
             }
-        }
-    }
-}
+        },
+    },
+};
 </script>
 <style scoped>
 #working-page {
@@ -119,7 +119,7 @@ export default {
 }
 
 #number-question p {
-    font-size:11px; 
+    font-size:11px;
     margin-top: 5px
 }
 
@@ -137,7 +137,7 @@ export default {
         margin-left: 15px;
     }
     #number-question p{
-        font-size:15px; 
+        font-size:15px;
         margin-top: 5px;
     }
 }

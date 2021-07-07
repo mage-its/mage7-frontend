@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Loader",
+  name: 'Loader',
 };
 </script>
 
@@ -97,7 +97,7 @@ export default {
   h1 {
     font-size: 30px;
   }
-  
+
   .name .loader {
       margin-top: 20px;
       margin-left: calc(50% - 140px);

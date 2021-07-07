@@ -8,11 +8,11 @@
   </div>
 </template>
 <script>
-import Header from "@/components/Header.vue";
-import Sidebar from "@/components/Sidebar.vue";
+import Header from '@/components/Header.vue';
+import Sidebar from '@/components/Sidebar.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Header,
     Sidebar,
@@ -27,23 +27,21 @@ export default {
   },
   methods: {
     getEvents() {
-      this.$store.dispatch("event/getAllEvent");
+      this.$store.dispatch('event/getAllEvent');
     },
   },
   mounted() {
-    window.onpopstate = function(event) {
+    window.onpopstate = function (event) {
     this.$router.go(0);
-    window.location.replace("http://localhost:8081/login");
+    window.location.replace('http://localhost:8081/login');
     setTimeOut({
 
-    }, 3000)
-
+    }, 3000);
    };
   },
   created() {
     this.getEvents();
-    if (window.innerWidth < 800) 
-        this.$store.dispatch("ui/changeSidebarComponent");
+    if (window.innerWidth < 800) { this.$store.dispatch('ui/changeSidebarComponent'); }
   },
 };
 </script>

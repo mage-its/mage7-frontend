@@ -16,7 +16,7 @@ export const uploadProposal = {
         (error) => {
           commit('uploadFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
     uploadProposalGameDev({ commit }, form) {
@@ -28,7 +28,7 @@ export const uploadProposal = {
         (error) => {
           commit('uploadFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
     uploadProposalAppDev({ commit }, form) {
@@ -40,7 +40,7 @@ export const uploadProposal = {
         (error) => {
           commit('uploadFailure');
           return Promise.reject(error);
-        }
+        },
       );
     },
   },

@@ -20,11 +20,9 @@ export const ui = {
   actions: {
     changeSidebarComponent({ commit }) {
       commit('changeSidebarComponent');
-      return;
     },
     changeWelcomeComponent({ commit }, component) {
       commit('changeWelcomeComponent', component);
-      return;
     },
     getProvinces({ commit }) {
       return UIService.getProvinces().then(
@@ -32,9 +30,7 @@ export const ui = {
           commit('setProvinces', provinces);
           return Promise.resolve(provinces);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getCities({ commit, getters }, provinceName) {
@@ -43,9 +39,7 @@ export const ui = {
           commit('setCities', cities);
           return Promise.resolve(cities);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getSubdistricts({ commit, getters }, cityName) {
@@ -54,9 +48,7 @@ export const ui = {
           commit('setSubdistricts', subdistricts);
           return Promise.resolve(subdistricts);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },

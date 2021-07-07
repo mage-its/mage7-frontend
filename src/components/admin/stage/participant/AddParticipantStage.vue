@@ -78,16 +78,16 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 export default {
-  name: "AddParticipantStage",
+  name: 'AddParticipantStage',
   computed: {
     participants() {
       return this.$store.state.participant.participants;
     },
     stage() {
-      return JSON.parse(localStorage.getItem('stage'+this.$route.params.idStage));
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
     event() {
       return JSON.parse(localStorage.getItem('event'));
@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     joinEvent(participant) {
-      var join = false;
+      let join = false;
 
       participant.participant.events.forEach((event) => {
         if (event.id == this.event._id) join = true;
@@ -104,7 +104,7 @@ export default {
       return join;
     },
     getNumberParticipant(participant) {
-      var number = false;
+      let number = false;
       participant.participant.events.forEach((event) => {
         if (event.id == this.event._id) {
           number = event.number;
@@ -113,27 +113,27 @@ export default {
       return number;
     },
     getParticipants() {
-      this.$store.dispatch("participant/getAllParticipant");
+      this.$store.dispatch('participant/getAllParticipant');
     },
     addParticipantToStage(idParticipant, session) {
-      var stage = {
+      const stage = {
         id: this.$route.params.idStage,
         participantId: idParticipant,
-        session: session,
+        session,
       };
 
-      this.$store.dispatch("stage/addParticipantToStage", stage).then(() => {
+      this.$store.dispatch('stage/addParticipantToStage', stage).then(() => {
         Swal.fire({
-          icon: "success",
-          title: "Peserta berhasil ditambahkan",
+          icon: 'success',
+          title: 'Peserta berhasil ditambahkan',
           showConfirmButton: true,
         }).then();
         this.getParticipants();
       });
     },
     checkParticipant(participant) {
-      var events = participant.participant.events;
-      var isParticipant = false;
+      const { events } = participant.participant;
+      let isParticipant = false;
       events.forEach((event) => {
         event.stages.forEach((stage) => {
           if (stage.id == this.$route.params.idStage) {

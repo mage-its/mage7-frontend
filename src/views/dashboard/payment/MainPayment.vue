@@ -5,21 +5,21 @@
     </div>
 </template>
 <script>
-import AdminMainPayment from './../../../components/dashboard/admin/payment/MainPayment.vue'
-import ParticipantMainPayment from './../../../components/dashboard/participant/payment/MainPayment.vue'
+import AdminMainPayment from './../../../components/dashboard/admin/payment/MainPayment.vue';
+import ParticipantMainPayment from './../../../components/dashboard/participant/payment/MainPayment.vue';
 
 export default {
-    name : 'MainPayment',
+    name: 'MainPayment',
     components: {
         AdminMainPayment,
-        ParticipantMainPayment
+        ParticipantMainPayment,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
-    }
-}
+        },
+    },
+};
 </script>
 <style scoped>
 .btn{

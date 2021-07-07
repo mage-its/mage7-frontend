@@ -514,10 +514,10 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 export default {
-  name: "DetailResultStage",
+  name: 'DetailResultStage',
   data() {
     return {
       stageInformationOfParticipant: {},
@@ -528,35 +528,35 @@ export default {
       return this.$store.state.answerForm.answerForm;
     },
     questions() {
-      var questions = JSON.parse(this.answerForm._questions);
+      const questions = JSON.parse(this.answerForm._questions);
       return questions;
     },
     answers() {
-      var answers = JSON.parse(this.answerForm._answers);
+      const answers = JSON.parse(this.answerForm._answers);
       return answers;
     },
     stage() {
       return this.$store.state.stage.stage;
     },
     event() {
-      return JSON.parse(localStorage.getItem("event"));
+      return JSON.parse(localStorage.getItem('event'));
     },
   },
   methods: {
     getAnswerForm() {
       this.$store
-        .dispatch("answerForm/getAnswerForm", this.$route.params.idResult)
+        .dispatch('answerForm/getAnswerForm', this.$route.params.idResult)
         .then(() => {
           this.getStageInformationOfParticipant();
         });
     },
     setAnswerFormScore() {
       this.$store
-        .dispatch("answerForm/setAnswerFormScore", this.answerForm)
+        .dispatch('answerForm/setAnswerFormScore', this.answerForm)
         .then(() => {
           Swal.fire({
-            icon: "success",
-            title: "Nilai berhasil diubah",
+            icon: 'success',
+            title: 'Nilai berhasil diubah',
             showConfirmButton: true,
           }).then(() => {});
         });
@@ -569,25 +569,17 @@ export default {
             this.stageInformationOfParticipant.number = event.number;
             this.stageInformationOfParticipant.document = event.document;
 
-            var today = new Date();
-            var started_at = new Date(this.stage.started_at);
-            var finished_at = new Date(this.stage.finished_at);
+            const today = new Date();
+            let started_at = new Date(this.stage.started_at);
+            let finished_at = new Date(this.stage.finished_at);
 
-            started_at = new Date(
-              started_at.getTime() + today.getTimezoneOffset() * 60 * 1000
-            );
-            finished_at = new Date(
-              finished_at.getTime() + today.getTimezoneOffset() * 60 * 1000
-            );
+            started_at = new Date(started_at.getTime() + today.getTimezoneOffset() * 60 * 1000);
+            finished_at = new Date(finished_at.getTime() + today.getTimezoneOffset() * 60 * 1000);
 
-            started_at.setHours(
-              started_at.getHours() +
-                parseInt(this.stageInformationOfParticipant.session)
-            );
-            finished_at.setHours(
-              finished_at.getHours() +
-                parseInt(this.stageInformationOfParticipant.session)
-            );
+            started_at.setHours(started_at.getHours() +
+                parseInt(this.stageInformationOfParticipant.session));
+            finished_at.setHours(finished_at.getHours() +
+                parseInt(this.stageInformationOfParticipant.session));
 
             this.stageInformationOfParticipant.started_at = started_at.toISOString();
             this.stageInformationOfParticipant.finished_at = finished_at.toISOString();

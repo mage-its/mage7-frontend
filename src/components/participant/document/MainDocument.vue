@@ -38,7 +38,7 @@
 </template>
 <script>
 export default {
-  name: "MainDocument",
+  name: 'MainDocument',
 };
 </script>
 <style>

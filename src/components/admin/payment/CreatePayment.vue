@@ -324,18 +324,18 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../services/datetime";
-import Swal from "sweetalert2";
+import * as datetime from './../../../../services/datetime';
+import Swal from 'sweetalert2';
 
 export default {
-  name: "CreatePayment",
+  name: 'CreatePayment',
   data() {
     return {
       payment: {
         events: [],
-        participantId: "",
-        adminId: "",
-        mail: "",
+        participantId: '',
+        adminId: '',
+        mail: '',
       },
       selectedEvent: [],
       selectedParticipant: {},
@@ -355,7 +355,7 @@ export default {
     },
   },
   watch: {
-    events: function(val) {
+    events(val) {
       this.selectedEvent = [];
       val.forEach(() => {
         this.selectedEvent.push(false);
@@ -364,10 +364,10 @@ export default {
   },
   methods: {
     getParticipants() {
-      this.$store.dispatch("participant/getAllParticipant");
+      this.$store.dispatch('participant/getAllParticipant');
     },
     getEvents() {
-      this.$store.dispatch("event/getAllEvent");
+      this.$store.dispatch('event/getAllEvent');
     },
     chooseParticipant(participant) {
       this.selectedParticipant = participant;
@@ -376,8 +376,8 @@ export default {
         (this.step = 2);
     },
     chooseEvent() {
-      var choosedEvent = [];
-      var index = 0;
+      const choosedEvent = [];
+      let index = 0;
       this.selectedEvent.forEach((selected) => {
         if (selected) {
           choosedEvent.push(this.events[index]);
@@ -388,23 +388,23 @@ export default {
       this.selectedEvent = choosedEvent;
       this.step = 3;
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
     createPayment() {
-      this.payment.mail = document.getElementById("mail").innerHTML;
+      this.payment.mail = document.getElementById('mail').innerHTML;
       this.payment.events = this.selectedEvent;
-      this.$store.dispatch("payment/createPayment", this.payment).then(
+      this.$store.dispatch('payment/createPayment', this.payment).then(
         () => {
           Swal.fire({
-            icon: "success",
-            title: "Pembayaran berhasil dibuat",
+            icon: 'success',
+            title: 'Pembayaran berhasil dibuat',
             showConfirmButton: true,
           }).then(() => {
-            this.$router.push("/dashboard/payment/");
+            this.$router.push('/dashboard/payment/');
           });
         },
-        () => {}
+        () => {},
       );
     },
     selectEvent(index) {

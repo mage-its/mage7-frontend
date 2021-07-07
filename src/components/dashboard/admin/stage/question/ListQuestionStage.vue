@@ -73,13 +73,13 @@
 </template>
 <script>
 export default {
-  name: "MainSchedule",
+  name: 'MainSchedule',
   computed: {
     questions() {
       return this.$store.state.question.questions;
     },
     stage() {
-      return JSON.parse(localStorage.getItem('stage'+this.$route.params.idStage));
+      return JSON.parse(localStorage.getItem(`stage${this.$route.params.idStage}`));
     },
     event() {
       return JSON.parse(localStorage.getItem('event'));
@@ -88,8 +88,8 @@ export default {
   methods: {
     getAllQuestionByStage() {
       this.$store.dispatch(
-        "question/getAllQuestionByStage",
-        this.$route.params.idStage
+        'question/getAllQuestionByStage',
+        this.$route.params.idStage,
       );
     },
   },

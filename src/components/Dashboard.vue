@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Sidebar from "@/components/Sidebar.vue";
+import Header from '@/components/Header.vue';
+import Sidebar from '@/components/Sidebar.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Header,
     Sidebar,

@@ -17,9 +17,7 @@ export const event = {
           commit('setEvents', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getEvent({ commit }, id) {
@@ -28,9 +26,7 @@ export const event = {
           commit('setEvent', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     uploadEvent({ commit }, data) {
@@ -39,9 +35,7 @@ export const event = {
           commit('addEvent', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     joinEvent({ commit }, data) {
@@ -50,9 +44,7 @@ export const event = {
           commit('addEvent', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },
@@ -71,7 +63,7 @@ export const event = {
       }
     },
     addEvent(state, user) {
-      var oldUser = JSON.parse(localStorage.getItem('user'));
+      const oldUser = JSON.parse(localStorage.getItem('user'));
       const newUser = user;
       console.log(newUser);
       oldUser.firstname = newUser.firstname;

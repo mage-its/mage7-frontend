@@ -49,10 +49,10 @@
   </div>
 </template>
 <script>
-import * as datetime from "./../../../../services/datetime";
+import * as datetime from './../../../../services/datetime';
 
 export default {
-  name: "MainSchedule",
+  name: 'MainSchedule',
   computed: {
     payments() {
       return this.$store.state.payment.payments;
@@ -60,9 +60,9 @@ export default {
   },
   methods: {
     getPayments() {
-      this.$store.dispatch("payment/getAllPayment");
+      this.$store.dispatch('payment/getAllPayment');
     },
-    getDateTime: function(type, date) {
+    getDateTime(type, date) {
       return datetime.getDateTime(type, date);
     },
   },

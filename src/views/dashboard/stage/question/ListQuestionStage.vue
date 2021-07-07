@@ -7,16 +7,16 @@
 import AdminListQuestionStage from './../../../../components/dashboard/admin/stage/question/ListQuestionStage.vue';
 
 export default {
-    name : 'ListQuestionStage',
+    name: 'ListQuestionStage',
     components: {
         AdminListQuestionStage,
     },
     computed: {
         user() {
             return this.$store.state.auth.user;
-        }
+        },
     },
-}
+};
 </script>
 <style scoped>
 .btn{

@@ -8,7 +8,7 @@
                 header-text-variant="white"
                 align="left"
             >
-                <b-card-text> 
+                <b-card-text>
                     <b-form action="">
                         <b-form-group id="input-group-2" label="Nama:" label-for="input-2">
                             <b-form-input

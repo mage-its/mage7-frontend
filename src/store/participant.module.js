@@ -14,9 +14,7 @@ export const participant = {
           commit('setParticipants', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getParticipant({ commit }, id) {
@@ -25,9 +23,7 @@ export const participant = {
           commit('setParticipant', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getProfile() {
@@ -39,7 +35,7 @@ export const participant = {
         (error) => {
           console.log(error.message);
           return Promise.reject(error);
-        }
+        },
       );
     },
     updateParticipant({ commit }, participant) {
@@ -48,9 +44,7 @@ export const participant = {
           commit('setParticipant', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     uploadParticipant({ commit }, participant) {
@@ -59,9 +53,7 @@ export const participant = {
           commit('setParticipant', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },
@@ -70,10 +62,10 @@ export const participant = {
       state.participants = participants;
     },
     setParticipant(state, user) {
-      var currentUser = JSON.parse(localStorage.getItem('user'));
-        
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+
       if (currentUser.roles.includes('participant')) {
-        var oldUser = JSON.parse(localStorage.getItem('user'));
+        const oldUser = JSON.parse(localStorage.getItem('user'));
         const newUser = user;
         console.log(newUser);
         oldUser.firstname = newUser.firstname;
@@ -85,7 +77,7 @@ export const participant = {
         console.log(oldUser);
         localStorage.setItem('user', JSON.stringify(oldUser));
       } else {
-        state.participant = user
+        state.participant = user;
       }
     },
   },

@@ -14,9 +14,7 @@ export const stage = {
           commit('setStages', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     getStage({ commit }, id) {
@@ -25,9 +23,7 @@ export const stage = {
           commit('setStage', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
     addParticipantToStage({ commit }, stage) {
@@ -36,27 +32,25 @@ export const stage = {
           commit('setStage', response.data.data);
           return Promise.resolve(response.data.data);
         },
-        (error) => {
-          return Promise.reject(error);
-        }
+        error => Promise.reject(error),
       );
     },
   },
   mutations: {
     setStages(state, stages) {
       state.stages = stages;
-      localStorage.setItem('stages' + stages._id, JSON.stringify(state.stages));
+      localStorage.setItem(`stages${stages._id}`, JSON.stringify(state.stages));
     },
     setStage(state, stage) {
       state.stage = stage;
-      var user = JSON.parse(localStorage.getItem('user'));
+      const user = JSON.parse(localStorage.getItem('user'));
       if (user.roles.includes('participant')) {
         stage.participants = null;
         stage.answerForms = null;
         stage.participants = null;
         stage.questions = null;
       }
-      localStorage.setItem('stage' + stage._id, JSON.stringify(state.stage));
+      localStorage.setItem(`stage${stage._id}`, JSON.stringify(state.stage));
     },
   },
 };

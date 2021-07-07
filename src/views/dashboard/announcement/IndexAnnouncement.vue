@@ -6,11 +6,11 @@
   </div>
 </template>
 <script>
-import AdminIndexAnnouncement from "./../../../components/dashboard/admin/announcement/IndexAnnouncement.vue";
-import ParticipantIndexAnnouncement from "./../../../components/dashboard/participant/announcement/IndexAnnouncement.vue";
+import AdminIndexAnnouncement from './../../../components/dashboard/admin/announcement/IndexAnnouncement.vue';
+import ParticipantIndexAnnouncement from './../../../components/dashboard/participant/announcement/IndexAnnouncement.vue';
 
 export default {
-  name: "IndexAnnouncement",
+  name: 'IndexAnnouncement',
   components: {
     AdminIndexAnnouncement,
     ParticipantIndexAnnouncement,

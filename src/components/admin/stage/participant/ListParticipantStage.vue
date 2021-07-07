@@ -92,7 +92,7 @@
 </template>
 <script>
 export default {
-  name: "ListParticipantStage",
+  name: 'ListParticipantStage',
   data() {
     return {
       event: {},
@@ -108,7 +108,7 @@ export default {
   methods: {
     getStage() {
       this.$store
-        .dispatch("stage/getStage", this.$route.params.idStage)
+        .dispatch('stage/getStage', this.$route.params.idStage)
         .then(() => {
           this.stage = this.$store.state.stage.stage;
           this.outline.participants = 0;
@@ -124,27 +124,25 @@ export default {
         });
     },
     getPaymentStatus(participant) {
-      var paymentStatus = false;
+      let paymentStatus = false;
       participant.participant.events.forEach((event) => {
         event.stages.forEach((stage) => {
-          if (stage.id == this.$route.params.idStage && event.number)
-            paymentStatus = true;
+          if (stage.id == this.$route.params.idStage && event.number) { paymentStatus = true; }
         });
       });
       return paymentStatus;
     },
     getDocumentStatus(participant) {
-      var documentStatus = false;
+      let documentStatus = false;
       participant.participant.events.forEach((event) => {
         event.stages.forEach(() => {
-          if (this.event.name == event.name && event.document == 1)
-            documentStatus = true;
+          if (this.event.name == event.name && event.document == 1) { documentStatus = true; }
         });
       });
       return documentStatus;
     },
     getNumberParticipant(participant) {
-      var number = false;
+      let number = false;
       participant.participant.events.forEach((event) => {
         if (event.id == this.event._id) {
           number = event.number;
@@ -162,7 +160,7 @@ export default {
     const that = this;
 
     setInterval(() => {
-      that.event = JSON.parse(localStorage.getItem("event"));
+      that.event = JSON.parse(localStorage.getItem('event'));
       that.stage = this.$store.state.stage.stage;
     }, 100);
   },
