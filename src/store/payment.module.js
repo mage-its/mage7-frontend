@@ -50,7 +50,6 @@ export const payment = {
           return Promise.resolve(response.data);
         },
         (error) => {
-          console.log(error.message);
           commit('createPaymentFailure');
           return Promise.reject(error);
         }

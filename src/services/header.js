@@ -3,7 +3,6 @@ export default function header(isForm) {
   
   if (user && user.tokens.access.token) {
     if(isForm) {
-      console.log(user.tokens.access.token);
       return { 
         headers: {
           'Content-Type': undefined,                  

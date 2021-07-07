@@ -335,7 +335,6 @@ export default {
       var formData = {
         data: document,
       };
-      console.log(formData);
       this.$store.dispatch("regisCompetition/registerOlim", formData).then(
         () => {
           Swal.fire({

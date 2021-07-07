@@ -116,7 +116,6 @@ export default {
         this.isEmailVerified = response.data.user.isEmailVerified;
         this.registeredComp = response.data.user.registeredComp;
         this.loading = true;
-        console.log(this.isEmailVerified);
       }).catch(error => {
         if(error.response.data.code == 401) {
           this.refreshToken();

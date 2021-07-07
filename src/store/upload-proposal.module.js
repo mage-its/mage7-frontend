@@ -14,7 +14,6 @@ export const uploadProposal = {
           return Promise.resolve(response.data);
         },
         (error) => {
-          console.log(error.message);
           commit('uploadFailure');
           return Promise.reject(error);
         }
@@ -27,7 +26,6 @@ export const uploadProposal = {
           return Promise.resolve(response.data);
         },
         (error) => {
-          console.log(error.message);
           commit('uploadFailure');
           return Promise.reject(error);
         }
@@ -40,7 +38,6 @@ export const uploadProposal = {
           return Promise.resolve(response.data);
         },
         (error) => {
-          console.log(error.message);
           commit('uploadFailure');
           return Promise.reject(error);
         }

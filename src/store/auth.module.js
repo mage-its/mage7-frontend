@@ -31,7 +31,6 @@ export const auth = {
                     return Promise.resolve(response.data);
                 },
                 (error) => {
-                    console.log(error.message);
                     commit('registerFailure');
                     return Promise.reject(error);
                 }
@@ -109,14 +108,12 @@ export const auth = {
         confirmEmailSuccess(state, user) {
             var oldUser = JSON.parse(localStorage.getItem('user'));
             const newUser = user;
-            console.log(newUser);
             oldUser.firstname = newUser.firstname;
             oldUser.lastname = newUser.lastname;
             oldUser.password = newUser.password;
             oldUser.verification = newUser.verification;
             oldUser.participant = newUser.participant;
             state.user = oldUser;
-            console.log(oldUser);
             localStorage.setItem('user', JSON.stringify(oldUser));
         },
         confirmEmailFailure() {},

@@ -70,7 +70,6 @@ export default {
                 this.profilUserPrice = response.data.compe.price;
                 this.profilUsernoPeserta = response.data.compe.noPeserta;
                 this.profilUsernamaTim = response.data.compe.namaTim;
-                console.log(response);
             })   
         },
         onUpload(e) {

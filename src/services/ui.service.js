@@ -6,7 +6,6 @@ class UIService {
   getProvinces() {
     return axios.get(API_URL + 'provinsi')
       .then((response) => {
-        console.log(response.data)
         return response.data.data;
       })
   }
