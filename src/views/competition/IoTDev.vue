@@ -1,54 +1,67 @@
 <template>
   <div class="osm-page">
-    <b-container
-      id="description"
-      class="bg-red shawod-sm rounded text-white text-center mt-5 text-justify p-5"
-    >
-      <b-row>
-        <b-col lg="4" class="p-3 text-center">
-          <img class="logo" src="@/assets/img/iot-merah.svg" />
-        </b-col>
-        <b-col lg="8">
-        <div class="competition-title text-left">
-          IoT Dev
-        </div>
-        <div class="competition-description text-justify">
-          Internet of Things Competition merupakan kompetisi dari MAGE 7, yaitu pembuatan alat yang memanfaatkan koneksi nirkabel untuk alat kendali yang dapat terhubung atau berkomunikasi dengan alat - alat yang dikendalikan. Kompetisi yang berskala nasional ini berfungsi sebagai sarana bagi peserta untuk mengembangkan kreativitas dan mewujudkan serta menerapkan ide - ide hebat ke dalam bentuk alat maupun aplikasi (jika diperlukan). Dengan begitu, partisipan telah ikut dalam peran penting memajukan sektor teknologi di Indonesia. Pada kompetisi ini kategori pesertanya meliputi umum.
-        </div>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="category"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Kategori</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-users"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <h2 class="text  text-white">
-              Terbuka untuk masyarakat umum
-            </h2>
-            <h5 class=" text-white">Kelompok Maksimal 3 Anggota</h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="schedule"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Agenda</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon far fa-calendar-alt fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <!-- <h2 class="text  text-white">
+    <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+      <b-container
+        id="description"
+        class="
+          bg-red
+          shawod-sm
+          rounded
+          text-white text-center
+          mt-5
+          text-justify
+          p-5
+        "
+      >
+        <b-row>
+          <b-col lg="4" class="p-3 text-center">
+            <img class="logo" src="@/assets/img/iot-merah.svg" />
+          </b-col>
+          <b-col lg="8">
+            <div class="competition-title text-left">IoT Dev</div>
+            <div class="competition-description text-justify">
+              Internet of Things Competition merupakan kompetisi dari MAGE 7,
+              yaitu pembuatan alat yang memanfaatkan koneksi nirkabel untuk alat
+              kendali yang dapat terhubung atau berkomunikasi dengan alat - alat
+              yang dikendalikan. Kompetisi yang berskala nasional ini berfungsi
+              sebagai sarana bagi peserta untuk mengembangkan kreativitas dan
+              mewujudkan serta menerapkan ide - ide hebat ke dalam bentuk alat
+              maupun aplikasi (jika diperlukan). Dengan begitu, partisipan telah
+              ikut dalam peran penting memajukan sektor teknologi di Indonesia.
+              Pada kompetisi ini kategori pesertanya meliputi umum.
+            </div>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="category"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Kategori</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-users"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <h2 class="text text-white">Terbuka untuk masyarakat umum</h2>
+              <h5 class="text-white">Kelompok Maksimal 3 Anggota</h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="schedule"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Agenda</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon far fa-calendar-alt fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <!-- <h2 class="text  text-white">
               Pendaftaran
             </h2>
             <h5 class="text-white">
@@ -57,56 +70,49 @@
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
-            <h5 class="text-white">
-              Pendaftaran + Durasi Upload Proposal : 5 Juli – 28 Agustus<br />
-
-            </h5>
-            <h5 class="text-white">
-              Pengumuman Lolos Seleksi Proposal : 5 September<br />
-
-            </h5>
-            <h5 class="text-white">
-              Durasi Pembayaran untuk Melanjutkan Lomba : 6 September – 19 September<br />
-            </h5>
-            <h5 class="text-white">
-              Batas Pengumpulan Laporan & Video : 28 Oktober<br />
-            </h5>
-            <h5 class="text-white">
-              Pengumuman Lolos Tahap Final : 6 November<br />
-            </h5>
-            <h5 class="text-white">
-              Technical Meeting Final : 8 November<br />
-            </h5>
-            <h5 class="text-white">
-              Exhibition : 13 November<br />
-            </h5>
-            <h5 class="text-white">
-              Penjurian Final : 14 November<br />
-            </h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="contact"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Kontak</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-phone-alt fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <h2 class="text  text-white">
-              Hario
-            </h2>
-            <h5 class="text-white">0877 8617 2125</h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <!-- <b-container
+              <h5 class="text-white">
+                Pendaftaran + Durasi Upload Proposal : 5 Juli – 28 Agustus<br />
+              </h5>
+              <h5 class="text-white">
+                Pengumuman Lolos Seleksi Proposal : 5 September<br />
+              </h5>
+              <h5 class="text-white">
+                Durasi Pembayaran untuk Melanjutkan Lomba : 6 September – 19
+                September<br />
+              </h5>
+              <h5 class="text-white">
+                Batas Pengumpulan Laporan & Video : 28 Oktober<br />
+              </h5>
+              <h5 class="text-white">
+                Pengumuman Lolos Tahap Final : 6 November<br />
+              </h5>
+              <h5 class="text-white">
+                Technical Meeting Final : 8 November<br />
+              </h5>
+              <h5 class="text-white">Exhibition : 13 November<br /></h5>
+              <h5 class="text-white">Penjurian Final : 14 November<br /></h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="contact"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Kontak</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-phone-alt fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <h2 class="text text-white">Hario</h2>
+              <h5 class="text-white">0877 8617 2125</h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <!-- <b-container
       id="prize"
       class="bg-red shawod-sm rounded text-white text-left"
     >
@@ -143,41 +149,48 @@
         </b-col>
       </b-row>
     </b-container> -->
-    <b-container
-      id="guidebook"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Guidebook</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-book fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-
-          <b-container class="description  mt-4">
-            <a target="blank" href="/Guidebook_IoT_dev_peserta_beda.pdf" class="btn d-inline">
-              Unduh guidebook
-            </a>
-          </b-container>
-
-        </b-col>
-      </b-row>
-    </b-container>
-    <!-- <router-link :to="{ name: 'Register' }"
+      <b-container
+        id="guidebook"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Guidebook</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-book fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description mt-4">
+              <a
+                target="_blank"
+                href="/pdf/Guidebook_IoT_dev_peserta_beda.pdf"
+                class="btn d-inline"
+                download
+              >
+                Unduh guidebook
+              </a>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <!-- <router-link :to="{ name: 'Register' }"
       > -->
-      <button @click="$store.dispatch('ui/changeWelcomeComponent', 'register')" class="btn btn-register">
+      <button
+        @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
+        class="btn btn-register"
+      >
         <h3 class="text-white">Daftar sekarang</h3>
       </button>
-    <!-- </router-link> -->
+      <!-- </router-link> -->
+    </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'OSM',
+  name: "OSM",
   data() {
     return {
       loading: false,
-      message: '',
+      message: "",
       url: window.location.href,
     };
   },
@@ -188,7 +201,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes('osm');
+      return this.url.includes("osm");
     },
   },
   created() {
@@ -243,7 +256,11 @@ export default {
 }
 
 #description {
-  background: linear-gradient(to right top, rgb(10, 10, 10), rgba(255, 70, 85, 1));
+  background: linear-gradient(
+    to right top,
+    rgb(10, 10, 10),
+    rgba(255, 70, 85, 1)
+  );
   min-height: 80px;
   padding-top: 20px;
   padding-bottom: 20px;

@@ -1,17 +1,26 @@
 <template>
   <div class="login-page">
-    <div class="background-login">
-    </div>
+    <div class="background-login"></div>
     <div class="login-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
       <div>
         <label>Email</label>
         <input
+          id="input-email"
+          v-model="$v.user.email.$model"
+          :class="status($v.user.email)"
+          placeholder="Ketik disini..."
+        />
+        <div class="error" v-if="!$v.user.email.email">
+          Harus di isi dengan format email
+        </div>
+        <!-- <pre>{{ $v }}</pre> -->
+        <!-- <input
           type="text"
           name="email"
           placeholder="Masukkan Email Anda"
           v-model="user.email"
-        />
+        /> -->
       </div>
       <div>
         <label>Sandi</label>
@@ -95,21 +104,29 @@
 </template>
 <script>
 // import User from "../models/user";
-import Swal from 'sweetalert2';
-import firebase from 'firebase';
+import Swal from "sweetalert2";
+import firebase from "firebase";
+import { email } from "vuelidate/lib/validators";
 
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
       user: {
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       },
       loading: false,
-      message: '',
+      message: "",
       url: window.location.href,
     };
+  },
+  validations: {
+    user: {
+      email: {
+        email,
+      },
+    },
   },
   computed: {
     loggedIn() {
@@ -118,19 +135,25 @@ export default {
   },
   created() {},
   methods: {
+    status(validation) {
+      return {
+        error: validation.$error,
+        dirty: validation.$dirty,
+      };
+    },
     handleLogin() {
       this.loading = true;
 
       if (this.user.email && this.user.password) {
-        this.$store.dispatch('auth/login', this.user).then(
+        this.$store.dispatch("auth/login", this.user).then(
           (user) => {
             Swal.fire({
-              icon: 'success',
-              title: 'Login berhasil',
+              icon: "success",
+              title: "Login berhasil",
               text: this.id,
               showConfirmButton: true,
             }).then(() => {
-              this.$router.push('/dashboard');
+              this.$router.push("/dashboard");
               location.reload();
             });
 
@@ -144,22 +167,22 @@ export default {
               error.message ||
               error.toString();
             Swal.fire({
-              icon: 'error',
-              title: 'Login gagal',
+              icon: "error",
+              title: "Login gagal",
               text: this.message,
               showConfirmButton: true,
             }).then(() => {});
-          },
+          }
         );
       }
     },
     getUrl() {
-      return this.url.includes('login');
+      return this.url.includes("login");
     },
     signInWithGoogle() {
       const provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('profile');
-      provider.addScope('email');
+      provider.addScope("profile");
+      provider.addScope("email");
       firebase
         .auth()
         .signInWithPopup(provider)
@@ -167,19 +190,19 @@ export default {
           const { user } = result;
 
           Swal.fire({
-              icon: 'success',
-              title: `Selamat datang ${user.displayName}`,
-              showConfirmButton: true,
-            }).then(() => {
-              this.$store.dispatch('ui/changeWelcomeComponent', 'welcome');
-              this.$router.push('/dashboard');
-            });
+            icon: "success",
+            title: `Selamat datang ${user.displayName}`,
+            showConfirmButton: true,
+          }).then(() => {
+            this.$store.dispatch("ui/changeWelcomeComponent", "welcome");
+            this.$router.push("/dashboard");
+          });
         });
     },
     signInWithFacebook() {
       const provider = new firebase.auth.FacebookAuthProvider();
-      provider.addScope('profile');
-      provider.addScope('email');
+      provider.addScope("profile");
+      provider.addScope("email");
       firebase
         .auth()
         .signInWithPopup(provider)
@@ -187,12 +210,12 @@ export default {
           const { user } = result;
 
           Swal.fire({
-              icon: 'success',
-              title: `Selamat datang ${user.displayName}`,
-              showConfirmButton: true,
-            }).then(() => {
-              this.$router.push('/dashboard');
-            });
+            icon: "success",
+            title: `Selamat datang ${user.displayName}`,
+            showConfirmButton: true,
+          }).then(() => {
+            this.$router.push("/dashboard");
+          });
         });
     },
     signInWithTwitter() {
@@ -204,26 +227,22 @@ export default {
           const { user } = result;
 
           Swal.fire({
-              icon: 'success',
-              title: `Selamat datang ${user.displayName}`,
-              showConfirmButton: true,
-            }).then(() => {
-              this.$router.push('/dashboard');
-            });
+            icon: "success",
+            title: `Selamat datang ${user.displayName}`,
+            showConfirmButton: true,
+          }).then(() => {
+            this.$router.push("/dashboard");
+          });
         });
     },
   },
-  mounted() {
-
-  },
-  updated() {
-
-  },
+  mounted() {},
+  updated() {},
 };
 </script>
 <style scoped>
 .background-login {
-  background-image: url("./../assets/img/bg1.svg");
+  background-image: url("./../assets/img/bg1.png");
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -265,7 +284,7 @@ export default {
   padding: 10px 20px;
 }
 
-.login-container .logo{
+.login-container .logo {
   height: 80px;
   width: 80px;
   margin-left: calc(50% - 40px);
@@ -333,6 +352,27 @@ p {
   padding: 0;
 }
 
+#input-email {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  color: #000;
+  height: 40px;
+}
+
+.dirty {
+  border-color: #5a5;
+  background: #efe;
+}
+
+.error {
+  border-color: rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
+  color: red;
+  height: 20px;
+}
 @media (max-width: 700px) {
   .login-container {
     max-width: 360px;

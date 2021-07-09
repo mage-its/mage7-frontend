@@ -1,20 +1,18 @@
 <template>
-
-    <div v-if="loading">
-      <transition name="fade">
-        <Loader />
-      </transition>
-    </div>
-    <div v-else>
-    <router-view/>
-    </div>
+  <div v-if="loading">
+    <transition name="fade">
+      <Loader />
+    </transition>
+  </div>
+  <div v-else>
+    <router-view />
+  </div>
 </template>
 <script>
-
-import Loader from '@/components/Loader';
+import Loader from "@/components/Loader";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Loader,
   },
@@ -25,11 +23,15 @@ export default {
   },
   mounted() {
     this.load();
+    // window.onbeforeunload = function (e) {
+    //   var storage = window.localStorage;
+    //   storage.clear();
+    // };
   },
   methods: {
     load() {
       const stateCheck = setInterval(() => {
-        if (document.readyState === 'complete') {
+        if (document.readyState === "complete") {
           this.loading = false;
           clearInterval(stateCheck);
         }

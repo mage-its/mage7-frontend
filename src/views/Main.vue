@@ -28,10 +28,12 @@
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is MAGE?</p>
               <p class="text-white text-justify description mb-3">
-                MAGE dalah kompetisi yang bergerak dalam bidang komputer,
-                dirancang untuk pelajar SMA/sederajat, untuk menguji kemampuan
-                siswa/i Indonesia dalam menyelesaikan soal-soal terkait logika,
-                pemrograman, dan fisika.
+                MAGE (Multimedia and Game Event) adalah Wadah bagi generasi muda
+                dalam berkreasi, berekspresi, dan berkompetisi untuk menuangkan
+                inovasi sekaligus menyelesaikan permasalahan dengan memanfaatkan
+                berbagai macam teknologi melalui serangkaian kegiatan seperti
+                Developing Competition (Apps, IoT, Games), Olimpiade, Workshop,
+                dan Webinar. 
                 <a href="#event"
                   ><div class="more mt-4">Our Competition ></div></a
                 >
@@ -266,13 +268,13 @@
   </div>
 </template>
 <script>
-import NavBar from '@/components/NavBar.vue';
+import NavBar from "@/components/NavBar.vue";
 // import Footer from '@/components/Footer.vue';
-import Login from '@/views/Login.vue';
-import Register from '@/views/Register.vue';
+import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
 
 export default {
-  name: 'Main',
+  name: "Main",
   components: {
     NavBar,
     // Footer,

@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
     <div class="logo">
-      <img src="@/assets/logo-white.png" />
+      <img src="@/assets/img/mage-white.png" />
       <h1 class="text-white d-inline-block">ANAVA</h1>
     </div>
     <div class="login-container shadow">
@@ -24,45 +24,51 @@
           v-model="user.passwordConfirmation"
         />
       </div>
-      <input type="submit" name="login" class="mt-4" value="Ganti" @click="changePassword()" />
+      <input
+        type="submit"
+        name="login"
+        class="mt-4"
+        value="Ganti"
+        @click="changePassword()"
+      />
     </div>
     <vue-particles
-        color="#dedede"
-        :particleOpacity="0.7"
-        :particlesNumber="80"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#dedede"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="3"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
-        class="particles"
-      >
-      </vue-particles>
+      color="#dedede"
+      :particleOpacity="0.7"
+      :particlesNumber="80"
+      shapeType="circle"
+      :particleSize="4"
+      linesColor="#dedede"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="150"
+      :moveSpeed="3"
+      :hoverEffect="true"
+      hoverMode="grab"
+      :clickEffect="true"
+      clickMode="push"
+      class="particles"
+    >
+    </vue-particles>
   </div>
 </template>
 <script>
-import User from '../models/user';
+import User from "../models/user";
 // import Swal from "sweetalert2";
 
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
-      user: new User('', ''),
+      user: new User("", ""),
       loading: false,
-      message: '',
+      message: "",
     };
   },
   methods: {
     changePassword() {
-      this.$store.dispatch('auth/changePassword', this.user);
+      this.$store.dispatch("auth/changePassword", this.user);
     },
   },
   created() {

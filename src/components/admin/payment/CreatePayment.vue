@@ -409,7 +409,7 @@ export default {
     },
     selectEvent(index) {
       this.selectedEvent[index] = !this.selectedEvent[index];
-      console.log(this.selectedEvent);
+    //   console.log(this.selectedEvent);
     },
   },
   created() {

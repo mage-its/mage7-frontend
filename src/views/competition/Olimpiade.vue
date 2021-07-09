@@ -1,54 +1,69 @@
 <template>
   <div class="osm-page">
-    <b-container
-      id="description"
-      class="bg-red shawod-sm rounded text-white text-center mt-5 text-justify p-5"
-    >
-      <b-row>
-        <b-col lg="4" class="p-3 text-center">
-          <img class="logo" src="@/assets/img/proxy-merah.svg" />
-        </b-col>
-        <b-col lg="8">
-        <div class="competition-title text-left">
-          Olimpiade
-        </div>
-        <div class="competition-description text-justify">
-        Kompetisi yang dirancang untuk pelajar SMA/sederajat ini berupa olimpiade dengan berfokus pada 3 mata pelajaran yaitu fisika, pemrograman dan logika. Dengan tujuan untuk mengukur seberapa kompetensi para pelajar SMA/sederajat se-Indonesia dalam menyelesaikan permasalahan terkait. Olimpiade ini akan dilaksanakan secara berkelompok dengan anggota kelompok maksimal 3 orang. Terdiri dari 3 babak, yaitu penyisihan, semifinal dan final. Penyisihan dari olimpiade akan dilaksanakan secara online dalam bentuk interaktif melalui website MAGE 7.
-        </div>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="category"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Kategori</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-users"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <h2 class="text  text-white">
-              Terbuka untuk siswa/i SMA/MA/SMK atau sederajat.
-            </h2>
-            <h5 class=" text-white">Kelompok maksimal 3 orang</h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="schedule"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Agenda</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon far fa-calendar-alt fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <!-- <h2 class="text  text-white">
+    <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+      <b-container
+        id="description"
+        class="
+          bg-red
+          shawod-sm
+          rounded
+          text-white text-center
+          mt-5
+          text-justify
+          p-5
+        "
+      >
+        <b-row>
+          <b-col lg="4" class="p-3 text-center">
+            <img class="logo" src="@/assets/img/proxy-merah.svg" />
+          </b-col>
+          <b-col lg="8">
+            <div class="competition-title text-left">Olimpiade</div>
+            <div class="competition-description text-justify">
+              Kompetisi yang dirancang untuk pelajar SMA/sederajat ini berupa
+              olimpiade dengan berfokus pada 3 mata pelajaran yaitu fisika,
+              pemrograman dan logika. Dengan tujuan untuk mengukur seberapa
+              kompetensi para pelajar SMA/sederajat se-Indonesia dalam
+              menyelesaikan permasalahan terkait. Olimpiade ini akan
+              dilaksanakan secara berkelompok dengan anggota kelompok maksimal 3
+              orang. Terdiri dari 3 babak, yaitu penyisihan, semifinal dan
+              final. Penyisihan dari olimpiade akan dilaksanakan secara online
+              dalam bentuk interaktif melalui website MAGE 7.
+            </div>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="category"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Kategori</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-users"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <h2 class="text text-white">
+                Terbuka untuk siswa/i SMA/MA/SMK atau sederajat.
+              </h2>
+              <h5 class="text-white">Kelompok maksimal 3 orang</h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="schedule"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Agenda</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon far fa-calendar-alt fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <!-- <h2 class="text  text-white">
               Pendaftaran
             </h2>
             <h5 class="text-white">
@@ -57,39 +72,37 @@
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
-            <h5 class="text-white">
-              Penyisihan (Online) : Minggu, 7 November 2021<br />
-            </h5>
-            <h5 class="text-white">
-              Semifinal (Online) : Sabtu, 13 November 2021<br />
-            </h5>
-            <h5 class="text-white">
-              Final (Online) : Minggu, 14 November 2021<br />
-            </h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="contact"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Kontak</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-phone-alt fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <h2 class="text  text-white">
-              Adi Syahrul
-            </h2>
-            <h5 class="text-white">0852 3261 2668</h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <!-- <b-container
+              <h5 class="text-white">
+                Penyisihan (Online) : Minggu, 7 November 2021<br />
+              </h5>
+              <h5 class="text-white">
+                Semifinal (Online) : Sabtu, 13 November 2021<br />
+              </h5>
+              <h5 class="text-white">
+                Final (Online) : Minggu, 14 November 2021<br />
+              </h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="contact"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Kontak</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-phone-alt fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <h2 class="text text-white">Adi Syahrul</h2>
+              <h5 class="text-white">0852 3261 2668</h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <!-- <b-container
       id="prize"
       class="bg-red shawod-sm rounded text-white text-left"
     >
@@ -126,41 +139,48 @@
         </b-col>
       </b-row>
     </b-container> -->
-    <b-container
-      id="guidebook"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Guidebook</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-book fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-
-          <b-container class="description  mt-4">
-            <a target="blank" href="/GUIDEBOOK_PROXY.pdf" class="btn d-inline">
-              Unduh guidebook
-            </a>
-          </b-container>
-
-        </b-col>
-      </b-row>
-    </b-container>
-    <!-- <router-link :to="{ name: 'Register' }"
+      <b-container
+        id="guidebook"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Guidebook</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-book fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description mt-4">
+              <a
+                target="_blank"
+                href="/pdf/GUIDEBOOK_PROXY.pdf"
+                class="btn d-inline"
+                download
+              >
+                Unduh guidebook
+              </a>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <!-- <router-link :to="{ name: 'Register' }"
       > -->
-      <button @click="$store.dispatch('ui/changeWelcomeComponent', 'register')" class="btn btn-register">
+      <button
+        @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
+        class="btn btn-register"
+      >
         <h3 class="text-white">Daftar sekarang</h3>
       </button>
-    <!-- </router-link> -->
+      <!-- </router-link> -->
+    </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'OSM',
+  name: "OSM",
   data() {
     return {
       loading: false,
-      message: '',
+      message: "",
       url: window.location.href,
     };
   },
@@ -171,7 +191,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes('osm');
+      return this.url.includes("osm");
     },
   },
   created() {
@@ -226,7 +246,11 @@ export default {
 }
 
 #description {
-  background: linear-gradient(to right top, rgb(10, 10, 10), rgba(255, 70, 85, 1));
+  background: linear-gradient(
+    to right top,
+    rgb(10, 10, 10),
+    rgba(255, 70, 85, 1)
+  );
   min-height: 80px;
   padding-top: 20px;
   padding-bottom: 20px;

@@ -1,54 +1,73 @@
 <template>
   <div class="osm-page">
-    <b-container
-      id="description"
-      class="bg-red shawod-sm rounded text-white text-center mt-5 text-justify p-5"
-    >
-      <b-row>
-        <b-col lg="4" class="p-3 text-center">
-          <img class="logo" src="@/assets/img/game-merah.svg" />
-        </b-col>
-        <b-col lg="8">
-        <div class="competition-title text-left">
-          Game Dev
-        </div>
-        <div class="competition-description text-justify">
-        Game Competition merupakan cabang kompetisi dari MAGE 7 yang diadakan oleh Teknik Komputer ITS. Game Competition diadakan dengan tujuan mendorong kreasi serta inovasi mahasiswa maupun siswa SMA sederajat untuk membuat sebuah aplikasi permainan atau game. Game Competition pada MAGE 7 kali ini mengusung konsep Game Jam dengan keyword ‘Forward’. Game yang akan dibuat akan menggunakan keyword sebagai tema dan kesesuaian dengan tema akan menjadi salah satu minor factor penilaian. Platform dari game sendiri hanya dibatasi pada PC dan mobile. Dengan adanya kompetisi ini, diharapkan para partisipan dapat menemukan terobosan baru di bidang teknologi dan informasi yang diringkas melalui game menarik.
-        </div>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="category"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Kategori</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-users"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <h2 class="text  text-white">
-              Terbuka untuk siswa/i SMA/SMK/sederajat & Mahasiswa/i aktif program D3/D4/S1
-            </h2>
-            <h5 class=" text-white">Kelompok (1 sampai 3 orang)</h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="schedule"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Agenda</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon far fa-calendar-alt fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <!-- <h2 class="text  text-white">
+    <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+      <b-container
+        id="description"
+        class="
+          bg-red
+          shawod-sm
+          rounded
+          text-white text-center
+          mt-5
+          text-justify
+          p-5
+        "
+      >
+        <b-row>
+          <b-col lg="4" class="p-3 text-center">
+            <img class="logo" src="@/assets/img/game-merah.svg" />
+          </b-col>
+          <b-col lg="8">
+            <div class="competition-title text-left">Game Dev</div>
+            <div class="competition-description text-justify">
+              Game Competition merupakan cabang kompetisi dari MAGE 7 yang
+              diadakan oleh Teknik Komputer ITS. Game Competition diadakan
+              dengan tujuan mendorong kreasi serta inovasi mahasiswa maupun
+              siswa SMA sederajat untuk membuat sebuah aplikasi permainan atau
+              game. Game Competition pada MAGE 7 kali ini mengusung konsep Game
+              Jam dengan keyword ‘Forward’. Game yang akan dibuat akan
+              menggunakan keyword sebagai tema dan kesesuaian dengan tema akan
+              menjadi salah satu minor factor penilaian. Platform dari game
+              sendiri hanya dibatasi pada PC dan mobile. Dengan adanya kompetisi
+              ini, diharapkan para partisipan dapat menemukan terobosan baru di
+              bidang teknologi dan informasi yang diringkas melalui game
+              menarik.
+            </div>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="category"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Kategori</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-users"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <h2 class="text text-white">
+                Terbuka untuk siswa/i SMA/SMK/sederajat & Mahasiswa/i aktif
+                program D3/D4/S1
+              </h2>
+              <h5 class="text-white">Kelompok (1 sampai 3 orang)</h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="schedule"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Agenda</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon far fa-calendar-alt fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <!-- <h2 class="text  text-white">
               Pendaftaran
             </h2>
             <h5 class="text-white">
@@ -57,60 +76,50 @@
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
-            <h5 class="text-white">
-              Pendaftaran + Durasi Tahap 1 : 5 Juli – 28 Agustus <br />
-            </h5>
-            <h5 class="text-white">
-              Penjurian Tahap 1 : 28 Agustus – 4 September<br />
-            </h5>
-            <h5 class="text-white">
-              Pengumuman Tahap 1 : 5 September<br />
-            </h5>
-            <h5 class="text-white">
-              Durasi Pembayaran Tahap 2 : 6 September – 19 September<br />
-            </h5>
-            <h5 class="text-white">
-              Pembuatan Karya & Video (Tahap 2) : 6 September – 28 Oktober<br />
-            </h5>
-            <h5 class="text-white">
-              Penjurian Tahap 2 : 28 Oktober – 5 November <br />
-            </h5>
-            <h5 class="text-white">
-              Pengumuman Tahap 2 : 6 November<br />
-            </h5>
-            <h5 class="text-white">
-              Technical Meeting : 8 November<br />
-            </h5>
-            <h5 class="text-white">
-              Exhibition : 9 November<br />
-            </h5>
-            <h5 class="text-white">
-              Hari H : 13-14 November<br />
-            </h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <b-container
-      id="contact"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Kontak</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-phone-alt fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-          <b-container class="description">
-            <h2 class="text  text-white">
-              Imanuel Abimanyu Herlambang (Game Development)
-            </h2>
-            <h5 class="text-white">081315105351</h5>
-          </b-container>
-        </b-col>
-      </b-row>
-    </b-container>
-    <!-- <b-container
+              <h5 class="text-white">
+                Pendaftaran + Durasi Tahap 1 : 5 Juli – 28 Agustus <br />
+              </h5>
+              <h5 class="text-white">
+                Penjurian Tahap 1 : 28 Agustus – 4 September<br />
+              </h5>
+              <h5 class="text-white">Pengumuman Tahap 1 : 5 September<br /></h5>
+              <h5 class="text-white">
+                Durasi Pembayaran Tahap 2 : 6 September – 19 September<br />
+              </h5>
+              <h5 class="text-white">
+                Pembuatan Karya & Video (Tahap 2) : 6 September – 28 Oktober<br />
+              </h5>
+              <h5 class="text-white">
+                Penjurian Tahap 2 : 28 Oktober – 5 November <br />
+              </h5>
+              <h5 class="text-white">Pengumuman Tahap 2 : 6 November<br /></h5>
+              <h5 class="text-white">Technical Meeting : 8 November<br /></h5>
+              <h5 class="text-white">Exhibition : 9 November<br /></h5>
+              <h5 class="text-white">Hari H : 13-14 November<br /></h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <b-container
+        id="contact"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Kontak</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-phone-alt fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description">
+              <h2 class="text text-white">
+                Imanuel Abimanyu Herlambang (Game Development)
+              </h2>
+              <h5 class="text-white">081315105351</h5>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <!-- <b-container
       id="prize"
       class="bg-red shawod-sm rounded text-white text-left"
     >
@@ -147,41 +156,48 @@
         </b-col>
       </b-row>
     </b-container> -->
-    <b-container
-      id="guidebook"
-      class="bg-red shawod-sm rounded text-white text-left"
-    >
-      <h1 class="text-white">Guidebook</h1>
-      <b-row>
-        <b-col lg="1" cols="1">
-          <i class="icon fas fa-book fa-9x"></i>
-        </b-col>
-        <b-col lg="10" cols="9">
-
-          <b-container class="description  mt-4">
-            <a target="blank" href="/GuideBook_Game_Development1.pdf" class="btn d-inline">
-              Unduh guidebook
-            </a>
-          </b-container>
-
-        </b-col>
-      </b-row>
-    </b-container>
-    <!-- <router-link :to="{ name: 'Register' }"> -->
-      <button @click="$store.dispatch('ui/changeWelcomeComponent', 'register')" class="btn btn-register">
+      <b-container
+        id="guidebook"
+        class="bg-red shawod-sm rounded text-white text-left"
+      >
+        <h1 class="text-white">Guidebook</h1>
+        <b-row>
+          <b-col lg="1" cols="1">
+            <i class="icon fas fa-book fa-9x"></i>
+          </b-col>
+          <b-col lg="10" cols="9">
+            <b-container class="description mt-4">
+              <a
+                target="_blank"
+                href="/pdf/GuideBook_Game_Development1.pdf"
+                class="btn d-inline"
+                download
+              >
+                Unduh guidebook
+              </a>
+            </b-container>
+          </b-col>
+        </b-row>
+      </b-container>
+      <!-- <router-link :to="{ name: 'Register' }"> -->
+      <button
+        @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
+        class="btn btn-register"
+      >
         <h3 class="text-white">Daftar sekarang</h3>
       </button>
-    <!-- </router-link
+      <!-- </router-link
     > -->
+    </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'OSM',
+  name: "OSM",
   data() {
     return {
       loading: false,
-      message: '',
+      message: "",
       url: window.location.href,
     };
   },
@@ -192,7 +208,7 @@ export default {
   },
   methods: {
     getUrl() {
-      return this.url.includes('osm');
+      return this.url.includes("osm");
     },
   },
   created() {
@@ -247,7 +263,11 @@ export default {
 }
 
 #description {
-  background: linear-gradient(to right top, rgb(10, 10, 10), rgba(255, 70, 85, 1));
+  background: linear-gradient(
+    to right top,
+    rgb(10, 10, 10),
+    rgba(255, 70, 85, 1)
+  );
   min-height: 80px;
   padding-top: 20px;
   padding-bottom: 20px;

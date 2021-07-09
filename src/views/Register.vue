@@ -1,7 +1,6 @@
 <template>
   <div class="register-page">
-    <div class="background-register">
-    </div>
+    <div class="background-register"></div>
     <div class="register-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
       <div>
@@ -18,21 +17,46 @@
         <label>Email</label>
         <input
           type="text"
+          id="input-field"
+          v-model="$v.user.email.$model"
+          :class="status($v.user.email)"
+          placeholder="Ketik disini..."
+        />
+        <div class="error" v-if="!$v.user.email.email">
+          Harus di isi dengan format email
+        </div>
+        <!-- <label>Email</label>
+        <input
+          type="text"
           name="email"
           placeholder="Ketik disini..."
           v-model="user.email"
           :class="[$v.user.email.$error ? 'red-border' : 'black-border']"
-        />
+        /> -->
       </div>
       <div>
         <label>Sandi</label>
         <input
           type="password"
           name="password"
+          id="input-field"
+          v-model="$v.user.password.$model"
+          :class="status($v.user.password)"
+          placeholder="Ketik disini..."
+        />
+        <div
+          class="error"
+          v-if="!$v.user.password.minLength || !$v.user.password.alphaNum"
+        >
+          Password minimal 8 karakter
+        </div>
+        <!-- <input
+          type="password"
+          name="password"
           placeholder="Ketik disini..."
           v-model="user.password"
           :class="[$v.user.password.$error ? 'red-border' : 'black-border']"
-        />
+        /> -->
       </div>
       <div>
         <label>Konfirmasi sandi</label>
@@ -90,7 +114,7 @@
   </div>
 </template>
 <script>
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 import {
   required,
@@ -99,20 +123,20 @@ import {
   email,
   sameAs,
   alphaNum,
-} from 'vuelidate/lib/validators';
+} from "vuelidate/lib/validators";
 
 export default {
-  name: 'Register',
+  name: "Register",
   data() {
     return {
       user: {
-        name: '',
-        email: '',
-        password: '',
+        name: "",
+        email: "",
+        password: "",
       },
-      passwordConfirmation: '',
+      passwordConfirmation: "",
       loading: false,
-      message: '',
+      message: "",
       provinces: [],
       cities: [],
       subdistricts: [],
@@ -146,46 +170,52 @@ export default {
       },
     },
     passwordConfirmation: {
-      sameAsPassword: sameAs('password'),
+      sameAsPassword: sameAs("password"),
     },
   },
   methods: {
+    status(validation) {
+      return {
+        error: validation.$error,
+        dirty: validation.$dirty,
+      };
+    },
     getProvinces() {
-      this.$store.dispatch('ui/getProvinces').then((data) => {
+      this.$store.dispatch("ui/getProvinces").then((data) => {
         console.log(data);
         this.provinces = data;
       });
     },
     getCities(provincename) {
-      this.$store.dispatch('ui/getCities', provincename).then((data) => {
+      this.$store.dispatch("ui/getCities", provincename).then((data) => {
         this.cities = data;
       });
     },
     getSubdistricts(cityname) {
-      this.$store.dispatch('ui/getSubdistricts', cityname).then((data) => {
+      this.$store.dispatch("ui/getSubdistricts", cityname).then((data) => {
         this.subdistricts = data;
       });
     },
     moveToWelcome() {
-      this.$store.dispatch('ui/changeWelcomeComponent', 'welcome');
+      this.$store.dispatch("ui/changeWelcomeComponent", "welcome");
     },
     moveToLogin() {
-      this.$store.dispatch('ui/changeWelcomeComponent', 'login');
+      this.$store.dispatch("ui/changeWelcomeComponent", "login");
     },
     handleRegister() {
       this.loading = true;
       if (this.user.password == this.passwordConfirmation) {
         if (this.user.name && this.user.email && this.user.password) {
-          this.$store.dispatch('auth/register', this.user).then(
+          this.$store.dispatch("auth/register", this.user).then(
             () => {
               Swal.fire({
-                icon: 'success',
-                title: 'Register berhasil',
-				text: 'Silakan Cek Email Anda Untuk Melakukan Verifikasi Akun',
+                icon: "success",
+                title: "Register berhasil",
+                text: "Silakan Cek Email Anda Untuk Melakukan Verifikasi Akun",
                 showConfirmButton: true,
               }).then(() => {
-                this.$router.push('/dashboard');
-				location.reload();
+                this.$router.push("/dashboard");
+                location.reload();
               });
             },
             (error) => {
@@ -196,24 +226,24 @@ export default {
                 error.message ||
                 error.toString();
               Swal.fire({
-                icon: 'error',
-                title: 'Register gagal',
+                icon: "error",
+                title: "Register gagal",
                 text: this.message,
                 showConfirmButton: true,
               }).then(() => {});
-            },
+            }
           );
         }
       } else {
         Swal.fire({
-          icon: 'error',
-          title: 'konfirmasi sandi salah',
+          icon: "error",
+          title: "konfirmasi sandi salah",
           showConfirmButton: true,
         }).then(() => {});
       }
     },
     getUrl() {
-      return this.url.includes('register');
+      return this.url.includes("register");
     },
   },
   created() {
@@ -224,7 +254,7 @@ export default {
 </script>
 <style scoped>
 .background-register {
-  background-image: url("./../assets/img/bg1.svg");
+  background-image: url("./../assets/img/bg1.png");
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -355,6 +385,28 @@ p {
 
 .is-invalid {
   border-color: red;
+}
+
+#input-field {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  color: #000;
+  height: 40px;
+}
+
+.dirty {
+  border-color: #5a5;
+  background: #efe;
+}
+
+.error {
+  border-color: rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
+  color: red;
+  height: 20px;
 }
 
 @media (max-width: 700px) {
