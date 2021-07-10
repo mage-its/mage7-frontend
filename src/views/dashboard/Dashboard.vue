@@ -51,7 +51,7 @@ export default {
   padding-top: 20px;
   width: calc(100% - 280px);
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 
 .content-margin {
@@ -65,7 +65,7 @@ export default {
     max-width: 100%;
     width: 100%;
     margin-left: 0;
-    position: fixed;
+    position: relative;
     z-index: 1;
   }
 }

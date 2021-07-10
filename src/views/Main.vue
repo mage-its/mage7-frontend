@@ -684,7 +684,7 @@ b-button {
 
   #home .mage {
     position: absolute;
-    left: calc(50% - 10px);
+    left: calc(50%);
     top: -100px;
     z-index: 1;
     animation: float 3s ease-in-out infinite;

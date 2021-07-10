@@ -51,7 +51,7 @@
                     <li
                       @click="selectedItem = 1"
                       class="mb-3"
-                      id="uploadProposal"
+                      id="uploadProposalMobile"
                     >
                       <router-link
                         class="text-white"
@@ -108,7 +108,7 @@
               </b-row>
             </router-link>
           </li> -->
-                    <li @click="selectedItem = 5" class="mb-3">
+                    <li @click="selectedItem = 5" class="mb-3" id="administrasiMobile">
                       <router-link
                         class="text-white"
                         :to="{ name: 'MainDocument' }"
@@ -125,7 +125,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="selectedItem = 6" class="mb-3" id="pembayaran">
+                    <li @click="selectedItem = 6" class="mb-3" id="pembayaranMobile">
                       <router-link
                         class="text-white"
                         :to="{ name: 'CreatePayment' }"
@@ -241,7 +241,7 @@
               </b-row>
             </router-link>
           </li> -->
-            <li @click="selectedItem = 5">
+            <li @click="selectedItem = 5" id="administrasi">
               <router-link class="text-white" :to="{ name: 'MainDocument' }">
                 <b-row>
                   <b-col cols="1" lg="1">
@@ -355,15 +355,30 @@ export default {
     },
     getUser() {
       const user = JSON.parse(localStorage.getItem("user"));
-      if (
-        user.user.registeredComp === "olim" ||
-        user.user.registeredComp === ""
-      ) {
-        document.getElementById("pembayaran").style.display = "block";
-        document.getElementById("uploadProposal").style.display = "none";
-      } else {
-        document.getElementById("pembayaran").style.display = "none";
-      }
+	  if(user.user.registeredComp === "olim") {
+		  document.getElementById("pembayaran").style.display = "block";
+		  document.getElementById("pembayaranMobile").style.display = "block";
+		  document.getElementById("uploadProposal").style.display = "none";
+		  document.getElementById("uploadProposalMobile").style.display = "none";
+	  } else if (user.user.registeredComp === "") {
+		  document.getElementById("pembayaran").style.display = "none";
+		  document.getElementById("pembayaranMobile").style.display = "none";
+		  document.getElementById("uploadProposal").style.display = "none";
+		  document.getElementById("uploadProposalMobile").style.display = "none";
+	  } else if (user.user.registeredComp.length > 0) {
+		  document.getElementById("administrasi").style.display = "none";
+		  document.getElementById("administrasiMobile").style.display = "none";
+	  } else if (user.user.registeredComp.length > 0 && user.user.registeredComp !== "olim") {
+		  document.getElementById("pembayaran").style.display = "none"
+		  document.getElementById("pembayaranMobile").style.display = "none"
+	  } 
+
+    //   if ( user.user.registeredComp === "olim" || user.user.registeredComp === "") {
+    //     document.getElementById("pembayaran").style.display = "block";
+    //     document.getElementById("uploadProposal").style.display = "none";
+    //   } else {
+    //     document.getElementById("pembayaran").style.display = "none";
+    //   }
     },
     checkJoinStage(eventName, stageName) {
       let joinStage = false;

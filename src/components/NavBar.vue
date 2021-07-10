@@ -292,6 +292,7 @@ nav ul li a:hover {
   .logo {
     position: fixed;
     top: 0;
+	left: -5vw;
     margin-top: 16px;
   }
 
