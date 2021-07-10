@@ -47,7 +47,7 @@ export default {
         { item: 'App Dev', name: 'App Dev' },
         { item: 'Game Dev', name: 'Game Dev' },
         { item: 'IoT Dev', name: 'IoT Dev' },
-        { item: 'Olimpiade Dev', name: 'Olimpiade Dev' },
+        { item: 'Olimpiade', name: 'Olimpiade' },
       ],
     };
   },
