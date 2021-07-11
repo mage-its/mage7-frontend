@@ -52,9 +52,9 @@ import IndexSchedule from './views/dashboard/schedule/IndexSchedule.vue';
 import MainSchedule from './views/dashboard/schedule/MainSchedule.vue';
 import CreateSchedule from './views/dashboard/schedule/CreateSchedule.vue';
 
-// import IndexParticipant from './views/dashboard/participant/IndexParticipant.vue';
-// import MainParticipant from './views/dashboard/participant/MainParticipant.vue';
-// import DetailParticipant from './views/dashboard/participant/DetailParticipant.vue';
+import IndexParticipant from './views/dashboard/participant/IndexParticipant.vue';
+import MainParticipant from './views/dashboard/participant/MainParticipant.vue';
+import DetailParticipant from './views/dashboard/participant/DetailParticipant.vue';
 
 import IndexEvent from './views/dashboard/event/IndexEvent.vue';
 import SettingEvent from './views/dashboard/event/SettingEvent.vue';
@@ -288,6 +288,20 @@ const router = new Router({
 						component: CreateDocument,
 					},
 					],
+				},
+				{
+					path: 'participant',
+					name: 'IndexParticipant',
+					component: IndexParticipant,
+					children: [{
+						path: '',
+						name: 'MainParticipant',
+						component: MainParticipant,
+					}, {
+						path: ':id',
+						name: 'DetailParticipant',
+						component: DetailParticipant,
+					}],
 				},
 				{
 					path: 'schedule',

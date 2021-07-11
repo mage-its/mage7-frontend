@@ -1,29 +1,26 @@
 <template>
-    <div>
-        <AdminIndexParticipant v-if="user.roles.includes('admin')"/>
+  <b-container>
+    <div class="bg-light text-dark mb-3 rounded shadow-sm header">
+      <h3 class="text-left d-inline float-left">
+        <i class="fa fa-users"></i>
+        Daftar Peserta
+      </h3>
     </div>
+    <hr />
+    <router-view/>
+  </b-container>
 </template>
 <script>
-import AdminIndexParticipant from './../../../components/dashboard/admin/participant/IndexParticipant';
-
 export default {
-    name: 'IndexParticipant',
-    components: {
-        AdminIndexParticipant,
-    },
-    computed: {
-        user() {
-            return this.$store.state.auth.user;
-        },
-    },
-    created() {
-    },
+  name: 'IndexParticipant',
+  computed: {
+  },
 };
 </script>
 <style scoped>
-.header{
-    min-height: 90px;
-    min-width: 100%;
-    padding: 30px;
+.header {
+  min-height: 90px;
+  min-width: 100%;
+  padding: 30px;
 }
 </style>
