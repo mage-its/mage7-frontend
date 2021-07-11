@@ -52,7 +52,7 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="ID Line" v-slot="{ errors }">
+        <ValidationProvider name="ID Line" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>ID Line *</label>
             <input id="lineKetua" type="text" class="form-control" v-model="lineKetua" placeholder="Tulis (-) Jika Tidak Ada">
@@ -150,52 +150,52 @@
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Foto Identitas Ketua Tim" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }">
+        <ValidationProvider name="Foto Identitas Ketua Tim" rules="required|ext:jpeg,jpg,png,pdf|size:2048" v-slot="{ validate, errors }">
           <div class="form-group">
-            <label>Foto Identitas Ketua Tim (KTP atau SIM atau yang lain) *</label>
+            <label>Foto Identitas Ketua Tim (KTP atau SIM atau yang lain & File Max 2 MB) *</label>
             <img v-if="previewImage1" :src="previewImage1" class="uploading-image" />
             <input type="file" accept="image/*" class="form-control" @change="{ onUpload1($event) || validate($event) }" id="identitasKetua">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Foto Identitas Anggota 1" rules="ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="identitasAnggota1">
+        <ValidationProvider name="Foto Identitas Anggota 1" rules="ext:jpeg,jpg,png,pdf|size:2048" v-slot="{ validate, errors }" id="identitasAnggota1">
           <div class="form-group">
-            <label>Foto Identitas Anggota 1 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 1) *</label>
+            <label>Foto Identitas Anggota 1 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 1 & File Max 2 MB) *</label>
             <img v-if="previewImage2" :src="previewImage2" class="uploading-image" />
             <input type="file" accept="image/*" class="form-control" @change="{ onUpload2($event) || validate($event) }" id="identitasAnggota1">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Foto Identitas Anggota 2" rules="ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="identitasAnggota2">
+        <ValidationProvider name="Foto Identitas Anggota 2" rules="ext:jpeg,jpg,png,pdf|size:2048" v-slot="{ validate, errors }" id="identitasAnggota2">
           <div class="form-group">
-            <label>Foto Identitas Anggota 2 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 2) *</label>
+            <label>Foto Identitas Anggota 2 (KTP atau SIM atau yang lain, Kosongkan jika tidak ada anggota 2 & File Max 2 MB) *</label>
             <img v-if="previewImage3" :src="previewImage3" class="uploading-image" />
             <input type="file" accept="image/*" class="form-control" @change="{ onUpload3($event) || validate($event) }" id="identitasAnggota2">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider name="Bukti Upload Twibbon" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiUploadTwibbon">
+        <ValidationProvider name="Bukti Upload Twibbon" rules="required|ext:jpeg,jpg,png,pdf|size:2048" v-slot="{ validate, errors }" id="buktiUploadTwibbon">
           <div class="form-group">
-            <label>Bukti Upload Twibbon *</label>
+            <label>Bukti Upload Twibbon (File Max 2 MB) *</label>
             <img v-if="previewImageTwibbon" :src="previewImageTwibbon" class="uploading-image" />
             <input type="file" accept="image/*,application/pdf" class="form-control" @change="{ onUploadTwibbon($event) || validate($event) }">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <ValidationProvider name="Bukti Follow Mage" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiFollowMage">
+        <ValidationProvider name="Bukti Follow Mage" rules="required|ext:jpeg,jpg,png,pdf|size:2048" v-slot="{ validate, errors }" id="buktiFollowMage">
           <div class="form-group">
-            <label>Bukti Follow Mage *</label>
+            <label>Bukti Follow Mage (File Max 2 MB) *</label>
             <img v-if="previewImageFollowMage" :src="previewImageFollowMage" class="uploading-image" />
             <input type="file" accept="image/*,application/pdf" class="form-control" @change="{ onUploadFollowMage($event) || validate($event) }">
             <span class="error-msg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <ValidationProvider name="Bukti Repost Story" rules="required|ext:jpeg,jpg,png,pdf" v-slot="{ validate, errors }" id="buktiRepostStory">
+        <ValidationProvider name="Bukti Repost Story" rules="required|ext:jpeg,jpg,png,pdf|size:2048" v-slot="{ validate, errors }" id="buktiRepostStory">
           <div class="form-group">
-            <label>Bukti Repost Story *</label>
+            <label>Bukti Repost Story (File Max 2 MB) *</label>
             <img v-if="previewImageRepostStory" :src="previewImageRepostStory" class="uploading-image" />
             <input type="file" accept="image/*,application/pdf" class="form-control" @change="{ onUploadRepostStory($event) || validate($event) }">
             <span class="error-msg">{{ errors[0] }}</span>
@@ -206,6 +206,7 @@
           <p class="mt-4">Keterangan :</p>
           <p>- Tanda (*) Wajib Di Isi </p>
           <p>- Tanda (**) Opsional</p>
+		  <p>- Semua file yang diupload maksimal 2 MB</p>
         </div>
         <input type="submit" class="btn btn-red" tect="Submit"/>
       </form>

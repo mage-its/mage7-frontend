@@ -25,14 +25,6 @@
         <div class="error" v-if="!$v.user.email.email">
           Harus di isi dengan format email
         </div>
-        <!-- <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          placeholder="Ketik disini..."
-          v-model="user.email"
-          :class="[$v.user.email.$error ? 'red-border' : 'black-border']"
-        /> -->
       </div>
       <div>
         <label>Sandi</label>
@@ -50,13 +42,6 @@
         >
           Password minimal 8 karakter
         </div>
-        <!-- <input
-          type="password"
-          name="password"
-          placeholder="Ketik disini..."
-          v-model="user.password"
-          :class="[$v.user.password.$error ? 'red-border' : 'black-border']"
-        /> -->
       </div>
       <div>
         <label>Konfirmasi sandi</label>
@@ -92,25 +77,6 @@
     <a v-if="!getUrl()" @click="moveToWelcome()">
       <img class="close" src="@/assets/close.png" />
     </a>
-    <!-- <vue-particles
-      color="#dedede"
-      :particleOpacity="0.7"
-      :particlesNumber="80"
-      shapeType="circle"
-      :particleSize="4"
-      linesColor="#dedede"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.4"
-      :linesDistance="150"
-      :moveSpeed="3"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-      class="particles"
-    >
-    </vue-particles> -->
   </div>
 </template>
 <script>

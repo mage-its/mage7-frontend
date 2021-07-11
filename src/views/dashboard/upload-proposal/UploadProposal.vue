@@ -8,12 +8,12 @@
       >
         <ValidationProvider
           name="Upload Proposal"
-          rules="required|ext:pdf|size:5000"
+          rules="required|ext:pdf|size:5120"
           v-slot="{ validate, errors }"
         >
           <div class="form-group">
             <label
-              >Klik dibawah untuk memilih file (Format File Harus Pdf)</label
+              >Klik dibawah untuk memilih file (Format File Harus Pdf & Ukuran File Max. 5 MB)</label
             >
             <input
               type="file"
