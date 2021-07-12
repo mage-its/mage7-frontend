@@ -5,21 +5,27 @@
         <b-form-input v-model="keyword" placeholder="Search" type="text">
         </b-form-input>
       </b-input-group>
-      <b-table
-        striped
-        hover
-        :items="searchedParticipants"
-        :fields="fields"
-        responsive
-      >
-        <template #cell(detail)="data">
-          <router-link
-            :to="{ name: 'DetailUserCompetition', params: { id: data.item.id } }"
-          >
-            <b-button><i class="fa fa-search"></i></b-button>
-          </router-link>
-        </template>
-      </b-table>
+      <div v-if="dataEmpty"><h5 class="text-center">Data Kosong</h5></div>
+      <div v-else>
+        <b-table
+          striped
+          hover
+          :items="searchedParticipants"
+          :fields="fields"
+          responsive
+        >
+          <template #cell(detail)="data">
+            <router-link
+              :to="{
+                name: 'DetailUserCompetition',
+                params: { id: data.item.id },
+              }"
+            >
+              <b-button><i class="fa fa-search"></i></b-button>
+            </router-link>
+          </template>
+        </b-table>
+      </div>
     </b-container>
   </div>
 </template>
@@ -32,6 +38,7 @@ export default {
   data() {
     return {
       competition: "",
+      dataEmpty: false,
       participants: [],
       fields: [
         {
@@ -58,9 +65,16 @@ export default {
     async getParticipantsData() {
       let data = null;
       await axios
-        .get(`${this.endpointAPI}api/v1/${this.$route.params.competition}`, header())
+        .get(
+          `${this.endpointAPI}api/v1/${this.$route.params.competition}`,
+          header()
+        )
         .then((response) => {
           data = response.data.results;
+          if (data.length < 1) {
+            this.dataEmpty = true;
+          }
+		  console.log(this.dataEmpty);
         });
       this.participants = data;
     },
@@ -76,7 +90,7 @@ export default {
         : this.participants;
     },
   },
-  mounted() {  
+  mounted() {
     this.competition = this.$route.params.competition;
     this.getParticipantsData();
   },
