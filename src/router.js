@@ -56,6 +56,10 @@ import IndexParticipant from './views/dashboard/participant/IndexParticipant.vue
 import MainParticipant from './views/dashboard/participant/MainParticipant.vue';
 import DetailParticipant from './views/dashboard/participant/DetailParticipant.vue';
 
+import IndexUserCompetition from './views/dashboard/user-competition/IndexUserCompetition.vue';
+import MainUserCompetition from './views/dashboard/user-competition/MainUserCompetition.vue';
+import DetailUserCompetition from './views/dashboard/user-competition/DetailUserCompetition.vue';
+
 import IndexEvent from './views/dashboard/event/IndexEvent.vue';
 import SettingEvent from './views/dashboard/event/SettingEvent.vue';
 
@@ -205,13 +209,11 @@ const router = new Router({
 				meta: {
 					title: 'Dashboard',
 				},
-
 				children: [{
 					path: '',
 					name: 'DashboardMain',
 					component: DashboardMain,
 				},
-
 				{
 					path: 'regisolim',
 					name: 'RegisOlim',
@@ -301,6 +303,20 @@ const router = new Router({
 						path: ':id',
 						name: 'DetailParticipant',
 						component: DetailParticipant,
+					}],
+				},
+				{
+					path: 'usercompetition',
+					name: 'IndexUserCompetition',
+					component: IndexUserCompetition,
+					children: [{
+						path: ':competition',
+						name: 'MainUserCompetition',
+						component: MainUserCompetition,
+					}, {
+						path: ':competition/:id',
+						name: 'DetailUserCompetition',
+						component: DetailUserCompetition,
 					}],
 				},
 				{

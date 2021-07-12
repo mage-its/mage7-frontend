@@ -1,7 +1,11 @@
 <template>
   <div style="background-color: #eee; min-height: 100%; min-width: 100%">
     <!--Header /-->
-    <Sidebar v-if="sidebar" />
+    <!-- <Sidebar v-if="sidebar" /> -->
+    <div v-if="loading">
+      <SidebarAdmin v-if="isAdmin" />
+      <SidebarUser v-if="isUser" />
+    </div>
     <div v-bind:class="['content', sidebar ? '' : 'content-margin']">
       <router-view />
     </div>
@@ -10,12 +14,23 @@
 <script>
 import Header from "@/components/Header.vue";
 import Sidebar from "@/components/Sidebar.vue";
+import SidebarAdmin from "@/components/SidebarAdmin.vue";
+import SidebarUser from "@/components/SidebarUser.vue";
 
 export default {
   name: "Home",
   components: {
     Header,
     Sidebar,
+    SidebarAdmin,
+    SidebarUser,
+  },
+  data() {
+    return {
+      isAdmin: false,
+      isUser: true,
+      loading: false,
+    };
   },
   computed: {
     events() {
@@ -31,6 +46,12 @@ export default {
     },
   },
   mounted() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user.user.role === "admin") {
+      this.isAdmin = true;
+      this.isUser = false;
+    }
+	this.loading = true;
     window.onpopstate = function (event) {
       this.$router.go(0);
       window.location.replace("http://localhost:8081/login");

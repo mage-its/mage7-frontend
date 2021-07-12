@@ -1,7 +1,7 @@
 <template>
   <div>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(onSubmit)" enctype="multipart/form-data" >
+      <form @submit.prevent="handleSubmit(confirmSubmit)" enctype="multipart/form-data" >
         <div class="form-group">
           <label>Pilih Kategori</label>
           <b-form-radio-group
@@ -317,8 +317,6 @@ export default {
       };
     },
     onSubmit() {
-      // this.id = localStorage.id;
-
       const document = new FormData();
       this.loading = true;
       if (this.identitasAnggota1 == null || this.identitasAnggota1 == '') {
@@ -417,6 +415,19 @@ export default {
         localStorage.setItem('user', JSON.stringify(user));
       }).then(() => {
         this.onSubmit();
+      });
+    },
+	confirmSubmit() {
+      Swal.fire({
+        icon: "warning",
+        title: "Anda Yakin Data yang Anda Isikan Sudah Benar ?",
+        showDenyButton: true,
+        confirmButtonText: "Yes",
+        denyButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.onSubmit();
+        }
       });
     },
   },

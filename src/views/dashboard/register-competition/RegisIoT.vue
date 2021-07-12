@@ -1,7 +1,7 @@
 <template>
   <div>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form @submit.prevent="handleSubmit(onSubmit)"  enctype="multipart/form-data" >
+      <form @submit.prevent="handleSubmit(confirmSubmit)"  enctype="multipart/form-data" >
         <ValidationProvider name="Nama Tim" rules="required" v-slot="{ errors }">
           <div class="form-group">
             <label>Nama Tim *</label>
@@ -361,47 +361,45 @@ export default {
       };
     },
     onSubmit() {
-      // this.id = localStorage.id;
-
       const document = new FormData();
       this.loading = true;
       if (this.identitasAnggota1 == null || this.identitasAnggota1 == '') {
-        console.log('gak onok identitas anggota 1');
+        console.log('Tidak Ada identitas anggota 1');
       } else {
         document.append('identitasAnggota1', this.identitasAnggota1);
       }
 
       if (this.identitasAnggota2 == null || this.identitasAnggota2 == '') {
-        console.log('gak onok identitas anggota 1');
+        console.log('Tidak Ada identitas anggota 1');
       } else {
         document.append('identitasAnggota2', this.identitasAnggota2);
       }
       if (this.namaAnggota1 == null || this.namaAnggota1 == '') {
-        console.log('gak onok anggota 1');
+        console.log('Tidak Ada anggota 1');
       } else {
         document.append('namaAnggota1', this.namaAnggota1);
       }
 
       if (this.namaAnggota2 == null || this.namaAnggota2 == '') {
-        console.log('gak onok anggota 2');
+        console.log('Tidak Ada anggota 2');
       } else {
         document.append('namaAnggota2', this.namaAnggota2);
       }
 
       if (this.namaPembimbing == null || this.namaPembimbing == '') {
-        console.log('gak onok anggota 2');
+        console.log('Tidak Ada anggota 2');
       } else {
         document.append('namaPembimbing', this.namaPembimbing);
       }
 
       if (this.waPembimbing == null || this.waPembimbing == '') {
-        console.log('gak onok anggota 2');
+        console.log('Tidak Ada anggota 2');
       } else {
         document.append('waPembimbing', this.waPembimbing);
       }
 
       if (this.hpPembimbing == null || this.hpPembimbing == '') {
-        console.log('gak onok anggota 2');
+        console.log('Tidak Ada anggota 2');
       } else {
         document.append('hpPembimbing', this.hpPembimbing);
       }
@@ -479,6 +477,19 @@ export default {
         localStorage.setItem('user', JSON.stringify(user));
       }).then(() => {
         this.onSubmit();
+      });
+    },
+	confirmSubmit() {
+      Swal.fire({
+        icon: "warning",
+        title: "Anda Yakin Data yang Anda Isikan Sudah Benar ?",
+        showDenyButton: true,
+        confirmButtonText: "Yes",
+        denyButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.onSubmit();
+        }
       });
     },
   },
