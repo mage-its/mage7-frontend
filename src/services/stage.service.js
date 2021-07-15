@@ -1,7 +1,7 @@
 import axios from 'axios';
 import header from './header';
 
-const API_URL = 'https://mage-its.com/api/stage/';
+const API_URL = process.env.VUE_APP_API_URL+'api/stage/';
 
 class StageService {
   getAllStage() {

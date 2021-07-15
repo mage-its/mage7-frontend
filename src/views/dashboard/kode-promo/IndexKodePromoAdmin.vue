@@ -3,7 +3,7 @@
     <div class="bg-light text-dark mb-3 rounded shadow-sm header">
       <h3 class="text-left d-inline float-left">
         <i class="fa fa-users"></i>
-        Daftar Peserta {{competition}}
+        Kode Promo Admin
       </h3>
     </div>
     <hr />
@@ -12,15 +12,7 @@
 </template>
 <script>
 export default {
-  name: 'IndexUserCompetition',
-  data() {
-	  return {
-		  competition: ''
-	  }
-  },
-  mounted() {
-	  this.competition = this.$route.params.competition;	
-  },
+  name: 'IndexKodePromoAdmin',
 };
 </script>
 <style scoped>

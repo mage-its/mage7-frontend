@@ -77,6 +77,12 @@ import DetailResultStage from './views/dashboard/stage/result/DetailResultStage.
 import UploadProposal from './views/dashboard/upload-proposal/UploadProposal.vue';
 import NotFound from './views/NotFound.vue';
 
+import IndexKodePromoAdmin from './views/dashboard/kode-promo/IndexKodePromoAdmin.vue';
+import MainKodePromoAdmin from './views/dashboard/kode-promo/MainKodePromoAdmin.vue';
+import CreateKodePromoAdmin from './views/dashboard/kode-promo/CreateKodePromoAdmin.vue';
+import KodePromoUser from './views/dashboard/kode-promo/KodePromoUser.vue';
+
+
 Vue.use(Router);
 
 const router = new Router({
@@ -318,6 +324,25 @@ const router = new Router({
 						name: 'DetailUserCompetition',
 						component: DetailUserCompetition,
 					}],
+				},
+				{
+					path: 'kodepromoadmin',
+					name: 'IndexKodePromoAdmin',
+					component: IndexKodePromoAdmin,
+					children: [{
+						path: '',
+						name: 'MainKodePromoAdmin',
+						component: MainKodePromoAdmin,
+					}, {
+						path: 'createkodepromoadmin',
+						name: 'CreateKodePromoAdmin',
+						component: CreateKodePromoAdmin,
+					}],
+				},
+				{
+					path: 'kodepromouser',
+					name: 'KodePromoUser',
+					component: KodePromoUser,
 				},
 				{
 					path: 'schedule',

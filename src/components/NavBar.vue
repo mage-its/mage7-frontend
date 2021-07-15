@@ -12,39 +12,49 @@
       <div class="menu">
         <ul>
           <li>
-            <router-link class="text-center pl-4" :to="'/'">
-              Home
-            </router-link>
+            <router-link class="text-center pl-4" :to="'/'"> Home </router-link>
           </li>
           <li>
             <router-link class="text-center pl-4" :to="'/about'">
               About
             </router-link>
           </li>
-          <li class="competition-subnav-trigger" @click="toggleSubNavCompetition">
+          <li
+            class="competition-subnav-trigger"
+            @click="toggleSubNavCompetition"
+          >
             <a href="#">
-              Competition <span style="font-size: 12px; margin-left: 20px;">&#9660;</span>
+              Competition
+              <span style="font-size: 12px; margin-left: 20px">&#9660;</span>
             </a>
             <b-container class="subnav" v-if="subnav_competition">
               <b-row>
                 <b-col lg="12"
                   ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/app'">App Dev</router-link>
+                    <router-link class="text-dark" :to="'/competition/app'"
+                      >App Dev</router-link
+                    >
                   </div></b-col
                 >
                 <b-col lg="12"
                   ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/game'">Game Dev</router-link>
+                    <router-link class="text-dark" :to="'/competition/game'"
+                      >Game Dev</router-link
+                    >
                   </div></b-col
                 >
                 <b-col lg="12"
                   ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/iot'">IoT Dev</router-link>
+                    <router-link class="text-dark" :to="'/competition/iot'"
+                      >IoT Dev</router-link
+                    >
                   </div></b-col
                 >
                 <b-col lg="12"
                   ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/olim'">Olimpiade</router-link>
+                    <router-link class="text-dark" :to="'/competition/olim'"
+                      >Olimpiade</router-link
+                    >
                   </div></b-col
                 >
               </b-row>
@@ -72,52 +82,76 @@
       </div>
     </nav>
     <div class="menu-min" v-if="show" style="z-index: 9999999999">
-      <ul >
+      <ul>
         <li>
-          <a href="home" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
+          <router-link
+            @click="toggle()"
+            v-smooth-scroll="{ duration: 1000 }"
+            :to="'/'"
+          >
             Home
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="about" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
+          <router-link
+            :to="'/about'"
+            @click="toggle()"
+            v-smooth-scroll="{ duration: 1000 }"
+          >
             About us
+          </router-link>
+        </li>
+        <li>
+          <a
+            href="#"
+            v-smooth-scroll="{ duration: 1000 }"
+            @click="toggleSubNavCompetitionMin"
+          >
+            Competition<span style="font-size: 12px; margin-left: 20px"
+              >&#9660;</span
+            >
           </a>
         </li>
         <li>
-          <a href="#" v-smooth-scroll="{ duration: 1000 }" @click="toggleSubNavCompetitionMin">
-            Competition<span style="font-size: 12px; margin-left: 20px;">&#9660;</span>
-          </a>
-        </li>
-        <li>
-          <a href="/competition/app" @click="toggle()" v-if="subnav_competition_min">
+          <router-link
+            :to="'/competition/app'"
+            @click="toggle()"
+            v-if="subnav_competition_min"
+          >
             App Dev
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="/competition/game" @click="toggle()" v-if="subnav_competition_min">
+          <router-link
+            :to="'/competition/game'"
+            @click="toggle()"
+            v-if="subnav_competition_min"
+          >
             Game Dev
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="/competition/iot" @click="toggle()" v-if="subnav_competition_min">
+          <router-link
+            :to="'/competition/iot'"
+            @click="toggle()"
+            v-if="subnav_competition_min"
+          >
             IoT Dev
-          </a>
+          </router-link>
         </li>
 
         <li>
-          <a href="/competition/olim" @click="toggle()" v-if="subnav_competition_min">
+          <router-link
+            :to="'/competition/olim'"
+            @click="toggle()"
+            v-if="subnav_competition_min"
+          >
             Olimpiade
-          </a>
-        </li>
-        <li>
-          <a href="about" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
-            About us
-          </a>
+          </router-link>
         </li>
         <li @click="toggle()">
           <a
             class="register"
-
             @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
           >
             Register
@@ -126,7 +160,6 @@
         <li @click="toggle()">
           <a
             class="login"
-
             @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
           >
             Login
@@ -163,7 +196,7 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('scroll', this.updateScroll);
+    window.addEventListener("scroll", this.updateScroll);
   },
 };
 </script>
@@ -263,7 +296,6 @@ nav ul li a:hover {
   padding: 0;
   text-align: center;
   margin: 0;
-  padding-right: 40px;
   transition: 1s;
 }
 
@@ -292,7 +324,7 @@ nav ul li a:hover {
   .logo {
     position: fixed;
     top: 0;
-	left: -5vw;
+    left: -5vw;
     margin-top: 16px;
   }
 

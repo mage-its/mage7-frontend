@@ -163,7 +163,7 @@ export default {
           localStorage.setItem("user", JSON.stringify(user));
         })
         .then(() => {
-          this.onSubmit();
+          this.getProfile();
         });
     },
   },

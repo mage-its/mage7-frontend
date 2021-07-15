@@ -114,7 +114,7 @@ import axios from "axios";
 import header from "../../../services/header";
 
 export default {
-  name: "DetailParticipant",
+  name: "DetailUserCompetition",
   data() {
     return {
       participant: null,

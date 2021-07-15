@@ -145,6 +145,25 @@
                         </b-row>
                       </router-link>
                     </li>
+                    <li @click="reload" class="mb-3">
+                      <router-link
+                        class="text-white"
+                        :to="{
+                          name: 'MainKodePromoAdmin',
+                        }"
+                      >
+                        <b-row>
+                          <b-col cols="1" lg="1">
+                            <div class="inline">
+                              <i class="far fa-newspaper"></i>
+                            </div>
+                          </b-col>
+                          <b-col cols="10" class="sidebar-text" lg="10">
+                            Kode Promo
+                          </b-col>
+                        </b-row>
+                      </router-link>
+                    </li>
                     <li @click="selectedItem = 7" class="mb-3">
                       <a href="#" class="text-white" @click="signOut()">
                         <b-row>
@@ -281,6 +300,25 @@
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">
                     Olimpiade
+                  </b-col>
+                </b-row>
+              </router-link>
+            </li>
+            <li class="mb-3">
+              <router-link
+                class="text-white"
+                :to="{
+                  name: 'MainKodePromoAdmin',
+                }"
+              >
+                <b-row>
+                  <b-col cols="1" lg="1">
+                    <div class="inline">
+                      <i class="far fa-newspaper"></i>
+                    </div>
+                  </b-col>
+                  <b-col cols="10" class="sidebar-text" lg="10">
+                    Kode Promo
                   </b-col>
                 </b-row>
               </router-link>

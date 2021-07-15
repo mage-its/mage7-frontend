@@ -104,10 +104,9 @@
               <div class="footer-logo">
                 <img
                   src="@/assets/img/mage-title-white.png"
-                  style="height:55px; width:210px;"
+                  style="height: 55px; width: 210px"
                 />
               </div>
-
             </div>
           </div>
           <div class="col-lg-4 text-left">
@@ -115,10 +114,7 @@
               <h5>Hubungi kami</h5>
               <ul>
                 <li>
-                  <a
-                    target="blank"
-                    href="https://www.instagram.com/mage_its/"
-                  >
+                  <a target="blank" href="https://www.instagram.com/mage_its/">
                     <i class="fab fa-instagram"></i>
                     Instagram
                   </a>
@@ -130,13 +126,19 @@
                   </a>
                 </li>
                 <li>
-                  <a target="blank" href="https://page.line.me/?accountId=rio5948f&openerPlatform=webview&openerKey=webview%3AunifiedSearch">
+                  <a
+                    target="blank"
+                    href="https://page.line.me/?accountId=rio5948f&openerPlatform=webview&openerKey=webview%3AunifiedSearch"
+                  >
                     <i class="fab fa-line"></i>
                     Line
                   </a>
                 </li>
                 <li>
-                  <a target="blank" href="https://www.youtube.com/channel/UCO1SuldERZu0jgBBDzzOkoQ">
+                  <a
+                    target="blank"
+                    href="https://www.youtube.com/channel/UCO1SuldERZu0jgBBDzzOkoQ"
+                  >
                     <i class="fab fa-youtube"></i>
                     YouTube
                   </a>
@@ -176,7 +178,7 @@
 
 <script>
 export default {
-  name: 'Footer',
+  name: "Footer",
 };
 </script>
 <style scoped>
@@ -266,5 +268,10 @@ export default {
   float: center;
   font-size: 16px;
   color: #b2b2b2;
+}
+@media (max-width: 786px) {
+  .footer-left {
+    margin-left: 40px;
+  }
 }
 </style>

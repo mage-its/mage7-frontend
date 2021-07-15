@@ -1,7 +1,7 @@
 import axios from 'axios';
 import header from './header';
 
-const API_URL = 'https://mage-its.com/api/announcement/';
+const API_URL = process.env.VUE_APP_API_URL+'api/announcement/';
 
 class AnnouncementService {
   getAllAnnouncement() {

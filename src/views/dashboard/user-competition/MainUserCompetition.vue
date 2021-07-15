@@ -34,7 +34,7 @@ import axios from "axios";
 import header from "../../../services/header";
 
 export default {
-  name: "MainParticipant",
+  name: "MainUserCompetition",
   data() {
     return {
       competition: "",
@@ -99,10 +99,5 @@ export default {
 <style scoped>
 b-table {
   overflow: show;
-}
-.header {
-  min-height: 90px;
-  min-width: 100%;
-  padding: 30px;
 }
 </style>
