@@ -1,5 +1,8 @@
 <template>
   <div class="register-page">
+    <div v-if="loadingSubmit">
+      <LoadingSubmit />
+    </div>
     <div class="background-register"></div>
     <div class="register-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
@@ -81,6 +84,7 @@
 </template>
 <script>
 import Swal from "sweetalert2";
+import LoadingSubmit from "@/components/LoadingSubmit";
 
 import {
   required,
@@ -93,8 +97,12 @@ import {
 
 export default {
   name: "Register",
+  components: {
+    LoadingSubmit,
+  },
   data() {
     return {
+      loadingSubmit: false,
       user: {
         name: "",
         email: "",
@@ -169,11 +177,12 @@ export default {
       this.$store.dispatch("ui/changeWelcomeComponent", "login");
     },
     handleRegister() {
-      this.loading = true;
+      this.loadingSubmit = true;
       if (this.user.password == this.passwordConfirmation) {
         if (this.user.name && this.user.email && this.user.password) {
           this.$store.dispatch("auth/register", this.user).then(
             () => {
+              this.loadingSubmit = false;
               Swal.fire({
                 icon: "success",
                 title: "Register berhasil",

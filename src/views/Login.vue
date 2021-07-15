@@ -1,5 +1,8 @@
 <template>
   <div class="login-page">
+    <div v-if="loading">
+      <LoadingSubmit />
+    </div>
     <div class="background-login"></div>
     <div class="login-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
@@ -107,16 +110,20 @@
 import Swal from "sweetalert2";
 import firebase from "firebase";
 import { email } from "vuelidate/lib/validators";
+import LoadingSubmit from "@/components/LoadingSubmit";
 
 export default {
   name: "Login",
+  components: {
+    LoadingSubmit,
+  },
   data() {
     return {
       user: {
         email: "",
         password: "",
       },
-      loading: false,
+      loadingSubmit: false,
       message: "",
       url: window.location.href,
     };
@@ -142,11 +149,11 @@ export default {
       };
     },
     handleLogin() {
-      this.loading = true;
-
+      this.loadingSubmit = true;
       if (this.user.email && this.user.password) {
         this.$store.dispatch("auth/login", this.user).then(
           (user) => {
+            this.loadingSubmit = false;
             Swal.fire({
               icon: "success",
               title: "Login berhasil",
