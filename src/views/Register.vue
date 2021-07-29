@@ -3,7 +3,7 @@
     <div v-if="loadingSubmit">
       <LoadingSubmit />
     </div>
-    <div class="background-register"></div>
+    <img src="@/assets/img/bg1.png" id="bg" alt="">
     <div class="register-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
       <div>
@@ -228,6 +228,14 @@ export default {
 };
 </script>
 <style scoped>
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
 .background-register {
   background-image: url("./../assets/img/bg1.png");
   background-size: cover;

@@ -32,7 +32,7 @@ import VueTabs from 'vue-nav-tabs'
 import 'vue-nav-tabs/themes/vue-tabs.css'
 import Vuelidate from 'vuelidate'
 import CKEditor from 'ckeditor4-vue'
-import firebase from "firebase";
+import firebase from "firebase/app";
 import 'core-js'
 import {ValidationProvider} from 'vee-validate/dist/vee-validate.full.esm'
 

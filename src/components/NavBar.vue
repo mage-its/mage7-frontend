@@ -23,42 +23,52 @@
             class="competition-subnav-trigger"
             @click="toggleSubNavCompetition"
           >
-            <a href="#">
+            <a href="#" onClick="return false;">
               Competition
               <span style="font-size: 12px; margin-left: 20px">&#9660;</span>
             </a>
-            <b-container class="subnav" v-if="subnav_competition">
-              <b-row>
-                <b-col lg="12"
-                  ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/app'"
-                      >App Dev</router-link
+            <transition name="fade">
+              <b-container class="subnav" v-if="subnav_competition">
+                <b-row>
+                  <b-col lg="12"
                     >
-                  </div></b-col
-                >
-                <b-col lg="12"
-                  ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/game'"
-                      >Game Dev</router-link
+                      <router-link class="dropdown text-dark" :to="'/competition/app'">
+                        <div class="item text-dark text-center">
+                          App Dev
+                        </div>
+                      </router-link>
+                    </b-col
+                  >
+                  <b-col lg="12"
                     >
-                  </div></b-col
-                >
-                <b-col lg="12"
-                  ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/iot'"
-                      >IoT Dev</router-link
+                      <router-link class="dropdown text-dark" :to="'/competition/game'">
+                        <div class="item text-dark text-center">
+                          Game Dev
+                        </div>
+                      </router-link>
+                    </b-col
+                  >
+                  <b-col lg="12"
                     >
-                  </div></b-col
-                >
-                <b-col lg="12"
-                  ><div class="item text-dark text-center">
-                    <router-link class="text-dark" :to="'/competition/olim'"
-                      >Olimpiade</router-link
+                      <router-link class="dropdown text-dark" :to="'/competition/iot'">
+                        <div class="item text-dark text-center">
+                          IoT Dev
+                        </div>
+                      </router-link>
+                    </b-col
+                  >
+                  <b-col lg="12"
                     >
-                  </div></b-col
-                >
-              </b-row>
-            </b-container>
+                      <router-link class="dropdown text-dark" :to="'/competition/olim'">
+                        <div class="item text-dark text-center">
+                          Olimpiade
+                        </div>
+                      </router-link>
+                    </b-col
+                  >
+                </b-row>
+              </b-container>
+            </transition>
           </li>
           <li>
             <a
@@ -258,9 +268,19 @@ nav ul li a:hover {
   font-size: 16px;
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+
 .subnav {
   position: absolute;
   margin-right: 100px;
+  max-width: 150px;
 }
 
 .subnav .item {
@@ -269,10 +289,11 @@ nav ul li a:hover {
   border-radius: 3px;
   margin-top: 5px;
   color: #000000;
+  transition: all .35s;
 }
 
 .subnav .item:hover {
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 70, 85, 1);
 }
 
 .menu-min {
