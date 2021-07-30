@@ -3,7 +3,7 @@
     <div v-if="loadingSubmit">
       <LoadingSubmit />
     </div>
-    <div class="background-login"></div>
+    <img src="@/assets/img/bg1.png" id="bg" alt="">
     <div class="login-container shadow">
       <img class="logo mt-4" src="@/assets/img/mage.png" />
       <div>
@@ -108,7 +108,8 @@
 <script>
 // import User from "../models/user";
 import Swal from "sweetalert2";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 import { email } from "vuelidate/lib/validators";
 import LoadingSubmit from "@/components/LoadingSubmit";
 
@@ -248,6 +249,14 @@ export default {
 };
 </script>
 <style scoped>
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
 .background-login {
   background-image: url("./../assets/img/bg1.png");
   background-size: cover;
