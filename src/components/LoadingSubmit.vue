@@ -1,6 +1,8 @@
 <template>
   <div id="loading-screen">
-    <div id="loading-screen-content">Loading...</div>
+    <div id="loading-screen-content">
+		<i class="fas fa-spinner fa-pulse"></i>
+	</div>
   </div>
 </template>
 <style scoped>

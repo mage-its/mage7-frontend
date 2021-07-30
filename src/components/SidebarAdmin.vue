@@ -56,7 +56,7 @@
                         <b-row>
                           <b-col cols="1" lg="1">
                             <div class="inline">
-                              <i class="far fa-newspaper"></i>
+                              <i class="fa fa-list"></i>
                             </div>
                           </b-col>
                           <b-col cols="10" class="sidebar-text" lg="10">
@@ -76,7 +76,7 @@
                         <b-row>
                           <b-col cols="1" lg="1">
                             <div class="inline">
-                              <i class="far fa-newspaper"></i>
+                              <i class="fa fa-mobile-alt"></i>
                             </div>
                           </b-col>
                           <b-col cols="10" class="sidebar-text" lg="10">
@@ -96,7 +96,7 @@
                         <b-row>
                           <b-col cols="1" lg="1">
                             <div class="inline">
-                              <i class="far fa-newspaper"></i>
+                              <i class="fa fa-gamepad"></i>
                             </div>
                           </b-col>
                           <b-col cols="10" class="sidebar-text" lg="10">
@@ -116,7 +116,7 @@
                         <b-row>
                           <b-col cols="1" lg="1">
                             <div class="inline">
-                              <i class="far fa-newspaper"></i>
+                              <i class="fa fa-wifi"></i>
                             </div>
                           </b-col>
                           <b-col cols="10" class="sidebar-text" lg="10">
@@ -136,7 +136,7 @@
                         <b-row>
                           <b-col cols="1" lg="1">
                             <div class="inline">
-                              <i class="far fa-newspaper"></i>
+                              <i class="fa fa-brain"></i>
                             </div>
                           </b-col>
                           <b-col cols="10" class="sidebar-text" lg="10">
@@ -155,7 +155,7 @@
                         <b-row>
                           <b-col cols="1" lg="1">
                             <div class="inline">
-                              <i class="far fa-newspaper"></i>
+                              <i class="fa fa-money-bill"></i>
                             </div>
                           </b-col>
                           <b-col cols="10" class="sidebar-text" lg="10">
@@ -215,7 +215,7 @@
                 <b-row>
                   <b-col cols="1" lg="1">
                     <div class="inline">
-                      <i class="far fa-newspaper"></i>
+                      <i class="fa fa-list"></i>
                     </div>
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">
@@ -235,7 +235,7 @@
                 <b-row>
                   <b-col cols="1" lg="1">
                     <div class="inline">
-                      <i class="far fa-newspaper"></i>
+                      <i class="fa fa-mobile-alt"></i>
                     </div>
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">
@@ -255,7 +255,7 @@
                 <b-row>
                   <b-col cols="1" lg="1">
                     <div class="inline">
-                      <i class="far fa-newspaper"></i>
+                      <i class="fa fa-gamepad"></i>
                     </div>
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">
@@ -275,7 +275,7 @@
                 <b-row>
                   <b-col cols="1" lg="1">
                     <div class="inline">
-                      <i class="far fa-newspaper"></i>
+                      <i class="fa fa-wifi"></i>
                     </div>
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">
@@ -295,7 +295,7 @@
                 <b-row>
                   <b-col cols="1" lg="1">
                     <div class="inline">
-                      <i class="far fa-newspaper"></i>
+                      <i class="fa fa-brain"></i>
                     </div>
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">
@@ -314,7 +314,7 @@
                 <b-row>
                   <b-col cols="1" lg="1">
                     <div class="inline">
-                      <i class="far fa-newspaper"></i>
+                      <i class="fa fa-money-bill"></i>
                     </div>
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">

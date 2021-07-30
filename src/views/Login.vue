@@ -1,6 +1,6 @@
 <template>
   <div class="login-page">
-    <div v-if="loading">
+    <div v-if="loadingSubmit">
       <LoadingSubmit />
     </div>
     <div class="background-login"></div>
