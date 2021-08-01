@@ -12,10 +12,10 @@
       <div class="menu">
         <ul>
           <li>
-            <router-link class="text-center pl-4" :to="'/'"> Home </router-link>
+            <router-link class="nav-item text-center pl-4" :to="'/'"> Home </router-link>
           </li>
           <li>
-            <router-link class="text-center pl-4" :to="'/about'">
+            <router-link class="nav-item text-center pl-4" :to="'/about'">
               About
             </router-link>
           </li>
@@ -23,7 +23,7 @@
             class="competition-subnav-trigger"
             @click="toggleSubNavCompetition"
           >
-            <a href="#" onClick="return false;">
+            <a href="#" class="nav-item" onClick="return false;">
               Competition
               <span style="font-size: 12px; margin-left: 20px">&#9660;</span>
             </a>
@@ -72,7 +72,7 @@
           </li>
           <li>
             <a
-              class="login"
+              class="login nav-item"
               @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
               href="#"
             >
@@ -81,7 +81,7 @@
           </li>
           <li>
             <a
-              class="login"
+              class="login nav-item"
               @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
               href="#"
             >
@@ -95,6 +95,7 @@
       <ul>
         <li>
           <router-link
+            class="nav-item"
             @click="toggle()"
             v-smooth-scroll="{ duration: 1000 }"
             :to="'/'"
@@ -104,16 +105,18 @@
         </li>
         <li>
           <router-link
+            class="nav-item"
             :to="'/about'"
             @click="toggle()"
             v-smooth-scroll="{ duration: 1000 }"
           >
-            About us
+            About
           </router-link>
         </li>
         <li>
           <a
             href="#"
+            class="nav-item"
             v-smooth-scroll="{ duration: 1000 }"
             @click="toggleSubNavCompetitionMin"
           >
@@ -161,16 +164,18 @@
         </li>
         <li @click="toggle()">
           <a
-            class="register"
+            class="register nav-item"
             @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
+            href="#"
           >
             Register
           </a>
         </li>
         <li @click="toggle()">
           <a
-            class="login"
+            class="login nav-item"
             @click="$store.dispatch('ui/changeWelcomeComponent', 'login')"
+            href="#"
           >
             Login
           </a>
@@ -276,6 +281,9 @@ nav ul li a:hover {
   opacity: 0;
 }
 
+.nav-item:hover {
+  color: #ff4655;
+}
 
 .subnav {
   position: absolute;

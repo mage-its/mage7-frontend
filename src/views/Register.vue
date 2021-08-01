@@ -13,6 +13,7 @@
           name="name"
           placeholder="Ketik disini..."
           v-model="user.name"
+          autofocus="autofocus"
           :class="[$v.user.name.$error ? 'red-border' : 'black-border']"
         />
       </div>
@@ -178,7 +179,7 @@ export default {
     },
     handleRegister() {
       this.loadingSubmit = true;
-      if (this.user.password == this.passwordConfirmation) {
+      if (this.user.password === this.passwordConfirmation) {
         if (this.user.name && this.user.email && this.user.password) {
           this.$store.dispatch("auth/register", this.user).then(
             () => {
@@ -194,6 +195,7 @@ export default {
               });
             },
             (error) => {
+              this.loadingSubmit = false;
               this.message =
                 (error.response &&
                   error.response.data &&
@@ -210,9 +212,10 @@ export default {
           );
         }
       } else {
+        this.loadingSubmit = false;
         Swal.fire({
           icon: "error",
-          title: "konfirmasi sandi salah",
+          title: "Konfirmasi sandi salah",
           showConfirmButton: true,
         }).then(() => {});
       }

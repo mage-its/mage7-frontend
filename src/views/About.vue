@@ -8,7 +8,7 @@
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row>
             <b-col lg="5">
-              <img class="mascot" src="@/assets/img/mage.png" />
+              <img class="mascot" src="@/assets/img/mascot-2a.png" />
             </b-col>
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is MAGE?</p>
@@ -17,8 +17,8 @@
                 dalam berkreasi, berekspresi, dan berkompetisi untuk menuangkan
                 inovasi sekaligus menyelesaikan permasalahan dengan memanfaatkan
                 berbagai macam teknologi melalui serangkaian kegiatan seperti
-                Developing Competition (Apps, IoT, Games), Olimpiade, Workshop,
-                dan Webinar. 
+                Development Competition (Apps, IoT, Games), Olimpiade, Workshop,
+                dan Webinar.
               </p>
             </b-col>
           </b-row>
@@ -135,8 +135,10 @@ a:hover {
 }
 
 #about img {
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
   margin-left: calc(50% - 150px);
 }
 
