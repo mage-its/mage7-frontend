@@ -344,6 +344,14 @@ export default {
   font-size: 20px;
 }
 
+#guidebook .btn:hover {
+  background: #ff4655;
+}
+
+#guidebook .btn:focus {
+  color: #111;
+}
+
 .btn-register {
   padding: 20px;
   border-radius: 10px;

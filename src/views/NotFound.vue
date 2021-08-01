@@ -11,7 +11,7 @@
               <img class="mascot" src="@/assets/img/mascot-1a.png" />
             </b-col>
             <b-col lg="7" class="text-center">
-              <p class="text-white display-2 mb-3">
+              <p class="text-404 display-2 mb-3">
                 404
               </p>
               <p class="text-white h1 mb-3">
@@ -73,6 +73,10 @@ export default {
 a {
   color: rgba(255, 70, 85, 1);
   text-decoration: none;
+}
+
+.text-404 {
+  color: #ff4655;
 }
 
 .cta {

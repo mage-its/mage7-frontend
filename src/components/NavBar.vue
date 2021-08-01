@@ -12,24 +12,23 @@
       <div class="menu">
         <ul>
           <li>
-            <router-link class="nav-item text-center pl-4" :to="'/'"> Home </router-link>
+            <router-link class="nav-item text-center" :to="'/'"> Home </router-link>
           </li>
           <li>
-            <router-link class="nav-item text-center pl-4" :to="'/about'">
+            <router-link class="nav-item text-center" :to="'/about'">
               About
             </router-link>
           </li>
           <li
             class="competition-subnav-trigger"
-            @click="toggleSubNavCompetition"
           >
-            <a href="#" class="nav-item" onClick="return false;">
+            <a href="#" class="nav-item" onClick="return false;" @click="toggleSubNavCompetition">
               Competition
               <span style="font-size: 12px; margin-left: 20px">&#9660;</span>
             </a>
             <transition name="fade">
               <b-container class="subnav" v-if="subnav_competition">
-                <b-row>
+                <b-row v-click-outside="toggleSubnavFocus">
                   <b-col lg="12"
                     >
                       <router-link class="dropdown text-dark" :to="'/competition/app'">
@@ -192,7 +191,26 @@ export default {
       show: false,
       subnav_competition: false,
       subnav_competition_min: false,
+      subnav_flag: false,
     };
+  },
+
+  directives: {
+    clickOutside: {
+      bind: (el, binding, vnode) => {
+        el.clickOutsideEvent = (event) => {
+          // here I check that click was outside the el and his children
+          if (!(el === event.target || el.contains(event.target))) {
+            // and if it did, call method provided in attribute value
+            vnode.context[binding.expression](event);
+          }
+        };
+        document.body.addEventListener('click', el.clickOutsideEvent);
+      },
+      unbind: (el) => {
+        document.body.removeEventListener('click', el.clickOutsideEvent);
+      },
+    },
   },
 
   methods: {
@@ -204,9 +222,21 @@ export default {
     },
     toggleSubNavCompetition() {
       this.subnav_competition = !this.subnav_competition;
+      if (!this.subnav_competition) {
+        this.subnav_flag = false;
+      }
     },
     toggleSubNavCompetitionMin() {
       this.subnav_competition_min = !this.subnav_competition_min;
+    },
+    toggleSubnavFocus() {
+      if (!this.subnav_flag) {
+        this.subnav_flag = true;
+        return;
+      }
+      this.subnav_competition = false;
+      this.subnav_flag = false;
+      console.log('woii');
     },
   },
 
@@ -283,6 +313,29 @@ nav ul li a:hover {
 
 .nav-item:hover {
   color: #ff4655;
+}
+
+.nav-item{
+  position: relative;
+}
+
+.nav-item::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ff4655;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-item:hover::before{
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
 }
 
 .subnav {
