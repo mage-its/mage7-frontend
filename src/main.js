@@ -65,7 +65,7 @@ Vue.mixin({
         return {
             get endpointAPI() {
                 // return "http://52.149.214.161/";
-                return "https://mage-its.com/";
+                return process.env.VUE_APP_API_URL;
             },
         }
     }

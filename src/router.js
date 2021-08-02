@@ -95,11 +95,6 @@ const router = new Router({
 	},
 	routes: [
 		{
-			path: '*',
-			name: 'Not Found',
-			component: NotFound,
-		},
-		{
 			path: '/',
 			name: 'Home',
 			component: Home,
@@ -109,6 +104,7 @@ const router = new Router({
 				component: ConfirmationEmail,
 				meta: {
 					title: 'ConfirmationEmail',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -117,6 +113,7 @@ const router = new Router({
 				component: Main,
 				meta: {
 					title: 'Home',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -125,6 +122,7 @@ const router = new Router({
 				component: About,
 				meta: {
 					title: 'About',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -133,6 +131,7 @@ const router = new Router({
 				component: Login,
 				meta: {
 					title: 'About',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -141,6 +140,7 @@ const router = new Router({
 				component: Register,
 				meta: {
 					title: 'About',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -149,6 +149,7 @@ const router = new Router({
 				component: ForgotPassword,
 				meta: {
 					title: 'About',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -156,7 +157,8 @@ const router = new Router({
 				name: 'ChangePassword',
 				component: ChangePassword,
 				meta: {
-					title: 'About',
+					title: 'Change Password',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -164,7 +166,8 @@ const router = new Router({
 				name: 'ConfirmationEmail',
 				component: ConfirmationEmail,
 				meta: {
-					title: 'About',
+					title: 'Confirmation Email',
+          requiresAuth: false,
 				},
 			},
 			{
@@ -180,6 +183,7 @@ const router = new Router({
 					component: AppDev,
 					meta: {
 						title: 'App',
+            requiresAuth: false,
 					},
 				},
 				{
@@ -188,6 +192,7 @@ const router = new Router({
 					component: GameDev,
 					meta: {
 						title: 'Game',
+            requiresAuth: false,
 					},
 				},
 				{
@@ -196,6 +201,7 @@ const router = new Router({
 					component: IoTDev,
 					meta: {
 						title: 'IoT',
+            requiresAuth: false,
 					},
 				},
 				{
@@ -204,6 +210,7 @@ const router = new Router({
 					component: Olimpiade,
 					meta: {
 						title: 'Olimpiade',
+            requiresAuth: false,
 					},
 				},
 				],
@@ -214,70 +221,123 @@ const router = new Router({
 				component: Dashboard,
 				meta: {
 					title: 'Dashboard',
+          requiresAuth: true,
 				},
 				children: [{
 					path: '',
 					name: 'DashboardMain',
 					component: DashboardMain,
+          meta: {
+            title: 'Dashboard',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: 'regisolim',
 					name: 'RegisOlim',
 					component: RegisOlim,
+          meta: {
+            title: 'Dashboard',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: 'regisapp',
 					name: 'RegisApp',
 					component: RegisApp,
+          meta: {
+            title: 'Dashboard',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: 'regisgame',
 					name: 'RegisGame',
 					component: RegisGame,
+          meta: {
+            title: 'Dashboard',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: 'regisiot',
 					name: 'RegisIoT',
 					component: RegisIoT,
+          meta: {
+            title: 'Dashboard',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: '',
 					name: 'DashboardMain',
 					component: DashboardMain,
+          meta: {
+            title: 'Dashboard',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: 'createpayment',
 					name: 'CreatePayment',
 					component: CreatePayment,
+          meta: {
+            title: 'Create Payment',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: 'uploadproposal',
 					name: 'UploadProposal',
 					component: UploadProposal,
+          meta: {
+            title: 'Upload Proposal',
+            requiresAuth: true,
+          },
 				},
 				{
 					path: 'announcement',
 					name: 'IndexAnnouncement',
 					component: IndexAnnouncement,
+          meta: {
+            title: 'Announcement',
+            requiresAuth: true,
+          },
 					children: [{
 						path: '',
 						name: 'MainAnnouncement',
 						component: MainAnnouncement,
+            meta: {
+              title: 'Announcement',
+              requiresAuth: true,
+            },
 					},
 					{
 						path: 'add',
 						name: 'CreateAnnouncement',
 						component: CreateAnnouncement,
+            meta: {
+              title: 'Announcement',
+              requiresAuth: true,
+            },
 					},
 					{
 						path: ':id',
 						name: 'DetailAnnouncement',
 						component: DetailAnnouncement,
+            meta: {
+              title: 'Announcement',
+              requiresAuth: true,
+            },
 					},
 					{
 						path: ':id/edit',
 						name: 'EditAnnouncement',
 						component: EditAnnouncement,
+            meta: {
+              title: 'Announcement',
+              requiresAuth: true,
+            },
 					},
 					],
 				},
@@ -285,15 +345,27 @@ const router = new Router({
 					path: 'document',
 					name: 'IndexDocument',
 					component: IndexDocument,
+          meta: {
+            title: 'Document',
+            requiresAuth: true,
+          },
 					children: [{
 						path: '',
 						name: 'MainDocument',
 						component: MainDocument,
+            meta: {
+              title: 'Document',
+              requiresAuth: true,
+            },
 					},
 					{
 						path: 'add',
 						name: 'CreateDocument',
 						component: CreateDocument,
+            meta: {
+              title: 'Document',
+              requiresAuth: true,
+            },
 					},
 					],
 				},
@@ -301,14 +373,26 @@ const router = new Router({
 					path: 'participant',
 					name: 'IndexParticipant',
 					component: IndexParticipant,
+          meta: {
+            title: 'Participant',
+            requiresAuth: true,
+          },
 					children: [{
 						path: '',
 						name: 'MainParticipant',
 						component: MainParticipant,
+            meta: {
+              title: 'Participant',
+              requiresAuth: true,
+            },
 					}, {
 						path: ':id',
 						name: 'DetailParticipant',
 						component: DetailParticipant,
+            meta: {
+              title: 'Participant',
+              requiresAuth: true,
+            },
 					}],
 				},
 				{
@@ -427,17 +511,23 @@ const router = new Router({
 				],
 			},
 			],
-		}],
+		},
+    {
+			path: '*',
+			name: 'Not Found',
+			component: NotFound,
+		},
+  ],
 });
 
 
 router.beforeEach((to, from, next) => {
-	const publicPages = ['/', '/about', '/login', '/register', '/welcome', '/competition/app', '/competition/game', '/competition/iot', '/competition/olim'];
-	const authRequired = !publicPages.includes(to.path);
-	const loggedIn = localStorage.getItem('user');
-
-	if (authRequired && !loggedIn) {
-		next('/');
+	if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (localStorage.getItem('user')) {
+      next();
+    } else {
+      next('/');
+    }
 	} else {
 		next();
 	}

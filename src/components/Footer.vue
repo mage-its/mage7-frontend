@@ -114,20 +114,21 @@
               <h5>Hubungi kami</h5>
               <ul>
                 <li>
-                  <a target="blank" href="https://www.instagram.com/mage_its/">
+                  <a target="_blank" class="foot-item" href="https://www.instagram.com/mage_its/">
                     <i class="fab fa-instagram"></i>
                     Instagram
                   </a>
                 </li>
                 <li>
-                  <a target="blank" href="mailto:mage7.ce.its@gmail.com">
+                  <a target="_blank" class="foot-item" href="mailto:mage7.ce.its@gmail.com">
                     <i class="far fa-envelope"></i>
                     Email
                   </a>
                 </li>
                 <li>
                   <a
-                    target="blank"
+                    target="_blank"
+                    class="foot-item"
                     href="https://page.line.me/?accountId=rio5948f&openerPlatform=webview&openerKey=webview%3AunifiedSearch"
                   >
                     <i class="fab fa-line"></i>
@@ -136,7 +137,8 @@
                 </li>
                 <li>
                   <a
-                    target="blank"
+                    target="_blank"
+                    class="foot-item"
                     href="https://www.youtube.com/channel/UCO1SuldERZu0jgBBDzzOkoQ"
                   >
                     <i class="fab fa-youtube"></i>
@@ -148,7 +150,7 @@
           </div>
           <div class="col-lg-4 text-left">
             <div class="footer-widget">
-              <h5>Tentang Kami</h5>
+              <h5>Tentang kami</h5>
 
               <ul>
                 <li>
@@ -213,6 +215,11 @@ export default {
 #partner h3 {
   text-align: left;
 }
+
+.foot-item:hover {
+  color: #ff4655;
+}
+
 .footer-section {
   background: #0e0e0e;
   padding-top: 75px;

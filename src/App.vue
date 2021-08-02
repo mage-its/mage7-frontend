@@ -35,7 +35,7 @@ export default {
           this.loading = false;
           clearInterval(stateCheck);
         }
-      }, 1000);
+      }, 100);
     },
   },
 };

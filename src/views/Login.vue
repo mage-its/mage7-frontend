@@ -13,6 +13,7 @@
           v-model="$v.user.email.$model"
           :class="status($v.user.email)"
           placeholder="Ketik disini..."
+          autofocus="autofocus"
         />
         <div class="error" v-if="!$v.user.email.email">
           Harus di isi dengan format email
@@ -168,6 +169,7 @@ export default {
             // localStorage.setItem('id', JSON.stringify(user.user.id));
           },
           (error) => {
+            this.loadingSubmit = false;
             this.message =
               (error.response &&
                 error.response.data &&
