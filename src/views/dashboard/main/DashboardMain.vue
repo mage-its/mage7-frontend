@@ -114,7 +114,7 @@
         </b-row>
       </router-link>
     </div>
-    <div class="mb-5">
+    <div v-if="registeredComp == 'appdev' || registeredComp == 'gamedev' || registeredComp == 'iotdev'" class="mb-5">
       <b-card no-body class="text-center">
         <b-tabs v-model="tabIndex" card>
           <b-tab title="App Dev" :title-link-class="linkClass(0)">
