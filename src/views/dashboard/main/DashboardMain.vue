@@ -120,8 +120,7 @@
           <b-tab title="App Dev" :title-link-class="linkClass(0)">
             <b-card-title>Contoh Template Proposal App Dev</b-card-title>
             <b-card-text>
-              Klik tombol download dibawah ini untuk mendownload <br />
-              contoh template proposal App Dev
+              Klik tombol download dibawah ini untuk mendownload contoh template <br> Proposal App Dev
             </b-card-text>
             <a
               target="_blank"
@@ -136,8 +135,7 @@
           <b-tab title="Game Dev" :title-link-class="linkClass(1)">
             <b-card-title>Contoh Template Proposal Game Dev</b-card-title>
             <b-card-text>
-              Klik tombol download dibawah ini untuk mendownload <br />
-              contoh template proposal Game Dev
+              Klik tombol download dibawah ini untuk mendownload contoh template <br /> Proposal Game Dev
             </b-card-text>
             <a
               target="_blank"
@@ -152,8 +150,7 @@
           <b-tab title="IoT Dev" :title-link-class="linkClass(2)">
             <b-card-title>Contoh Template Proposal IoT Dev</b-card-title>
             <b-card-text>
-              Klik tombol download dibawah ini untuk mendownload <br />
-              contoh template proposal IoT Dev
+              Klik tombol download dibawah ini untuk mendownload contoh template <br /> Proposal IoT Dev
             </b-card-text>
             <a
               target="_blank"
