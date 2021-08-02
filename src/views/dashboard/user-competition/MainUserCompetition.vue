@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="loading">
+      <LoadingSubmit />
+    </div>
     <b-container class="bg-white p-5">
       <b-input-group class="mt-3 mb-3">
         <b-form-input v-model="keyword" placeholder="Search" type="text">
@@ -32,11 +35,16 @@
 <script>
 import axios from "axios";
 import header from "../../../services/header";
+import LoadingSubmit from "@/components/LoadingSubmit";
 
 export default {
   name: "MainUserCompetition",
+  components: {
+    LoadingSubmit,
+  },
   data() {
     return {
+      loading: true,
       competition: "",
       dataEmpty: false,
       participants: [],
@@ -70,11 +78,12 @@ export default {
           header()
         )
         .then((response) => {
+          this.loading = false;
           data = response.data.results;
           if (data.length < 1) {
             this.dataEmpty = true;
           }
-		  console.log(this.dataEmpty);
+          console.log(this.dataEmpty);
         });
       this.participants = data;
     },
