@@ -1,44 +1,101 @@
 <template>
   <div class="m-4">
     <h3>Upload Proposal</h3>
-    <ValidationObserver v-slot="{ handleSubmit }">
-      <form
-        @submit.prevent="handleSubmit(onSubmit)"
-        enctype="multipart/form-data"
-      >
-        <ValidationProvider
-          name="Upload Proposal"
-          rules="required|ext:pdf|size:5120"
-          v-slot="{ validate, errors }"
-        >
-          <div class="form-group">
-            <label
-              >Klik dibawah untuk memilih file (Format File Harus Pdf & Ukuran File Max. 5 MB)</label
+    <div class="mb-5 mt-5">
+      <b-card no-body class="text-center">
+        <b-tabs v-model="tabIndex" card>
+          <b-tab title="App Dev" :title-link-class="linkClass(0)">
+            <b-card-title>Contoh Template Proposal App Dev</b-card-title>
+            <b-card-text>
+              Klik tombol download dibawah ini untuk mendownload <br />
+              contoh template proposal App Dev
+            </b-card-text>
+            <a
+              target="_blank"
+              href="/docx/Template_Proposal_AppDev.docx"
+              class="btn d-inline"
             >
-            <input
-              type="file"
-              accept="application/pdf"
-              class="form-control"
-              @change="
-                {
-                  onUpload($event) || validate($event);
-                }
-              "
-              id="identitasKetua"
-            />
-            <span class="error-msg">{{ errors[0] }}</span>
-          </div>
-        </ValidationProvider>
-        <input type="submit" class="btn btn-red" tect="Submit" />
-      </form>
+              <button class="button" style="vertical-align: middle">
+                <span>Download</span>
+              </button>
+            </a>
+          </b-tab>
+          <b-tab title="Game Dev" :title-link-class="linkClass(1)">
+            <b-card-title>Contoh Template Proposal Game Dev</b-card-title>
+            <b-card-text>
+              Klik tombol download dibawah ini untuk mendownload <br />
+              contoh template proposal Game Dev
+            </b-card-text>
+            <a
+              target="_blank"
+              href="/docx/Template_Proposal_Game_Development.docx"
+              class="btn d-inline"
+            >
+              <button class="button" style="vertical-align: middle">
+                <span>Download</span>
+              </button>
+            </a>
+          </b-tab>
+          <b-tab title="IoT Dev" :title-link-class="linkClass(2)">
+            <b-card-title>Contoh Template Proposal IoT Dev</b-card-title>
+            <b-card-text>
+              Klik tombol download dibawah ini untuk mendownload <br />
+              contoh template proposal IoT Dev
+            </b-card-text>
+            <a
+              target="_blank"
+              href="/docx/Template_Proposal_IoT.docx"
+              class="btn d-inline"
+            >
+              <button class="button" style="vertical-align: middle">
+                <span>Download</span>
+              </button>
+            </a>
+          </b-tab>
+        </b-tabs>
+      </b-card>
+    </div>
+    <ValidationObserver v-slot="{ handleSubmit }">
+      <b-card>
+        <form
+          @submit.prevent="handleSubmit(onSubmit)"
+          enctype="multipart/form-data"
+        >
+          <ValidationProvider
+            name="Upload Proposal"
+            rules="required|ext:pdf|size:5120"
+            v-slot="{ validate, errors }"
+          >
+            <div class="form-group">
+              <label
+                >Klik dibawah untuk memilih file (Format File Harus Pdf & Ukuran
+                File Max. 5 MB)</label
+              >
+              <input
+                type="file"
+                accept="application/pdf"
+                class="form-control"
+                @change="
+                  {
+                    onUpload($event) || validate($event);
+                  }
+                "
+                id="identitasKetua"
+              />
+              <span class="error-msg">{{ errors[0] }}</span>
+            </div>
+          </ValidationProvider>
+          <input type="submit" class="btn btn-red" tect="Submit" />
+        </form>
+      </b-card>
     </ValidationObserver>
   </div>
 </template>
 <script>
-import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
-import { ValidationObserver } from 'vee-validate';
-import Swal from 'sweetalert2';
-import axios from 'axios';
+import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
+import { ValidationObserver } from "vee-validate";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   components: {
@@ -47,42 +104,50 @@ export default {
   },
   data() {
     return {
+      tabIndex: 0,
       proposal: null,
-      competition: '',
-      service: '',
+      competition: "",
+      service: "",
     };
   },
   created() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     this.competition = user.user.registeredComp;
-    if (this.competition === 'gamedev') {
-      this.service = 'uploadProposal/uploadProposalGameDev';
+    if (this.competition === "gamedev") {
+      this.service = "uploadProposal/uploadProposalGameDev";
     }
-    if (this.competition === 'iotdev') {
-      this.service = 'uploadProposal/uploadProposalIotDev';
+    if (this.competition === "iotdev") {
+      this.service = "uploadProposal/uploadProposalIotDev";
     }
-    if (this.competition === 'appdev') {
-      this.service = 'uploadProposal/uploadProposalAppDev';
+    if (this.competition === "appdev") {
+      this.service = "uploadProposal/uploadProposalAppDev";
     }
   },
   methods: {
+    linkClass(idx) {
+      if (this.tabIndex === idx) {
+        return ["bg-danger", "text-white"];
+      } else {
+        return ["bg-light", "text-danger"];
+      }
+    },
     onUpload(e) {
       this.proposal = e.target.files[0];
     },
     onSubmit() {
       const document = new FormData();
-      document.append('proposal', this.proposal);
+      document.append("proposal", this.proposal);
       const formData = {
         data: document,
       };
       this.$store.dispatch(this.service, formData).then(
         () => {
           Swal.fire({
-            icon: 'success',
-            title: 'Upload Proposal berhasil',
+            icon: "success",
+            title: "Upload Proposal berhasil",
             showConfirmButton: true,
           }).then(() => {
-            this.$router.push('/dashboard');
+            this.$router.push("/dashboard");
           });
         },
         (error) => {
@@ -90,24 +155,24 @@ export default {
             this.refreshToken();
           } else {
             Swal.fire({
-              icon: 'error',
-              title: 'Upload Proposal gagal',
+              icon: "error",
+              title: "Upload Proposal gagal",
               text: error.response.data.message,
               showConfirmButton: true,
             }).then(() => {});
           }
-        },
+        }
       );
     },
     refreshToken() {
-      const user = JSON.parse(localStorage.getItem('user'));
+      const user = JSON.parse(localStorage.getItem("user"));
       axios
         .post(`${this.endpointAPI}api/v1/auth/refresh-tokens`, {
           refreshToken: user.tokens.refresh.token,
         })
         .then((response) => {
           user.tokens = response.data;
-          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem("user", JSON.stringify(user));
         })
         .then(() => {
           this.onSubmit();
@@ -116,3 +181,44 @@ export default {
   },
 };
 </script>
+<style scoped>
+.button {
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #912809;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
