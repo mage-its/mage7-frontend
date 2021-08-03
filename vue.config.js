@@ -10,7 +10,7 @@ module.exports = {
     },
     pwa: {
       workboxOptions: {
-        exclude: [/\.eot$/, /\.ttf$/, /\.pdf$/, /^.*uploads\/.*$/],
+        exclude: [/\.eot$/, /\.ttf$/, /\.pdf$/, /\.docx?$/, /^.*pdf\/.*$/, /^.*docx\/.*$/, /^.*uploads\/.*$/],
       },
     },
 };

@@ -5,7 +5,7 @@
     </div>
     <img src="@/assets/img/bg1.png" id="bg" alt="">
     <div class="register-container shadow">
-      <img class="logo mt-4" src="@/assets/img/mage.png" />
+      <a href="/"><img class="logo mt-4" src="@/assets/img/mage.png" /></a>
       <div>
         <label>Username</label>
         <input
@@ -20,7 +20,7 @@
       <div>
         <label>Email</label>
         <input
-          type="text"
+          type="email"
           id="input-field"
           v-model="$v.user.email.$model"
           :class="status($v.user.email)"
@@ -32,14 +32,20 @@
       </div>
       <div>
         <label>Sandi</label>
-        <input
-          type="password"
-          name="password"
-          id="input-field"
-          v-model="$v.user.password.$model"
-          :class="status($v.user.password)"
-          placeholder="Ketik disini..."
-        />
+        <div id="password-input">
+          <input
+            :type="type"
+            name="password"
+            id="input-field"
+            v-model="$v.user.password.$model"
+            :class="status($v.user.password)"
+            placeholder="Ketik disini..."
+          />
+          <span @click="revealPassword" class="eye">
+            <span :style="{ display: eye1 }"><i class="fas fa-eye"></i></span>
+            <span :style="{ display: eye2 }"><i class="fas fa-eye-slash"></i></span>
+          </span>
+        </div>
         <div
           class="error"
           v-if="!$v.user.password.minLength || !$v.user.password.alphaNum"
@@ -49,15 +55,22 @@
       </div>
       <div>
         <label>Konfirmasi sandi</label>
-        <input
-          type="password"
-          name="passwordConfirmation"
-          placeholder="Ketik disini..."
-          v-model="passwordConfirmation"
-          :class="[
-            $v.passwordConfirmation.$error ? 'red-border' : 'black-border',
-          ]"
-        />
+        <div id="password-input">
+          <input
+            :type="type2"
+            name="passwordConfirmation"
+            placeholder="Ketik disini..."
+            v-model="passwordConfirmation"
+            @keyup.enter="handleRegister"
+            :class="[
+              $v.passwordConfirmation.$error ? 'red-border' : 'black-border',
+            ]"
+          />
+          <span @click="revealConfirmPassword" class="eye">
+            <span :style="{ display: eye3 }"><i class="fas fa-eye"></i></span>
+            <span :style="{ display: eye4 }"><i class="fas fa-eye-slash"></i></span>
+          </span>
+        </div>
       </div>
 
       <input
@@ -84,7 +97,7 @@
   </div>
 </template>
 <script>
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 import LoadingSubmit from "@/components/LoadingSubmit";
 
 import {
@@ -109,6 +122,12 @@ export default {
         email: "",
         password: "",
       },
+      type: "password",
+      type2: "password",
+      eye1: "block",
+      eye2: "none",
+      eye3: "block",
+      eye4: "none",
       passwordConfirmation: "",
       loading: false,
       message: "",
@@ -155,6 +174,28 @@ export default {
         dirty: validation.$dirty,
       };
     },
+    revealPassword() {
+      if (this.type === "password") {
+        this.type = "text";
+        this.eye2 = "block";
+        this.eye1 = "none";
+      } else {
+        this.type = "password";
+        this.eye1 = "block";
+        this.eye2 = "none";
+      }
+    },
+    revealConfirmPassword() {
+      if (this.type2 === "password") {
+        this.type2 = "text";
+        this.eye4 = "block";
+        this.eye3 = "none";
+      } else {
+        this.type2 = "password";
+        this.eye3 = "block";
+        this.eye4 = "none";
+      }
+    },
     getProvinces() {
       this.$store.dispatch("ui/getProvinces").then((data) => {
         console.log(data);
@@ -187,8 +228,12 @@ export default {
               Swal.fire({
                 icon: "success",
                 title: "Register berhasil",
-                text: "Silakan Cek Email Anda Untuk Melakukan Verifikasi Akun",
+                html: `<span style="color:#eee">Silakan Cek Email Anda Untuk Melakukan Verifikasi Akun<span>`,
                 showConfirmButton: true,
+                background: "#111",
+                customClass: {
+                  title: 'text-white',
+                },
               }).then(() => {
                 this.$router.push("/dashboard");
                 location.reload();
@@ -205,18 +250,37 @@ export default {
               Swal.fire({
                 icon: "error",
                 title: "Register gagal",
-                text: this.message,
+                html: `<span style="color:#eee">${this.message}<span>`,
                 showConfirmButton: true,
+                background: "#111",
+                customClass: {
+                  title: 'text-white',
+                },
               }).then(() => {});
-            }
+            },
           );
+        } else {
+          this.loadingSubmit = false;
+          Swal.fire({
+            icon: "warning",
+            title: "Semua input field harus diisi",
+            showConfirmButton: true,
+            background: "#111",
+            customClass: {
+              title: 'text-white',
+            },
+          }).then(() => {});
         }
       } else {
         this.loadingSubmit = false;
         Swal.fire({
-          icon: "error",
+          icon: "warning",
           title: "Konfirmasi sandi salah",
           showConfirmButton: true,
+          background: "#111",
+          customClass: {
+            title: 'text-white',
+          },
         }).then(() => {});
       }
     },
@@ -284,16 +348,20 @@ export default {
   margin-top: 40px;
   margin-left: calc(50% - 210px);
   margin-bottom: 20px;
-  background: #fff;
+  background: #111;
   box-sizing: border-box;
   padding: 10px 20px;
   position: absolute;
+  color: #ece8e1;
 }
 
 .register-container .logo {
   height: 80px;
   width: 80px;
-  margin-left: calc(50% - 40px);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
 
 .register-container h1 {
@@ -311,13 +379,44 @@ export default {
   margin-bottom: 20px;
 }
 
-.register-container input[type="text"],
+.register-container input[type="text"], input[type="email"],
 input[type="password"] {
   width: 100%;
+  border: none;
   outline: none;
+  border-bottom: 1px solid #000;
   background: transparent;
-  color: #000;
+  color: #ece8e1;
   height: 40px;
+  transition: all 0.3s;
+}
+
+.register-container input[type="email"]:focus, input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 3px solid #ff4655;
+}
+
+#password-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.eye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  border: 3px solid rgb(0, 0, 0, 255);
+  transition: all .3s;
+}
+
+.eye:hover {
+  border-radius: 5px;
+  border: 3px solid red;
+}
+
+::-ms-clear, ::-ms-reveal {
+  display: none;
 }
 
 a {
@@ -347,7 +446,7 @@ a {
     rgba(255, 70, 85, 1) 35%,
     rgba(255, 124, 157, 1) 100%
   );
-  color: #fff;
+  color: #ece8e1;
 }
 .register-container input[type="submit"]:hover {
   cursor: pointer;
@@ -363,7 +462,7 @@ a {
 }
 
 p {
-  color: #000;
+  color: #ece8e1;
   font-size: 12px;
   margin: 0;
   padding: 0;
@@ -373,25 +472,15 @@ p {
   border-color: red;
 }
 
-#input-field {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #000;
-  background: transparent;
-  color: #000;
-  height: 40px;
-}
-
 .dirty {
   border-color: #5a5;
-  background: #efe;
+  background: #111;
 }
 
 .error {
-  border-color: rgb(255, 255, 255);
-  background: rgb(255, 255, 255);
-  color: red;
+  border-color: #111;
+  background: #111;
+  color: #ff4655;
   height: 20px;
 }
 
