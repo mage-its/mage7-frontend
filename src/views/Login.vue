@@ -5,11 +5,12 @@
     </div>
     <img src="@/assets/img/bg1.png" id="bg" alt="">
     <div class="login-container shadow">
-      <img class="logo mt-4" src="@/assets/img/mage.png" />
+      <a href="/"><img class="logo mt-4" src="@/assets/img/mage.png" /></a>
       <div>
         <label>Email</label>
         <input
           id="input-email"
+          type="email"
           v-model="$v.user.email.$model"
           :class="status($v.user.email)"
           placeholder="Ketik disini..."
@@ -28,12 +29,19 @@
       </div>
       <div>
         <label>Sandi</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Ketik disini..."
-          v-model="user.password"
-        />
+        <div id="password-input">
+          <input
+            :type="type"
+            name="password"
+            placeholder="Ketik disini..."
+            @keyup.enter="handleLogin"
+            v-model="user.password"
+          />
+          <span @click="revealPassword" class="eye">
+            <span :style="{ display: eye1 }"><i class="fas fa-eye"></i></span>
+            <span :style="{ display: eye2 }"><i class="fas fa-eye-slash"></i></span>
+          </span>
+        </div>
       </div>
       <p class="text-left">
         <router-link :to="{ name: 'ForgotPassword' }"
@@ -108,7 +116,7 @@
 </template>
 <script>
 // import User from "../models/user";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 import firebase from "firebase/app";
 import "firebase/auth";
 import { email } from "vuelidate/lib/validators";
@@ -125,6 +133,9 @@ export default {
         email: "",
         password: "",
       },
+      type: "password",
+      eye1: "block",
+      eye2: "none",
       loadingSubmit: false,
       message: "",
       url: window.location.href,
@@ -150,6 +161,17 @@ export default {
         dirty: validation.$dirty,
       };
     },
+    revealPassword() {
+      if (this.type === "password") {
+        this.type = "text";
+        this.eye2 = "block";
+        this.eye1 = "none";
+      } else {
+        this.type = "password";
+        this.eye1 = "block";
+        this.eye2 = "none";
+      }
+    },
     handleLogin() {
       this.loadingSubmit = true;
       if (this.user.email && this.user.password) {
@@ -161,6 +183,10 @@ export default {
               title: "Login berhasil",
               text: this.id,
               showConfirmButton: true,
+              background: "#111",
+              customClass: {
+                title: 'text-white',
+              },
             }).then(() => {
               this.$router.push("/dashboard");
               location.reload();
@@ -179,11 +205,26 @@ export default {
             Swal.fire({
               icon: "error",
               title: "Login gagal",
-              text: this.message,
+              html: `<span style="color:#eee">${this.message}<span>`,
               showConfirmButton: true,
+              background: "#111",
+              customClass: {
+                title: 'text-white',
+              },
             }).then(() => {});
-          }
+          },
         );
+      } else {
+        this.loadingSubmit = false;
+        Swal.fire({
+          icon: "warning",
+          title: "Semua input field harus diisi",
+          showConfirmButton: true,
+          background: "#111",
+          customClass: {
+            title: 'text-white',
+          },
+        }).then(() => {});
       }
     },
     getUrl() {
@@ -251,6 +292,7 @@ export default {
 };
 </script>
 <style scoped>
+
 #bg {
   position: fixed;
   top: 0;
@@ -297,7 +339,8 @@ export default {
   margin-left: calc(50% - 210px);
   margin-top: calc(50% - 600px);
   margin-bottom: 20px;
-  background: #fff;
+  background: #111;
+  color: #ece8e1;
   box-sizing: border-box;
   padding: 10px 20px;
 }
@@ -305,7 +348,9 @@ export default {
 .login-container .logo {
   height: 80px;
   width: 80px;
-  margin-left: calc(50% - 40px);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 20px;
 }
 
@@ -324,15 +369,45 @@ export default {
   margin-bottom: 20px;
 }
 
-.login-container input[type="text"],
+.login-container input[type="email"], input[type="text"],
 input[type="password"] {
+  display: block;
   width: 100%;
   border: none;
   outline: none;
   border-bottom: 1px solid #000;
   background: transparent;
-  color: #000;
+  color: #ece8e1;
   height: 40px;
+  transition: all .3s;
+}
+
+.login-container input[type="email"]:focus, input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 3px solid #ff4655;
+}
+
+#password-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.eye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  border: 3px solid rgb(0, 0, 0, 255);
+  transition: all .3s;
+}
+
+.eye:hover {
+  border-radius: 5px;
+  border: 3px solid red;
+}
+
+::-ms-clear, ::-ms-reveal {
+  display: none;
 }
 
 .login-container input[type="submit"] {
@@ -347,7 +422,7 @@ input[type="password"] {
     rgba(255, 70, 85, 1) 35%,
     rgba(255, 124, 157, 1) 100%
   );
-  color: #fff;
+  color: #ece8e1;
 }
 .login-container input[type="submit"]:hover {
   cursor: pointer;
@@ -364,31 +439,21 @@ a {
 }
 
 p {
-  color: #000;
+  color: #ece8e1;
   font-size: 12px;
   margin: 0;
   padding: 0;
 }
 
-#input-email {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #000;
-  background: transparent;
-  color: #000;
-  height: 40px;
-}
-
 .dirty {
-  border-color: #5a5;
-  background: #efe;
+  border-color: #111;
+  background: #111;
 }
 
 .error {
-  border-color: rgb(255, 255, 255);
-  background: rgb(255, 255, 255);
-  color: red;
+  border-color: #111;
+  background: #111;
+  color: #ff4655;
   height: 20px;
 }
 @media (max-width: 700px) {
