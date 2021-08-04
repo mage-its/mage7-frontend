@@ -83,9 +83,9 @@ export default {
           if (data.length < 1) {
             this.dataEmpty = true;
           }
-          console.log(this.dataEmpty);
         });
       this.participants = data;
+	  console.log(this.participants);
     },
   },
   computed: {

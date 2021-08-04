@@ -14,7 +14,7 @@ class PaymentService {
     return axios.get(API_URL + id, header());
   }
   createPayment(payment) {
-    return axios.post(`${API_URL}payment`, payment.data, header(true));
+    return axios.post(`${API_URL}/compe/pay`, payment.data, header(true));
   }
 }
 
