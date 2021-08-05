@@ -175,7 +175,7 @@
               > -->
               <a
                 target="_blank"
-                href="/pdf/GuideBook_Game_Development.pdf"
+                href="/pdf/Guidebook_Game_Development.pdf"
                 class="btn d-inline"
               >
                 Unduh guidebook

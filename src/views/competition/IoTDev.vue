@@ -168,7 +168,7 @@
               > -->
               <a
                 target="_blank"
-                href="/pdf/GuideBook_IoT_Development.pdf"
+                href="/pdf/Guidebook_IoT_Development.pdf"
                 class="btn d-inline"
               >
                 Unduh guidebook
