@@ -26,9 +26,9 @@
               <img class="mascot" alt="Maskot MAGE 7" src="@/assets/img/mascot-2a.png" />
             </b-col>
             <b-col lg="7">
-              <p class="text-white text-left title mb-3">What is MAGE?</p>
+              <p class="text-white text-left title mb-3">What is <span class="font-weight-bold">MAGE</span>?</p>
               <p class="text-white text-justify description mb-3">
-                MAGE (Multimedia and Game Event) adalah Wadah bagi generasi muda
+                <span class="font-weight-bold">MAGE</span> (Multimedia and Game Event) adalah Wadah bagi generasi muda
                 dalam berkreasi, berekspresi, dan berkompetisi untuk menuangkan
                 inovasi sekaligus menyelesaikan permasalahan dengan memanfaatkan
                 berbagai macam teknologi melalui serangkaian kegiatan seperti
@@ -106,7 +106,7 @@
                 </b-container>
               </b-col>
               <b-col lg="6" class="mt-5 mb-5">
-                <h1 class="title">Iot Dev</h1>
+                <h1 class="title">IoT Dev</h1>
                 <div class="description mt-4">
                   <p class="text-justify">
                     Internet of Things Competition merupakan kompetisi dari MAGE
@@ -214,7 +214,7 @@
                 </b-container>
               </b-col>
               <b-col lg="12" class="mt-5 mb-5">
-                <h1 class="title">Iot Dev</h1>
+                <h1 class="title">IoT Dev</h1>
                 <div class="description mt-4">
                   <p class="text-justify">
                     Internet of Things Competition merupakan kompetisi dari MAGE

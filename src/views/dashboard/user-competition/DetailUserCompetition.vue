@@ -317,7 +317,11 @@
               }}
             </td>
             <td>
-              <b-button @click="verif()" variant="success">Verifikasi</b-button>
+              <b-button @click="verif()" :variant="[participant.isVerified ? 'danger' : 'success']">
+              {{
+                participant.isVerified ? "Batal verifikasi" : "Verifikasi"
+              }}
+              </b-button>
             </td>
           </tr>
           <tr>
@@ -372,46 +376,47 @@ export default {
           this.loading = false;
         });
     },
+    toggleVerif() {
+      this.loading = true;
+      axios
+        .post(
+          `${this.endpointAPI}api/v1/${this.$route.params.competition}/toggle-verif/${this.$route.params.id}`,
+          {},
+          header()
+        )
+        .then((response) => {
+          this.getParticipantById(this.$route.params.id);
+          this.loading = false;
+          Swal.fire({
+            icon: "success",
+            title: "verifikasi sukses",
+            showDenyButton: false,
+          });
+        })
+        .catch((error) => {
+          this.loading = false;
+          if (error.response.data.code === 401) {
+            this.refreshToken();
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "gagal",
+              text: error.response.data.message,
+              showConfirmButton: true,
+            }).then(() => {});
+          }
+        });
+    },
     verif() {
       Swal.fire({
         icon: "warning",
-        title: "Yakin Verifikasi Pembayaran ?",
+        title: "Yakin Toggle Verifikasi Pembayaran ?",
         showDenyButton: true,
         confirmButtonText: "Yes",
         denyButtonText: "No",
       }).then((result) => {
         if (result.isConfirmed) {
-          this.loading = true;
-          axios
-            .patch(
-              `${this.endpointAPI}api/v1/${this.$route.params.competition}/${this.$route.params.id}`,
-              {
-                isVerified: true,
-              },
-              header()
-            )
-            .then((response) => {
-              this.getParticipantById(this.$route.params.id);
-              this.loading = false;
-              Swal.fire({
-                icon: "success",
-                title: "verifikasi sukes",
-                showDenyButton: false,
-              });
-            })
-            .catch((error) => {
-              this.loading = false;
-              if (error.response.data.code === 401) {
-                this.refreshToken();
-              } else {
-                Swal.fire({
-                  icon: "error",
-                  title: "gagal",
-                  text: error.response.data.message,
-                  showConfirmButton: true,
-                }).then(() => {});
-              }
-            });
+          this.toggleVerif();
         }
       });
     },
@@ -426,7 +431,10 @@ export default {
           localStorage.setItem("user", JSON.stringify(user));
         })
         .then(() => {
-          this.verif();
+          this.toggleVerif();
+        })
+        .catch(() => {
+          this.$router.push("/");
         });
     },
   },

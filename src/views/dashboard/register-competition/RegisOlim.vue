@@ -290,85 +290,6 @@
           </div>
         </ValidationProvider> -->
 
-        <ValidationProvider
-          name="Bukti Upload Twibbon"
-          rules="required|ext:jpeg,jpg,png,pdf|size:2048"
-          v-slot="{ validate, errors }"
-          id="buktiUploadTwibbon"
-        >
-          <div class="form-group">
-            <label>Bukti Upload Twibbon (File Max 2 MB) *</label>
-            <img
-              v-if="previewImageTwibbon"
-              :src="previewImageTwibbon"
-              class="uploading-image"
-            />
-            <input
-              type="file"
-              accept="image/*,application/pdf"
-              class="form-control"
-              @change="
-                {
-                  onUploadTwibbon($event) || validate($event);
-                }
-              "
-            />
-            <span class="error-msg">{{ errors[0] }}</span>
-          </div>
-        </ValidationProvider>
-        <ValidationProvider
-          name="Bukti Follow Mage"
-          rules="required|ext:jpeg,jpg,png,pdf|size:2048"
-          v-slot="{ validate, errors }"
-          id="buktiFollowMage"
-        >
-          <div class="form-group">
-            <label>Bukti Follow Mage (File Max 2 MB) *</label>
-            <img
-              v-if="previewImageFollowMage"
-              :src="previewImageFollowMage"
-              class="uploading-image"
-            />
-            <input
-              type="file"
-              accept="image/*,application/pdf"
-              class="form-control"
-              @change="
-                {
-                  onUploadFollowMage($event) || validate($event);
-                }
-              "
-            />
-            <span class="error-msg">{{ errors[0] }}</span>
-          </div>
-        </ValidationProvider>
-        <ValidationProvider
-          name="Bukti Repost Story"
-          rules="required|ext:jpeg,jpg,png,pdf|size:2048"
-          v-slot="{ validate, errors }"
-          id="buktiRepostStory"
-        >
-          <div class="form-group">
-            <label>Bukti Repost Story (File Max 2 MB) *</label>
-            <img
-              v-if="previewImageRepostStory"
-              :src="previewImageRepostStory"
-              class="uploading-image"
-            />
-            <input
-              type="file"
-              accept="image/*,application/pdf"
-              class="form-control"
-              @change="
-                {
-                  onUploadRepostStory($event) || validate($event);
-                }
-              "
-            />
-            <span class="error-msg">{{ errors[0] }}</span>
-          </div>
-        </ValidationProvider>
-
         <div>
           <p class="mt-4">Keterangan :</p>
           <p>- Tanda (*) Wajib Di Isi</p>
@@ -401,9 +322,6 @@ export default {
       previewImage2: null,
       previewImage3: null,
       previewImage4: null,
-      previewImageTwibbon: null,
-      previewImageFollowMage: null,
-      previewImageRepostStory: null,
       namaTim: "",
       namaKetua: "",
       waKetua: "",
@@ -419,9 +337,6 @@ export default {
       identitasAnggota2: null,
       // suratKeteranganSiswa: null,
       alamatInstansi: "",
-      buktiUploadTwibbon: null,
-      buktiFollowMage: null,
-      buktiRepostStory: null,
       id: "",
     };
   },
@@ -483,30 +398,6 @@ export default {
         this.previewImage4 = e.target.result;
       };
     },
-    onUploadTwibbon(e) {
-      this.buktiUploadTwibbon = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(this.buktiUploadTwibbon);
-      reader.onload = (e) => {
-        this.previewImageTwibbon = e.target.result;
-      };
-    },
-    onUploadFollowMage(e) {
-      this.buktiFollowMage = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(this.buktiFollowMage);
-      reader.onload = (e) => {
-        this.previewImageFollowMage = e.target.result;
-      };
-    },
-    onUploadRepostStory(e) {
-      this.buktiRepostStory = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(this.buktiRepostStory);
-      reader.onload = (e) => {
-        this.previewImageRepostStory = e.target.result;
-      };
-    },
     onSubmit() {
       const document = new FormData();
       this.loadingSubmit = true;
@@ -546,9 +437,6 @@ export default {
       document.append("asalInstansi", this.asalInstansi);
       document.append("asalInfo", this.asalInfo);
       document.append("alamatInstansi", this.alamatInstansi);
-      document.append("buktiUploadTwibbon", this.buktiUploadTwibbon);
-      document.append("buktiFollowMage", this.buktiFollowMage);
-      document.append("buktiRepostStory", this.buktiRepostStory);
 
       const formData = {
         data: document,

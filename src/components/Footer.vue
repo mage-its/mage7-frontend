@@ -107,6 +107,11 @@
                   style="height: 55px; width: 210px"
                 />
               </div>
+              <div class="footer-quote">
+                <p>
+                  Face the <span class="font-weight-bold">Pandemic</span> with the <span class="font-weight-bold">Renaissance</span> of <span class="font-weight-bold">Technology</span> for the <span class="font-weight-bold">Future</span>
+                </p>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 text-left">
@@ -167,7 +172,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="copyright-text text-center">
-                Copyright &copy; 2021 All rights reserved
+                &copy; {{ currentYear }} MAGE
               </div>
             </div>
           </div>
@@ -181,6 +186,11 @@
 <script>
 export default {
   name: "Footer",
+  data() {
+    return {
+      currentYear: new Date().getFullYear(),
+    };
+  },
 };
 </script>
 <style scoped>
@@ -232,6 +242,15 @@ export default {
 .footer-left .footer-logo img {
   width: 60px;
   height: 60px !important;
+}
+
+.footer-left .footer-quote {
+  padding-top: 3vh;
+}
+
+.footer-left .footer-quote p {
+  color: #ece8e1;
+  font-size: 2.9vmin;
 }
 
 .footer-left ul li {

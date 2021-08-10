@@ -6,7 +6,7 @@
       </div>
       <div class="logo">
         <router-link class="text-center pl-1" :to="'/'">
-          <img src="@/assets/img/mage-white.png" alt="" />
+          <img src="@/assets/img/mage-white.png" alt="MAGE logo" />
         </router-link>
       </div>
       <div class="menu">
@@ -236,7 +236,6 @@ export default {
       }
       this.subnav_competition = false;
       this.subnav_flag = false;
-      console.log('woii');
     },
   },
 
@@ -260,6 +259,12 @@ export default {
 .logo img {
   width: 40px;
   height: 40px;
+  transition: all .3s;
+}
+
+.logo img:hover {
+  filter: brightness(0) saturate(100%);
+  filter: invert(37%) sepia(39%) saturate(2291%) hue-rotate(323deg) brightness(101%) contrast(100%);
 }
 
 nav {
@@ -304,7 +309,7 @@ nav ul li a:hover {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .4s;
 }
 
 .fade-enter, .fade-leave-to {
@@ -317,6 +322,7 @@ nav ul li a:hover {
 
 .nav-item{
   position: relative;
+  padding-bottom: 0.5vh;
 }
 
 .nav-item::before{
@@ -327,7 +333,7 @@ nav ul li a:hover {
   width: 0;
   height: 2px;
   background-color: #ff4655;
-  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @media (hover: hover) and (pointer: fine) {
