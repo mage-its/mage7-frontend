@@ -10,7 +10,7 @@
             <div class="tagline">Multimedia And Game Event</div>
 
             <div class="title"></div>
-            <div class="title-container"><img src="@/assets/img/mage-text.svg"/></div>
+            <div class="title-container"><img src="@/assets/img/mage-text.svg" width="400" height="150"/></div>
 
             <div class="more"><a href="#about">More</a></div>
           </div>
@@ -295,7 +295,7 @@ export default {
 <style scoped>
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-@import 'http://fonts.cdnfonts.com/css/airstrike?styles=14805';
+@import 'https://fonts.cdnfonts.com/css/airstrike?styles=14805';
 
 * {
   font-family: "Poppins", sans-serif;
@@ -742,6 +742,7 @@ b-button {
 
   #home .content .title-container {
     margin: auto;
+    width: 100%;
   }
 
   #about {
