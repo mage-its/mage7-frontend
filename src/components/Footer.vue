@@ -282,6 +282,8 @@ export default {
   line-height: 36px;
   font-size: 16px;
   color: #b2b2b2;
+  text-decoration: none;
+  transition: all .3s;
 }
 
 .copyright-reserved {

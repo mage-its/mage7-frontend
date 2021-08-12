@@ -9,7 +9,8 @@
           <div class="content">
             <div class="tagline">Multimedia And Game Event</div>
 
-            <div class="title">MAGE 7</div>
+            <div class="title"></div>
+            <div class="title-container"><img src="@/assets/img/mage-text.svg"/></div>
 
             <div class="more"><a href="#about">More</a></div>
           </div>
@@ -23,7 +24,7 @@
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row>
             <b-col lg="5">
-              <img class="mascot" alt="Maskot MAGE 7" src="@/assets/img/mascot-2a.png" />
+              <img class="mascot" alt="Maskot MAGE 7" src="@/assets/img/mascot-2a.png" width="800" height="690"/>
             </b-col>
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is <span class="font-weight-bold">MAGE</span>?</p>
@@ -44,7 +45,7 @@
       </div>
       <div class="sub-page" id="event">
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
-          <h1 class="text-white text-center">Competition</h1>
+          <h1 class="text-white text-center sub-page-title">Competition</h1>
           <div class="content">
             <b-row class="full">
               <b-col cols="6">
@@ -294,6 +295,8 @@ export default {
 <style scoped>
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+@import 'http://fonts.cdnfonts.com/css/airstrike?styles=14805';
+
 * {
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
@@ -318,6 +321,16 @@ a:hover {
   min-height: 100%;
   width: 100%;
   padding-top: 50px;
+}
+
+.sub-page .sub-page-title{
+  font-family: "Airstrike", "Poppins", sans-serif;
+  text-shadow:
+    3px 3px 0 #ff4655,
+    -1px -1px 0 #ff4655,
+    1px -1px 0 #ff4655,
+    -1px 1px 0 #ff4655,
+    1px 1px 0 #ff4655;
 }
 
 #about {
@@ -402,7 +415,7 @@ a:hover {
   font-size: 100px;
   text-transform: uppercase;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
   /* align: left; */
 }
 
@@ -432,6 +445,15 @@ a:hover {
   border-radius: 10px;
 }
 
+#home .more a:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(77, 30, 41, 1) 0%,
+    rgba(230, 0, 15, 1) 35%,
+    rgba(235, 74, 107, 1) 100%
+  );
+}
+
 #home .mage {
   position: absolute;
   top: 50%;
@@ -443,6 +465,11 @@ a:hover {
 #home .mage img {
   height: 300px;
   width: 300px;
+}
+
+#home .content img {
+  width: 400px;
+  height: auto;
 }
 
 #home .distortion {
@@ -510,6 +537,15 @@ a:hover {
   color: #111;
   width: 200px;
   font-size: 1.5vw;
+}
+
+#event .btn:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(77, 30, 41, 1) 0%,
+    rgba(230, 0, 15, 1) 35%,
+    rgba(235, 74, 107, 1) 100%
+  );
 }
 
 #documentation {
@@ -698,6 +734,16 @@ b-button {
     width: 150px;
   }
 
+  #home .content img {
+    width: 280px;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  #home .content .title-container {
+    margin: auto;
+  }
+
   #about {
     padding: 100px;
     padding-left: 50px;
@@ -736,6 +782,7 @@ b-button {
   }
   #event .btn {
     margin-left: calc(50vw - 150px);
+    font-size: 15px;
   }
   #partner {
     padding: 40px 50px;

@@ -90,9 +90,13 @@ const router = new Router({
 	base: process.env.BASE_URL,
 	linkActiveClass: 'active',
 	linkExactActiveClass: 'exact-active',
-	scrollBehavior() {
-		return { x: 0, y: 0 };
-	},
+	scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    return { x: 0, y: 0 };
+  },
 	routes: [
 		{
 			path: '/',

@@ -358,6 +358,15 @@ export default {
   );
 }
 
+.btn-register:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(77, 30, 41, 1) 0%,
+    rgba(230, 0, 15, 1) 35%,
+    rgba(235, 74, 107, 1) 100%
+  );
+}
+
 a {
   display: inline;
   text-decoration: none;

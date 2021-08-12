@@ -259,7 +259,6 @@ export default {
 .logo img {
   width: 40px;
   height: 40px;
-  transition: all .3s;
 }
 
 .logo img:hover {

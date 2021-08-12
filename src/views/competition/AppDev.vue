@@ -27,7 +27,7 @@
               Application Competition ini sebagai bentuk kesadaran bahwa dengan
               adanya berbagai macam teknologi yang tersedia, masyarakat dapat
               dengan mudah mengeksplorasi teknologi, khususnya di bidang
-              teknologi dan informasi untuk terciptanyabangsa yang lebih maju di
+              teknologi dan informasi untuk terciptanya bangsa yang lebih maju di
               kemudian hari.
             </div>
           </b-col>
@@ -373,6 +373,15 @@ export default {
     rgba(255, 124, 157, 1) 100%
   );
   color: #ffffff;
+}
+
+.btn-register:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(77, 30, 41, 1) 0%,
+    rgba(230, 0, 15, 1) 35%,
+    rgba(235, 74, 107, 1) 100%
+  );
 }
 
 a {
