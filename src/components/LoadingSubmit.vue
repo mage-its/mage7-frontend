@@ -1,9 +1,26 @@
 <template>
   <div id="loading-screen">
     <div id="loading-screen-content">Loading...</div>
-    <div id="loader"></div>
+    <spring-spinner
+      :animation-duration="2000"
+      :size="120"
+      color="#ff4655"
+      id="spinner"
+    />
   </div>
 </template>
+
+<script>
+
+import SpringSpinner from 'epic-spinners/src/components/lib/SpringSpinner';
+
+export default {
+  components: {
+    SpringSpinner,
+  },
+};
+</script>
+
 <style scoped>
 #loading-screen {
   position: fixed;
@@ -18,31 +35,13 @@
 }
 #loading-screen-content {
   margin: 0 auto;
+  margin-bottom: 2vh;
   text-align: center;
   font-size: 30px;
   color: black;
 }
-#loader {
+#spinner {
   margin: 0 auto;
-  border: 16px solid #ece8e1;
-  border-radius: 50%;
-  border-top: 16px solid #111;
-  border-right: 16px solid #111;
-  border-bottom: 16px solid #ff4655;
-  border-left: 16px solid #ff4655;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
 }
 
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 </style>

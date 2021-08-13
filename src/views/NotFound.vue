@@ -17,7 +17,6 @@
               <p class="text-white h1 mb-3">
                 Page not found
               </p>
-              <br><br>
               <a href="/" class="cta">
                 <span>Back To Home</span>
                 <svg width="13px" height="10px" viewBox="0 0 13 10">
@@ -82,8 +81,10 @@ a {
 .cta {
   position: relative;
   margin: auto;
+  margin-top: 5vh;
   padding: 19px 22px;
   transition: all 0.2s ease;
+  display: inline-block;
 }
 .cta:before {
   content: "";
@@ -126,7 +127,7 @@ a {
   transform: translateX(0);
 }
 .cta:active {
-  transform: scale(0.96);
+  transform: scale(0.9);
 }
 
 a:hover {

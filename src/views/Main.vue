@@ -3,7 +3,6 @@
     <Login v-if="show == 'login'" />
     <Register v-if="show == 'register'" />
     <div v-if="show == 'welcome'">
-      <NavBar />
       <div class="sub-page" id="home">
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <div class="content">
@@ -48,12 +47,12 @@
           <h1 class="text-white text-center sub-page-title">Competition</h1>
           <div class="content">
             <b-row class="full">
-              <b-col cols="6">
+              <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
                   <img class="logo" src="@/assets/img/app-hitam.svg" />
                 </b-container>
               </b-col>
-              <b-col cols="6">
+              <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <h1 class="title">App Dev</h1>
                 <div class="description mt-4 mb-5">
                   <p class="text-justify">
@@ -73,7 +72,7 @@
                 </router-link>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5">
+              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <h1 class="title">Game Dev</h1>
                 <div class="description mt-4">
                   <p class="text-justify">
@@ -95,18 +94,18 @@
                   <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
-              <b-col lg="6" class="mt-5 mb-5">
+              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
                   <img class="logo" src="@/assets/img/game-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5">
+              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
                   <img class="logo" src="@/assets/img/iot-hitam.svg" />
                 </b-container>
               </b-col>
-              <b-col lg="6" class="mt-5 mb-5">
+              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <h1 class="title">IoT Dev</h1>
                 <div class="description mt-4">
                   <p class="text-justify">
@@ -128,7 +127,7 @@
                 </router-link>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5">
+              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <h1 class="title">Olimpiade</h1>
                 <div class="description mt-4">
                   <p class="text-justify">
@@ -148,7 +147,7 @@
                   <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
-              <b-col lg="6" class="mt-5 mb-5">
+              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
                   <img class="logo" src="@/assets/img/proxy-hitam.svg" />
                 </b-container>
@@ -443,6 +442,7 @@ a:hover {
   color: #000;
   padding: 10px 30px;
   border-radius: 10px;
+  display: inline-block;
 }
 
 #home .more a:hover {
@@ -452,6 +452,10 @@ a:hover {
     rgba(230, 0, 15, 1) 35%,
     rgba(235, 74, 107, 1) 100%
   );
+}
+
+#home .more a:active {
+  transform: scale(0.9);
 }
 
 #home .mage {
@@ -546,6 +550,10 @@ a:hover {
     rgba(230, 0, 15, 1) 35%,
     rgba(235, 74, 107, 1) 100%
   );
+}
+
+#event .btn:active {
+  transform: scale(.9);
 }
 
 #documentation {
@@ -755,8 +763,10 @@ b-button {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
-    height: 200px;
-    width: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
   }
   #about .title {
     font-size: 16px;

@@ -119,13 +119,15 @@
               <h5>Hubungi kami</h5>
               <ul>
                 <li>
-                  <a target="_blank" class="foot-item" href="https://www.instagram.com/mage_its/">
+                  <a target="_blank" class="foot-item" href="https://www.instagram.com/mage_its/" rel="noopener noreferrer">
                     <i class="fab fa-instagram"></i>
                     Instagram
                   </a>
                 </li>
                 <li>
-                  <a target="_blank" class="foot-item" href="mailto:mage7.ce.its@gmail.com">
+                  <a target="_blank" class="foot-item" href="mailto:mage7.ce.its@gmail.com"
+                  rel="noopener noreferrer"
+                  >
                     <i class="far fa-envelope"></i>
                     Email
                   </a>
@@ -135,6 +137,7 @@
                     target="_blank"
                     class="foot-item"
                     href="https://page.line.me/?accountId=rio5948f&openerPlatform=webview&openerKey=webview%3AunifiedSearch"
+                    rel="noopener noreferrer"
                   >
                     <i class="fab fa-line"></i>
                     Line
@@ -145,6 +148,7 @@
                     target="_blank"
                     class="foot-item"
                     href="https://www.youtube.com/channel/UCO1SuldERZu0jgBBDzzOkoQ"
+                    rel="noopener noreferrer"
                   >
                     <i class="fab fa-youtube"></i>
                     YouTube

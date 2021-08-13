@@ -3,7 +3,6 @@
     <Login v-if="show == 'login'" />
     <Register v-if="show == 'register'" />
     <div v-if="show == 'welcome'">
-      <NavBar />
         <router-view />
       <!-- <Footer /> -->
     </div>

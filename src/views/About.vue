@@ -3,7 +3,6 @@
     <Login v-if="show == 'login'" />
     <Register v-if="show == 'register'" />
     <div v-if="show == 'welcome'">
-      <NavBar />
       <div class="sub-page" id="about">
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row>
@@ -22,6 +21,8 @@
               </p>
             </b-col>
           </b-row>
+        </div>
+        <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row class="vh-100 text-center" align-v="center">
             <b-col>
               <carousel
@@ -55,6 +56,8 @@
               </carousel>
             </b-col>
           </b-row>
+        </div>
+        <div data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
           <b-row class="vh-70 text-center" align-v="center">
             <b-col>
               <b-embed

@@ -44,7 +44,8 @@
         </div>
       </div>
       <p class="text-left">
-        <router-link :to="{ name: 'ForgotPassword' }"
+        <router-link
+          :to="{ name: 'ForgotPassword' }"
           >Lupa kata sandi?</router-link
         >
       </p>
@@ -287,8 +288,17 @@ export default {
         });
     },
   },
-  mounted() {},
+  mounted() {
+    window.onpopstate = function (e) {
+      console.log(e.state);
+    };
+  },
   updated() {},
+  watch: {
+    $route() {
+      this.$store.dispatch('ui/changeWelcomeComponent', 'welcome');
+    },
+  },
 };
 </script>
 <style scoped>
@@ -303,6 +313,7 @@ export default {
 }
 .background-login {
   background-image: url("./../assets/img/bg1.png");
+  background-color: #111;
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -375,7 +386,7 @@ input[type="password"] {
   width: 100%;
   border: none;
   outline: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ff4655;
   background: transparent;
   color: #ece8e1;
   height: 40px;
@@ -385,6 +396,10 @@ input[type="password"] {
 .login-container input[type="email"]:focus, input[type="text"]:focus,
 input[type="password"]:focus {
   border-bottom: 3px solid #ff4655;
+}
+
+.login-container input::placeholder {
+  color: #a0a0a0;
 }
 
 #password-input {
@@ -423,6 +438,7 @@ input[type="password"]:focus {
     rgba(255, 124, 157, 1) 100%
   );
   color: #ece8e1;
+  transition: all .3s;
 }
 .login-container input[type="submit"]:hover {
   cursor: pointer;
@@ -433,6 +449,9 @@ input[type="password"]:focus {
     rgba(230, 0, 15, 1) 35%,
     rgba(235, 74, 107, 1) 100%
   );
+}
+.login-container input[type="submit"]:active {
+  transform: scale(0.9);
 }
 
 a {

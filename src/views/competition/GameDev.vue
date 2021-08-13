@@ -187,7 +187,7 @@
       <!-- <router-link :to="{ name: 'Register' }"> -->
       <button
         @click="$store.dispatch('ui/changeWelcomeComponent', 'register')"
-        class="btn btn-register"
+        class="btn-register"
       >
         <h3 class="text-white">Daftar sekarang</h3>
       </button>
@@ -366,7 +366,6 @@ export default {
   margin-bottom: 80px;
   width: 300px;
   color: #fff;
-  background: rgb(77, 30, 41);
   background: linear-gradient(
     90deg,
     rgba(77, 30, 41, 1) 0%,
@@ -382,6 +381,10 @@ export default {
     rgba(230, 0, 15, 1) 35%,
     rgba(235, 74, 107, 1) 100%
   );
+  transition: all .3s;
+}
+.btn-register:active {
+  transform: scale(.9);
 }
 
 a {

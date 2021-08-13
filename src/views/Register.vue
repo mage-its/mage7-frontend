@@ -292,6 +292,11 @@ export default {
     this.getProvinces();
     window.scrollTo(0, 0);
   },
+  watch: {
+    $route() {
+      this.$store.dispatch('ui/changeWelcomeComponent', 'welcome');
+    },
+  },
 };
 </script>
 <style scoped>
@@ -305,6 +310,7 @@ export default {
 }
 .background-register {
   background-image: url("./../assets/img/bg1.png");
+  background-color: #111;
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -384,7 +390,7 @@ input[type="password"] {
   width: 100%;
   border: none;
   outline: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ff4655;
   background: transparent;
   color: #ece8e1;
   height: 40px;
@@ -394,6 +400,10 @@ input[type="password"] {
 .register-container input[type="email"]:focus, input[type="text"]:focus,
 input[type="password"]:focus {
   border-bottom: 3px solid #ff4655;
+}
+
+.register-container input::placeholder {
+  color: #a0a0a0;
 }
 
 #password-input {
@@ -447,6 +457,7 @@ a {
     rgba(255, 124, 157, 1) 100%
   );
   color: #ece8e1;
+  transition: all .3s;
 }
 .register-container input[type="submit"]:hover {
   cursor: pointer;
@@ -457,6 +468,9 @@ a {
     rgba(230, 0, 15, 1) 35%,
     rgba(235, 74, 107, 1) 100%
   );
+}
+.register-container input[type="submit"]:active {
+  transform: scale(0.9);
 }
 
 a {

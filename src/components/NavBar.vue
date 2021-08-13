@@ -1,8 +1,11 @@
 <template>
   <div>
     <nav v-bind:class="[scrollPosition > 50 ? ['black', 'shadow-sm'] : '']">
-      <div @click="toggle()" class="menu-icon">
-        <i class="fa fa-bars fa-2x"></i>
+      <div @click="toggle()" class="menu-icon" id="nav-icon" :class="{open: isMenuOpen}">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
       <div class="logo">
         <router-link class="text-center pl-1" :to="'/'">
@@ -192,6 +195,7 @@ export default {
       subnav_competition: false,
       subnav_competition_min: false,
       subnav_flag: false,
+      isMenuOpen: false,
     };
   },
 
@@ -219,6 +223,7 @@ export default {
     },
     toggle() {
       this.show = !this.show;
+      this.isMenuOpen = !this.isMenuOpen;
     },
     toggleSubNavCompetition() {
       this.subnav_competition = !this.subnav_competition;
@@ -398,13 +403,88 @@ nav ul li a:hover {
 
 .menu-icon {
   width: 100%;
-  background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0, 0);
   text-align: right;
   box-sizing: border-box;
-  padding: 15px 24px;
+  padding: 12px 18px;
   cursor: pointer;
   color: #fff;
   display: none;
+}
+
+#nav-icon {
+  width: 36px;
+  height: 24px;
+  float: right;
+  position: relative;
+  margin-right: 5vw;
+  margin-top: 5vw;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: #fff;
+  border-radius: 0px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+#nav-icon span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon span:nth-child(2),#nav-icon span:nth-child(3) {
+  top: 12px;
+}
+
+#nav-icon span:nth-child(4) {
+  top: 24px;
+}
+
+#nav-icon.open span:nth-child(1) {
+  top: 12px;
+  width: 0%;
+  left: 50%;
+}
+
+#nav-icon.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#nav-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#nav-icon.open span:nth-child(4) {
+  top: 12px;
+  width: 0%;
+  left: 50%;
 }
 
 @media (max-width: 786px) {
