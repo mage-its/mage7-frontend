@@ -11,15 +11,58 @@
               <img class="mascot" src="@/assets/img/mascot-2a.png" />
             </b-col>
             <b-col lg="7">
-              <p class="text-white text-left title mb-3">What is MAGE?</p>
+              <p class="text-white text-left title mb-3">What is <span class="font-weight-bold">MAGE</span>?</p>
               <p class="text-white text-justify description  mb-3">
-                MAGE (Multimedia and Game Event) adalah Wadah bagi generasi muda
+                <span class="font-weight-bold">MAGE</span> (Multimedia and Game Event) adalah Wadah bagi generasi muda
                 dalam berkreasi, berekspresi, dan berkompetisi untuk menuangkan
                 inovasi sekaligus menyelesaikan permasalahan dengan memanfaatkan
                 berbagai macam teknologi melalui serangkaian kegiatan seperti
                 Development Competition (Apps, IoT, Games), Olimpiade, Workshop,
                 dan Webinar.
               </p>
+            </b-col>
+          </b-row>
+          <b-row class="vh-100 text-center" align-v="center">
+            <b-col>
+              <carousel
+                :autoplay="true"
+                :navigationEnabled="true"
+                :scrollPerPage="false"
+                :loop="true"
+                paginationColor="#ece8e1"
+                paginationActiveColor="#ff4655"
+                navigationNextLabel="<span class=text-white>▶<span>"
+                navigationPrevLabel="<span class=text-white>◀<span>"
+              >
+                <slide>
+                  <img src="@/assets/img/about/about-0.jpg" alt="About 0">
+                </slide>
+                <slide>
+                  <img src="@/assets/img/about/about-1.jpg" alt="About 1">
+                </slide>
+                <slide>
+                  <img src="@/assets/img/about/about-2.jpg" alt="About 2">
+                </slide>
+                <slide>
+                  <img src="@/assets/img/about/about-3.jpg" alt="About 3">
+                </slide>
+                <slide>
+                  <img src="@/assets/img/about/about-4.jpg" alt="About 4">
+                </slide>
+                <slide>
+                  <img src="@/assets/img/about/about-5.jpg" alt="About 5">
+                </slide>
+              </carousel>
+            </b-col>
+          </b-row>
+          <b-row class="vh-70 text-center" align-v="center">
+            <b-col>
+              <b-embed
+                type="iframe"
+                aspect="16by9"
+                src="https://www.youtube.com/embed/dWxHEOOgrFI?rel=0"
+                allowfullscreen
+              ></b-embed>
             </b-col>
           </b-row>
         </div>
@@ -33,6 +76,7 @@ import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
+import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   name: 'About',
@@ -41,6 +85,8 @@ export default {
     Footer,
     Login,
     Register,
+    Carousel,
+    Slide,
   },
   metaInfo() {
     return {

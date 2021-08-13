@@ -72,14 +72,12 @@ export default {
     async getParticipantsData() {
       let data = null;
       await axios
-        .get(`${this.endpointAPI}api/v1/users`, header())
+        .get(`${this.endpointAPI}api/v1/users/?role=user`, header())
         .then((response) => {
           this.loading = false;
           data = response.data.results;
         });
-      this.participants = data.filter(
-        (participant) => participant.role === "user"
-      );
+      this.participants = data;
     },
   },
   computed: {

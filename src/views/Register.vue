@@ -451,6 +451,12 @@ a {
 .register-container input[type="submit"]:hover {
   cursor: pointer;
   box-shadow: 1px 1px 10px #696969;
+  background: linear-gradient(
+    90deg,
+    rgba(77, 30, 41, 1) 0%,
+    rgba(230, 0, 15, 1) 35%,
+    rgba(235, 74, 107, 1) 100%
+  );
 }
 
 a {

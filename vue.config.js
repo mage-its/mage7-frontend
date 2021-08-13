@@ -12,5 +12,6 @@ module.exports = {
       workboxOptions: {
         exclude: [/\.eot$/, /\.ttf$/, /\.pdf$/, /\.docx?$/, /^.*pdf\/.*$/, /^.*docx\/.*$/, /^.*uploads\/.*$/],
       },
+      themeColor: '#111111',
     },
 };

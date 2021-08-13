@@ -6,7 +6,8 @@
     "scripts": {
         "lint": "vue-cli-service lint",
         "serve": "vue-cli-service serve --skip-plugins @vue/cli-plugin-eslint",
-        "build": "vue-cli-service build --skip-plugins @vue/cli-plugin-eslint"
+        "build": "vue-cli-service build --skip-plugins @vue/cli-plugin-eslint",
+        "build:no-clean": "vue-cli-service build --skip-plugins @vue/cli-plugin-eslint --no-clean"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",

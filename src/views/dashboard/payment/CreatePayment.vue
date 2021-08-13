@@ -2,30 +2,33 @@
   <div class="m-4">
     <h3>Pembayaran</h3>
     <hr />
-    <div class="center">
-      <h6>
-        Halo <strong>{{ profilUsernamaTim }}</strong
-        >, kamu terdaftar sebagai peserta MAGE 7 dengan nomor pendaftaran
-      </h6>
-      <h4>
-        <strong> {{ profilUsernoPeserta }} </strong>
-      </h4>
-      <h6>Silakan Lakukan Pembayaran ke Rekening</h6>
-      <h5>6161 0102 1250 539 (BRI A.N. MOH. IQBAL FATCHUROZI)</h5>
-      <h6>Dengan Jumlah Transfer Sebesar</h6>
-      <h3>Rp. {{ profilUserPrice }}</h3>
-      <p>
-        (Penambahan 3 digit terakhir digunakan agar memudahkan dalam konfirmasi)
-      </p>
-    </div>
+    <b-card>
+      <div class="center">
+        <h6>
+          Halo <strong>{{ profilUsernamaTim }}</strong
+          >, kamu terdaftar sebagai peserta MAGE 7 dengan nomor pendaftaran
+        </h6>
+        <h4>
+          <strong> {{ profilUsernoPeserta }} </strong>
+        </h4>
+        <h6>Silakan Lakukan Pembayaran ke Rekening</h6>
+        <h5>6161 0102 1250 539 (BRI A.N. MOH. IQBAL FATCHUROZI)</h5>
+        <h6>Dengan Jumlah Transfer Sebesar</h6>
+        <h3>Rp. {{ profilUserPrice }}</h3>
+        <p>
+          (Penambahan 3 digit terakhir digunakan agar memudahkan dalam
+          konfirmasi)
+        </p>
+      </div>
+    </b-card>
     <hr />
-    <label>Masukkan Kode Promo</label>
+    <!-- <label>Masukkan Kode Promo</label>
     <input
       id="kodePromo"
       type="text"
       class="form-control"
       v-model="kodePromo"
-    />
+    /> -->
     <ValidationObserver v-slot="{ handleSubmit }">
       <form
         @submit.prevent="handleSubmit(onSubmit)"

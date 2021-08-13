@@ -160,6 +160,13 @@ export default {
 };
 </script>
 <style scoped>
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+* {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
 html {
   min-height: 100% !important;
   height: 100%;

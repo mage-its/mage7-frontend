@@ -168,7 +168,7 @@
               > -->
               <a
                 target="_blank"
-                href="/pdf/GuideBook_IoT_Development.pdf"
+                href="/pdf/Guidebook_IoT_Development.pdf"
                 class="btn d-inline"
               >
                 Unduh guidebook
@@ -365,6 +365,15 @@ export default {
     rgba(77, 30, 41, 1) 0%,
     rgba(255, 70, 85, 1) 35%,
     rgba(255, 124, 157, 1) 100%
+  );
+}
+
+.btn-register:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(77, 30, 41, 1) 0%,
+    rgba(230, 0, 15, 1) 35%,
+    rgba(235, 74, 107, 1) 100%
   );
 }
 
