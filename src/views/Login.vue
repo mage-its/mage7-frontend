@@ -117,7 +117,7 @@
 </template>
 <script>
 // import User from "../models/user";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import firebase from "firebase/app";
 import "firebase/auth";
 import { email } from "vuelidate/lib/validators";

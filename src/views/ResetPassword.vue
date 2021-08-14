@@ -1,19 +1,21 @@
 <template>
   <div class="login-page">
     <div class="login-container shadow">
-      <h1>Lupa sandi</h1>
+      <h1>Reset password</h1>
       <div>
-        <label>Email akun</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Ketik disini..."
-          v-model="$v.email.$model"
-          :class="status($v.email)"
-          autofocus
-        />
-        <div class="error" v-if="!$v.email.email">
-          Harus di isi dengan format email
+        <label>Password baru</label>
+        <div id="password-input">
+          <input
+            :type="type"
+            name="password"
+            v-model="password"
+            placeholder="Ketik disini..."
+            autofocus
+          />
+          <span @click="revealPassword" class="eye">
+            <span :style="{ display: eye1 }"><i class="fas fa-eye"></i></span>
+            <span :style="{ display: eye2 }"><i class="fas fa-eye-slash"></i></span>
+          </span>
         </div>
       </div>
       <input
@@ -21,7 +23,7 @@
         name="login"
         class="mt-4"
         value="Kirim"
-        @click="requestChangePassword()"
+        @click="requestResetPassword()"
       />
     </div>
     <vue-particles
@@ -47,23 +49,19 @@
 </template>
 <script>
 
-import { email, required } from "vuelidate/lib/validators";
 import Swal from "sweetalert2";
 
 export default {
-  name: "ForgotPassword",
+  name: "ResetPassword",
   data() {
     return {
-      email: "",
+      password: "",
       loading: false,
       message: "",
+      type: "password",
+      eye1: "block",
+      eye2: "none",
     };
-  },
-  validations: {
-    email: {
-      email,
-      required,
-    },
   },
   computed: {
     loggedIn() {
@@ -71,28 +69,33 @@ export default {
     },
   },
   methods: {
-    status(validation) {
-      return {
-        error: validation.$error,
-        dirty: validation.$dirty,
-      };
+    revealPassword() {
+      if (this.type === "password") {
+        this.type = "text";
+        this.eye2 = "block";
+        this.eye1 = "none";
+      } else {
+        this.type = "password";
+        this.eye1 = "block";
+        this.eye2 = "none";
+      }
     },
-    requestChangePassword() {
-      if (!this.email || this.$v.$invalid) {
+    requestResetPassword() {
+      if (!this.password) {
         return;
       }
-      this.$store.dispatch("auth/requestChangePassword", this.email)
+      this.$store.dispatch("auth/resetPassword", { password: this.password, token: this.$route.params.token })
         .then((response) => {
           Swal.fire({
             icon: "success",
-            title: "Silahkan cek email",
+            title: "Password berhasil di reset",
             text: this.id,
             showConfirmButton: true,
             background: "#111",
             customClass: {
               title: 'text-white',
             },
-          }).then(() => {});
+          }).then(() => { this.$router.push("/"); });
         })
         .catch((err) => {
           Swal.fire({
@@ -167,7 +170,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.login-container input[type="email"] {
+.login-container input[type="text"], input[type="password"] {
   width: 100%;
   border: none;
   outline: none;
@@ -178,12 +181,32 @@ export default {
   transition: all .2s;
 }
 
-.login-container input[type="email"]:focus {
+.login-container input[type="text"]:focus, input[type="password"]:focus {
   border-bottom: 3px solid #ff4655;
 }
 
-.login-container input[type="email"]::placeholder {
+.login-container input[type="text"]::placeholder, input[type="password"]::placeholder {
   color: #bab5b0;
+}
+
+#password-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.eye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  border: 3px solid rgb(0, 0, 0, 255);
+  transition: all .3s;
+  color: #ece8e1;
+}
+
+.eye:hover {
+  border-radius: 5px;
+  border: 3px solid red;
 }
 
 .login-container input[type="submit"] {

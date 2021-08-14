@@ -20,6 +20,7 @@ import About from './views/About.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import ForgotPassword from './views/ForgotPassword.vue';
+import ResetPassword from './views/ResetPassword.vue';
 import ChangePassword from './views/ChangePassword.vue';
 import ConfirmationEmail from './views/ConfirmationEmail.vue';
 
@@ -162,6 +163,15 @@ const router = new Router({
 				component: ChangePassword,
 				meta: {
 					title: 'Change Password',
+          requiresAuth: false,
+				},
+			},
+      {
+				path: 'reset-password/:token',
+				name: 'ResetPassword',
+				component: ResetPassword,
+				meta: {
+					title: 'Reset Password',
           requiresAuth: false,
 				},
 			},

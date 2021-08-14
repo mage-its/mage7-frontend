@@ -68,10 +68,22 @@ export const auth = {
             return AuthService.requestChangePassword(email).then(
                 (response) => {
                     commit('requestChangePasswordSuccess');
-                    return Promise.resolve(response.data);
+                    return Promise.resolve(response);
                 },
                 (error) => {
                     commit('requestChangePasswordFailure');
+                    return Promise.reject(error);
+                },
+            );
+        },
+        resetPassword({ commit }, payload) {
+            return AuthService.resetPassword(payload).then(
+                (response) => {
+                    commit('resetPasswordSuccess');
+                    return Promise.resolve(response);
+                },
+                (error) => {
+                    commit('resetPasswordFailure');
                     return Promise.reject(error);
                 },
             );

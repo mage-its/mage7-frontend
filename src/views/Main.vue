@@ -72,9 +72,9 @@
                 </router-link>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+              <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <h1 class="title">Game Dev</h1>
-                <div class="description mt-4">
+                <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Game Competition merupakan cabang kompetisi dari MAGE 7 yang
                     diadakan oleh Teknik Komputer ITS. Game Competition diadakan
@@ -94,20 +94,20 @@
                   <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
-              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+              <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
                   <img class="logo" src="@/assets/img/game-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+              <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
                   <img class="logo" src="@/assets/img/iot-hitam.svg" />
                 </b-container>
               </b-col>
-              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+              <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <h1 class="title">IoT Dev</h1>
-                <div class="description mt-4">
+                <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Internet of Things Competition merupakan kompetisi dari MAGE
                     7, yaitu pembuatan alat yang memanfaatkan koneksi nirkabel
@@ -127,9 +127,9 @@
                 </router-link>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
-              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+              <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <h1 class="title">Olimpiade</h1>
-                <div class="description mt-4">
+                <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Kompetisi yang dirancang untuk pelajar SMA/sederajat ini
                     berupa olimpiade dengan berfokus pada 3 mata pelajaran yaitu
@@ -147,7 +147,7 @@
                   <button class="btn p-3 mt-3">Detail</button>
                 </router-link>
               </b-col>
-              <b-col lg="6" class="mt-5 mb-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+              <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
                   <img class="logo" src="@/assets/img/proxy-hitam.svg" />
                 </b-container>

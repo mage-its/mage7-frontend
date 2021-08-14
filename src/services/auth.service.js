@@ -37,7 +37,14 @@ class AuthService {
 		return axios.get(`${API_URL}find-by-email/${email}`);
 	}
 	requestChangePassword(email) {
-		return axios.post(`${API_URL}request-change-password/${email}`);
+		return axios
+      .post(`${API_URL}forgot-password`, { email })
+      .then((response) => response);
+	}
+  resetPassword({ password, token }) {
+		return axios
+      .post(`${API_URL}reset-password/?token=${token}`, { password })
+      .then((response) => response);
 	}
 	changePassword(user) {
 		return axios.put(`${API_URL}change-password/${user.id}`, user);

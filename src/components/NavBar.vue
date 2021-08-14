@@ -406,7 +406,7 @@ nav ul li a:hover {
   background: rgb(0, 0, 0, 0);
   text-align: right;
   box-sizing: border-box;
-  padding: 12px 18px;
+  padding: 10px 15px;
   cursor: pointer;
   color: #fff;
   display: none;
@@ -418,7 +418,7 @@ nav ul li a:hover {
   float: right;
   position: relative;
   margin-right: 5vw;
-  margin-top: 5vw;
+  margin-top: 28px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -433,10 +433,10 @@ nav ul li a:hover {
 #nav-icon span {
   display: block;
   position: absolute;
-  height: 5px;
+  height: 4px;
   width: 100%;
   background: #fff;
-  border-radius: 0px;
+  border-radius: 9px;
   opacity: 1;
   left: 0;
   -webkit-transform: rotate(0deg);
