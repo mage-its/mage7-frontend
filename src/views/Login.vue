@@ -288,11 +288,7 @@ export default {
         });
     },
   },
-  mounted() {
-    window.onpopstate = function (e) {
-      console.log(e.state);
-    };
-  },
+  mounted() {},
   updated() {},
   watch: {
     $route() {

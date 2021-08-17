@@ -289,7 +289,6 @@ export default {
     },
   },
   created() {
-    this.getProvinces();
     window.scrollTo(0, 0);
   },
   watch: {

@@ -14,12 +14,16 @@
         :fields="fields"
         responsive
       >
+        <template #cell(hapus)="data">
+          <b-button variant="danger" @click="delKodePromo(data.item.id)"><i class="fa fa-trash"></i></b-button>
+        </template>
       </b-table>
     </b-container>
   </div>
 </template>
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 import header from "../../../services/header";
 
 export default {
@@ -50,6 +54,10 @@ export default {
 		{
           key: "active",
           label: "active",
+        },
+        {
+          key: "hapus",
+          label: "Hapus",
         },
       ],
     };
@@ -89,6 +97,25 @@ export default {
         })
         .then(() => {
           this.getKodePromo();
+        });
+    },
+    delKodePromo(id) {
+      axios
+        .delete(`${this.endpointAPI}api/v1/kodepromo/${id}`, header())
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Kode Promo berhasil dihapus",
+            showConfirmButton: true,
+          }).then(() => this.getKodePromo());
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "gagal menghapus kode promo",
+            text: err.response || err,
+            showConfirmButton: true,
+          }).then(() => {});
         });
     },
   },

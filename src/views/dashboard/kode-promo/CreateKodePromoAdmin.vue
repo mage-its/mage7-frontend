@@ -65,7 +65,6 @@ export default {
   },
   methods: {
     createKodePromo() {
-      console.log(this.kodePromo);
       axios
         .post(
           `${this.endpointAPI}api/v1/kodepromo`,
