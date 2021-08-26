@@ -62,6 +62,14 @@ export default {
           label: "Asal Instansi",
         },
         {
+          key: "asalInfo",
+          label: "Asal Info",
+        },
+        {
+          key: "sudahUploadBuktiBayar",
+          label: "Sudah Bayar",
+        },
+        {
           key: "detail",
           label: "Detail",
         },
@@ -85,7 +93,6 @@ export default {
           }
         });
       this.participants = data;
-	  console.log(this.participants);
     },
   },
   computed: {

@@ -11,11 +11,11 @@
               <img class="mascot" src="@/assets/img/mascot-1a.png" />
             </b-col>
             <b-col lg="7" class="text-center">
-              <p class="text-404 display-2 mb-3">
-                404
+              <p class="display-2 mb-3">
+                <glitch text="404" color="#ff4655"></glitch>
               </p>
               <p class="text-white h1 mb-3">
-                Page not found
+                <glitch text="Page not found"></glitch>
               </p>
               <a href="/" class="cta">
                 <span>Back To Home</span>
@@ -37,6 +37,7 @@ import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
+import Glitch from 'vue-glitch';
 
 export default {
   name: 'About',
@@ -45,6 +46,7 @@ export default {
     Footer,
     Login,
     Register,
+    Glitch,
   },
   metaInfo() {
     return {
@@ -72,10 +74,6 @@ export default {
 a {
   color: rgba(255, 70, 85, 1);
   text-decoration: none;
-}
-
-.text-404 {
-  color: #ff4655;
 }
 
 .cta {

@@ -70,27 +70,7 @@
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
-              <h5 class="text-white">
-                Pendaftaran + Durasi Upload Proposal : 5 Juli – 28 Agustus<br />
-              </h5>
-              <h5 class="text-white">
-                Pengumuman Lolos Seleksi Proposal : 5 September<br />
-              </h5>
-              <h5 class="text-white">
-                Durasi Pembayaran untuk Melanjutkan Lomba : 6 September – 19
-                September<br />
-              </h5>
-              <h5 class="text-white">
-                Batas Pengumpulan Laporan & Video : 28 Oktober<br />
-              </h5>
-              <h5 class="text-white">
-                Pengumuman Lolos Tahap Final : 6 November<br />
-              </h5>
-              <h5 class="text-white">
-                Technical Meeting Final : 8 November<br />
-              </h5>
-              <h5 class="text-white">Exhibition : 13 November<br /></h5>
-              <h5 class="text-white">Penjurian Final : 14 November<br /></h5>
+              <vue-horizontal-timeline :items="items" timeline-background="transparent" title-substr="35"/>
             </b-container>
           </b-col>
         </b-row>
@@ -191,6 +171,8 @@
 </template>
 <script>
 
+import { VueHorizontalTimeline } from "vue-horizontal-timeline";
+
 export default {
   name: "OSM",
   data() {
@@ -198,12 +180,49 @@ export default {
       loading: false,
       message: "",
       url: window.location.href,
+      items: [
+        {
+          title: "5 Juli – 11 September",
+          content: "Pendaftaran",
+        },
+        {
+          title: "14 September",
+          content: "Batas Upload Proposal",
+        },
+        {
+          title: "19 September",
+          content: "Pengumuman Lolos Seleksi Proposal",
+        },
+        {
+          title: "20 - 26 September",
+          content: "Durasi Pembayaran untuk Melanjutkan Lomba",
+        },
+        {
+          title: "28 Oktober",
+          content: "Batas Pengumpulan Laporan & Video",
+        },
+        {
+          title: "6 November",
+          content: "Pengumuman Lolos Tahap Final",
+        },
+        {
+          title: "8 November",
+          content: "Technical Meeting Final",
+        },
+        {
+          title: "13 - 14 November",
+          content: "Exhibition dan Penjurian Final",
+        },
+      ],
     };
   },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+  },
+  components: {
+    VueHorizontalTimeline,
   },
   methods: {
     getUrl() {

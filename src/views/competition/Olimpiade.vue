@@ -72,15 +72,7 @@
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
-              <h5 class="text-white">
-                Penyisihan (Online) : Minggu, 7 November 2021<br />
-              </h5>
-              <h5 class="text-white">
-                Semifinal (Online) : Sabtu, 13 November 2021<br />
-              </h5>
-              <h5 class="text-white">
-                Final (Online) : Minggu, 14 November 2021<br />
-              </h5>
+              <vue-horizontal-timeline :items="items" timeline-background="transparent" title-substr="35"/>
             </b-container>
           </b-col>
         </b-row>
@@ -181,6 +173,8 @@
 </template>
 <script>
 
+import { VueHorizontalTimeline } from "vue-horizontal-timeline";
+
 export default {
   name: "OSM",
   data() {
@@ -188,12 +182,37 @@ export default {
       loading: false,
       message: "",
       url: window.location.href,
+      items: [
+        {
+          title: "5 November",
+          content: "Batas Pendaftaran dan Pembayaran",
+        },
+        {
+          title: "6 November",
+          content: "Technical Meeting Penyisihan",
+        },
+        {
+          title: "7 November",
+          content: "Penyisihan (Online)",
+        },
+        {
+          title: "13 November",
+          content: "Semifinal (Online)",
+        },
+        {
+          title: "14 November",
+          content: "Final (Online)",
+        },
+      ],
     };
   },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+  },
+  components: {
+    VueHorizontalTimeline,
   },
   methods: {
     getUrl() {

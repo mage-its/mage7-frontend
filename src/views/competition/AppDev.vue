@@ -73,7 +73,7 @@
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
-              <h5 class="text-white">
+              <!-- <h5 class="text-white">
                 Pendaftaran + Durasi Upload Proposal : 5 Juli – 28 Agustus
                 2021<br />
               </h5>
@@ -96,7 +96,8 @@
               <h5 class="text-white">Exhibition : 13 November 2021<br /></h5>
               <h5 class="text-white">
                 Penjurian Final : 14 November 2021<br />
-              </h5>
+              </h5> -->
+              <vue-horizontal-timeline :items="items" timeline-background="transparent" title-substr="35"/>
             </b-container>
           </b-col>
         </b-row>
@@ -197,6 +198,8 @@
 </template>
 <script>
 
+import { VueHorizontalTimeline } from "vue-horizontal-timeline";
+
 export default {
   name: "OSM",
   data() {
@@ -204,12 +207,53 @@ export default {
       loading: false,
       message: "",
       url: window.location.href,
+      items: [
+        {
+          title: "5 Juli – 11 September",
+          content: "Pendaftaran",
+        },
+        {
+          title: "14 September",
+          content: "Batas Upload Proposal",
+        },
+        {
+          title: "19 September",
+          content: "Pengumuman Lolos Seleksi Proposal",
+        },
+        {
+          title: "20 September – 26 September",
+          content: "Durasi Pembayaran untuk Melanjutkan Lomba",
+        },
+        {
+          title: "28 Oktober",
+          content: "Batas Pengumpulan Aplikasi & Video",
+        },
+        {
+          title: "6 November",
+          content: "Pengumuman Lolos Tahap Final",
+        },
+        {
+          title: "8 November",
+          content: "Technical Meeting Final",
+        },
+        {
+          title: "13 November",
+          content: "Exhibition",
+        },
+        {
+          title: "14 November",
+          content: "Penjurian Final",
+        },
+      ],
     };
   },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+  },
+  components: {
+    VueHorizontalTimeline,
   },
   methods: {
     getUrl() {

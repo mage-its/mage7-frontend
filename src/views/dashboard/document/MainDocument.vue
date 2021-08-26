@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-container class="bg-white p-5">
+  <b-card>
+    <b-container class="bg-white p-3">
       <div class="form-group">
           <label>Pilih Divisi</label>
           <b-form-radio-group
@@ -17,7 +17,7 @@
       <RegisterIoT v-if="divition == divitionOptions[2].item"/>
       <RegisterOlim v-if="divition == divitionOptions[3].item"/>
     </b-container>
-  </div>
+  </b-card>
 </template>
 <script>
 import Swal from 'sweetalert2';

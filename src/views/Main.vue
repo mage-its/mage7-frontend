@@ -6,7 +6,7 @@
       <div class="sub-page" id="home">
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <div class="content">
-            <div class="tagline">Multimedia And Game Event</div>
+            <div class="tagline"><glitch text="Multimedia and Game Event 7"></glitch></div>
 
             <div class="title"></div>
             <div class="title-container"><img src="@/assets/img/mage-text.svg" width="400" height="150"/></div>
@@ -44,7 +44,7 @@
       </div>
       <div class="sub-page" id="event">
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
-          <h1 class="text-white text-center sub-page-title">Competition</h1>
+          <h1 class="text-white text-center sub-page-title">COMPETITION</h1>
           <div class="content">
             <b-row class="full">
               <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
@@ -53,7 +53,7 @@
                 </b-container>
               </b-col>
               <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <h1 class="title">App Dev</h1>
+                <h1 class="title"><glitch text="App Dev"></glitch></h1>
                 <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Application Competition merupakan cabang kompetisi dari MAGE
@@ -73,7 +73,7 @@
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
               <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
-                <h1 class="title">Game Dev</h1>
+                <h1 class="title"><glitch text="Game Dev"></glitch></h1>
                 <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Game Competition merupakan cabang kompetisi dari MAGE 7 yang
@@ -106,7 +106,7 @@
                 </b-container>
               </b-col>
               <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <h1 class="title">IoT Dev</h1>
+                <h1 class="title"><glitch text="IoT Dev"></glitch></h1>
                 <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Internet of Things Competition merupakan kompetisi dari MAGE
@@ -128,7 +128,7 @@
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
               <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
-                <h1 class="title">Olimpiade</h1>
+                <h1 class="title"><glitch text="Olimpiade"></glitch></h1>
                 <div class="description mt-4 mb-5">
                   <p class="text-justify">
                     Kompetisi yang dirancang untuk pelajar SMA/sederajat ini
@@ -272,6 +272,7 @@ import NavBar from "@/components/NavBar.vue";
 // import Footer from '@/components/Footer.vue';
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
+import Glitch from 'vue-glitch';
 
 export default {
   name: "Main",
@@ -280,6 +281,7 @@ export default {
     // Footer,
     Login,
     Register,
+    Glitch,
   },
   computed: {
     show() {
@@ -330,6 +332,10 @@ a:hover {
     1px -1px 0 #ff4655,
     -1px 1px 0 #ff4655,
     1px 1px 0 #ff4655;
+}
+
+.glitch-wrapper {
+  justify-content: flex-start !important;
 }
 
 #about {
@@ -422,6 +428,12 @@ a:hover {
   flex: 1;
   font-size: 30px;
   color: #ffffff;
+  text-shadow:
+    1px 1px 0 #ff4655,
+    -1px -1px 0 #ff4655,
+    1px -1px 0 #ff4655,
+    -1px 1px 0 #ff4655,
+    1px 1px 0 #ff4655;
 }
 
 #home .more {

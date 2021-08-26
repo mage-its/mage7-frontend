@@ -325,9 +325,18 @@
             </td>
           </tr>
           <tr>
-            <th>Path Proposal</th>
+            <th>Proposal</th>
             <td>
-              {{ participant.pathProposal ? participant.pathProposal : "-" }}
+              <div v-if="participant.pathProposal">
+                <b-button variant="success">
+                  <a
+                    target="blank"
+                    :href="endpointAPI + participant.pathProposal"
+                    >{{ participant.pathProposal ? "Lihat File" : "-" }}</a
+                  >
+                </b-button>
+              </div>
+              <div v-else>-</div>
             </td>
             <td></td>
           </tr>

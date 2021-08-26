@@ -12,9 +12,9 @@
         <div class="container bg-white p-3 mb-3 text-center rounded-lg shadow">
           <p>
             <br />
-            <b>SELAMAT DATANG di Mage 7</b>
-            Ini adalah Dashboard anda <br />
-            berbagai jenis informasi terkait lomba dapat dilihat disini
+            <b>SELAMAT DATANG di MAGE 7, {{name}}.</b>
+            Ini adalah Dashboard anda. <br />
+            Berbagai jenis informasi terkait lomba dapat dilihat disini
           </p>
         </div>
       </b-col>
@@ -51,8 +51,7 @@
                 ><p>Email anda belum terverifikasi</p>
                 <p>
                   Silakan cek email anda, bila tidak ada email pada inbox,
-                  silakan cek pada menu spam email. Bila tidak ada juga silakan
-                  untuk menghubungi panitia
+                  silakan cek pada menu spam email. Bila tidak ada juga harap menghubungi panitia
                 </p></b-col
               >
             </b-row>
@@ -83,36 +82,36 @@
       </router-link>
     </div>
     <div v-else>
-      <router-link :to="{ name: 'DashboardMain' }">
-        <b-row>
-          <b-col lg="12">
-            <div
-              class="
-                bg-white
-                p-3
-                mb-3
-                text-center
-                rounded-lg
-                shadow
-                border-green
-              "
-            >
-              <b-row>
-                <b-col lg="12">
-                  <b><i class="fas fa-trophy fa-2x"></i></b
-                ></b-col>
-                <b-col lg="12" class="mt-2"
-                  ><p>Anda telah terdaftar di divisi</p>
-                  <p v-if="registeredComp == 'iotdev'">IoT Dev</p>
-                  <p v-if="registeredComp == 'appdev'">App Dev</p>
-                  <p v-if="registeredComp == 'gamedev'">Game Dev</p>
-                  <p v-if="registeredComp == 'olim'">Olimpiade</p></b-col
-                >
-              </b-row>
-            </div>
-          </b-col>
-        </b-row>
-      </router-link>
+      <b-row>
+        <b-col lg="12">
+          <div
+            class="
+              bg-white
+              p-3
+              mb-3
+              text-center
+              rounded-lg
+              shadow
+              border-green
+            "
+          >
+            <b-row>
+              <b-col lg="12">
+                <b><i class="fas fa-trophy fa-2x"></i></b
+              ></b-col>
+              <b-col lg="12" class="mt-2"
+                ><p>Anda telah terdaftar di divisi</p>
+                <p v-if="registeredComp == 'iotdev'">IoT Dev</p>
+                <p v-if="registeredComp == 'appdev'">App Dev</p>
+                <p v-if="registeredComp == 'gamedev'">Game Dev</p>
+                <p v-if="registeredComp == 'olim'">Olimpiade</p>
+                <p v-if="noPeserta" class="h3"><strong>{{noPeserta}}</strong></p>
+                <p v-if="namaTim" class="h3">{{namaTim}}</p></b-col
+              >
+            </b-row>
+          </div>
+        </b-col>
+      </b-row>
     </div>
     <div v-if="registeredComp == 'appdev' || registeredComp == 'gamedev' || registeredComp == 'iotdev'" class="mb-5">
       <b-card no-body class="text-center">
@@ -176,8 +175,11 @@ export default {
     return {
       tabIndex: 0,
       loading: false,
+      name: "",
       isEmailVerified: true,
       registeredComp: "",
+      noPeserta: "",
+      namaTim: "",
     };
   },
   beforeMount() {
@@ -203,6 +205,9 @@ export default {
         .then((response) => {
           this.isEmailVerified = response.data.user.isEmailVerified;
           this.registeredComp = response.data.user.registeredComp;
+          this.name = response.data.user.name;
+          this.noPeserta = response.data.compe.noPeserta;
+          this.namaTim = response.data.compe.namaTim;
           this.loading = true;
         })
         .catch((error) => {

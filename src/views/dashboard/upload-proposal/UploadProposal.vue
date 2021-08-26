@@ -1,7 +1,13 @@
 <template>
-  <div class="m-4">
-    <h3>Upload Proposal</h3>
-    <div class="mb-5 mt-5">
+  <b-container>
+    <div class="bg-light text-dark mb-3 rounded shadow-sm header">
+      <h3 class="text-left d-inline float-left">
+        <i class="far fa-newspaper"></i>
+        Upload Proposal
+      </h3>
+    </div>
+    <hr />
+    <div class="mb-5">
       <b-card no-body class="text-center">
         <b-tabs v-model="tabIndex" card>
           <b-tab title="App Dev" :title-link-class="linkClass(0)">
@@ -58,7 +64,7 @@
         </b-tabs>
       </b-card>
     </div>
-    <ValidationObserver v-slot="{ handleSubmit }">
+    <ValidationObserver v-slot="{ handleSubmit }" v-if="!uploadedProposal">
       <b-card>
         <form
           @submit.prevent="handleSubmit(onSubmit)"
@@ -93,7 +99,12 @@
         </form>
       </b-card>
     </ValidationObserver>
-  </div>
+    <b-card v-else>
+      <b-card-text>
+        Anda sudah mengunggah proposal, silahkan menunggu tahap selanjutnya dan tetap semangat :).
+      </b-card-text>
+    </b-card>
+  </b-container>
 </template>
 <script>
 import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
@@ -112,6 +123,7 @@ export default {
       proposal: null,
       competition: "",
       service: "",
+      uploadedProposal: false,
     };
   },
   created() {
@@ -127,7 +139,23 @@ export default {
       this.service = "uploadProposal/uploadProposalAppDev";
     }
   },
+  mounted() {
+    this.getUser();
+  },
   methods: {
+    getUser() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      axios
+        .get(`${this.endpointAPI}api/v1/users/profile`, {
+          headers: {
+            "Content-Type": undefined,
+            Authorization: `Bearer ${user.tokens.access.token}`,
+          },
+        })
+        .then((response) => {
+          this.uploadedProposal = !!response.data.compe.pathProposal;
+        });
+    },
     linkClass(idx) {
       if (this.tabIndex === idx) {
         return ["bg-danger", "text-white"];
@@ -224,5 +252,10 @@ export default {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+.header {
+  min-height: 90px;
+  min-width: 100%;
+  padding: 30px;
 }
 </style>

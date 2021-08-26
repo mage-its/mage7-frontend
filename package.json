@@ -41,6 +41,8 @@
         "vue": "^2.6.11",
         "vue-aos": "^1.1.0",
         "vue-carousel": "^0.18.0",
+        "vue-glitch": "^1.0.1",
+        "vue-horizontal-timeline": "^0.10.0",
         "vue-html2pdf": "^1.8.0",
         "vue-nav-tabs": "^0.5.7",
         "vue-qr": "^2.3.0",

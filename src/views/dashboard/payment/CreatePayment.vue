@@ -1,6 +1,11 @@
 <template>
-  <div class="m-4">
-    <h3>Pembayaran</h3>
+  <b-container>
+    <div class="bg-light text-dark mb-3 rounded shadow-sm header">
+      <h3 class="text-left d-inline float-left">
+        <i class="fa fa-money-bill"></i>
+        Pembayaran
+      </h3>
+    </div>
     <hr />
     <b-card>
       <div class="center">
@@ -29,57 +34,64 @@
       class="form-control"
       v-model="kodePromo"
     /> -->
-    <ValidationObserver v-slot="{ handleSubmit }">
-      <form
-        @submit.prevent="handleSubmit(onSubmit)"
-        enctype="multipart/form-data"
-      >
-        <ValidationProvider
-          name="Nama Pengirim Transfer"
-          rules="required"
-          v-slot="{ errors }"
+    <b-card v-if="!sudahUploadBuktiBayar">
+      <ValidationObserver v-slot="{ handleSubmit }">
+        <form
+          @submit.prevent="handleSubmit(onSubmit)"
+          enctype="multipart/form-data"
         >
-          <div class="form-group">
-            <label>Nama Pengirim Transfer</label>
-            <input
-              id="namaTim"
-              type="text"
-              class="form-control"
-              v-model="namaBayar"
-            />
-            <span class="error-msg">{{ errors[0] }}</span>
-          </div>
-        </ValidationProvider>
+          <ValidationProvider
+            name="Nama Pengirim Transfer"
+            rules="required"
+            v-slot="{ errors }"
+          >
+            <div class="form-group">
+              <label>Nama Pengirim Transfer</label>
+              <input
+                id="namaTim"
+                type="text"
+                class="form-control"
+                v-model="namaBayar"
+              />
+              <span class="error-msg">{{ errors[0] }}</span>
+            </div>
+          </ValidationProvider>
 
-        <ValidationProvider
-          name="Bukti Pembayaran"
-          rules="required|ext:jpeg,jpg,png,pdf"
-          v-slot="{ validate, errors }"
-        >
-          <div class="form-group">
-            <label>Bukti Pembayaran</label>
-            <input
-              type="file"
-              accept="image/*,application/pdf"
-              class="form-control"
-              @change="
-                {
-                  onUpload($event) || validate($event);
-                }
-              "
-              id="identitasKetua"
-            />
-            <span class="error-msg">{{ errors[0] }}</span>
-          </div>
-        </ValidationProvider>
-        <p>
-          Catatan : harap mengunggah bukti yang jelas terlihat nama pengirim,
-          nama penerima, nominal, dan tanggal pembayaran.
-        </p>
-        <input type="submit" class="btn btn-red mb-5" tect="Submit" />
-      </form>
-    </ValidationObserver>
-  </div>
+          <ValidationProvider
+            name="Bukti Pembayaran"
+            rules="required|ext:jpeg,jpg,png,pdf"
+            v-slot="{ validate, errors }"
+          >
+            <div class="form-group">
+              <label>Bukti Pembayaran</label>
+              <input
+                type="file"
+                accept="image/*,application/pdf"
+                class="form-control"
+                @change="
+                  {
+                    onUpload($event) || validate($event);
+                  }
+                "
+                id="identitasKetua"
+              />
+              <span class="error-msg">{{ errors[0] }}</span>
+            </div>
+          </ValidationProvider>
+          <p>
+            Catatan : harap mengunggah bukti yang jelas terlihat nama pengirim,
+            nama penerima, nominal, dan tanggal pembayaran.
+          </p>
+          <input type="submit" class="btn btn-red mb-5" tect="Submit" />
+        </form>
+      </ValidationObserver>
+    </b-card>
+    <b-card v-else>
+      <b-card-text>
+        Anda sudah mengunggah bukti bayar, silahkan menunggu verifikasi :).
+      </b-card-text>
+    </b-card>
+  </b-container>
 </template>
 <script>
 import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
@@ -100,6 +112,7 @@ export default {
       profilUserPrice: "",
       profilUsernoPeserta: "",
       profilUsernamaTim: "",
+      sudahUploadBuktiBayar: false,
     };
   },
   mounted() {
@@ -119,6 +132,7 @@ export default {
           this.profilUserPrice = response.data.compe.price;
           this.profilUsernoPeserta = response.data.compe.noPeserta;
           this.profilUsernamaTim = response.data.compe.namaTim;
+          this.sudahUploadBuktiBayar = response.data.compe.sudahUploadBuktiBayar;
         });
     },
     onUpload(e) {
@@ -178,5 +192,13 @@ export default {
   width: 50%;
   padding: 10px;
   text-align: center;
+}
+.error-msg {
+  color: red;
+}
+.header {
+  min-height: 90px;
+  min-width: 100%;
+  padding: 30px;
 }
 </style>

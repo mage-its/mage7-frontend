@@ -2,13 +2,13 @@
   <b-container>
     <div class="bg-light text-dark mb-3 rounded shadow-sm header">
       <h3 class="text-left d-inline float-left">
-        <i class="fa fa-users"></i>
+        <i class="fa fa-money-bill"></i>
         Kode Promo
       </h3>
     </div>
     <hr />
-    <div>
-      <b-container class="bg-white p-5">
+    <b-card>
+      <b-container class="bg-white p-3">
         <div class="form-group">
           <label for="kodepromo">Kode Promo</label>
           <input
@@ -16,14 +16,14 @@
             type="text"
             class="form-control"
             v-model="kodePromo"
-            placeholder="Masukkan Kode Promo Kalian"
+            placeholder="Contoh: WBMAGEJUARA"
           />
           <b-button @click="claimKodePromo" class="mt-3" variant="info"
             >Klaim Kode Promo
           </b-button>
         </div>
       </b-container>
-    </div>
+    </b-card>
   </b-container>
 </template>
 <script>

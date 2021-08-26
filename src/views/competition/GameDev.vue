@@ -76,26 +76,7 @@
             <h2 class="text text-white mt-4">
               Pelaksanaan lomba
             </h2> -->
-              <h5 class="text-white">
-                Pendaftaran + Durasi Tahap 1 : 5 Juli – 28 Agustus <br />
-              </h5>
-              <h5 class="text-white">
-                Penjurian Tahap 1 : 28 Agustus – 4 September<br />
-              </h5>
-              <h5 class="text-white">Pengumuman Tahap 1 : 5 September<br /></h5>
-              <h5 class="text-white">
-                Durasi Pembayaran Tahap 2 : 6 September – 19 September<br />
-              </h5>
-              <h5 class="text-white">
-                Pembuatan Karya & Video (Tahap 2) : 6 September – 28 Oktober<br />
-              </h5>
-              <h5 class="text-white">
-                Penjurian Tahap 2 : 28 Oktober – 5 November <br />
-              </h5>
-              <h5 class="text-white">Pengumuman Tahap 2 : 6 November<br /></h5>
-              <h5 class="text-white">Technical Meeting : 8 November<br /></h5>
-              <h5 class="text-white">Exhibition : 9 November<br /></h5>
-              <h5 class="text-white">Hari H : 13-14 November<br /></h5>
+              <vue-horizontal-timeline :items="items" timeline-background="transparent" title-substr="35"/>
             </b-container>
           </b-col>
         </b-row>
@@ -198,6 +179,8 @@
 </template>
 <script>
 
+import { VueHorizontalTimeline } from "vue-horizontal-timeline";
+
 export default {
   name: "OSM",
   data() {
@@ -205,12 +188,57 @@ export default {
       loading: false,
       message: "",
       url: window.location.href,
+      items: [
+        {
+          title: "5 Juli – 11 September",
+          content: "Pendaftaran",
+        },
+        {
+          title: "14 September",
+          content: "Batas Upload Proposal",
+        },
+        {
+          title: "19 September",
+          content: "Pengumuman Tahap 1",
+        },
+        {
+          title: "20 - 26 September",
+          content: "Durasi Pembayaran Tahap 2",
+        },
+        {
+          title: "20 September – 28 Oktober",
+          content: "Pembuatan Karya & Video (Tahap2)",
+        },
+        {
+          title: "28 Oktober - 5 November",
+          content: "Penjurian Tahap 2",
+        },
+        {
+          title: "6 November",
+          content: "Pengumuman Tahap 2",
+        },
+        {
+          title: "8 November",
+          content: "Technical Meeting",
+        },
+        {
+          title: "9 November",
+          content: "Exhibition",
+        },
+        {
+          title: "13 - 14 November",
+          content: "Hari H",
+        },
+      ],
     };
   },
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+  },
+  components: {
+    VueHorizontalTimeline,
   },
   methods: {
     getUrl() {
