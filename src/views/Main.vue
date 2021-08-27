@@ -162,7 +162,7 @@
                 </b-container>
               </b-col>
               <b-col cols="12">
-                <h1 class="title">App Dev</h1>
+                <h1 class="title"><glitch text="App Dev"></glitch></h1>
                 <div class="description mt-4">
                   <p class="text-justify">
                     Application Competition merupakan cabang kompetisi dari MAGE
@@ -186,7 +186,7 @@
                 </b-container>
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
-                <h1 class="title">Game Dev</h1>
+                <h1 class="title"><glitch text="Game Dev"></glitch></h1>
                 <div class="description mt-4">
                   <p class="text-justify">
                     Game Competition merupakan cabang kompetisi dari MAGE 7 yang
@@ -214,7 +214,7 @@
                 </b-container>
               </b-col>
               <b-col lg="12" class="mt-5 mb-5">
-                <h1 class="title">IoT Dev</h1>
+                <h1 class="title"><glitch text="IoT Dev"></glitch></h1>
                 <div class="description mt-4">
                   <p class="text-justify">
                     Internet of Things Competition merupakan kompetisi dari MAGE
@@ -240,7 +240,7 @@
                 </b-container>
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
-                <h1 class="title">Olimpiade</h1>
+                <h1 class="title"><glitch text="Olimpiade"></glitch></h1>
                 <div class="description mt-4">
                   <p class="text-justify">
                     Kompetisi yang dirancang untuk pelajar SMA/sederajat ini
@@ -719,6 +719,10 @@ b-button {
     flex: 1;
     font-size: 24px;
     color: #ffffff;
+  }
+
+  .glitch-wrapper {
+    justify-content: center !important;
   }
 
   #home .more {
