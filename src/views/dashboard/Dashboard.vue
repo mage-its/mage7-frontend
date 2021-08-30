@@ -47,7 +47,7 @@ export default {
   },
   mounted() {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user.user.role === "admin") {
+    if (user.user.role === "admin" || user.user.role === "staff") {
       this.isAdmin = true;
       this.isUser = false;
     }

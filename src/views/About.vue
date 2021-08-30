@@ -32,8 +32,8 @@
                 :loop="true"
                 paginationColor="#ece8e1"
                 paginationActiveColor="#ff4655"
-                navigationNextLabel="<span class=text-white>▶<span>"
-                navigationPrevLabel="<span class=text-white>◀<span>"
+                navigationNextLabel='<span class="text-white h3"><i class="fas fa-chevron-right"></i><span>'
+                navigationPrevLabel='<span class="text-white h3"><i class="fas fa-chevron-left"></i><span>'
               >
                 <slide>
                   <img src="@/assets/img/about/about-0.jpg" alt="About 0">
