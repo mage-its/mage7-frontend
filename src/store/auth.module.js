@@ -24,9 +24,29 @@ export const auth = {
                 },
             );
         },
+        googleLogin({ commit }, idToken) {
+            return AuthService.googleLogin(idToken).then(
+                (user) => {
+                    commit('loginSuccess', idToken);
+                    return Promise.resolve(idToken);
+                },
+                (error) => {
+                    commit('loginFailure');
+                    return Promise.reject(error);
+                },
+            );
+        },
         logout({ commit }) {
-            AuthService.logout();
-            commit('logout');
+          return AuthService.logout().then(
+            () => {
+              commit('logoutSuccess');
+              return Promise.resolve();
+            },
+            (error) => {
+              commit('logoutFailure');
+              return Promise.reject(error);
+            },
+          );
         },
         register({ commit }, user) {
             return AuthService.register(user).then(

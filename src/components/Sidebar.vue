@@ -325,7 +325,7 @@ export default {
         denyButtonText: "No",
       }).then((result) => {
         if (result.isConfirmed) {
-          localStorage.removeItem("user");
+          this.$store.dispatch("auth/logout").then(() => {});
           this.$router.push({ name: "Home" });
           location.reload();
         }
@@ -371,7 +371,7 @@ export default {
 	  } else if (user.user.registeredComp.length > 0 && user.user.registeredComp !== "olim") {
 		  document.getElementById("pembayaran").style.display = "none"
 		  document.getElementById("pembayaranMobile").style.display = "none"
-	  } 
+	  }
 
     //   if ( user.user.registeredComp === "olim" || user.user.registeredComp === "") {
     //     document.getElementById("pembayaran").style.display = "block";

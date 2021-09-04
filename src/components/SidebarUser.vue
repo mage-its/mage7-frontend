@@ -320,7 +320,7 @@ export default {
         denyButtonText: "No",
       }).then((result) => {
         if (result.isConfirmed) {
-          localStorage.removeItem("user");
+          this.$store.dispatch("auth/logout").then(() => {});
           this.$router.push({ name: "Home" });
           location.reload();
         }

@@ -17,8 +17,29 @@ class AuthService {
 				return response.data;
 			});
 	}
+  googleLogin(idToken) {
+    return axios
+      .post(`${API_URL}google-login`, {
+        idToken,
+      })
+      .then((response) => {
+        if (response.data.tokens) {
+          localStorage.setItem('user', JSON.stringify(response.data));
+        }
+
+        return response.data;
+      });
+  }
 	logout() {
-		localStorage.removeItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
+    localStorage.removeItem('user');
+    if (!user) return;
+    const refreshToken = user.tokens.refresh.token;
+    return axios
+      .post(`${API_URL}logout`, {
+        refreshToken,
+      })
+      .then(() => {});
 	}
 	register(user) {
 		return axios

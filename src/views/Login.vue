@@ -56,7 +56,17 @@
         value="Login"
         @click="handleLogin()"
       />
-      <p class="text-center mt-2">
+      <b-container class="px-0 mt-3">
+        <b-row class="text-center">
+          <b-col class="my-0">
+          <div @click="signInWithGoogle" class="user-google py-2 my-0">
+            <i class="fab fa-google fa-lg"></i>
+            <span class="pl-2">Sign in with Google</span>
+          </div>
+          </b-col>
+        </b-row>
+      </b-container>
+      <p class="text-center">
         Belum punya akun?
         <a
           v-if="!getUrl()"
@@ -66,26 +76,6 @@
         >
         <a v-if="getUrl()" href="/register">Daftar</a>
       </p>
-      <!--b-container class="ph-3 mb-3">
-        <p class="text-center mt-4">Atau login menggunakan</p>
-        <b-row class="mt-4">
-          <b-col cols="4">
-          <a @click="signInWithGoogle" href="#">
-            <i  class="fab fa-google fa-2x"></i>
-            </a>
-          </b-col>
-          <b-col cols="4">
-          <a @click="signInWithFacebook" href="#">
-            <i class="fab fa-facebook fa-2x"></i>
-            </a>
-          </b-col>
-          <b-col cols="4">
-          <a @click="signInWithTwitter" href="#">
-            <i class="fab fa-twitter fa-2x"></i>
-          </a>
-          </b-col>
-        </b-row>
-      </b-container-->
     </div>
     <a
       v-if="!getUrl()"
@@ -189,8 +179,8 @@ export default {
                 title: 'text-white',
               },
             }).then(() => {
+              this.$store.dispatch("ui/changeWelcomeComponent", "welcome");
               this.$router.push("/dashboard");
-              location.reload();
             });
 
             // localStorage.setItem('id', JSON.stringify(user.user.id));
@@ -232,23 +222,64 @@ export default {
       return this.url.includes("login");
     },
     signInWithGoogle() {
+      this.loadingSubmit = true;
       const provider = new firebase.auth.GoogleAuthProvider();
       provider.addScope("profile");
       provider.addScope("email");
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then(function (result) {
-          const { user } = result;
-
+        .then(async (result) => {
+          const idToken = await firebase.auth().currentUser.getIdToken(true);
+          this.$store.dispatch("auth/googleLogin", idToken)
+            .then((res) => {
+              Swal.fire({
+                icon: "success",
+                title: "Login berhasil",
+                text: this.id,
+                showConfirmButton: true,
+                background: "#111",
+                customClass: {
+                  title: 'text-white',
+                },
+              }).then(() => {
+                this.$store.dispatch("ui/changeWelcomeComponent", "welcome");
+                this.$router.push("/dashboard");
+              });
+              this.loadingSubmit = false;
+            })
+            .catch((error) => {
+              this.message =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+              Swal.fire({
+                icon: "error",
+                title: "Login gagal",
+                html: `<span style="color:#eee">${this.message}<span>`,
+                showConfirmButton: true,
+                background: "#111",
+                customClass: {
+                  title: 'text-white',
+                },
+              }).then(() => {});
+              this.loadingSubmit = false;
+            });
+        })
+        .catch((err) => {
           Swal.fire({
-            icon: "success",
-            title: `Selamat datang ${user.displayName}`,
+            icon: "error",
+            title: "Login gagal",
+            html: `<span style="color:#eee">${err}<span>`,
             showConfirmButton: true,
-          }).then(() => {
-            this.$store.dispatch("ui/changeWelcomeComponent", "welcome");
-            this.$router.push("/dashboard");
-          });
+            background: "#111",
+            customClass: {
+              title: 'text-white',
+            },
+          }).then(() => {});
+          this.loadingSubmit = false;
         });
     },
     signInWithFacebook() {
@@ -341,7 +372,7 @@ export default {
 
 .login-container {
   width: 420px;
-  height: 480px;
+  height: 500px;
   position: absolute;
   margin-left: calc(50% - 210px);
   margin-top: calc(50% - 600px);
@@ -447,6 +478,22 @@ input[type="password"]:focus {
   );
 }
 .login-container input[type="submit"]:active {
+  transform: scale(0.9);
+}
+
+.user-google {
+  background-color: #555;
+  color: #ff4655;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.user-google:hover {
+  background-color: #444;
+}
+
+.user-google:active {
+  background-color: #333;
   transform: scale(0.9);
 }
 

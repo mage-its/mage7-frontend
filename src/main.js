@@ -49,12 +49,12 @@ Vue.use(Vuelidate)
 Vue.use(CKEditor);
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDgDLzyCw7khH7N2CT444qYNS5Cjius19s",
-    authDomain: "mage7-d24e8.firebaseapp.com",
-    projectId: "mage7-d24e8",
-    storageBucket: "mage7-d24e8.appspot.com",
-    messagingSenderId: "586510507889",
-    appId: "1:586510507889:web:0801724cf2e089ed8560d0"
+  apiKey: "AIzaSyAv0nZpXD2V_VIGawrMfnJzgcHzo1h3N98",
+  authDomain: "mage-7.firebaseapp.com",
+  projectId: "mage-7",
+  storageBucket: "mage-7.appspot.com",
+  messagingSenderId: "1072548170590",
+  appId: "1:1072548170590:web:a6e52b5940b5e2e71b9dcf"
 };
 
 firebase.initializeApp(firebaseConfig);

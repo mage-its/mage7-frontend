@@ -751,6 +751,7 @@ export default {
           if (error.response.data.code == 401) {
             this.refreshToken();
           } else {
+            this.loadingSubmit = false;
             Swal.fire({
               icon: "error",
               title: "Register gagal",
