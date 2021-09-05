@@ -73,6 +73,15 @@
         </div>
       </div>
 
+      <vue-recaptcha
+      :sitekey="siteKey"
+      :loadRecaptchaScript="true"
+      theme="dark"
+      ref="recaptcha"
+      @verify="onVerify"
+      @expired="onExpired">
+      </vue-recaptcha>
+
       <input
         type="submit"
         name="register"
@@ -99,6 +108,7 @@
 <script>
 import Swal from 'sweetalert2'
 import LoadingSubmit from "@/components/LoadingSubmit";
+import VueRecaptcha from 'vue-recaptcha';
 
 import {
   required,
@@ -113,6 +123,7 @@ export default {
   name: "Register",
   components: {
     LoadingSubmit,
+    VueRecaptcha,
   },
   data() {
     return {
@@ -121,7 +132,9 @@ export default {
         name: "",
         email: "",
         password: "",
+        recaptchaResponse: "",
       },
+      siteKey: process.env.VUE_APP_SITE_KEY,
       type: "password",
       type2: "password",
       eye1: "block",
@@ -219,6 +232,18 @@ export default {
       this.$store.dispatch("ui/changeWelcomeComponent", "login");
     },
     handleRegister() {
+      if (!this.user.recaptchaResponse) {
+        Swal.fire({
+          icon: "warning",
+          title: "Hayo kamu robot yaa",
+          showConfirmButton: true,
+          background: "#111",
+          customClass: {
+            title: 'text-white',
+          },
+        }).then(() => {});
+        return;
+      }
       this.loadingSubmit = true;
       if (this.user.password === this.passwordConfirmation) {
         if (this.user.name && this.user.email && this.user.password) {
@@ -287,6 +312,12 @@ export default {
     getUrl() {
       return this.url.includes("register");
     },
+    onVerify(response) {
+      this.user.recaptchaResponse = response;
+    },
+    onExpired() {
+      this.user.recaptchaResponse = "";
+    },
   },
   created() {
     window.scrollTo(0, 0);
@@ -349,7 +380,7 @@ export default {
 
 .register-container {
   width: 420px;
-  height: 600px;
+  height: 700px;
   margin-top: 40px;
   margin-left: calc(50% - 210px);
   margin-bottom: 20px;
