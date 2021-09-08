@@ -43,7 +43,7 @@
             <td>
               <b-button variant="success">
                 <a
-                  target="blank"
+                  target="_blank"
                   :href="endpointAPI + participant.pathIdentitasKetua"
                   >{{ participant.pathIdentitasKetua ? "Lihat File" : "-" }}</a
                 >
@@ -72,7 +72,7 @@
               <div v-if="participant.pathIdentitasAnggota1">
                 <b-button variant="success">
                   <a
-                    target="blank"
+                    target="_blank"
                     :href="endpointAPI + participant.pathIdentitasAnggota1"
                     >Lihat File</a
                   >
@@ -107,7 +107,7 @@
               <div v-if="participant.pathIdentitasAnggota2">
                 <b-button variant="success">
                   <a
-                    target="blank"
+                    target="_blank"
                     :href="endpointAPI + participant.pathIdentitasAnggota2"
                     >{{
                       participant.pathIdentitasAnggota2 ? "Lihat File" : "-"
@@ -197,7 +197,7 @@
             <td>
               <b-button variant="success">
                 <a
-                  target="blank"
+                  target="_blank"
                   :href="endpointAPI + participant.pathBuktiUploadTwibbon"
                   >{{
                     participant.pathBuktiUploadTwibbon ? "Lihat File" : "-"
@@ -221,7 +221,7 @@
             <td>
               <b-button variant="success">
                 <a
-                  target="blank"
+                  target="_blank"
                   :href="endpointAPI + participant.pathBuktiFollowMage"
                   >{{ participant.pathBuktiFollowMage ? "Lihat File" : "-" }}</a
                 >
@@ -243,7 +243,7 @@
             <td>
               <b-button variant="success">
                 <a
-                  target="blank"
+                  target="_blank"
                   :href="endpointAPI + participant.pathBuktiRepostStory"
                   >{{
                     participant.pathBuktiRepostStory ? "Lihat File" : "-"
@@ -300,7 +300,7 @@
               <div v-if="participant.pathBuktiBayar">
                 <b-button variant="success">
                   <a
-                    target="blank"
+                    target="_blank"
                     :href="endpointAPI + participant.pathBuktiBayar"
                     >{{ participant.pathBuktiBayar ? "Lihat File" : "-" }}</a
                   >
@@ -330,7 +330,7 @@
               <div v-if="participant.pathProposal">
                 <b-button variant="success">
                   <a
-                    target="blank"
+                    target="_blank"
                     :href="endpointAPI + participant.pathProposal"
                     >{{ participant.pathProposal ? "Lihat File" : "-" }}</a
                   >

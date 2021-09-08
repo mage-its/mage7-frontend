@@ -86,9 +86,14 @@
         </form>
       </ValidationObserver>
     </b-card>
-    <b-card v-else>
+    <b-card v-else-if="!isVerified">
       <b-card-text>
         Anda sudah mengunggah bukti bayar, silahkan menunggu verifikasi :).
+      </b-card-text>
+    </b-card>
+    <b-card v-else>
+      <b-card-text>
+        Anda sudah terverifikasi, silahkan menunggu agenda selanjutnya.
       </b-card-text>
     </b-card>
   </b-container>
@@ -113,6 +118,7 @@ export default {
       profilUsernoPeserta: "",
       profilUsernamaTim: "",
       sudahUploadBuktiBayar: false,
+      isVerified: false,
     };
   },
   mounted() {
@@ -133,6 +139,7 @@ export default {
           this.profilUsernoPeserta = response.data.compe.noPeserta;
           this.profilUsernamaTim = response.data.compe.namaTim;
           this.sudahUploadBuktiBayar = response.data.compe.sudahUploadBuktiBayar;
+          this.isVerified = response.data.compe.isVerified;
         });
     },
     onUpload(e) {

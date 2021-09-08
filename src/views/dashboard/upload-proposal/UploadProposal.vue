@@ -64,6 +64,18 @@
         </b-tabs>
       </b-card>
     </div>
+    <b-card v-if="pathProposal" class="mb-5">
+      <h5 class="text-bold">Proposal</h5>
+      <a
+        target="_blank"
+        :href="endpointApi + pathProposal"
+        class="btn d-inline"
+      >
+        <button class="button" style="vertical-align: middle">
+          <span>Lihat file</span>
+        </button>
+      </a>
+    </b-card>
     <ValidationObserver v-slot="{ handleSubmit }" v-if="!uploadedProposal">
       <b-card>
         <form
@@ -99,11 +111,42 @@
         </form>
       </b-card>
     </ValidationObserver>
-    <b-card v-else>
-      <b-card-text>
-        Anda sudah mengunggah proposal, silahkan menunggu tahap selanjutnya dan tetap semangat :).
-      </b-card-text>
-    </b-card>
+    <ValidationObserver v-slot="{ handleSubmit }" v-else>
+      <b-card>
+        <form
+          @submit.prevent="handleSubmit(onSubmit)"
+          enctype="multipart/form-data"
+        >
+          <ValidationProvider
+            name="Upload Proposal"
+            rules="required|ext:pdf|size:5120"
+            v-slot="{ validate, errors }"
+          >
+            <div class="form-group">
+              <h5 class="text-bold">Form Update Proposal</h5>
+              <h5>Anda sudah pernah upload proposal, silahkan upload ulang apabila ingin mengganti.</h5>
+              <label
+                >Klik dibawah untuk memilih file (Format File Harus Pdf & Ukuran
+                File Max. 5 MB)</label
+              >
+              <input
+                type="file"
+                accept="application/pdf"
+                class="form-control"
+                @change="
+                  {
+                    onUpload($event) || validate($event);
+                  }
+                "
+                id="identitasKetua"
+              />
+              <span class="error-msg">{{ errors[0] }}</span>
+            </div>
+          </ValidationProvider>
+          <input type="submit" class="btn btn-red" tect="Submit" />
+        </form>
+      </b-card>
+    </ValidationObserver>
   </b-container>
 </template>
 <script>
@@ -124,6 +167,7 @@ export default {
       competition: "",
       service: "",
       uploadedProposal: false,
+      pathProposal: "",
     };
   },
   created() {
@@ -154,6 +198,7 @@ export default {
         })
         .then((response) => {
           this.uploadedProposal = !!response.data.compe.pathProposal;
+          this.pathProposal = response.data.compe.pathProposal;
         });
     },
     linkClass(idx) {
