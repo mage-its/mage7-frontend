@@ -68,7 +68,7 @@
       <h5 class="text-bold">Proposal</h5>
       <a
         target="_blank"
-        :href="endpointApi + pathProposal"
+        :href="pathProposal"
         class="btn d-inline"
       >
         <button class="button" style="vertical-align: middle">
@@ -198,7 +198,7 @@ export default {
         })
         .then((response) => {
           this.uploadedProposal = !!response.data.compe.pathProposal;
-          this.pathProposal = response.data.compe.pathProposal;
+          this.pathProposal = this.endpointAPI + response.data.compe.pathProposal;
         });
     },
     linkClass(idx) {
