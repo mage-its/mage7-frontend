@@ -51,7 +51,7 @@
                     <li
                       @click="selectedItem = 1"
                       class="mb-3"
-                      id="uploadProposalMobile"
+                      :class="{ 'd-none': hideProposal }"
                     >
                       <router-link
                         class="text-white"
@@ -89,7 +89,7 @@
                     <li
                       @click="selectedItem = 5"
                       class="mb-3"
-                      id="administrasiMobile"
+                      :class="{ 'd-none': hideAdministrasi }"
                     >
                       <router-link
                         class="text-white"
@@ -110,7 +110,7 @@
                     <li
                       @click="selectedItem = 6"
                       class="mb-3"
-                      id="pembayaranMobile"
+                      :class="{ 'd-none': hidePembayaran }"
                     >
                       <router-link
                         class="text-white"
@@ -128,7 +128,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="selectedItem = 3" class="mb-3" id="kodePromo">
+                    <li @click="selectedItem = 3" class="mb-3" :class="{ 'd-none': hideKodePromo }">
                       <router-link
                         class="text-white"
                         :to="{ name: 'KodePromoUser' }"
@@ -191,7 +191,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="selectedItem = 1" id="uploadProposal">
+            <li @click="selectedItem = 1" :class="{ 'd-none': hideProposal }">
               <router-link class="text-white" :to="{ name: 'UploadProposal' }">
                 <b-row>
                   <b-col cols="1" lg="1">
@@ -222,7 +222,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="selectedItem = 5" id="administrasi">
+            <li @click="selectedItem = 5" :class="{ 'd-none': hideAdministrasi }">
               <router-link class="text-white" :to="{ name: 'MainDocument' }">
                 <b-row>
                   <b-col cols="1" lg="1">
@@ -234,7 +234,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="selectedItem = 6" id="pembayaran">
+            <li @click="selectedItem = 6" :class="{ 'd-none': hidePembayaran }">
               <router-link class="text-white" :to="{ name: 'CreatePayment' }">
                 <b-row>
                   <b-col cols="1" lg="1">
@@ -248,7 +248,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="selectedItem = 3" class="mb-3" id="kodePromo">
+            <li @click="selectedItem = 3" class="mb-3" :class="{ 'd-none': hideKodePromo }">
               <router-link class="text-white" :to="{ name: 'KodePromoUser' }">
                 <b-row>
                   <b-col cols="1" lg="1">
@@ -283,6 +283,7 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   name: "Sidebar",
@@ -294,6 +295,10 @@ export default {
       selectedSubItem: 0,
       toggle: 0,
       scrollY: 0,
+      hidePembayaran: false,
+      hideAdministrasi: false,
+      hideProposal: false,
+      hideKodePromo: false,
     };
   },
   computed: {
@@ -350,26 +355,28 @@ export default {
     },
     getUser() {
       const user = JSON.parse(localStorage.getItem("user"));
-      if (user.user.registeredComp === "olim") {
-        document.getElementById("pembayaran").style.display = "block";
-        document.getElementById("pembayaranMobile").style.display = "block";
-        document.getElementById("uploadProposal").style.display = "none";
-        document.getElementById("uploadProposalMobile").style.display = "none";
-      } else if (user.user.registeredComp === "") {
-        document.getElementById("pembayaran").style.display = "none";
-        document.getElementById("pembayaranMobile").style.display = "none";
-        document.getElementById("uploadProposal").style.display = "none";
-        document.getElementById("uploadProposalMobile").style.display = "none";
-      } else if (user.user.registeredComp.length > 0) {
-        document.getElementById("administrasi").style.display = "none";
-        document.getElementById("administrasiMobile").style.display = "none";
-      } else if (
-        user.user.registeredComp.length > 0 &&
-        user.user.registeredComp !== "olim"
-      ) {
-        document.getElementById("pembayaran").style.display = "none";
-        document.getElementById("pembayaranMobile").style.display = "none";
-      }
+      axios
+        .get(`${this.endpointAPI}api/v1/users/profile`, {
+          headers: {
+            "Content-Type": undefined,
+            Authorization: `Bearer ${user.tokens.access.token}`,
+          },
+        })
+        .then((response) => {
+          const { registeredComp } = response.data.user;
+          user.user = response.data.user;
+          localStorage.setItem('user', JSON.stringify(user));
+          if (registeredComp === "olim") {
+            this.hideProposal = true;
+          } else if (registeredComp === "") {
+            this.hidePembayaran = true;
+            this.hideProposal = true;
+            this.hideKodePromo = true;
+          }
+          if (registeredComp.length > 0) {
+            this.hideAdministrasi = true;
+          }
+        });
     },
     checkJoinStage(eventName, stageName) {
       let joinStage = false;
@@ -413,16 +420,16 @@ export default {
     });
   },
   created() {
-    if (this.user.roles.includes("participant")) {
-      if (window.location.href.includes("article")) this.selectedItem = 1;
-      else if (window.location.href.includes("announcement")) {
-        this.selectedItem = 2;
-      } else if (window.location.href.includes("schedule"))
-        this.selectedItem = 3;
-      else if (window.location.href.includes("twibbon")) this.selectedItem = 4;
-      else if (window.location.href.includes("document")) this.selectedItem = 5;
-      else if (window.location.href.includes("payment")) this.selectedItem = 6;
-    }
+    // if (this.user.roles.includes("participant")) {
+    //   if (window.location.href.includes("article")) this.selectedItem = 1;
+    //   else if (window.location.href.includes("announcement")) {
+    //     this.selectedItem = 2;
+    //   } else if (window.location.href.includes("schedule"))
+    //     this.selectedItem = 3;
+    //   else if (window.location.href.includes("twibbon")) this.selectedItem = 4;
+    //   else if (window.location.href.includes("document")) this.selectedItem = 5;
+    //   else if (window.location.href.includes("payment")) this.selectedItem = 6;
+    // }
   },
 };
 </script>
