@@ -8,6 +8,11 @@
         <b-form-input v-model="keyword" placeholder="Search" type="text">
         </b-form-input>
       </b-input-group>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+      ></b-pagination>
       <b-table
         striped
         hover
@@ -47,6 +52,8 @@ export default {
     return {
       loading: true,
       participants: [],
+      perPage: 10,
+      currentPage: 1,
       fields: [
         {
           key: "name",
@@ -75,9 +82,11 @@ export default {
         .get(`${this.endpointAPI}api/v1/users/?role=user`, header())
         .then((response) => {
           this.loading = false;
-          data = response.data.results;
+          // eslint-disable-next-line prefer-destructuring
+          data = response.data;
         });
-      this.participants = data;
+      this.participants = data.results;
+      this.rows = data.totalResults;
     },
   },
   computed: {
@@ -89,6 +98,20 @@ export default {
               participant.email.includes(this.keyword)
           )
         : this.participants;
+    },
+  },
+  watch: {
+    async currentPage() {
+      let data = null;
+      await axios
+        .get(`${this.endpointAPI}api/v1/users/?role=user&page=${this.currentPage}`, header())
+        .then((response) => {
+          this.loading = false;
+          // eslint-disable-next-line prefer-destructuring
+          data = response.data;
+        });
+      this.participants = data.results;
+      this.rows = data.totalResults;
     },
   },
   async mounted() {

@@ -19,13 +19,13 @@ export default {
 	  }
   },
   mounted() {
-	  this.competition = this.$route.params.competition;	
+	  this.competition = this.$route.params.competition;
   },
 };
 </script>
 <style scoped>
 .header {
-  min-height: 90px;
+  overflow: auto;
   min-width: 100%;
   padding: 30px;
 }

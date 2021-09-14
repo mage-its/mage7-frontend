@@ -6,6 +6,12 @@
           <b-button variant="info">Tambah Kode Promo</b-button>
         </router-link>
       </b-input-group-append>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        class="mt-3"
+      ></b-pagination>
       <b-table
         class="mt-3"
         striped
@@ -29,6 +35,8 @@ import header from "../../../services/header";
 export default {
   data() {
     return {
+      perPage: 10,
+      currentPage: 1,
       dataKodePromo: [],
       fields: [
         {
@@ -39,7 +47,7 @@ export default {
           key: "category",
           label: "category",
         },
-		{
+        {
           key: "discountPrice",
           label: "Besar Potongan",
         },
@@ -51,7 +59,7 @@ export default {
           key: "maxUsage",
           label: "Maksimal pemakaian",
         },
-		{
+        {
           key: "active",
           label: "active",
         },
@@ -68,7 +76,8 @@ export default {
       await axios
         .get(`${this.endpointAPI}api/v1/kodepromo?active=true`, header())
         .then((response) => {
-          data = response.data.results;
+          // eslint-disable-next-line prefer-destructuring
+          data = response.data;
         })
         .catch((error) => {
           this.message =
@@ -83,7 +92,8 @@ export default {
             console.log(error.response.data.message);
           }
         });
-      this.dataKodePromo = data;
+      this.dataKodePromo = data.results;
+      this.rows = data.totalResults;
     },
     refreshToken() {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -117,6 +127,32 @@ export default {
             showConfirmButton: true,
           }).then(() => {});
         });
+    },
+  },
+  watch: {
+    async currentPage() {
+      let data = null;
+      await axios
+        .get(`${this.endpointAPI}api/v1/kodepromo?active=true&page=${this.currentPage}`, header())
+        .then((response) => {
+          // eslint-disable-next-line prefer-destructuring
+          data = response.data;
+        })
+        .catch((error) => {
+          this.message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          if (error.response.data.code == 401) {
+            this.refreshToken();
+          } else {
+            console.log(error.response.data.message);
+          }
+        });
+      this.dataKodePromo = data.results;
+      this.rows = data.totalResults;
     },
   },
   async mounted() {

@@ -1,5 +1,8 @@
 <template>
   <b-container>
+    <div v-if="loadingSubmit">
+      <LoadingSubmit />
+    </div>
     <div class="bg-light text-dark mb-3 rounded shadow-sm header">
       <h3 class="text-left d-inline float-left">
         <i class="far fa-newspaper"></i>
@@ -64,7 +67,7 @@
         </b-tabs>
       </b-card>
     </div>
-    <b-card v-if="pathProposal" class="mb-5">
+    <b-card v-if="uploadedProposal" class="mb-5">
       <h5 class="text-bold">Proposal</h5>
       <a
         target="_blank"
@@ -154,14 +157,17 @@ import { ValidationProvider } from "vee-validate/dist/vee-validate.full.esm";
 import { ValidationObserver } from "vee-validate";
 import Swal from "sweetalert2";
 import axios from "axios";
+import LoadingSubmit from "@/components/LoadingSubmit";
 
 export default {
   components: {
     ValidationProvider,
     ValidationObserver,
+    LoadingSubmit,
   },
   data() {
     return {
+      loadingSubmit: false,
       tabIndex: 0,
       proposal: null,
       competition: "",
@@ -217,8 +223,10 @@ export default {
       const formData = {
         data: document,
       };
+      this.loadingSubmit = true;
       this.$store.dispatch(this.service, formData).then(
         () => {
+          this.loadingSubmit = false;
           Swal.fire({
             icon: "success",
             title: "Upload Proposal berhasil",
@@ -231,6 +239,7 @@ export default {
           if (error.response.data.code === 401) {
             this.refreshToken();
           } else {
+            this.loadingSubmit = false;
             Swal.fire({
               icon: "error",
               title: "Upload Proposal gagal",

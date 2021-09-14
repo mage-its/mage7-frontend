@@ -10,6 +10,11 @@
       </b-input-group>
       <div v-if="dataEmpty"><h5 class="text-center">Data Kosong</h5></div>
       <div v-else>
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+        ></b-pagination>
         <b-table
           striped
           hover
@@ -17,6 +22,17 @@
           :fields="fields"
           responsive
         >
+          <template #cell(proposal)="data" v-if="type !== 'olim'">
+            <a
+              target="_blank"
+              :href="endpointAPI + data.item.pathProposal"
+              class="btn d-inline"
+              v-if="data.item.pathProposal"
+            >
+              <b-button><i class="fa fa-search"></i></b-button>
+            </a>
+            <p v-else class="text-center">-</p>
+          </template>
           <template #cell(detail)="data">
             <router-link
               :to="{
@@ -43,38 +59,48 @@ export default {
     LoadingSubmit,
   },
   data() {
+    const fields = [
+      {
+        key: "namaTim",
+        label: "Nama Tim",
+      },
+      {
+        key: "namaKetua",
+        label: "Nama Ketua",
+      },
+      {
+        key: "asalInstansi",
+        label: "Asal Instansi",
+      },
+      {
+        key: "asalInfo",
+        label: "Asal Info",
+      },
+      {
+        key: "sudahUploadBuktiBayar",
+        label: "Sudah Bayar",
+      },
+      {
+        key: "proposal",
+        label: "Proposal",
+      },
+      {
+        key: "detail",
+        label: "Detail",
+      },
+    ];
+    if (this.$route.params.competition === 'olim') {
+      fields.splice(5, 1);
+    }
     return {
       loading: true,
       competition: "",
       dataEmpty: false,
       participants: [],
-      fields: [
-        {
-          key: "namaTim",
-          label: "Nama Tim",
-        },
-        {
-          key: "namaKetua",
-          label: "Nama Ketua",
-        },
-        {
-          key: "asalInstansi",
-          label: "Asal Instansi",
-        },
-        {
-          key: "asalInfo",
-          label: "Asal Info",
-        },
-        {
-          key: "sudahUploadBuktiBayar",
-          label: "Sudah Bayar",
-        },
-        {
-          key: "detail",
-          label: "Detail",
-        },
-      ],
+      fields,
       keyword: "",
+      perPage: 10,
+      currentPage: 1,
     };
   },
   methods: {
@@ -87,12 +113,14 @@ export default {
         )
         .then((response) => {
           this.loading = false;
-          data = response.data.results;
-          if (data.length < 1) {
+          // eslint-disable-next-line prefer-destructuring
+          data = response.data;
+          if (data.results.length < 1) {
             this.dataEmpty = true;
           }
         });
-      this.participants = data;
+      this.participants = data.results;
+      this.rows = data.totalResults;
     },
   },
   computed: {
@@ -104,6 +132,20 @@ export default {
               participant.email.includes(this.keyword)
           )
         : this.participants;
+    },
+  },
+  watch: {
+    async currentPage() {
+      let data = null;
+      await axios
+        .get(`${this.endpointAPI}api/v1/${this.$route.params.competition}?page=${this.currentPage}`, header())
+        .then((response) => {
+          this.loading = false;
+          // eslint-disable-next-line prefer-destructuring
+          data = response.data;
+        });
+      this.participants = data.results;
+      this.rows = data.totalResults;
     },
   },
   mounted() {

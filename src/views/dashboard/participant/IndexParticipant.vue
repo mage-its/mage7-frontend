@@ -19,7 +19,7 @@ export default {
 </script>
 <style scoped>
 .header {
-  min-height: 90px;
+  overflow: auto;
   min-width: 100%;
   padding: 30px;
 }

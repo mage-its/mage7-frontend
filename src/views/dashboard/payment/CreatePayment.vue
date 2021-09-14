@@ -204,7 +204,7 @@ export default {
   color: red;
 }
 .header {
-  min-height: 90px;
+  overflow: auto;
   min-width: 100%;
   padding: 30px;
 }
