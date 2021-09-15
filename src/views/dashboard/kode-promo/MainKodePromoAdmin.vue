@@ -20,6 +20,9 @@
         :fields="fields"
         responsive
       >
+        <template #cell(tanggal)="data">
+            {{ new Date(data.item.createdAt) }}
+        </template>
         <template #cell(hapus)="data">
           <b-button variant="danger" @click="delKodePromo(data.item.id)"><i class="fa fa-trash"></i></b-button>
         </template>
@@ -37,6 +40,7 @@ export default {
     return {
       perPage: 10,
       currentPage: 1,
+      rows: 10,
       dataKodePromo: [],
       fields: [
         {
@@ -62,6 +66,10 @@ export default {
         {
           key: "active",
           label: "active",
+        },
+        {
+          key: "tanggal",
+          label: "Tanggal",
         },
         {
           key: "hapus",

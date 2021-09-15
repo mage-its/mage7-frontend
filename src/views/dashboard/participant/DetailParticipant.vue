@@ -9,6 +9,18 @@
     <p class="text-bold">Kompetisi yang terdaftar</p>
     <p>{{ participant.registeredComp ? participant.registeredComp : "Belum terdaftar"}}</p>
     <hr>
+    <div v-if="competitionId">
+      <p class="text-bold">Kompetisi</p>
+      <router-link
+        :to="{
+          name: 'DetailUserCompetition',
+          params: { id: competitionId, competition: participant.registeredComp },
+        }"
+      >
+        <b-button><i class="fa fa-search"></i></b-button>
+      </router-link>
+      <hr>
+    </div>
     <p class="text-bold">ID</p>
     <p>{{ participant.id }}</p>
     <hr>
@@ -25,6 +37,7 @@ export default {
   data() {
     return {
       participant: null,
+      competitionId: null,
     };
   },
   methods: {
@@ -35,9 +48,18 @@ export default {
           this.participant = response.data;
         });
     },
+    async getCompeById() {
+      await axios
+        .get(`${this.endpointAPI}api/v1/compe/user/${this.participant.id}`, header())
+        .then((response) => {
+          console.log(response.data);
+          this.competitionId = response.data.id;
+        });
+    },
   },
   async mounted() {
     await this.getParticipantById(this.$route.params.id);
+    await this.getCompeById();
   },
 };
 </script>

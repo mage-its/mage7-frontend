@@ -22,7 +22,7 @@
           :fields="fields"
           responsive
         >
-          <template #cell(proposal)="data" v-if="type !== 'olim'">
+          <template #cell(proposal)="data">
             <a
               target="_blank"
               :href="endpointAPI + data.item.pathProposal"
@@ -42,6 +42,9 @@
             >
               <b-button><i class="fa fa-search"></i></b-button>
             </router-link>
+          </template>
+          <template #cell(tanggal)="data">
+            {{ new Date(data.item.createdAt) }}
           </template>
         </b-table>
       </div>
@@ -88,6 +91,10 @@ export default {
         key: "detail",
         label: "Detail",
       },
+      {
+        key: "tanggal",
+        label: "Tanggal",
+      },
     ];
     if (this.$route.params.competition === 'olim') {
       fields.splice(5, 1);
@@ -101,6 +108,7 @@ export default {
       keyword: "",
       perPage: 10,
       currentPage: 1,
+      rows: 10,
     };
   },
   methods: {

@@ -389,7 +389,6 @@ export default {
     },
   },
   mounted() {
-    this.getUser();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
     });

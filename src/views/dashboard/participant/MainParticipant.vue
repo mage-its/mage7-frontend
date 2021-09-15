@@ -27,6 +27,9 @@
               : "Belum terdaftar"
           }}
         </template>
+        <template #cell(tanggal)="data">
+            {{ new Date(data.item.createdAt) }}
+        </template>
         <template #cell(detail)="data">
           <router-link
             :to="{ name: 'DetailParticipant', params: { id: data.item.id } }"
@@ -54,6 +57,7 @@ export default {
       participants: [],
       perPage: 10,
       currentPage: 1,
+      rows: 10,
       fields: [
         {
           key: "name",
@@ -70,6 +74,10 @@ export default {
         {
           key: "detail",
           label: "Detail",
+        },
+        {
+          key: "tanggal",
+          label: "Tanggal",
         },
       ],
       keyword: "",

@@ -9,6 +9,17 @@
         </div>
         <table style="width: 100%" v-else>
           <tr>
+            <th>User</th>
+            <td>
+              <router-link
+                :to="{ name: 'DetailParticipant', params: { id: participant.user } }"
+              >
+              <b-button><i class="fa fa-search"></i></b-button>
+            </router-link>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
             <th>Kategori</th>
             <td>{{ participant.kategori ? participant.kategori : "-" }}</td>
             <td></td>
