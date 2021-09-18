@@ -351,6 +351,22 @@
             </td>
             <td></td>
           </tr>
+          <tr v-if="participant.tahap">
+            <th>Tahap</th>
+            <td>
+              {{
+                participant.tahap || "-"
+              }}
+            </td>
+            <td>
+              <b-button @click="toggleTahap('inc')" variant="success">
+              Naik tahap
+              </b-button>
+              <b-button @click="toggleTahap('dec')" variant="danger">
+              Turun tahap
+              </b-button>
+            </td>
+          </tr>
           <tr>
             <th>Link Karya Dan Video</th>
             <td>
@@ -439,6 +455,51 @@ export default {
           this.toggleVerif();
         }
       });
+    },
+    toggleTahap(method) {
+      Swal.fire({
+        icon: "warning",
+        title: `Yakin ${method === 'dec' ? 'turunkan' :
+        'naikkan'} tahap peserta ?`,
+        showDenyButton: true,
+        confirmButtonText: "Yes",
+        denyButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.tahap(method);
+        }
+      });
+    },
+    tahap(method) {
+      this.loading = true;
+      axios
+        .post(
+          `${this.endpointAPI}api/v1/${this.$route.params.competition}/${method}-tahap/${this.$route.params.id}`,
+          {},
+          header()
+        )
+        .then((response) => {
+          this.getParticipantById(this.$route.params.id);
+          this.loading = false;
+          Swal.fire({
+            icon: "success",
+            title: "Berhasil",
+            showDenyButton: false,
+          });
+        })
+        .catch((error) => {
+          this.loading = false;
+          if (error.response.data.code === 401) {
+            this.refreshToken();
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "gagal",
+              text: error.response.data.message,
+              showConfirmButton: true,
+            }).then(() => {});
+          }
+        });
     },
     refreshToken() {
       const user = JSON.parse(localStorage.getItem("user"));
