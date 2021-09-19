@@ -8,6 +8,9 @@
         <b-form-input v-model="keyword" placeholder="Search" type="text">
         </b-form-input>
       </b-input-group>
+      <b-button variant="primary" class="mb-3" @click="downloadCsv()">
+          Download CSV
+      </b-button>
       <b-pagination
         v-model="currentPage"
         :total-rows="rows"
@@ -95,6 +98,22 @@ export default {
         });
       this.participants = data.results;
       this.rows = data.totalResults;
+    },
+    downloadCsv() {
+      this.loading = true;
+      axios.get(`${this.endpointAPI}api/v1/users/download-csv`, { responseType: 'blob', ...header() })
+      .then((response) => {
+        this.loading = false;
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'users.csv');
+        document.body.appendChild(link);
+        link.click();
+      })
+      .catch(() => {
+        this.loading = false;
+      });
     },
   },
   computed: {
