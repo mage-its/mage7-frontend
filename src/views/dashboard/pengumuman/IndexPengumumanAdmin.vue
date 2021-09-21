@@ -2,20 +2,17 @@
   <b-container>
     <div class="bg-light text-dark mb-3 rounded shadow-sm header">
       <h3 class="text-left d-inline float-left">
-        <i class="fa fa-users"></i>
-        Daftar Peserta {{$route.params.competition}}
+        <i class="fas fa-bullhorn"></i>
+        Pengumuman Admin
       </h3>
     </div>
     <hr />
-    <router-view :key="$route.path"/>
+    <router-view/>
   </b-container>
 </template>
 <script>
 export default {
-  name: 'IndexUserCompetition',
-  mounted() {
-    this.competition = this.$route.params.competition;
-  },
+  name: 'IndexPengumumanAdmin',
 };
 </script>
 <style scoped>

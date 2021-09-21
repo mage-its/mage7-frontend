@@ -72,7 +72,7 @@
                     <li @click="selectedItem = 2" class="mb-3">
                       <router-link
                         class="text-white"
-                        :to="{ name: 'MainAnnouncement' }"
+                        :to="{ name: 'PengumumanUser' }"
                       >
                         <b-row>
                           <b-col cols="1" lg="1">
@@ -208,7 +208,7 @@
             <li @click="selectedItem = 2">
               <router-link
                 class="text-white"
-                :to="{ name: 'MainAnnouncement' }"
+                :to="{ name: 'PengumumanUser' }"
               >
                 <b-row>
                   <b-col cols="1" lg="1">

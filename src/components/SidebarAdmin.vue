@@ -65,7 +65,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="reload" class="mb-3">
+                    <li class="mb-3">
                       <router-link
                         class="text-white"
                         :to="{
@@ -85,7 +85,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="reload" class="mb-3">
+                    <li class="mb-3">
                       <router-link
                         class="text-white"
                         :to="{
@@ -105,7 +105,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="reload" class="mb-3">
+                    <li class="mb-3">
                       <router-link
                         class="text-white"
                         :to="{
@@ -125,7 +125,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="reload" class="mb-3">
+                    <li class="mb-3">
                       <router-link
                         class="text-white"
                         :to="{
@@ -145,7 +145,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="reload" class="mb-3">
+                    <li class="mb-3">
                       <router-link
                         class="text-white"
                         :to="{
@@ -160,6 +160,25 @@
                           </b-col>
                           <b-col cols="10" class="sidebar-text" lg="10">
                             Kode Promo
+                          </b-col>
+                        </b-row>
+                      </router-link>
+                    </li>
+                    <li class="mb-3">
+                      <router-link
+                        class="text-white"
+                        :to="{
+                          name: 'MainPengumumanAdmin',
+                        }"
+                      >
+                        <b-row>
+                          <b-col cols="1" lg="1">
+                            <div class="inline">
+                              <i class="fa fa-bullhorn"></i>
+                            </div>
+                          </b-col>
+                          <b-col cols="10" class="sidebar-text" lg="10">
+                            Pengumuman
                           </b-col>
                         </b-row>
                       </router-link>
@@ -224,7 +243,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="reload" class="mb-3">
+            <li class="mb-3">
               <router-link
                 class="text-white"
                 :to="{
@@ -244,7 +263,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="reload" class="mb-3">
+            <li class="mb-3">
               <router-link
                 class="text-white"
                 :to="{
@@ -264,7 +283,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="reload" class="mb-3">
+            <li class="mb-3">
               <router-link
                 class="text-white"
                 :to="{
@@ -284,7 +303,7 @@
                 </b-row>
               </router-link>
             </li>
-            <li @click="reload" class="mb-3">
+            <li class="mb-3">
               <router-link
                 class="text-white"
                 :to="{
@@ -319,6 +338,23 @@
                   </b-col>
                   <b-col cols="10" class="sidebar-text" lg="10">
                     Kode Promo
+                  </b-col>
+                </b-row>
+              </router-link>
+            </li>
+            <li class="mb-3">
+              <router-link
+                class="text-white"
+                :to="{ name: 'MainPengumumanAdmin' }"
+              >
+                <b-row>
+                  <b-col cols="1" lg="1">
+                    <div class="inline">
+                      <i class="fas fa-bullhorn"></i>
+                    </div>
+                  </b-col>
+                  <b-col cols="10" class="sidebar-text" lg="10">
+                    Pengumuman
                   </b-col>
                 </b-row>
               </router-link>

@@ -49,10 +49,6 @@ import IndexDocument from './views/dashboard/document/IndexDocument.vue';
 import MainDocument from './views/dashboard/document/MainDocument.vue';
 import CreateDocument from './views/dashboard/document/CreateDocument.vue';
 
-import IndexSchedule from './views/dashboard/schedule/IndexSchedule.vue';
-import MainSchedule from './views/dashboard/schedule/MainSchedule.vue';
-import CreateSchedule from './views/dashboard/schedule/CreateSchedule.vue';
-
 import IndexParticipant from './views/dashboard/participant/IndexParticipant.vue';
 import MainParticipant from './views/dashboard/participant/MainParticipant.vue';
 import DetailParticipant from './views/dashboard/participant/DetailParticipant.vue';
@@ -61,20 +57,6 @@ import IndexUserCompetition from './views/dashboard/user-competition/IndexUserCo
 import MainUserCompetition from './views/dashboard/user-competition/MainUserCompetition.vue';
 import DetailUserCompetition from './views/dashboard/user-competition/DetailUserCompetition.vue';
 
-import IndexEvent from './views/dashboard/event/IndexEvent.vue';
-import SettingEvent from './views/dashboard/event/SettingEvent.vue';
-
-import IndexStage from './views/dashboard/stage/IndexStage.vue';
-import MainStage from './views/dashboard/stage/MainStage.vue';
-import SettingStage from './views/dashboard/stage/SettingStage.vue';
-import ListParticipantStage from './views/dashboard/stage/participant/ListParticipantStage.vue';
-import AddParticipantStage from './views/dashboard/stage/participant/AddParticipantStage.vue';
-import MainQuestionStage from './views/dashboard/stage/question/MainQuestionStage.vue';
-import CreateQuestionStage from './views/dashboard/stage/question/CreateQuestionStage.vue';
-import EditQuestionStage from './views/dashboard/stage/question/EditQuestionStage.vue';
-import ListResultStage from './views/dashboard/stage/result/ListResultStage.vue';
-import DetailResultStage from './views/dashboard/stage/result/DetailResultStage.vue';
-
 import UploadProposal from './views/dashboard/upload-proposal/UploadProposal.vue';
 import NotFound from './views/NotFound.vue';
 
@@ -82,6 +64,11 @@ import IndexKodePromoAdmin from './views/dashboard/kode-promo/IndexKodePromoAdmi
 import MainKodePromoAdmin from './views/dashboard/kode-promo/MainKodePromoAdmin.vue';
 import CreateKodePromoAdmin from './views/dashboard/kode-promo/CreateKodePromoAdmin.vue';
 import KodePromoUser from './views/dashboard/kode-promo/KodePromoUser.vue';
+
+import IndexPengumumanAdmin from './views/dashboard/pengumuman/IndexPengumumanAdmin.vue';
+import MainPengumumanAdmin from './views/dashboard/pengumuman/MainPengumumanAdmin.vue';
+import CreatePengumumanAdmin from './views/dashboard/pengumuman/CreatePengumumanAdmin.vue';
+import PengumumanUser from './views/dashboard/pengumuman/PengumumanUser.vue';
 
 
 Vue.use(Router);
@@ -442,86 +429,25 @@ const router = new Router({
 					name: 'KodePromoUser',
 					component: KodePromoUser,
 				},
-				{
-					path: 'schedule',
-					name: 'IndexSchedule',
-					component: IndexSchedule,
-					children: [{
-						path: '',
-						name: 'MainSchedule',
-						component: MainSchedule,
-					},
-					{
-						path: 'add',
-						name: 'CreateSchedule',
-						component: CreateSchedule,
-					},
-					],
-				},
-				{
-					path: 'event',
-					name: 'IndexEvent',
-					component: IndexEvent,
-					children: [{
-						path: ':idEvent',
-						children: [{
-							path: '',
-							name: 'SettingEvent',
-							component: SettingEvent,
-						}],
-					}],
-				},
-				{
-					path: 'stage/:idStage',
-					name: 'IndexStage',
-					component: IndexStage,
-					children: [{
-						path: '',
-						name: 'MainStage',
-						component: MainStage,
-					},
-					{
-						path: 'setting',
-						name: 'SettingStage',
-						component: SettingStage,
-					},
-					{
-						path: 'participant',
-						name: 'ListParticipantStage',
-						component: ListParticipantStage,
-					},
-					{
-						path: 'participant/add',
-						name: 'AddParticipantStage',
-						component: AddParticipantStage,
-					},
-					{
-						path: 'question',
-						name: 'MainQuestionStage',
-						component: MainQuestionStage,
-					},
-					{
-						path: 'question/:idQuestion',
-						name: 'EditQuestionStage',
-						component: EditQuestionStage,
-					},
-					{
-						path: 'question/add',
-						name: 'CreateQuestionStage',
-						component: CreateQuestionStage,
-					},
-					{
-						path: 'result',
-						name: 'ListResultStage',
-						component: ListResultStage,
-					},
-					{
-						path: 'result/:idResult',
-						name: 'DetailResultStage',
-						component: DetailResultStage,
-					},
-					],
-				},
+        {
+          path: 'pengumumanadmin',
+          name: 'IndexPengumumanAdmin',
+          component: IndexPengumumanAdmin,
+          children: [{
+            path: '',
+            name: 'MainPengumumanAdmin',
+            component: MainPengumumanAdmin,
+          }, {
+            path: 'createpengumumanadmin',
+            name: 'CreatePengumumanAdmin',
+            component: CreatePengumumanAdmin,
+          }],
+        },
+        {
+          path: 'pengumumanuser',
+          name: 'PengumumanUser',
+          component: PengumumanUser,
+        },
 				],
 			},
 			],
