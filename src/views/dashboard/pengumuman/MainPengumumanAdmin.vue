@@ -13,7 +13,7 @@
         class="mt-3"
       ></b-pagination>
       <div v-for="announcement in announcements" :key="announcement.id">
-        <b-card :title="announcement.title" :sub-title="announcement.type" class="mb-2">
+        <b-card :title="announcement.title" :sub-title="(announcement.namaTim || announcement.type)" class="mb-2">
           <b-card-text>
             {{announcement.content}}
           </b-card-text>

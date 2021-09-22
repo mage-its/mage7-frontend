@@ -3,13 +3,14 @@
     <b-container class="bg-white p-5">
       <div class="form-group">
         <label for="kodepromo">Judul Pengumuman</label>
-        <input
+        <b-form-input
           id="kodepromo"
           type="text"
           class="form-control"
           v-model="title"
           placeholder="Masukkan Judul Pengumuman"
-        />
+          required
+        ></b-form-input>
         <label class="mt-3" for="category">Kategori</label>
         <b-form-radio-group
           v-model="type"
@@ -19,6 +20,16 @@
           text-field="name"
           required
         ></b-form-radio-group>
+        <label class="mt-3" for="namatim" v-show="type === 'namatim'">Nama Tim</label>
+        <b-form-input
+          id="kodepromo"
+          type="text"
+          class="form-control"
+          v-model="namaTim"
+          placeholder="Masukkan Nama Tim"
+          required
+          v-show="type === 'namatim'"
+        ></b-form-input>
         <label class="mt-3" for="discountPrice">Konten Pengumuman</label>
         <b-form-textarea
           id="discountPrice"
@@ -44,15 +55,17 @@ export default {
     return {
       title: '',
       options: [
-        { item: 'all', name: 'all' },
-        { item: 'gamedev', name: 'gamedev' },
-        { item: 'appdev', name: 'appdev' },
-        { item: 'iotdev', name: 'iotdev' },
-        { item: 'devcom', name: 'devcom' },
+        { item: 'all', name: 'All' },
+        { item: 'gamedev', name: 'Game Dev' },
+        { item: 'appdev', name: 'App Dev' },
+        { item: 'iotdev', name: 'Iot Dev' },
+        { item: 'devcom', name: 'DevCom' },
+        { item: 'namatim', name: 'Nama Tim' },
       ],
       content: '',
       type: '',
       message: '',
+      namaTim: '',
     };
   },
   methods: {
@@ -64,6 +77,7 @@ export default {
             title: this.title,
             type: this.type,
             content: this.content,
+            ...(this.type === 'namatim' && { namaTim: this.namaTim }),
           },
           header(),
         )
@@ -72,9 +86,7 @@ export default {
             icon: 'success',
             title: 'Pengumuman berhasil ditambah',
             showConfirmButton: true,
-          }).then(() => {
-            this.$router.push('/dashboard');
-          });
+          }).then(() => {});
         })
         .catch((error) => {
           this.message =
