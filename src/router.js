@@ -58,6 +58,7 @@ import MainUserCompetition from './views/dashboard/user-competition/MainUserComp
 import DetailUserCompetition from './views/dashboard/user-competition/DetailUserCompetition.vue';
 
 import UploadProposal from './views/dashboard/upload-proposal/UploadProposal.vue';
+import SubmitKaryaUser from './views/dashboard/submit-karya/SubmitKaryaUser.vue';
 import NotFound from './views/NotFound.vue';
 
 import IndexKodePromoAdmin from './views/dashboard/kode-promo/IndexKodePromoAdmin.vue';
@@ -429,6 +430,11 @@ const router = new Router({
 					name: 'KodePromoUser',
 					component: KodePromoUser,
 				},
+        {
+          path: 'submitkarya',
+          name: 'SubmitKarya',
+          component: SubmitKaryaUser,
+        },
         {
           path: 'pengumumanadmin',
           name: 'IndexPengumumanAdmin',

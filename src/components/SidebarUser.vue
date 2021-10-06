@@ -205,6 +205,20 @@
                 </b-row>
               </router-link>
             </li>
+            <li>
+              <router-link class="text-white" :to="{ name: 'SubmitKarya' }">
+                <b-row>
+                  <b-col cols="1" lg="1">
+                    <div class="inline">
+                      <i class="fas fa-code"></i>
+                    </div>
+                  </b-col>
+                  <b-col cols="10" class="sidebar-text" lg="10">
+                    Submit Karya
+                  </b-col>
+                </b-row>
+              </router-link>
+            </li>
             <li @click="selectedItem = 2">
               <router-link
                 class="text-white"
