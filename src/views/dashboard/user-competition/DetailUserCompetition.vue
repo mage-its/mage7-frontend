@@ -370,11 +370,16 @@
           <tr>
             <th>Link Karya Dan Video</th>
             <td>
-              {{
-                participant.linkKaryaDanVideo
-                  ? participant.linkKaryaDanVideo
-                  : "-"
-              }}
+              <div v-if="participant.linkKaryaDanVideo">
+                <b-button variant="success">
+                  <a
+                    target="_blank"
+                    :href="participant.linkKaryaDanVideo"
+                    >{{ participant.linkKaryaDanVideo ? "Pergi ke tautan" : "-" }}</a
+                  >
+                </b-button>
+              </div>
+              <div v-else>-</div>
             </td>
             <td></td>
           </tr>

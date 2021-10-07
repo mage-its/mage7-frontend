@@ -7,6 +7,11 @@
       </h3>
     </div>
     <hr />
+    <b-card class="mb-2 bg-white">
+      <b-card-text>
+        Pastikan format file dan folder sudah benar. Silakan melihat guidebook untuk info lebih lanjut.
+      </b-card-text>
+    </b-card>
     <b-card>
       <b-container class="bg-white p-3">
         <div class="form-group">
