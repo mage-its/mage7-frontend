@@ -274,7 +274,22 @@
           <hr />
           <div class="content bg-light p-5 rounded shadow-sm">
             <h3>Sponsor :</h3>
-            <b-row align-h="center">
+            <b-row align-h="center" align-v="center">
+              <b-col class="mb-3 text-center" lg="6" sm="12">
+                <a
+                href="https://www.telkom.co.id/"
+                rel="noopener noreferrer"
+                target="_blank"
+                >
+                  <img
+                    style="max-height: 230px; max-width:100%;"
+                    src="@/assets/img/telkom.png"
+                    alt="Telkom Indonesia"
+                  />
+                </a>
+                <!-- <br />
+                <br /> -->
+              </b-col>
               <b-col class="mb-3 text-center" lg="6" sm="12">
                 <a
                 href="https://www.instagram.com/vendorkampus.id/"
@@ -282,7 +297,7 @@
                 target="_blank"
                 >
                   <img
-                    style="height: 90px; width: 300px;"
+                    style="max-height: 90px; max-width: 100%;"
                     src="@/assets/img/vendor_kampus.png"
                     alt="Vendor Kampus"
                   />
