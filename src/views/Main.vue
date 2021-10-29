@@ -272,17 +272,17 @@
         >
           <h1 class="text-white"><glitch text="Partnership"></glitch></h1>
           <hr />
-          <div class="content bg-light p-5 rounded shadow-sm">
+          <div class="content bg-light p-2 p-lg-4 rounded shadow-sm">
             <h3>Sponsor :</h3>
-            <b-row align-h="center" align-v="center">
-              <b-col class="mb-3 text-center" lg="6" sm="12">
+            <b-row align-h="center" align-v="center" class="mx-0">
+              <b-col class="mb-3 text-center px-0" lg="6" sm="12">
                 <a
                 href="https://www.telkom.co.id/"
                 rel="noopener noreferrer"
                 target="_blank"
                 >
                   <img
-                    style="max-height: 230px; max-width:100%;"
+                    style="max-height: 310px; max-width:100%;"
                     src="@/assets/img/telkom.png"
                     alt="Telkom Indonesia"
                   />
@@ -290,14 +290,14 @@
                 <!-- <br />
                 <br /> -->
               </b-col>
-              <b-col class="mb-3 text-center" lg="6" sm="12">
+              <b-col class="mb-3 text-center mx-0" lg="6" sm="12">
                 <a
                 href="https://www.instagram.com/vendorkampus.id/"
                 rel="noopener noreferrer"
                 target="_blank"
                 >
                   <img
-                    style="max-height: 90px; max-width: 100%;"
+                    style="max-height: 120px; max-width: 100%;"
                     src="@/assets/img/vendor_kampus.png"
                     alt="Vendor Kampus"
                   />
