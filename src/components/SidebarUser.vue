@@ -69,7 +69,28 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="selectedItem = 2" class="mb-3">
+                    <li
+                      @click="selectedItem = 2"
+                      class="mb-3"
+                      :class="{ 'd-none': hideProposal }"
+                    >
+                      <router-link
+                        class="text-white"
+                        :to="{ name: 'SubmitKarya' }"
+                      >
+                        <b-row>
+                          <b-col cols="1" lg="1">
+                            <div class="inline">
+                              <i class="fas fa-code"></i>
+                            </div>
+                          </b-col>
+                          <b-col cols="10" class="sidebar-text" lg="10">
+                            Submit Karya
+                          </b-col>
+                        </b-row>
+                      </router-link>
+                    </li>
+                    <li @click="selectedItem = 3" class="mb-3">
                       <router-link
                         class="text-white"
                         :to="{ name: 'PengumumanUser' }"
@@ -128,7 +149,7 @@
                         </b-row>
                       </router-link>
                     </li>
-                    <li @click="selectedItem = 3" class="mb-3" :class="{ 'd-none': hideKodePromo }">
+                    <li @click="selectedItem = 4" class="mb-3" :class="{ 'd-none': hideKodePromo }">
                       <router-link
                         class="text-white"
                         :to="{ name: 'KodePromoUser' }"
