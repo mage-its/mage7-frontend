@@ -20,7 +20,7 @@
           <b-col lg="8">
             <div class="competition-title text-left">Game Dev</div>
             <div class="competition-description text-justify">
-              Game Competition merupakan cabang kompetisi dari MAGE 7 yang
+              Game Development Competition merupakan cabang kompetisi dari MAGE 7 yang
               diadakan oleh Teknik Komputer ITS. Game Competition diadakan
               dengan tujuan mendorong kreasi serta inovasi mahasiswa maupun
               siswa SMA sederajat untuk membuat sebuah aplikasi permainan atau

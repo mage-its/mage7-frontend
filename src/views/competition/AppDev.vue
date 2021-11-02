@@ -20,7 +20,7 @@
           <b-col lg="8">
             <div class="competition-title text-left">App Dev</div>
             <div class="competition-description text-justify">
-              Application Competition merupakan cabang kompetisi dari MAGE 7,
+              Application Development Competition merupakan cabang kompetisi dari MAGE 7,
               yaitu pembuatan aplikasi mobile yang berskala nasional sebagai
               media bagi peserta baik pelajar maupun mahasiswa untuk
               mengeksplorasi kreativitas dan inovasi dalam bidang IT.
