@@ -12,7 +12,7 @@
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is <span class="font-weight-bold">MAGE</span>?</p>
               <p class="text-white text-justify description  mb-3">
-                <span class="font-weight-bold">MAGE</span> (Multimedia and Game Event) adalah Wadah bagi generasi muda
+                <span class="font-weight-bold">MAGE</span> (Multimedia and Game Event) adalah serangkaian acara dibidang IT yang diadakan oleh Departemen Teknik Komputer - FTEIC ITS sebagai wadah bagi generasi muda
                 dalam berkreasi, berekspresi, dan berkompetisi untuk menuangkan
                 inovasi sekaligus menyelesaikan permasalahan dengan memanfaatkan
                 berbagai macam teknologi melalui serangkaian kegiatan seperti
@@ -22,7 +22,7 @@
             </b-col>
           </b-row>
         </div>
-        <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+        <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true">
           <b-row class="vh-100 text-center" align-v="center">
             <b-col>
               <carousel
@@ -57,7 +57,7 @@
             </b-col>
           </b-row>
         </div>
-        <div data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
+        <div data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true">
           <b-row class="vh-70 text-center" align-v="center">
             <b-col>
               <b-embed

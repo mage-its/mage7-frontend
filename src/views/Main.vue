@@ -28,7 +28,7 @@
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is <span class="font-weight-bold">MAGE</span>?</p>
               <p class="text-white text-justify description mb-3">
-                <span class="font-weight-bold">MAGE</span> (Multimedia and Game Event) adalah Wadah bagi generasi muda
+                <span class="font-weight-bold">MAGE</span> (Multimedia and Game Event) adalah serangkaian acara dibidang IT yang diadakan oleh Departemen Teknik Komputer - FTEIC ITS sebagai wadah bagi generasi muda
                 dalam berkreasi, berekspresi, dan berkompetisi untuk menuangkan
                 inovasi sekaligus menyelesaikan permasalahan dengan memanfaatkan
                 berbagai macam teknologi melalui serangkaian kegiatan seperti
@@ -56,7 +56,7 @@
                 <h1 class="title"><glitch text="App Dev"></glitch></h1>
                 <div class="description mt-4 mb-5">
                   <p class="text-justify">
-                    Application Competition merupakan cabang kompetisi dari MAGE
+                    Application Development Competition merupakan cabang kompetisi dari MAGE
                     7, yaitu pembuatan aplikasi mobile yang berskala nasional
                     sebagai media bagi peserta baik pelajar maupun mahasiswa
                     untuk mengeksplorasi kreativitas dan inovasi dalam bidang
@@ -76,7 +76,7 @@
                 <h1 class="title"><glitch text="Game Dev"></glitch></h1>
                 <div class="description mt-4 mb-5">
                   <p class="text-justify">
-                    Game Competition merupakan cabang kompetisi dari MAGE 7 yang
+                    Game Development Competition merupakan cabang kompetisi dari MAGE 7 yang
                     diadakan oleh Teknik Komputer ITS. Game Competition diadakan
                     dengan tujuan mendorong kreasi serta inovasi mahasiswa
                     maupun siswa SMA sederajat untuk membuat sebuah aplikasi
@@ -165,7 +165,7 @@
                 <h1 class="title"><glitch text="App Dev"></glitch></h1>
                 <div class="description mt-4">
                   <p class="text-justify">
-                    Application Competition merupakan cabang kompetisi dari MAGE
+                    Application Development Competition merupakan cabang kompetisi dari MAGE
                     7, yaitu pembuatan aplikasi mobile yang berskala nasional
                     sebagai media bagi peserta baik pelajar maupun mahasiswa
                     untuk mengeksplorasi kreativitas dan inovasi dalam bidang
@@ -189,7 +189,7 @@
                 <h1 class="title"><glitch text="Game Dev"></glitch></h1>
                 <div class="description mt-4">
                   <p class="text-justify">
-                    Game Competition merupakan cabang kompetisi dari MAGE 7 yang
+                    Game Development Competition merupakan cabang kompetisi dari MAGE 7 yang
                     diadakan oleh Teknik Komputer ITS. Game Competition diadakan
                     dengan tujuan mendorong kreasi serta inovasi mahasiswa
                     maupun siswa SMA sederajat untuk membuat sebuah aplikasi
