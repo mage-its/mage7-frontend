@@ -274,17 +274,34 @@
           <hr />
           <div class="content bg-light p-2 p-lg-4 rounded shadow-sm">
             <h3>Sponsor :</h3>
-            <b-row align-h="center" align-v="center" class="mx-0">
-              <b-col class="mb-3 text-center px-0" lg="6" sm="12">
+            <b-row align-h="center" align-v="center" class="mx-0 mb-3 p-2">
+              <b-col class="mb-3 text-center p-0" lg="6" sm="12">
                 <a
                 href="https://www.telkom.co.id/"
                 rel="noopener noreferrer"
                 target="_blank"
                 >
                   <img
-                    style="max-height: 310px; max-width:100%;"
+                    style="max-height: 380px; max-width:100%;"
                     src="@/assets/img/telkom.png"
                     alt="Telkom Indonesia"
+                  />
+                </a>
+                <!-- <br />
+                <br /> -->
+              </b-col>
+            </b-row>
+            <b-row align-h="center" align-v="center" class="mx-0 p-2">
+              <b-col class="mb-3 text-center px-0" lg="6" sm="12">
+                <a
+                href="https://www.instagram.com/sybofficial.id/"
+                rel="noopener noreferrer"
+                target="_blank"
+                >
+                  <img
+                    style="max-height: 300px; max-width:100%;"
+                    src="@/assets/img/SYB.png"
+                    alt="SYB OFFICIAL"
                   />
                 </a>
                 <!-- <br />
@@ -306,7 +323,8 @@
                 <br /> -->
               </b-col>
             </b-row
-            ><!-- <br /><br />
+            >
+            <!-- <br /><br />
             <h3 class="mt-5">Media Partner :</h3>
             <b-row>
               <b-col cols="2">
@@ -631,7 +649,7 @@ a:hover {
 }
 
 #partner {
-  padding: 100px 140px;
+  padding: 100px 80px;
   color: #ffffff;
   background-size: cover;
   background-color: #000000;
@@ -754,10 +772,11 @@ b-button {
     padding: 100px 40px;
   }
   #partner {
-    padding: 40px 50px;
+    padding: 40px 10px;
   }
   #partner .content img {
-    width: 180px;
+    max-width: 90% !important;
+    max-height: 210px !important;
   }
   #partner h3 {
     text-align: center;
@@ -882,10 +901,11 @@ b-button {
     font-size: 15px;
   }
   #partner {
-    padding: 40px 50px;
+    padding: 40px 40px;
   }
   #partner .content img {
-    width: 180px;
+    max-width: 90% !important;
+    max-height: 210px !important;
   }
   #partner h3 {
     text-align: center;
