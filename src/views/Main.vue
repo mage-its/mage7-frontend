@@ -299,9 +299,10 @@
                 target="_blank"
                 >
                   <img
-                    style="max-height: 300px; max-width:100%;"
+                    style="max-height: 250px; max-width:100%;"
                     src="@/assets/img/SYB.png"
                     alt="SYB OFFICIAL"
+                    id="syb"
                   />
                 </a>
                 <!-- <br />
@@ -314,9 +315,10 @@
                 target="_blank"
                 >
                   <img
-                    style="max-height: 120px; max-width: 100%;"
+                    style="max-height: 120px; max-width: 70%;"
                     src="@/assets/img/vendor_kampus.png"
                     alt="Vendor Kampus"
+                    id="vk"
                   />
                 </a>
                 <!-- <br />
@@ -782,6 +784,12 @@ b-button {
     text-align: center;
     font-size: 1.5em;
   }
+  #syb {
+    height: 180px;
+  }
+  #vk {
+    height: 100px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -910,6 +918,12 @@ b-button {
   #partner h3 {
     text-align: center;
     font-size: 1.5em;
+  }
+  #syb {
+    height: 140px;
+  }
+  #vk {
+    height: 75px;
   }
   .rotate {
     min-width: 100px;
