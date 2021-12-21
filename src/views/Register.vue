@@ -3,9 +3,9 @@
     <div v-if="loadingSubmit">
       <LoadingSubmit />
     </div>
-    <img src="@/assets/img/bg1.png" id="bg" alt="">
+    <img src="/img/bg1.png" id="bg" alt="">
     <div class="register-container shadow">
-      <a href="/"><img class="logo mt-4" src="@/assets/img/mage.png" /></a>
+      <a href="/"><img class="logo mt-4" src="/img/mage.png" /></a>
       <div>
         <label>Username</label>
         <input
@@ -101,7 +101,7 @@
       </p>
     </div>
     <a v-if="!getUrl()" @click="moveToWelcome()">
-      <img class="close" src="@/assets/close.png" />
+      <img class="close" src="/img/close.png" />
     </a>
   </div>
 </template>
@@ -339,7 +339,7 @@ export default {
   min-height: 100%;
 }
 .background-register {
-  background-image: url("./../assets/img/bg1.png");
+  background-image: url("/img/bg1.png");
   background-color: #111;
   background-size: cover;
   width: 100%;

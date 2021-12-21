@@ -3,7 +3,7 @@
     <div class="preloader-content">
       <b-row>
         <b-col lg="12">
-          <img class="logo" src="@/assets/img/mage-white.png" />
+          <img class="logo" src="/img/mage-white.png" />
         </b-col>
         <b-col lg="12">
           <div class="loader text-center"></div>

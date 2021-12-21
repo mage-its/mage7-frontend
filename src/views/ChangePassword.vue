@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
     <div class="logo">
-      <img src="@/assets/img/mage-white.png" />
+      <img src="/img/mage-white.png" />
       <h1 class="text-white d-inline-block">ANAVA</h1>
     </div>
     <div class="login-container shadow">

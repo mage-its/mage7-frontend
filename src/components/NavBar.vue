@@ -9,7 +9,7 @@
       </div>
       <div class="logo">
         <router-link class="text-center pl-1" :to="'/'">
-          <img src="@/assets/img/mage-white.png" alt="MAGE logo" />
+          <img src="/img/mage-white.png" alt="MAGE logo" />
         </router-link>
       </div>
       <div class="menu">

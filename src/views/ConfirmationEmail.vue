@@ -62,7 +62,7 @@ export default {
 </script>
 <style scoped>
 .background {
-  background-image: url("./../assets/img/bg1.svg");
+  background-image: url("/img/bg1.svg");
   background-size: cover;
   width: 100%;
   height: 600px;

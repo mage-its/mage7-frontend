@@ -3,7 +3,7 @@
     <b-navbar-brand class="text-white" style="width: 350px;">
       <img
         class="logo"
-        src="@/assets/img/mage-white.png"
+        src="/img/mage-white.png"
         style="height:30px; width:30px;margin-left:0px; margin-top:0px;"
       />
     </b-navbar-brand>

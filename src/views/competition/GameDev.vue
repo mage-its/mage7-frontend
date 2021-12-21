@@ -15,7 +15,7 @@
       >
         <b-row>
           <b-col lg="4" class="p-3 text-center">
-            <img class="logo" src="@/assets/img/game-merah.svg" />
+            <img class="logo" src="/img/game-merah.svg" />
           </b-col>
           <b-col lg="8">
             <div class="competition-title text-left">Game Dev</div>

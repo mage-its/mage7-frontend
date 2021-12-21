@@ -8,7 +8,7 @@
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row>
             <b-col lg="5">
-              <img class="mascot" src="@/assets/img/mascot-1a.png" />
+              <img class="mascot" src="/img/mascot-1a.png" />
             </b-col>
             <b-col lg="7" class="text-center">
               <p class="display-2 mb-3">

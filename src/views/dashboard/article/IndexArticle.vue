@@ -13,7 +13,7 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/img/app-hitam.png" />
+                <img class="logo" src="/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
@@ -36,7 +36,7 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/img/app-hitam.png" />
+                <img class="logo" src="/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
@@ -61,7 +61,7 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/img/app-hitam.png" />
+                <img class="logo" src="/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
@@ -85,7 +85,7 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/img/app-hitam.png" />
+                <img class="logo" src="/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
@@ -108,7 +108,7 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/img/app-hitam.png" />
+                <img class="logo" src="/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">
@@ -131,7 +131,7 @@
           <b-container class="article bg-white p-3">
             <b-row>
               <b-col lg="2">
-                <img class="logo" src="@/assets/img/app-hitam.png" />
+                <img class="logo" src="/img/app-hitam.png" />
               </b-col>
               <b-col lg="9">
                 <b-container class="description text-left">

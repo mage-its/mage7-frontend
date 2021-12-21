@@ -26,7 +26,7 @@
               <div id="sidebar-background-mobile">
                 <div class="sidebar-header">
                   <div class="sidebar-logo">
-                    <img src="@/assets/img/mage-title-white.png" />
+                    <img src="/img/mage-title-white.png" />
                   </div>
                 </div>
                 <div class="sidebar-body">
@@ -195,7 +195,7 @@
       <nav id="sidebar">
         <div class="sidebar-header">
           <div class="sidebar-logo">
-            <img src="@/assets/img/mage-title-white.png" />
+            <img src="/img/mage-title-white.png" />
           </div>
         </div>
         <div class="sidebar-body">

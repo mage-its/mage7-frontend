@@ -15,7 +15,7 @@
       >
         <b-row>
           <b-col lg="4" class="p-3 text-center">
-            <img class="logo" src="@/assets/img/iot-merah.svg" />
+            <img class="logo" src="/img/iot-merah.svg" />
           </b-col>
           <b-col lg="8">
             <div class="competition-title text-left">IoT Dev</div>

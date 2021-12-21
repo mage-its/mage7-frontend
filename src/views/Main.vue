@@ -9,13 +9,13 @@
             <div class="tagline"><glitch text="Multimedia and Game Event 7"></glitch></div>
 
             <div class="title"></div>
-            <div class="title-container"><img src="@/assets/img/mage-text.svg" width="400" height="150"/></div>
+            <div class="title-container"><img src="/img/mage-text.svg" width="400" height="150"/></div>
 
             <div class="more"><a href="#about">More</a></div>
           </div>
 
           <div class="mage">
-            <img src="@/assets/img/mage.png" />
+            <img src="/img/mage.png" />
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row>
             <b-col lg="5">
-              <img class="mascot" alt="Maskot MAGE 7" src="@/assets/img/mascot-2a.png" width="800" height="690"/>
+              <img class="mascot" alt="Maskot MAGE 7" src="/img/mascot-2a.png" width="800" height="690"/>
             </b-col>
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is <span class="font-weight-bold">MAGE</span>?</p>
@@ -49,7 +49,7 @@
             <b-row class="full">
               <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/app-hitam.svg" />
+                  <img class="logo" src="/img/app-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -96,13 +96,13 @@
               </b-col>
               <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/game-hitam.svg" />
+                  <img class="logo" src="/img/game-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col lg="12"><div class="divider"></div></b-col>
               <b-col cols="6" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/iot-hitam.svg" />
+                  <img class="logo" src="/img/iot-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -149,7 +149,7 @@
               </b-col>
               <b-col cols="6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/proxy-hitam.svg" />
+                  <img class="logo" src="/img/proxy-hitam.svg" />
                 </b-container>
               </b-col>
             </b-row>
@@ -158,7 +158,7 @@
             <b-row class="mobile">
               <b-col cols="12">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/app-hitam.svg" />
+                  <img class="logo" src="/img/app-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col cols="12">
@@ -182,7 +182,7 @@
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/game-hitam.svg" />
+                  <img class="logo" src="/img/game-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
@@ -210,7 +210,7 @@
 
               <b-col cols="12" class="mt-5 mb-5">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/iot-hitam.svg" />
+                  <img class="logo" src="/img/iot-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col lg="12" class="mt-5 mb-5">
@@ -236,7 +236,7 @@
               </b-col>
               <b-col lg="6" class="mt-5 mb-5">
                 <b-container class="text-center">
-                  <img class="logo" src="@/assets/img/proxy-hitam.svg" />
+                  <img class="logo" src="/img/proxy-hitam.svg" />
                 </b-container>
               </b-col>
               <b-col cols="12" class="mt-5 mb-5">
@@ -283,7 +283,7 @@
                 >
                   <img
                     style="max-height: 380px; max-width:100%;"
-                    src="@/assets/img/telkom.png"
+                    src="/img/telkom.png"
                     alt="Telkom Indonesia"
                   />
                 </a>
@@ -300,7 +300,7 @@
                 >
                   <img
                     style="max-height: 250px; max-width:100%;"
-                    src="@/assets/img/SYB.png"
+                    src="/img/SYB.png"
                     alt="SYB OFFICIAL"
                     id="syb"
                   />
@@ -316,7 +316,7 @@
                 >
                   <img
                     style="max-height: 120px; max-width: 70%;"
-                    src="@/assets/img/vendor_kampus.png"
+                    src="/img/vendor_kampus.png"
                     alt="Vendor Kampus"
                     id="vk"
                   />
@@ -479,7 +479,7 @@ a:hover {
 #home {
   height: 100vh;
   background-color: #000000;
-  background-image: url("./../assets/img/bg.svg");
+  background-image: url("/img/bg.svg");
   background-size: cover;
   padding-bottom: 20px;
   padding-top: 300px;
