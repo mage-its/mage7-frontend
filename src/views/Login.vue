@@ -3,9 +3,9 @@
     <div v-if="loadingSubmit">
       <LoadingSubmit />
     </div>
-    <img src="@/assets/img/bg1.png" id="bg" alt="">
+    <img src="/img/bg1.png" id="bg" alt="">
     <div class="login-container shadow">
-      <a href="/"><img class="logo mt-4" src="@/assets/img/mage.png" /></a>
+      <a href="/"><img class="logo mt-4" src="/img/mage.png" /></a>
       <div>
         <label>Email</label>
         <input
@@ -82,7 +82,7 @@
       @click="$store.dispatch('ui/changeWelcomeComponent', 'welcome')"
       href="#"
     >
-      <img class="close" src="@/assets/close.png" />
+      <img class="close" src="/img/close.png" />
     </a>
     <!-- <vue-particles
       color="#dedede"
@@ -339,7 +339,7 @@ export default {
   min-height: 100%;
 }
 .background-login {
-  background-image: url("./../assets/img/bg1.png");
+  background-image: url("/img/bg1.png");
   background-color: #111;
   background-size: cover;
   width: 100%;

@@ -15,7 +15,7 @@
       >
         <b-row>
           <b-col lg="4" class="p-3 text-center">
-            <img class="logo" src="@/assets/img/proxy-merah.svg" />
+            <img class="logo" src="/img/proxy-merah.svg" />
           </b-col>
           <b-col lg="8">
             <div class="competition-title text-left">Olimpiade</div>

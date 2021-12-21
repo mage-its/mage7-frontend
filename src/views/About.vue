@@ -7,7 +7,7 @@
         <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
           <b-row>
             <b-col lg="5">
-              <img class="mascot" src="@/assets/img/mascot-2a.png" />
+              <img class="mascot" src="/img/mascot-2a.png" />
             </b-col>
             <b-col lg="7">
               <p class="text-white text-left title mb-3">What is <span class="font-weight-bold">MAGE</span>?</p>
@@ -36,22 +36,22 @@
                 navigationPrevLabel='<span class="text-white h3"><i class="fas fa-chevron-left"></i><span>'
               >
                 <slide>
-                  <img src="@/assets/img/about/about-0.jpg" alt="About 0">
+                  <img src="/img/about/about-0.jpg" alt="About 0">
                 </slide>
                 <slide>
-                  <img src="@/assets/img/about/about-1.jpg" alt="About 1">
+                  <img src="/img/about/about-1.jpg" alt="About 1">
                 </slide>
                 <slide>
-                  <img src="@/assets/img/about/about-2.jpg" alt="About 2">
+                  <img src="/img/about/about-2.jpg" alt="About 2">
                 </slide>
                 <slide>
-                  <img src="@/assets/img/about/about-3.jpg" alt="About 3">
+                  <img src="/img/about/about-3.jpg" alt="About 3">
                 </slide>
                 <slide>
-                  <img src="@/assets/img/about/about-4.jpg" alt="About 4">
+                  <img src="/img/about/about-4.jpg" alt="About 4">
                 </slide>
                 <slide>
-                  <img src="@/assets/img/about/about-5.jpg" alt="About 5">
+                  <img src="/img/about/about-5.jpg" alt="About 5">
                 </slide>
               </carousel>
             </b-col>

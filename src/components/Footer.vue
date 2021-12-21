@@ -103,7 +103,7 @@
             <div class="footer-left">
               <div class="footer-logo">
                 <img
-                  src="@/assets/img/mage-title-white.png"
+                  src="/img/mage-title-white.png"
                   style="height: 55px; width: 210px"
                 />
               </div>

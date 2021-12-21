@@ -7,7 +7,7 @@
       <hr />
     </div>
     <a v-if="!getUrl()" @click="$store.dispatch('ui/changeWelcomeComponent', 'welcome')">
-      <img class="close" src="@/assets/close.png" />
+      <img class="close" src="/img/close.png" />
     </a>
     <b-container
       id="description"
